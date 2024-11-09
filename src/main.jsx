@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import Home from "./components/home/Home.jsx";
+import ProductDetails from "./components/productDetails/ProductDetails.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
 		children: [
 			{ path: "/", element: <Home /> },
 			{ path: "/*", element: <ErrorPage /> },
+			{
+				path: "/products/:productId",
+				element: <ProductDetails />,
+			},
 		],
 	},
 ]);
