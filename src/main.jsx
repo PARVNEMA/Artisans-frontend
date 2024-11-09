@@ -11,6 +11,10 @@ import {
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import Home from "./components/home/Home.jsx";
 import ProductDetails from "./components/productDetails/ProductDetails.jsx";
+import ProductList from "./components/ProductList/ProductList.jsx";
+import Cart from "./components/cart/Cart.jsx";
+import Login from "./components/login/Login.jsx";
+import SignUp from "./components/signup/SignUp.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -22,6 +26,22 @@ const router = createBrowserRouter([
 			{
 				path: "/products/:productId",
 				element: <ProductDetails />,
+			},
+			{
+				path: "/products",
+				element: <ProductList />,
+			},
+			{
+				path: "/cart",
+				element: <Cart />,
+			},
+			{
+				path: "/login",
+				element: <Login />,
+			},
+			{
+				path: "/signup",
+				element: <SignUp />,
 			},
 		],
 	},
