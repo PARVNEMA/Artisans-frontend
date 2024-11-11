@@ -1,9 +1,28 @@
-import React from "react";
+import React ,{useState}from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+const [searchTerm,setsearchTerm]=useState([])
+const[results,setresult]=useState([])
+const [isWishlisted, setIsWishlisted] = useState(false);
+
+// Toggle wishlist state
+const toggleWishlist = () => {
+  setIsWishlisted(!isWishlisted);
+};
+
+
+const handleChange=(e)=>{
+	setsearchTerm(e.target.value);
+}
+const handleSearch=()=>{
+	const filterResult=data.filter(item=>
+		item.toLowerCase().includes(searchTerm.toLowerCase())
+	)
+	setresult(filterResult)
+}
 	return (
-		<div>
+		<div className="w-[100v]">
 			<div className="navbar bg-base-100 flex justify-between">
 				<div className="flex-1">
 					<Link to={"/"}>
@@ -13,6 +32,7 @@ function Navbar() {
 							alt="Logo"
 						/>
 					</Link>
+					
 					<div className="flex text-black font-semibold  mx-[10rem] w-[40rem] justify-evenly">
 						<a href="/">Home</a>
 						<div>
@@ -22,7 +42,7 @@ function Navbar() {
 									role="button"
 									className="btn-ghost "
 								>
-									Hover
+									Craft
 								</div>
 								<ul
 									id="dropdownMenu"
@@ -43,14 +63,40 @@ function Navbar() {
 								</ul>
 							</div>
 						</div>
-						<a href="../ErrorPage/ErrorPage.jsx">Three</a>
-						<a href="../ErrorPage/ErrorPage.jsx">Four</a>
-						<a href="../ErrorPage/ErrorPage.jsx">Five</a>
-						<a href="../ErrorPage/ErrorPage.jsx">
-							About Us
-						</a>
+						{/**<a href="../ErrorPage/ErrorPage.jsx">Three</a>*/}
+						{/*<a href="../ErrorPage/ErrorPage.jsx">Four</a>*/}
+						<Link to="/contactus">ContactUs</Link>
+						{/*<a href="../ErrorPage/ErrorPage.jsx">*/}
+						<Link to ="/aboutus">About Us</Link>
+						
 					</div>
 				</div>
+				<div style={{ padding: '20px', maxWidth: '400px', margin: 'auto' }}>
+      <input 
+        type="text"
+        value={searchTerm}
+        onChange={handleChange}
+        placeholder="Search..."
+        style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
+		
+      />
+	  <svg
+        onClick={handleSearch} // Trigger search on click
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24px"
+        height="24px"
+        fill="#000"
+        style={{ cursor: 'pointer' }}
+      >
+        <path d="M10 2a8 8 0 106.32 13.91l4.41 4.38a1 1 0 001.41-1.41l-4.38-4.41A8 8 0 0010 2zm0 2a6 6 0 11-6 6 6 6 0 016-6z"/>
+      </svg>
+      <ul style={{ marginTop: '10px', paddingLeft: '0' }}>
+        {results.map((result, index) => (
+          <li key={index} style={{ listStyleType: 'none', padding: '5px 0' }}>{result}</li>
+        ))}
+      </ul>
+    </div>
 				<div className="flex w-[25%]">
 					<div className="dropdown dropdown-end">
 						<div
@@ -78,6 +124,25 @@ function Navbar() {
 							</div>
 						</div>
 					</div>
+					{/*
+					<div style={{ display: 'flex', alignItems: 'center' }}>
+           <svg
+        onClick={toggleWishlist}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24px"
+        height="24px"
+        fill={isWishlisted ? 'red' : 'gray'} // Change color when wishlisted
+        style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+      >
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+      
+      <span style={{ marginLeft: '10px', color: isWishlisted ? 'red' : 'black' }}>
+       {/** {isWishlisted ? 'Added to Wishlist' : 'Add to Wishlist'}
+      </span>
+    </div>
+	*/}
 					<div className="dropdown dropdown-end m-4">
 						<Link to={"/login"}>
 							<button className="btn btn-primary">

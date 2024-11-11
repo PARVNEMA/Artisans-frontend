@@ -2,12 +2,12 @@ import React from "react";
 
 function Footer() {
 	return (
-		<footer class="font-[comic sans] tracking-wide bg-black px-8 py-12">
+		<footer class="font-[comic sans] tracking-wide bg-black px-4 py-8">
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
 				<div>
 					<a href="javascript:void(0)">
 						<img
-							src="https://readymadeui.com/readymadeui-white.svg"
+							src="../../../public/images/logo1.jpg"
 							alt="logo"
 							class="w-44"
 						/>
@@ -73,8 +73,8 @@ function Footer() {
 					</ul>
 				</div>
 
-				<div>
-					<h4 class="text-white font-semibold text-lg relative max-sm:cursor-pointer">
+				<div class="px-15">
+					<h4 class="text-white font-semibold text-lg relative max-sm:cursor-pointer ">
 						Services{" "}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ function Footer() {
 								href="javascript:void(0)"
 								class="hover:text-white text-gray-300 text-sm"
 							>
-								Web Development
+								Seasonal Special offer
 							</a>
 						</li>
 						<li>
@@ -105,7 +105,7 @@ function Footer() {
 								href="javascript:void(0)"
 								class="hover:text-white text-gray-300 text-sm"
 							>
-								Pricing
+								Festival Special offer 
 							</a>
 						</li>
 						<li>
@@ -113,7 +113,7 @@ function Footer() {
 								href="javascript:void(0)"
 								class="hover:text-white text-gray-300 text-sm"
 							>
-								Support
+								Peronal Custimozation
 							</a>
 						</li>
 						<li>
@@ -121,21 +121,21 @@ function Footer() {
 								href="javascript:void(0)"
 								class="hover:text-white text-gray-300 text-sm"
 							>
-								Client Portal
+								Artist Shop
 							</a>
 						</li>
-						<li>
+						{/*<li>
 							<a
 								href="javascript:void(0)"
 								class="hover:text-white text-gray-300 text-sm"
 							>
 								Resources
 							</a>
-						</li>
+						</li>*/}
 					</ul>
 				</div>
 
-				<div>
+				{/*<div>
 					<h4 class="text-white font-semibold text-lg relative max-sm:cursor-pointer">
 						Platforms{" "}
 						<svg
@@ -186,9 +186,9 @@ function Footer() {
 							</a>
 						</li>
 					</ul>
-				</div>
+				</div>*/}
 
-				<div>
+				<div class="px-10">
 					<h4 class="text-white font-semibold text-lg relative max-sm:cursor-pointer">
 						Company{" "}
 						<svg
@@ -220,7 +220,7 @@ function Footer() {
 								href="javascript:void(0)"
 								class="hover:text-white text-gray-300 text-sm"
 							>
-								Careers
+								Contact US 
 							</a>
 						</li>
 						<li>
@@ -228,7 +228,15 @@ function Footer() {
 								href="javascript:void(0)"
 								class="hover:text-white text-gray-300 text-sm"
 							>
-								Blog
+							Term of use 
+							</a>
+						</li>
+						{/*<li>
+							<a
+								href="javascript:void(0)"
+								class="hover:text-white text-gray-300 text-sm"
+							>
+								Festival Special offer 
 							</a>
 						</li>
 						<li>
@@ -236,21 +244,13 @@ function Footer() {
 								href="javascript:void(0)"
 								class="hover:text-white text-gray-300 text-sm"
 							>
-								Portfolio
+								Seasonal Special offer
 							</a>
-						</li>
-						<li>
-							<a
-								href="javascript:void(0)"
-								class="hover:text-white text-gray-300 text-sm"
-							>
-								Events
-							</a>
-						</li>
+						</li>*/}
 					</ul>
 				</div>
 
-				<div>
+				<div class="px-10">
 					<h4 class="text-white font-semibold text-lg relative max-sm:cursor-pointer">
 						Additional{" "}
 						<svg
@@ -293,22 +293,22 @@ function Footer() {
 								Sitemap
 							</a>
 						</li>
-						<li>
+						{/*<li>
 							<a
 								href="javascript:void(0)"
 								class="hover:text-white text-gray-300 text-sm"
 							>
 								Contact
 							</a>
-						</li>
-						<li>
+						</li>*/}
+						{/*<li>
 							<a
 								href="javascript:void(0)"
 								class="hover:text-white text-gray-300 text-sm"
 							>
 								News
 							</a>
-						</li>
+						</li>*/}
 					</ul>
 				</div>
 			</div>
