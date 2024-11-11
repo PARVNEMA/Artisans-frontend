@@ -1,6 +1,41 @@
+import axios from "axios";
+import {
+	CalendarRangeIcon,
+	Phone,
+	User2Icon,
+} from "lucide-react";
 import React from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 function SignUp() {
+	const {
+		register,
+		handleSubmit,
+		watch,
+		formState: { errors },
+	} = useForm();
+	const backendurl = import.meta.env.VITE_URL;
+
+	const onSubmit = async (data) => {
+		console.log("signup", data);
+		try {
+			const res = await axios.post(
+				`${backendurl}/customers/register`,
+				data,
+				{
+					withCredentials: true, // Ensure cookies are included in the request
+					headers: {
+						"Content-Type": "multipart/form-data",
+					},
+				}
+			);
+
+			console.log("res from register backend", res.data);
+		} catch (error) {
+			console.error("error in register form", error);
+		}
+	};
 	return (
 		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
 			<div class="font-[comic sans] bg-white md:h-screen">
@@ -14,7 +49,10 @@ function SignUp() {
 					</div>
 
 					<div class="flex items-center p-6 h-full w-full">
-						<form class="max-w-lg w-full mx-auto">
+						<form
+							class="max-w-lg w-full mx-auto"
+							onSubmit={handleSubmit(onSubmit)}
+						>
 							<div class="mb-12">
 								<h3 class="text-blue-500 md:text-3xl text-2xl font-extrabold max-md:text-center">
 									Create an account
@@ -27,11 +65,48 @@ function SignUp() {
 								</label>
 								<div class="relative flex items-center">
 									<input
-										name="name"
+										name="fullName"
 										type="text"
 										required
 										class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 										placeholder="Enter name"
+										{...register("fullName")}
+									/>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										fill="#bbb"
+										stroke="#bbb"
+										class="w-[18px] h-[18px] absolute right-2"
+										viewBox="0 0 24 24"
+									>
+										<circle
+											cx="10"
+											cy="7"
+											r="6"
+											data-original="#000000"
+										></circle>
+										<path
+											d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z"
+											data-original="#000000"
+										></path>
+									</svg>
+								</div>
+							</div>
+							<div>
+								<label
+									class="text-gray-800 text-xs block mb-2"
+									htmlFor="username"
+								>
+									Username
+								</label>
+								<div class="relative flex items-center">
+									<input
+										name="username"
+										type="text"
+										required
+										class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
+										placeholder="Enter username name"
+										{...register("username")}
 									/>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -64,6 +139,7 @@ function SignUp() {
 										required
 										class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 										placeholder="Enter email"
+										{...register("email")}
 									/>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -102,6 +178,7 @@ function SignUp() {
 									</svg>
 								</div>
 							</div>
+
 							<div class="mt-6">
 								<label class="text-gray-800 text-xs block mb-2">
 									Password
@@ -113,6 +190,7 @@ function SignUp() {
 										required
 										class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 										placeholder="Enter password"
+										{...register("password")}
 									/>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -126,6 +204,49 @@ function SignUp() {
 											data-original="#000000"
 										></path>
 									</svg>
+								</div>
+							</div>
+							<div class="mt-6">
+								<label class="text-gray-800 text-xs block mb-2">
+									Phone Number
+								</label>
+								<div class="relative flex items-center justify-between">
+									<input
+										type="number"
+										className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
+										name="avatar"
+										placeholder="Enter phone number"
+										{...register("phoneNo")}
+									/>
+									<Phone />
+								</div>
+							</div>
+							<div class="mt-6">
+								<label class="text-gray-800 text-xs block mb-2">
+									DOB
+								</label>
+								<div class="relative flex items-center justify-between">
+									<input
+										type="date"
+										className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
+										name="avatar"
+										{...register("DOB")}
+									/>
+									<CalendarRangeIcon />
+								</div>
+							</div>
+							<div class="mt-6">
+								<label class="text-gray-800 text-xs block mb-2">
+									Avatar
+								</label>
+								<div class="relative flex items-center justify-between">
+									<input
+										type="file"
+										className="file-input file-input-bordered file-input-info w-full max-w-md"
+										name="avatar"
+										{...register("avatar")}
+									/>
+									<User2Icon />
 								</div>
 							</div>
 							<div class="flex items-center mt-6">
@@ -151,7 +272,7 @@ function SignUp() {
 
 							<div class="mt-12">
 								<button
-									type="button"
+									type="submit"
 									class="w-full py-3 px-6 text-sm tracking-wider font-semibold rounded-md bg-blue-600 hover:bg-blue-700 text-white focus:outline-none"
 								>
 									Creat an account

@@ -1,13 +1,40 @@
 import React from "react";
-
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 function Login() {
+	const {
+		register,
+		handleSubmit,
+		watch,
+		formState: { errors },
+	} = useForm();
+	const backendurl = import.meta.env.VITE_URL;
+	const onSubmit = async (data) => {
+		console.log(data);
+		try {
+			const res = await axios.post(
+				`${backendurl}/customers/login`,
+				data,
+				{
+					withCredentials: true, // Ensure cookies are included in the request
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			);
+
+			console.log("res from login backend", res.data);
+		} catch (error) {
+			console.error("error in login form", error);
+		}
+	};
 	return (
 		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
 			<div class="font-[comic sans] bg-white flex items-center justify-center md:h-screen p-4">
 				<div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl max-md:max-w-lg rounded-md p-6">
 					<a href="javascript:void(0)">
 						<img
-							src="https://readymadeui.com/readymadeui.svg"
+							src="/public/images/logo1.jpg"
 							alt="logo"
 							class="w-40 md:mb-4 mb-12"
 						/>
@@ -22,7 +49,10 @@ function Login() {
 							/>
 						</div>
 
-						<form class="md:max-w-md w-full mx-auto">
+						<form
+							class="md:max-w-md w-full mx-auto"
+							onSubmit={handleSubmit(onSubmit)}
+						>
 							<div class="mb-12">
 								<h3
 									classname="sign"
@@ -40,6 +70,7 @@ function Login() {
 										required
 										class="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
 										placeholder="Enter email"
+										{...register("email")}
 									/>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -87,6 +118,7 @@ function Login() {
 										required
 										class="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
 										placeholder="Enter password"
+										{...register("password")}
 									/>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -103,46 +135,22 @@ function Login() {
 								</div>
 							</div>
 
-							<div class="flex flex-wrap items-center justify-between gap-4 mt-6">
-								<div class="flex items-center">
-									<input
-										id="remember-me"
-										name="remember-me"
-										type="checkbox"
-										class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-									/>
-									<label
-										for="remember-me"
-										class="text-gray-800 ml-3 block text-sm"
-									>
-										Remember me
-									</label>
-								</div>
-								<div>
-									<a
-										href="jajvascript:void(0);"
-										class="text-blue-600 font-semibold text-sm hover:underline"
-									>
-										Forgot Password?
-									</a>
-								</div>
-							</div>
-
 							<div class="mt-12">
 								<button
-									type="button"
+									type="submit"
 									class="w-full shadow-xl py-2.5 px-5 text-sm font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
 								>
 									Sign in
 								</button>
 								<p class="text-gray-800 text-sm text-center mt-6">
 									Don't have an account{" "}
-									<a
+									<Link
+										to={"/signup"}
 										href="javascript:void(0);"
 										class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap"
 									>
 										Register here
-									</a>
+									</Link>
 								</p>
 							</div>
 						</form>
