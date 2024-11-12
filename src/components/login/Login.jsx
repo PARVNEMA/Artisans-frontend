@@ -1,6 +1,7 @@
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Login() {
 	const {
 		register,
@@ -9,6 +10,7 @@ function Login() {
 		formState: { errors },
 	} = useForm();
 	const backendurl = import.meta.env.VITE_URL;
+	const navigate=useNavigate();
 	const onSubmit = async (data) => {
 		console.log(data);
 		try {
@@ -24,6 +26,7 @@ function Login() {
 			);
 
 			console.log("res from login backend", res.data);
+			navigate("/")
 		} catch (error) {
 			console.error("error in login form", error);
 		}

@@ -2,7 +2,7 @@ import axios from "axios";
 import { CalendarRangeIcon, Phone, User2Icon } from "lucide-react";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUp() {
   const {
@@ -12,9 +12,10 @@ function SignUp() {
     formState: { errors },
   } = useForm();
   const backendurl = import.meta.env.VITE_URL;
-
+ const navigate=useNavigate();
   const onSubmit = async (data) => {
     console.log("signup", data);
+    data.avatar=data.avatar[0];
     try {
       const res = await axios.post(`${backendurl}/customers/register`, data, {
         withCredentials: true, // Ensure cookies are included in the request
@@ -24,6 +25,7 @@ function SignUp() {
       });
 
       console.log("res from register backend", res.data);
+      navigate("/");
     } catch (error) {
       console.error("error in register form", error);
     }
@@ -204,7 +206,7 @@ function SignUp() {
                       <input
                         type="number"
                         className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
-                        name="Phoneno"
+                        name="phoneNo"
                         placeholder="Enter phone number"
                         {...register("phoneNo")}
                       />
