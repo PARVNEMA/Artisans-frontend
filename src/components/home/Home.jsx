@@ -1,148 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Carousel from "../carousel/Carousel";
+import Category from "../category/Category";
 function Home() {
   return (
     <div>
       {/* Carousel */}
-      <div className="h-[60vh] w-full mb-3 overflow-clip">
-        <div
-          id="default-carousel"
-          class="relative w-full"
-          data-carousel="slide"
-        >
-          <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img
-                src="https://fps.cdnpk.net/images/home/subhome-ai.webp?w=649&h=649"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                alt="..."
-              />
-            </div>
+      <Carousel />
 
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img
-                src="https://fps.cdnpk.net/images/home/subhome-ai.webp?w=649&h=649"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                alt="..."
-              />
-            </div>
-
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img
-                src="https://fps.cdnpk.net/images/home/subhome-ai.webp?w=649&h=649"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                alt="..."
-              />
-            </div>
-
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img
-                src="https://fps.cdnpk.net/images/home/subhome-ai.webp?w=649&h=649"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                alt="..."
-              />
-            </div>
-
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img
-                src="/docs/images/carousel/carousel-5.svg"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                alt="..."
-              />
-            </div>
-          </div>
-
-          <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-            <button
-              type="button"
-              class="w-3 h-3 rounded-full"
-              aria-current="true"
-              aria-label="Slide 1"
-              data-carousel-slide-to="0"
-            ></button>
-            <button
-              type="button"
-              class="w-3 h-3 rounded-full"
-              aria-current="false"
-              aria-label="Slide 2"
-              data-carousel-slide-to="1"
-            ></button>
-            <button
-              type="button"
-              class="w-3 h-3 rounded-full"
-              aria-current="false"
-              aria-label="Slide 3"
-              data-carousel-slide-to="2"
-            ></button>
-            <button
-              type="button"
-              class="w-3 h-3 rounded-full"
-              aria-current="false"
-              aria-label="Slide 4"
-              data-carousel-slide-to="3"
-            ></button>
-            <button
-              type="button"
-              class="w-3 h-3 rounded-full"
-              aria-current="false"
-              aria-label="Slide 5"
-              data-carousel-slide-to="4"
-            ></button>
-          </div>
-
-          <button
-            type="button"
-            class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-            data-carousel-prev
-          >
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg
-                class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 1 1 5l4 4"
-                />
-              </svg>
-              <span class="sr-only">Previous</span>
-            </span>
-          </button>
-          <button
-            type="button"
-            class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-            data-carousel-next
-          >
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg
-                class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m1 9 4-4-4-4"
-                />
-              </svg>
-              <span class="sr-only">Next</span>
-            </span>
-          </button>
-        </div>
-      </div>
       {/* Products */}
-      <div class="my-[3rem] font-[comic sans] py-4 mx-auto lg:max-w-7xl sm:max-w-full">
-        <h2 class="text-4xl font-extrabold text-gray-800 mb-12">
+      <div class="my-[1.3rem] font-[comic sans] py-4 mx-auto lg:max-w-7xl sm:max-w-full">
+        <h2 class="text-4xl text-center font-extrabold text-gray-800 mb-12">
           Premium Sneakers
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -733,6 +601,606 @@ function Home() {
           </div>
         </div>
       </div>
+
+      {/* Category */}
+      <Category />
+
+     {/* Seasonal Products */}
+     <div className="bg-[url('https://img.freepik.com/free-vector/yellow-stylish-luxury-background_1055-7309.jpg?t=st=1731436061~exp=1731439661~hmac=eda972ca3c1091d3bb24cee125d7b7f516e15284a910836fe8345502cf89d2e1&w=740')]">
+     <div class="my-[1.3rem] font-[comic sans] py-4 mx-auto lg:max-w-7xl sm:max-w-full">
+        <h2 class="text-4xl text-center font-extrabold text-gray-950 mb-12">
+          Seasonal Products
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
+          <div class="bg-gray-50 shadow-md overflow-hidden rounded-lg cursor-pointer hover:-translate-y-2 transition-all relative">
+            <div class="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16px"
+                class="fill-gray-800 inline-block"
+                viewBox="0 0 64 64"
+              >
+                <path
+                  d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
+                  data-original="#000000"
+                ></path>
+              </svg>
+            </div>
+
+            <div class="w-5/6 h-[260px] p-4 overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+              <img
+                src="https://readymadeui.com/images/product9.webp"
+                alt="Product 1"
+                class="h-full w-full object-contain"
+              />
+            </div>
+
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-bold text-gray-800">Sole Elegance</h3>
+              <h4 class="text-lg text-gray-800 font-bold mt-2">$10.5</h4>
+              <p class="text-gray-600 text-sm mt-2">
+                5 types of shoos available
+              </p>
+
+              <div class="flex space-x-2 mt-4">
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 shadow-md overflow-hidden rounded-lg cursor-pointer hover:-translate-y-2 transition-all relative">
+            <div class="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16px"
+                class="fill-gray-800 inline-block"
+                viewBox="0 0 64 64"
+              >
+                <path
+                  d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
+                  data-original="#000000"
+                ></path>
+              </svg>
+            </div>
+            <div class="w-5/6 h-[260px] p-4 overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+              <img
+                src="https://readymadeui.com/images/product10.webp"
+                alt="Product 2"
+                class="h-full w-full object-contain"
+              />
+            </div>
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-bold text-gray-800">Urban Sneakers</h3>
+              <h4 class="text-lg text-gray-800 font-bold mt-2">$12.5</h4>
+              <p class="text-gray-600 text-sm mt-2">
+                5 types of shoos available
+              </p>
+
+              <div class="flex space-x-2 mt-4">
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 shadow-md overflow-hidden rounded-lg cursor-pointer hover:-translate-y-2 transition-all relative">
+            <div class="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16px"
+                class="fill-gray-800 inline-block"
+                viewBox="0 0 64 64"
+              >
+                <path
+                  d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
+                  data-original="#000000"
+                ></path>
+              </svg>
+            </div>
+            <div class="w-5/6 h-[260px] p-4 overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+              <img
+                src="https://readymadeui.com/images/product11.webp"
+                alt="Product 3"
+                class="h-full w-full object-contain"
+              />
+            </div>
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-bold text-gray-800">Velvet Boots</h3>
+              <h4 class="text-lg text-gray-800 font-bold mt-2">$14.5</h4>
+              <p class="text-gray-600 text-sm mt-2">
+                5 types of shoos available
+              </p>
+
+              <div class="flex space-x-2 mt-4">
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 shadow-md overflow-hidden rounded-lg cursor-pointer hover:-translate-y-2 transition-all relative">
+            <div class="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16px"
+                class="fill-gray-800 inline-block"
+                viewBox="0 0 64 64"
+              >
+                <path
+                  d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
+                  data-original="#000000"
+                ></path>
+              </svg>
+            </div>
+            <div class="w-5/6 h-[260px] p-4 overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+              <img
+                src="https://readymadeui.com/images/product12.webp"
+                alt="Product 3"
+                class="h-full w-full object-contain"
+              />
+            </div>
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-bold text-gray-800">Summit Hiking</h3>
+              <h4 class="text-lg text-gray-800 font-bold mt-2">$12.5</h4>
+              <p class="text-gray-600 text-sm mt-2">
+                5 types of shoos available
+              </p>
+
+              <div class="flex space-x-2 mt-4">
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 shadow-md overflow-hidden rounded-lg cursor-pointer hover:-translate-y-2 transition-all relative">
+            <div class="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16px"
+                class="fill-gray-800 inline-block"
+                viewBox="0 0 64 64"
+              >
+                <path
+                  d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
+                  data-original="#000000"
+                ></path>
+              </svg>
+            </div>
+            <div class="w-5/6 h-[260px] p-4 overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+              <img
+                src="https://readymadeui.com/images/product13.webp"
+                alt="Product 3"
+                class="h-full w-full object-contain"
+              />
+            </div>
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-bold text-gray-800">Zenith Glow</h3>
+              <h4 class="text-lg text-gray-800 font-bold mt-2">$15.5</h4>
+              <p class="text-gray-600 text-sm mt-2">
+                5 types of shoos available
+              </p>
+
+              <div class="flex space-x-2 mt-4">
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 shadow-md overflow-hidden rounded-lg cursor-pointer hover:-translate-y-2 transition-all relative">
+            <div class="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16px"
+                class="fill-gray-800 inline-block"
+                viewBox="0 0 64 64"
+              >
+                <path
+                  d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
+                  data-original="#000000"
+                ></path>
+              </svg>
+            </div>
+            <div class="w-5/6 h-[260px] p-4 overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+              <img
+                src="https://readymadeui.com/images/product14.webp"
+                alt="Product 3"
+                class="h-full w-full object-contain"
+              />
+            </div>
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-bold text-gray-800">Echo Elegance</h3>
+              <h4 class="text-lg text-gray-800 font-bold mt-2">$14.5</h4>
+              <p class="text-gray-600 text-sm mt-2">
+                5 types of shoos available
+              </p>
+
+              <div class="flex space-x-2 mt-4">
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 shadow-md overflow-hidden rounded-lg cursor-pointer hover:-translate-y-2 transition-all relative">
+            <div class="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16px"
+                class="fill-gray-800 inline-block"
+                viewBox="0 0 64 64"
+              >
+                <path
+                  d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
+                  data-original="#000000"
+                ></path>
+              </svg>
+            </div>
+            <div class="w-5/6 h-[260px] p-4 overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+              <img
+                src="https://readymadeui.com/images/product15.webp"
+                alt="Product 3"
+                class="h-full w-full object-contain"
+              />
+            </div>
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-bold text-gray-800">Pumps</h3>
+              <h4 class="text-lg text-gray-800 font-bold mt-2">$14.5</h4>
+              <p class="text-gray-600 text-sm mt-2">
+                5 types of shoos available
+              </p>
+
+              <div class="flex space-x-2 mt-4">
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 shadow-md overflow-hidden rounded-lg cursor-pointer hover:-translate-y-2 transition-all relative">
+            <div class="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16px"
+                class="fill-gray-800 inline-block"
+                viewBox="0 0 64 64"
+              >
+                <path
+                  d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
+                  data-original="#000000"
+                ></path>
+              </svg>
+            </div>
+            <div class="w-5/6 h-[260px] p-4 overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+              <img
+                src="https://readymadeui.com/images/product10.webp"
+                alt="Product 3"
+                class="h-full w-full object-contain"
+              />
+            </div>
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-bold text-gray-800">Blaze Burst</h3>
+              <h4 class="text-lg text-gray-800 font-bold mt-2">$14.5</h4>
+              <p class="text-gray-600 text-sm mt-2">
+                5 types of shoos available
+              </p>
+
+              <div class="flex space-x-2 mt-4">
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#facc15]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+                <svg
+                  class="w-4 fill-[#CED5D8]"
+                  viewBox="0 0 14 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+     
       {/* Feature section  */}
       <div class="mb-[3rem] max-w-6xl mx-auto font-[comic sans]">
         <h2 class="text-gray-800 sm:text-4xl text-2xl font-extrabold text-center mb-16">
@@ -945,8 +1413,6 @@ function Home() {
           </div>
         </div>
       </div>
-
-      {/* product card slider */}
     </div>
   );
 }

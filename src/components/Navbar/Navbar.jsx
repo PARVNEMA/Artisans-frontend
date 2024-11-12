@@ -22,12 +22,12 @@ const handleSearch=()=>{
 	setresult(filterResult)
 }
 	return (
-		<div className="w-[100v]">
+		<div className="w-[100vw] h-[5rem] flex justify-center">
 			<div className="navbar bg-base-100 flex justify-between">
 				<div className="flex-1">
 					<Link to={"/"}>
 						<img
-							className="h-[4rem] w-[14rem]"
+							className="h-[3rem] w-[14rem]"
 							src="../../../public/images/logo1.jpg"
 							alt="Logo"
 						/>

@@ -4,8 +4,11 @@ export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: [],
 	plugins: [daisyui],
+	fontFamily: {
+		sans: ["Cambria", "Roboto",],
+	},
 	daisyui: {
-		themes: ["light", "black", "wireframe", "autumn"],
+		themes: ["light", "black", "wireframe", "autumn","forest","cupcake"],
 	},
 };
 
