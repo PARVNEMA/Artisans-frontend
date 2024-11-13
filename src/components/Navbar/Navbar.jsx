@@ -1,7 +1,9 @@
 import React ,{useState}from "react";
 import { Link } from "react-router-dom";
-
+import { useLocation } from 'react-router-dom';
 function Navbar() {
+	let location = useLocation();
+  console.log(location.pathname);
 const [searchTerm,setsearchTerm]=useState([])
 const[results,setresult]=useState([])
 const [isWishlisted, setIsWishlisted] = useState(false);
@@ -63,11 +65,9 @@ const handleSearch=()=>{
 								</ul>
 							</div>
 						</div>
-						{/**<a href="../ErrorPage/ErrorPage.jsx">Three</a>*/}
-						{/*<a href="../ErrorPage/ErrorPage.jsx">Four</a>*/}
 						<Link to="/contactus">ContactUs</Link>
-						{/*<a href="../ErrorPage/ErrorPage.jsx">*/}
 						<Link to ="/aboutus">About Us</Link>
+						<Link to="/artisans/page">Artisans</Link>
 						
 					</div>
 				</div>
@@ -124,34 +124,16 @@ const handleSearch=()=>{
 							</div>
 						</div>
 					</div>
-					{/*
-					<div style={{ display: 'flex', alignItems: 'center' }}>
-           <svg
-        onClick={toggleWishlist}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="24px"
-        height="24px"
-        fill={isWishlisted ? 'red' : 'gray'} // Change color when wishlisted
-        style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
-      >
-        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-      </svg>
-      
-      <span style={{ marginLeft: '10px', color: isWishlisted ? 'red' : 'black' }}>
-       {/** {isWishlisted ? 'Added to Wishlist' : 'Add to Wishlist'}
-      </span>
-    </div>
-	*/}
+					
 					<div className="dropdown dropdown-end m-4">
-						<Link to={"/login"}>
+						<Link to={location.pathname === "/artisans/page"?"/artisans/login" :"/login"}>
 							<button className="btn btn-primary">
 								Login
 							</button>
 						</Link>
 					</div>
 					<div className="dropdown dropdown-end m-4">
-						<Link to={"/signup"}>
+						<Link to={location.pathname === "/artisans/page"?"/artisans/signup" :"/signup"}>
 							<button className="btn btn-primary">
 								SignUp
 							</button>
@@ -179,9 +161,6 @@ const handleSearch=()=>{
 									Profile
 									<span className="badge">New</span>
 								</a>
-							</li>
-							<li>
-								<a>Settings</a>
 							</li>
 							<li>
 								<a>Logout</a>
