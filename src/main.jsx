@@ -16,7 +16,7 @@ import Cart from "./components/cart/Cart.jsx";
 import Login from "./components/login/Login.jsx";
 import SignUp from "./components/signup/SignUp.jsx";
 import ContactUs from "./components/contactus/ContactUs.jsx";
-
+import Aboutus from "./components/aboutus/Aboutus.jsx";
 
 const router = createBrowserRouter([
 	{
