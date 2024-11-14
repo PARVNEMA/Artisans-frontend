@@ -33,7 +33,7 @@ function Login() {
 	};
 	return (
 		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
-			<div class="font-[comic sans] bg-white flex items-center justify-center md:h-screen p-4">
+			<div class="font-[comic sans] flex items-center justify-center md:h-screen p-4">
 				<div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl max-md:max-w-lg rounded-md p-6">
 					<a href="javascript:void(0)">
 						<img

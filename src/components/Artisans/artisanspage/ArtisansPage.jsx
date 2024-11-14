@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function ArtisansPage() {
   return (
@@ -10,9 +11,9 @@ function ArtisansPage() {
           <p className="text-center text-wrap">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt illo nulla asperiores delectus, libero natus, quos, commodi modi expedita odit ad repudiandae ipsum! Dicta odit ratione id dolor, quod omnis odio minus sint reprehenderit inventore, beatae tempora vitae voluptates pariatur.
           </p>
-          <button className="bg-green-600 h-[2rem] p-6 rounded-3xl text-white flex items-center">
+          <Link to={"/artisans/signup"} className="bg-green-600 h-[2rem] p-6 rounded-3xl text-white flex items-center">
             Join the Art Network
-          </button>
+          </Link>
         </div>
         <div className="pr-7">
           <img src="https://images.pexels.com/photos/14953193/pexels-photo-14953193.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />

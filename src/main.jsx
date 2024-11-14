@@ -22,6 +22,10 @@ import ArtisansLogin from "./components/Artisans/artisanslogin/ArtisansLogin.jsx
 import ArtisansSignup from "./components/Artisans/artisanssignup/ArtisansSignup.jsx";
 import ArtisansPage from "./components/Artisans/artisanspage/ArtisansPage.jsx";
 import Dashboard from "./components/Artisans/dashboard/Dashboard.jsx";
+import ProductListing from "./components/Artisans/productlisting/productListing.jsx";
+import UserProfile from "./components/userprofile/UserProfile.jsx";
+
+
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -54,6 +58,10 @@ const router = createBrowserRouter([
 				element: <ContactUs />,
 			},
 			{
+				path: "/userprofile",
+				element: <UserProfile />
+			},
+			{
 				path:"/aboutus",
 				element:<Aboutus/>
 			},
@@ -76,8 +84,12 @@ const router = createBrowserRouter([
 						},
 						{
 							path:"/artisans/dashboard",
-							element:<Dashboard/>
+							element:<Dashboard/>,
 						},
+						{
+							path:"/artisans/productlisting",
+							element:<ProductListing />
+						}
 						
 					]
 				

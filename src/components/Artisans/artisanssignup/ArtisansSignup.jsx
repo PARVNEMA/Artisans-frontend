@@ -270,12 +270,12 @@ function ArtisansSignup() {
                       </button>
                       <p class="text-sm mt-4 text-gray-800">
                         Already have an account?{" "}
-                        <a
-                          href="javascript:void(0);"
+                        <Link
+                          to="/artisans/login"
                           class="text-blue-500 font-semibold hover:underline ml-1"
                         >
                           Login here
-                        </a>
+                        </Link>
                       </p>
                     </div>
                   </div>

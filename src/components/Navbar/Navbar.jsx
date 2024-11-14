@@ -126,14 +126,14 @@ const handleSearch=()=>{
 					</div>
 					
 					<div className="dropdown dropdown-end m-4">
-						<Link to={location.pathname === "/artisans/page"?"/artisans/login" :"/login"}>
+						<Link to={"/login"}>
 							<button className="btn btn-primary">
 								Login
 							</button>
 						</Link>
 					</div>
 					<div className="dropdown dropdown-end m-4">
-						<Link to={location.pathname === "/artisans/page"?"/artisans/signup" :"/signup"}>
+						<Link to={"/signup"}>
 							<button className="btn btn-primary">
 								SignUp
 							</button>
@@ -157,10 +157,10 @@ const handleSearch=()=>{
 							className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
 						>
 							<li>
-								<a className="justify-between">
+								<Link className="justify-between" to={'/userprofile'}>
 									Profile
 									<span className="badge">New</span>
-								</a>
+								</Link>
 							</li>
 							<li>
 								<a>Logout</a>
