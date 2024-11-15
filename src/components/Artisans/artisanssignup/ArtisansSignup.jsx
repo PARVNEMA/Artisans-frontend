@@ -17,7 +17,7 @@ function ArtisansSignup() {
     console.log("signup", data);
     data.avatar=data.avatar[0];
     try {
-      const res = await axios.post(`${backendurl}/customers/register`, data, {
+      const res = await axios.post(`${backendurl}/artisans/register`, data, {
         withCredentials: true, // Ensure cookies are included in the request
         headers: {
           "Content-Type": "multipart/form-data",
@@ -25,7 +25,7 @@ function ArtisansSignup() {
       });
 
       console.log("res from register backend", res.data);
-      navigate("/");
+      navigate("/artisans/dashboard");
     } catch (error) {
       console.error("error in register form", error);
     }

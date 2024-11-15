@@ -16,7 +16,7 @@ function ArtisansLogin() {
 		console.log(data);
 		try {
 			const res = await axios.post(
-				`${backendurl}/customers/login`,
+				`${backendurl}/artisans/login`,
 				data,
 				{
 					withCredentials: true, // Ensure cookies are included in the request
@@ -27,7 +27,7 @@ function ArtisansLogin() {
 			);
 
 			console.log("res from login backend", res.data);
-			navigate("/")
+			navigate("/artisans/dashboard");
 		} catch (error) {
 			console.error("error in login form", error);
 		}

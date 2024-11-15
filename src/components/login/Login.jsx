@@ -1,8 +1,11 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../useContext/loginContext";
 function Login() {
+	const {dispatch} = useAuth();
+
 	const {
 		register,
 		handleSubmit,
@@ -24,7 +27,7 @@ function Login() {
 					},
 				}
 			);
-
+			dispatch({ type: "LOGIN", payload: res.data });
 			console.log("res from login backend", res.data);
 			navigate("/")
 		} catch (error) {
