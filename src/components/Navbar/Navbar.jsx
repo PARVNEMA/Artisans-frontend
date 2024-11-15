@@ -29,8 +29,8 @@ const handleSearch=()=>{
 				<div className="flex-1">
 					<Link to={"/"}>
 						<img
-							className="h-[3rem] w-[14rem]"
-							src="../../../public/images/logo1.jpg"
+							className="h-[4rem] w-[18rem]"
+							src="../../../public/images/logo2.png"
 							alt="Logo"
 						/>
 					</Link>
@@ -38,7 +38,7 @@ const handleSearch=()=>{
 					<div className="flex text-black font-semibold  mx-[10rem] w-[40rem] justify-evenly">
 						<a href="/">Home</a>
 						<div>
-							<div className="dropdown dropdown-hover dropdown-end">
+							<div className="dropdown dropdown-hover dropdown-hover">
 								<div
 									tabIndex={0}
 									role="button"

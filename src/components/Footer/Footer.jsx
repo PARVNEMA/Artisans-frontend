@@ -7,13 +7,13 @@ function Footer() {
 				<div>
 					<a href="javascript:void(0)">
 						<img
-							src="../../../public/images/logo1.jpg"
+							src="../../../public/images/logo1.png"
 							alt="logo"
-							class="w-44"
+							class="w-[20rem]"
 						/>
 					</a>
 
-					<ul class="mt-10 flex space-x-5">
+					<ul class="mt-10 ml-8 flex space-x-5">
 						<li>
 							<a href="javascript:void(0)">
 								<svg
@@ -344,7 +344,7 @@ function Footer() {
 				</ul>
 
 				<p class="text-gray-300 text-sm md:ml-auto">
-					© ReadymadeUI. All rights reserved.
+					© Crafted India. All rights reserved.
 				</p>
 			</div>
 		</footer>

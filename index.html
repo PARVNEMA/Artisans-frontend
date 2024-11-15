@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cupcake" >
-	<head>
-		<meta charset="UTF-8" />
-		<link
-			rel="icon"
-			type="image/svg+xml"
-			href="public/images/logo1.jpg"
-		/>
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0"
-		/>
-		<title>Vite + React</title>
-	</head>
-	<body class="overflow-x-hidden">
-		<div id="root"></div>
-		<script type="module" src="/src/main.jsx"></script>
-	</body>
+<html lang="en" data-theme="cupcake">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Signika+Negative:wght@300..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="public/images/logo1.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+    <style>
+      /* // <uniquifier>: Use a unique and descriptive class name
+      // <weight>: Use a value from 100 to 900 */
+
+      .custom-font {
+        font-family: "Faculty Glyphic", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body class="custom-font" className="overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
