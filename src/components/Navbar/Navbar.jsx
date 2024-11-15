@@ -38,7 +38,7 @@ const handleSearch=()=>{
 					<div className="flex text-black font-semibold  mx-[10rem] w-[40rem] justify-evenly">
 						<a href="/">Home</a>
 						<div>
-							<div className="dropdown dropdown-hover dropdown-hover">
+							<div className="dropdown dropdown-hover">
 								<div
 									tabIndex={0}
 									role="button"
