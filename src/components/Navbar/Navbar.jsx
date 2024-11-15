@@ -29,7 +29,7 @@ const handleSearch=()=>{
 				<div className="flex-1">
 					<Link to={"/"}>
 						<img
-							className="h-[4rem] w-[18rem]"
+							className="h-[5rem] w-[16rem]"
 							src="../../../public/images/logo2.png"
 							alt="Logo"
 						/>
