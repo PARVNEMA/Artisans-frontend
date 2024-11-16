@@ -34,9 +34,10 @@ function Login() {
 			setCookie("accessToken", res.data.data.accessToken, {
 				path: "/",
 				// Prevent JavaScript from accessing the cookie
-				sameSite: "none", // Allow cookies to be sent in cross-origin requests
+				sameSite: "lax", // Allow cookies to be sent in cross-origin requests
 				secure: false,
 			});
+			localStorage.setItem("accessToken", res.data.data.accessToken);
 			navigate("/")
 		} catch (error) {
 			console.error("error in login form", error);

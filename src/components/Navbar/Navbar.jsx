@@ -7,7 +7,7 @@ import {useCookies} from "react-cookie"
 import axios from "axios";
 function Navbar() {
   const backendurl = import.meta.env.VITE_URL;
-  const [cookies] = useCookies([
+  const [cookies,removeCookie] = useCookies([
 		"accessToken",
 	]);
   const { dispatch, state } = useAuth();
@@ -15,32 +15,47 @@ function Navbar() {
   const [logIn, setLogIn] = useState(false);
 
 	useEffect(() => {
-		if (state.isLoggedIn) {
+		if (state.isLoggedIn || localStorage.getItem("accessToken")) {
 			setLogIn(true);
+      dispatch({ type: "LOGIN" });
 		}
     // console.log("cookies are",cookies);
     // if(cookies.accessToken ){
     //   console.log("print ho gya kya")
     //   setLogIn(true);
     //   dispatch({ type: "LOGIN" });
-      
+
     // }
 	}, [state.isLoggedIn]);
 
+  useEffect(() => {
+    // Check for the cookie on app load
+    if (cookies.accessToken) {
+      console.log("User is already logged in with token:", cookies.accessToken);
+      // Dispatch the login action or verify the token as needed
+      // dispatch({ type: "LOGIN", payload: { accessToken: cookies.accessToken } });
+    } else {
+      console.log("No token found, user needs to login");
+    }
+  }, [cookies]);
   const logout=async()=>{
-    
+
 
    const res= await axios.post(`${backendurl}/customers/logout`,null ,{
-      
+
         withCredentials: true, // Ensure cookies are included in the request
-        
-      
+        headers: {
+          Authorization: `Bearer ${cookies.accessToken}`,
+        },
+
     })
     if(res){
       dispatch({ type: "LOGOUT" });
       setLogIn(false);
     }
-
+    removeCookie("accessToken");
+    localStorage.removeItem("accessToken");
+    console.log("User logged out, token removed from cookie");
     console.log("logout",res);
   }
 
@@ -80,7 +95,7 @@ function Navbar() {
           </Link>
 
           <div className="flex text-black font-semibold  mx-[10rem] w-[40rem] justify-evenly">
-            <a href="/">Home</a>
+            <Link href="/">Home</Link>
             <div>
               <div className="dropdown dropdown-hover">
                 <div tabIndex={0} role="button" className="btn-ghost ">
