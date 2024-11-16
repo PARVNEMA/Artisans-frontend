@@ -27,6 +27,8 @@ import UserProfile from "./components/userprofile/UserProfile.jsx";
 import { AuthProvider } from "../useContext/loginContext.jsx";
 import { CookiesProvider } from "react-cookie";
 import { ArtisansAuthProvider } from "../useContext/ArtisansContext.jsx";
+import Aa from "./components/Aa/Aa.jsx";
+import Aaa from "./components/Aaa/Aaa.jsx";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
       {
         path: "/aboutus",
         element: <Aboutus />,
+      },
+      {
+        path: "/aa",
+        element: <Aa />,
+      },
+      {
+        path: "/aaa",
+        element: <Aaa />,
       },
       {
         path: "/artisans",
