@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../../useContext/loginContext";
 import { useEffect } from "react";
+import {useCookies} from "react-cookie"
+import axios from "axios";
 function Navbar() {
+  const backendurl = import.meta.env.VITE_URL;
+  const [cookies] = useCookies([
+		"accessToken",
+	]);
   const { dispatch, state } = useAuth();
 
   const [logIn, setLogIn] = useState(false);
@@ -12,7 +18,31 @@ function Navbar() {
 		if (state.isLoggedIn) {
 			setLogIn(true);
 		}
+    // console.log("cookies are",cookies);
+    // if(cookies.accessToken ){
+    //   console.log("print ho gya kya")
+    //   setLogIn(true);
+    //   dispatch({ type: "LOGIN" });
+      
+    // }
 	}, [state.isLoggedIn]);
+
+  const logout=async()=>{
+    
+
+   const res= await axios.post(`${backendurl}/customers/logout`,null ,{
+      
+        withCredentials: true, // Ensure cookies are included in the request
+        
+      
+    })
+    if(res){
+      dispatch({ type: "LOGOUT" });
+      setLogIn(false);
+    }
+
+    console.log("logout",res);
+  }
 
   let location = useLocation();
   console.log(location.pathname);
@@ -34,8 +64,11 @@ function Navbar() {
     );
     setresult(filterResult);
   };
+  useEffect(()=>{
+
+  })
   return (
-    <div className="w-[100vw] h-[5rem] flex justify-center">
+    <div className="w-full h-[5rem] flex justify-center">
       <div className="navbar bg-base-100 flex justify-between">
         <div className="flex-1">
           <Link to={"/"}>
@@ -135,15 +168,21 @@ function Navbar() {
             </div>
           </div>
 
-          <div className= {`dropdown dropdown-end m-4 ${state.isLoggedIn ? "hidden" : "block"}`}>
-            <Link to={"/login"} >
+          <div className= {`dropdown dropdown-end m-4`}>
+          {logIn ? <Link to={"/login"} >
+              <div className="m-9"></div>
+            </Link> : <Link to={"/login"} >
               <button className="btn btn-primary">Login</button>
-            </Link>
+            </Link>}
           </div>
+
           <div className="dropdown dropdown-end m-4">
-            <Link to={"/signup"}>
+          {logIn ? <Link to={"/login"} >
+              <div className="m-9"></div>
+            </Link> : <Link to={"/signup"}>
               <button className="btn btn-primary">SignUp</button>
             </Link>
+          }
           </div>
           <div className="dropdown dropdown-end">
             <div
@@ -152,8 +191,8 @@ function Navbar() {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                {state.isLoggedIn ? (
-                  <img src={state.userData.avatar} alt="user" />
+                {logIn ? (
+                  <img src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQVPG_p0p_Ak0JHoFVD7IklGw1iQ30CNdRRQ&s`} alt="user" />
                 ) : (
                   <h1>Not logged in</h1>
                 )}
@@ -170,7 +209,7 @@ function Navbar() {
                 </Link>
               </li>
               <li>
-                <a>Logout</a>
+                <a onClick={logout}>Logout</a>
               </li>
             </ul>
           </div>

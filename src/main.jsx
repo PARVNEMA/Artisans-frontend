@@ -25,6 +25,7 @@ import Dashboard from "./components/Artisans/dashboard/Dashboard.jsx";
 import ProductListing from "./components/Artisans/productlisting/productListing.jsx";
 import UserProfile from "./components/userprofile/UserProfile.jsx";
 import { AuthProvider } from "../useContext/loginContext.jsx";
+import { CookiesProvider } from "react-cookie";
 
 const router = createBrowserRouter([
   {
@@ -97,10 +98,13 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <CookiesProvider defaultSetOptions={{ path: '/' }}>
     <AuthProvider>
+
       <RouterProvider router={router}>
         <App />
       </RouterProvider>
     </AuthProvider>
+    </CookiesProvider>
   </React.StrictMode>
 );
