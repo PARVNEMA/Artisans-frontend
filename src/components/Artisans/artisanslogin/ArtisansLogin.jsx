@@ -27,6 +27,7 @@ function ArtisansLogin() {
 			);
 
 			console.log("res from login backend", res.data);
+			localStorage.setItem("artisansaccessToken", res.data.data.accessToken);
 			navigate("/artisans/dashboard");
 		} catch (error) {
 			console.error("error in login form", error);
@@ -149,7 +150,7 @@ function ArtisansLogin() {
 								<p class="text-gray-800 text-sm text-center mt-6">
 									Don't have an account{" "}
 									<Link
-										to={"/signup"}
+										to={"/artisans/signup"}
 										href="javascript:void(0);"
 										class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap"
 									>

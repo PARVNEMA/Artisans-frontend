@@ -2,7 +2,29 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Carousel from "../carousel/Carousel";
 import Category from "../category/Category";
+import { useAuth } from "../../../useContext/loginContext";
+import axios from "axios";
 function Home() {
+  const { dispatch, state } = useAuth();
+  const backendurl = import.meta.env.VITE_URL;
+
+  const getCurrentUser=async()=>{
+    const res= await axios.get(`${backendurl}/customers/current-user`,{
+
+      withCredentials: true, // Ensure cookies are included in the request
+      headers: {
+        Authorization:  `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+
+  })
+  console.log("current user",res.data);
+  if(res.data){
+    dispatch({ type: "LOGIN" , payload: res.data.data});
+  }
+  }
+  useEffect(()=>{
+getCurrentUser();
+  },[])
   return (
     <div>
       {/* Carousel */}
@@ -1200,7 +1222,7 @@ function Home() {
         </div>
       </div>
      </div>
-     
+
       {/* Feature section  */}
       <div class="mb-[3rem] max-w-6xl mx-auto font-[comic sans]">
         <h2 class="text-gray-800 sm:text-4xl text-2xl font-extrabold text-center mb-16">

@@ -32,14 +32,14 @@ function SignUp() {
   };
   return (
     <>
-      <div class="mb-12 text-center">
+      <div class="text-center">
         <h3 class="text-blue-500 md:text-3xl text-2xl font-extrabold max-md:text-center">
           Create an account
         </h3>
       </div>
       <div className="w-auto h-autooverflow-hidden ">
         <div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
-          <div class="font-[comic sans] bg-white md:h-screen">
+          <div class="font-[comic sans] bg-white ">
             <div class="grid md:grid-cols-2 items-center gap-8 h-auto">
               <div class="max-md:order-1 p-4 bg-gray-50 h-full">
                 <img

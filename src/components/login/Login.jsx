@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../useContext/loginContext";
 import { useCookies } from "react-cookie";
 function Login() {
-	const [cookies, setCookie] = useCookies(['accessToken']);
+
 	const {dispatch} = useAuth();
 
 	const {
@@ -31,12 +31,6 @@ function Login() {
 			);
 			dispatch({ type: "LOGIN", payload: res.data });
 			console.log("res from login backend", res.data);
-			setCookie("accessToken", res.data.data.accessToken, {
-				path: "/",
-				// Prevent JavaScript from accessing the cookie
-				sameSite: "lax", // Allow cookies to be sent in cross-origin requests
-				secure: false,
-			});
 			localStorage.setItem("accessToken", res.data.data.accessToken);
 			navigate("/")
 		} catch (error) {

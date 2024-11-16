@@ -1,6 +1,5 @@
-
 import axios from "axios";
-import { CalendarRangeIcon, Phone, User2Icon } from "lucide-react";
+import { BookAIcon, BookHeartIcon, CalendarRangeIcon, Phone, User2Icon } from "lucide-react";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -25,7 +24,7 @@ function ArtisansSignup() {
       });
 
       console.log("res from register backend", res.data);
-      navigate("/artisans/dashboard");
+      navigate("/artisans/login");
     } catch (error) {
       console.error("error in register form", error);
     }
@@ -34,16 +33,16 @@ function ArtisansSignup() {
     <>
       <div class="mb-12 text-center">
         <h3 class="text-blue-500 md:text-3xl text-2xl font-extrabold max-md:text-center">
-          Create an account
+          Signup as Artisans
         </h3>
       </div>
       <div className="w-auto h-autooverflow-hidden ">
         <div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
-          <div class="font-[comic sans] bg-white md:h-screen">
+          <div class="font-[comic sans] bg-white">
             <div class="grid md:grid-cols-2 items-center gap-8 h-auto">
               <div class="max-md:order-1 p-4 bg-gray-50 h-full">
                 <img
-                  src="https://readymadeui.com/signin-image.webp"
+                  src="https://img.freepik.com/free-vector/people-celebrating-thaipusam-festival-concept-illustration_114360-4344.jpg?ga=GA1.1.748482468.1731436017&semt=ais_hybrid"
                   class="lg:max-w-[90%] w-full h-full object-contain block mx-auto"
                   alt="login-image"
                 />
@@ -226,6 +225,40 @@ function ArtisansSignup() {
                     </div>
                   </div>
                   <div class="mt-6">
+                    <label class="text-gray-800 text-xs block mb-2">About</label>
+                    <div class="relative flex items-center justify-between">
+                      <input
+                        className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
+                        name="about"
+                        {...register("about")}
+                      />
+                      <BookAIcon/>
+                    </div>
+                  </div>
+                  <div class="mt-6">
+                    <label class="text-gray-800 text-xs block mb-2">Experience</label>
+                    <div class="relative flex items-center justify-between">
+                      <input
+                        type="number"
+                        className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
+                        name="experience"
+                        {...register("experience")}
+                      />
+                      <BookHeartIcon />
+                    </div>
+                  </div>
+                  <div class="mt-6">
+                    <label class="text-gray-800 text-xs block mb-2">GSTIN</label>
+                    <div class="relative flex items-center justify-between">
+                      <input
+                        className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
+                        name="GSTIN"
+                        {...register("GSTIN")}
+                      />
+                      <CalendarRangeIcon />
+                    </div>
+                  </div>
+                  <div class="mt-6">
                     <label class="text-gray-800 text-xs block mb-2">
                       Avatar
                     </label>
@@ -239,6 +272,7 @@ function ArtisansSignup() {
                       <User2Icon />
                     </div>
                   </div>
+
                   <div>
                     <div class="flex items-center mt-6">
                       <input

@@ -3,41 +3,25 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../../useContext/loginContext";
 import { useEffect } from "react";
-import {useCookies} from "react-cookie"
 import axios from "axios";
 function Navbar() {
   const backendurl = import.meta.env.VITE_URL;
-  const [cookies,removeCookie] = useCookies([
-		"accessToken",
-	]);
+
   const { dispatch, state } = useAuth();
 
   const [logIn, setLogIn] = useState(false);
 
 	useEffect(() => {
+    console.log("state in navbar:",state);
+
 		if (state.isLoggedIn || localStorage.getItem("accessToken")) {
 			setLogIn(true);
-      dispatch({ type: "LOGIN" });
-		}
-    // console.log("cookies are",cookies);
-    // if(cookies.accessToken ){
-    //   console.log("print ho gya kya")
-    //   setLogIn(true);
-    //   dispatch({ type: "LOGIN" });
 
-    // }
+		}
+
 	}, [state.isLoggedIn]);
 
-  useEffect(() => {
-    // Check for the cookie on app load
-    if (cookies.accessToken) {
-      console.log("User is already logged in with token:", cookies.accessToken);
-      // Dispatch the login action or verify the token as needed
-      // dispatch({ type: "LOGIN", payload: { accessToken: cookies.accessToken } });
-    } else {
-      console.log("No token found, user needs to login");
-    }
-  }, [cookies]);
+
   const logout=async()=>{
 
 
@@ -45,7 +29,7 @@ function Navbar() {
 
         withCredentials: true, // Ensure cookies are included in the request
         headers: {
-          Authorization: `Bearer ${cookies.accessToken}`,
+          Authorization:  `Bearer ${localStorage.getItem("accessToken")}`,
         },
 
     })
@@ -53,9 +37,9 @@ function Navbar() {
       dispatch({ type: "LOGOUT" });
       setLogIn(false);
     }
-    removeCookie("accessToken");
+
     localStorage.removeItem("accessToken");
-    console.log("User logged out, token removed from cookie");
+
     console.log("logout",res);
   }
 
@@ -207,7 +191,7 @@ function Navbar() {
             >
               <div className="w-10 rounded-full">
                 {logIn ? (
-                  <img src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQVPG_p0p_Ak0JHoFVD7IklGw1iQ30CNdRRQ&s`} alt="user" />
+                  <img src={`${state.userData.avatar}`} alt="user"  height={10} width={10}/>
                 ) : (
                   <h1>Not logged in</h1>
                 )}
