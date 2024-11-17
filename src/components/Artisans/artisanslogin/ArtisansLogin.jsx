@@ -11,7 +11,7 @@ function ArtisansLogin() {
 		formState: { errors },
 	} = useForm();
 	const backendurl = import.meta.env.VITE_URL;
-	const navigate=useNavigate();
+	const navigate = useNavigate();
 	const onSubmit = async (data) => {
 		console.log(data);
 		try {
@@ -27,7 +27,10 @@ function ArtisansLogin() {
 			);
 
 			console.log("res from login backend", res.data);
-			localStorage.setItem("artisansaccessToken", res.data.data.accessToken);
+			localStorage.setItem(
+				"artisansaccessToken",
+				res.data.data.accessToken
+			);
 			navigate("/artisans/dashboard");
 		} catch (error) {
 			console.error("error in login form", error);
@@ -35,7 +38,7 @@ function ArtisansLogin() {
 	};
 	return (
 		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
-			<div class="font-[comic sans] flex items-center justify-center md:h-screen p-4">
+			<div class="font-[comic sans] flex items-center justify-center p-4">
 				<div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl max-md:max-w-lg rounded-md p-6">
 					<a href="javascript:void(0)">
 						<img
@@ -63,7 +66,7 @@ function ArtisansLogin() {
 									classname="sign"
 									class="text-4xl font-extrabold text-blue-600"
 								>
-								Artisans	Sign in
+									Artisans Sign in
 								</h3>
 							</div>
 

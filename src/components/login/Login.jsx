@@ -5,8 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../useContext/loginContext";
 import { useCookies } from "react-cookie";
 function Login() {
-
-	const {dispatch} = useAuth();
+	const { dispatch } = useAuth();
 
 	const {
 		register,
@@ -15,7 +14,7 @@ function Login() {
 		formState: { errors },
 	} = useForm();
 	const backendurl = import.meta.env.VITE_URL;
-	const navigate=useNavigate();
+	const navigate = useNavigate();
 	const onSubmit = async (data) => {
 		console.log(data);
 		try {
@@ -31,15 +30,18 @@ function Login() {
 			);
 			dispatch({ type: "LOGIN", payload: res.data });
 			console.log("res from login backend", res.data);
-			localStorage.setItem("accessToken", res.data.data.accessToken);
-			navigate("/")
+			localStorage.setItem(
+				"accessToken",
+				res.data.data.accessToken
+			);
+			navigate("/");
 		} catch (error) {
 			console.error("error in login form", error);
 		}
 	};
 	return (
 		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
-			<div class="font-[comic sans] flex items-center justify-center md:h-screen p-4">
+			<div class="font-[comic sans] flex items-center justify-center p-4">
 				<div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl max-md:max-w-lg rounded-md p-6">
 					<a href="javascript:void(0)">
 						<img
