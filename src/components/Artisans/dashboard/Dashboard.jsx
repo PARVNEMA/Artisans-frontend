@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 
 import { useArtisansAuth } from "../../../../useContext/ArtisansContext.jsx";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
 	const { dispatch, state } = useArtisansAuth();
@@ -54,6 +55,11 @@ function Dashboard() {
 			<div>Dashboard{state.artisansData.fullName}</div>
 			<br />
 			<button onClick={logout}>Logout</button>
+			<Link to={"/artisans/productlisting"}>
+				<button className="bg-primary">
+					ProductListing
+				</button>
+			</Link>
 		</div>
 	);
 }

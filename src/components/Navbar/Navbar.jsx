@@ -4,12 +4,16 @@ import { useLocation } from "react-router-dom";
 import { useAuth } from "../../../useContext/loginContext";
 import { useEffect } from "react";
 import axios from "axios";
+import { useArtisansAuth } from "../../../useContext/ArtisansContext";
 function Navbar() {
 	const backendurl = import.meta.env.VITE_URL;
 
 	const { dispatch, state } = useAuth();
+	const { dispatch: dispatche, state: statee } =
+		useArtisansAuth();
 
 	const [logIn, setLogIn] = useState(false);
+	const [artisanslogin, setartisanslogin] = useState(false);
 
 	useEffect(() => {
 		console.log("state in navbar:", state);
@@ -19,6 +23,12 @@ function Navbar() {
 			localStorage.getItem("accessToken")
 		) {
 			setLogIn(true);
+		}
+		if (
+			statee.isLoggedIn ||
+			localStorage.getItem("artisansaccessToken")
+		) {
+			setartisanslogin(true);
 		}
 	}, [state.isLoggedIn]);
 
@@ -111,6 +121,11 @@ function Navbar() {
 						<Link to="/contactus">ContactUs</Link>
 						<Link to="/aboutus">About Us</Link>
 						<Link to="/artisans/page">Artisans</Link>
+						{artisanslogin && (
+							<Link to="/artisans/dashboard">
+								Dashboard
+							</Link>
+						)}
 					</div>
 				</div>
 				<div
@@ -187,7 +202,7 @@ function Navbar() {
 					</div>
 
 					<div className={`dropdown dropdown-end m-4`}>
-						{logIn ? (
+						{logIn || artisanslogin ? (
 							<Link to={"/aa"}>
 								<div className="m-9"></div>
 							</Link>
@@ -201,7 +216,7 @@ function Navbar() {
 					</div>
 
 					<div className="dropdown dropdown-end m-4">
-						{logIn ? (
+						{logIn || artisanslogin ? (
 							<Link to={"/aa"}>
 								<div className="m-9"></div>
 							</Link>
@@ -220,7 +235,7 @@ function Navbar() {
 							className="btn btn-ghost btn-circle avatar"
 						>
 							<div className="w-10 rounded-full">
-								{logIn ? (
+								{logIn || artisanslogin ? (
 									<img
 										src={`${state.userData.avatar}`}
 										alt="user"

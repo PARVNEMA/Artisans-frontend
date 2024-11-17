@@ -5,10 +5,18 @@ export default {
 	theme: [],
 	plugins: [daisyui],
 	fontFamily: {
-		sans: ["Cambria", "Roboto",],
+		sans: ["Cambria", "Roboto"],
 	},
 	daisyui: {
-		themes: ["light", "black", "wireframe", "autumn","forest","cupcake"],
+		themes: [
+			"light",
+			"black",
+			"wireframe",
+			"autumn",
+			"forest",
+			"cupcake",
+			"luxury",
+		],
 	},
 };
 
