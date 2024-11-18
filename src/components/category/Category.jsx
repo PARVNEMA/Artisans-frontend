@@ -27,7 +27,7 @@ function Category() {
 				Categories
 			</h2>
 			<div className="grid grid-cols-5 gap-5 mx-32 mb-10">
-				{category?.map((cat) => (
+				{category.map((cat) => (
 					<div className=" relative flex justify-center items-center text-center h-40 w-34 border border-black shadow-md rounded-2xl overflow-hidden  ">
 						<div
 							className={`border item-center border-black  blur-[1px] h-full w-full`}
