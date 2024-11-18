@@ -166,7 +166,8 @@ function Navbar() {
 							width: "100%",
 							padding: "8px",
 							marginBottom:"3px",
-							color:"white"
+							color:"white",
+							borderRadius:"11%"
 						}}
 					/>
 					<svg
