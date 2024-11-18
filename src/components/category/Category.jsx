@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Category() {
 	const [category, setcategory] = useState([]);
@@ -28,20 +29,22 @@ function Category() {
 			</h2>
 			<div className="grid grid-cols-5 gap-5 mx-32 mb-10">
 				{category.map((cat) => (
-					<div className=" relative flex justify-center items-center text-center h-40 w-34 border border-black shadow-md rounded-2xl overflow-hidden  ">
-						<div
-							className={`border item-center border-black  blur-[1px] h-full w-full`}
-						>
-							<img
-								src={cat.categoryImage}
-								alt=""
-								className="h-full w-full object-cover"
-							/>
+					<Link to={`/category/${cat._id}`}>
+						<div className=" relative flex justify-center items-center text-center h-40 w-34 border border-black shadow-md rounded-2xl overflow-hidden  ">
+							<div
+								className={`border item-center border-black  blur-[1px] h-full w-full`}
+							>
+								<img
+									src={cat.categoryImage}
+									alt=""
+									className="h-full w-full object-cover"
+								/>
+							</div>
+							<h1 className="absolute items-center font-semibold text-black bg-white bg-opacity-75 p-1 px-3 rounded-lg text-lg blur-0">
+								{cat.name}
+							</h1>
 						</div>
-						<h1 className="absolute items-center font-semibold text-black bg-white bg-opacity-75 p-1 px-3 rounded-lg text-lg blur-0">
-							{cat.name}
-						</h1>
-					</div>
+					</Link>
 				))}
 			</div>
 		</div>
