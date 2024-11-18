@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import Home from "./components/home/Home.jsx";
-import ProductDetails from "./components/productDetails/ProductDetails.jsx";
+
 import ProductList from "./components/ProductList/ProductList.jsx";
 import Cart from "./components/cart/Cart.jsx";
 import Login from "./components/login/Login.jsx";
@@ -38,10 +38,7 @@ const router = createBrowserRouter([
 		children: [
 			{ path: "/", element: <Home /> },
 			{ path: "/*", element: <ErrorPage /> },
-			{
-				path: "/products/:productId",
-				element: <ProductDetails />,
-			},
+
 			{
 				path: "/products",
 				element: <ProductList />,
