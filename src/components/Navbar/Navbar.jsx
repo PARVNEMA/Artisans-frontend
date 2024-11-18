@@ -54,6 +54,28 @@ function Navbar() {
 
 		console.log("logout", res);
 	};
+	const artisanslogout = async () => {
+		const res = await axios.post(
+			`${backendurl}/artisans/logout`,
+			null,
+			{
+				withCredentials: true, // Ensure cookies are included in the request
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem(
+						"artisansaccessToken"
+					)}`,
+				},
+			}
+		);
+		if (res) {
+			dispatche({ type: "LOGOUT" });
+			setartisanslogin(false);
+		}
+
+		localStorage.removeItem("artisansaccessToken");
+
+		console.log("logout artisans", res);
+	};
 
 	let location = useLocation();
 	console.log(location.pathname);
@@ -260,9 +282,15 @@ function Navbar() {
 									<span className="badge">New</span>
 								</Link>
 							</li>
-							<li>
-								<a onClick={logout}>Logout</a>
-							</li>
+							{artisanslogin ? (
+								<li>
+									<a onClick={artisanslogout}>Logout</a>
+								</li>
+							) : (
+								<li>
+									<a onClick={logout}>Logout</a>
+								</li>
+							)}
 						</ul>
 					</div>
 				</div>

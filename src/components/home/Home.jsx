@@ -5,6 +5,7 @@ import Category from "../category/Category";
 import { useAuth } from "../../../useContext/loginContext";
 import axios from "axios";
 import ProductList from "../ProductList/ProductList";
+import FeaturedProducts from "../featuredProducts/FeaturedProducts";
 function Home() {
 	const { dispatch, state } = useAuth();
 	const backendurl = import.meta.env.VITE_URL;
@@ -660,7 +661,8 @@ function Home() {
 				</div>
 			</div> */}
 			<div>
-				<ProductList />
+				{/* <ProductList /> */}
+				<FeaturedProducts />
 			</div>
 
 			{/* Category */}
