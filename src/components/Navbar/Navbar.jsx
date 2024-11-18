@@ -99,18 +99,18 @@ function Navbar() {
 	};
 	useEffect(() => {});
 	return (
-		<div className="w-full h-[5rem] flex justify-center">
-			<div className="navbar bg-base-100 flex justify-between">
+		<div className="w-full h-[5rem] flex justify-center " >
+			<div className="navbar bg-base-100 flex justify-between" style={{ backgroundColor: '#313323' }}>
 				<div className="flex-1">
 					<Link to={"/"}>
 						<img
 							className="h-[5rem] w-[16rem]"
-							src="../../../public/images/logo2.png"
+							src="../../../public/images/logo1.png"
 							alt="Logo"
 						/>
 					</Link>
 
-					<div className="flex text-black font-semibold  w-[40rem] justify-evenly">
+					<div className="flex text-black font-semibold  mx-[10rem] w-[40rem] justify-evenly">
 						<Link href="/">Home</Link>
 						<div>
 							<div className="dropdown dropdown-hover">
@@ -157,7 +157,7 @@ function Navbar() {
 					style={{
 						padding: "20px",
 						maxWidth: "400px",
-						margin: "auto",
+						margin: "20px",
 					}}
 				>
 					<input
@@ -168,7 +168,8 @@ function Navbar() {
 						style={{
 							width: "100%",
 							padding: "8px",
-							marginBottom: "10px",
+							marginBottom:"3px",
+							color:"white"
 						}}
 					/>
 					<svg
@@ -177,13 +178,13 @@ function Navbar() {
 						viewBox="0 0 24 24"
 						width="24px"
 						height="24px"
-						fill="#000"
-						style={{ cursor: "pointer" }}
+						fill="#FFFFFF"
+						style={{ cursor: "pointer", color:"white" }}
 					>
 						<path d="M10 2a8 8 0 106.32 13.91l4.41 4.38a1 1 0 001.41-1.41l-4.38-4.41A8 8 0 0010 2zm0 2a6 6 0 11-6 6 6 6 0 016-6z" />
 					</svg>
 					<ul
-						style={{ marginTop: "10px", paddingLeft: "0" }}
+						style={{ marginTop: "10px", paddingLeft: "0"  }}
 					>
 						{results.map((result, index) => (
 							<li
@@ -213,6 +214,7 @@ function Navbar() {
 										fill="none"
 										viewBox="0 0 24 24"
 										stroke="currentColor"
+										style={{color:"white"}}
 									>
 										<path
 											strokeLinecap="round"
@@ -233,7 +235,7 @@ function Navbar() {
 							</Link>
 						) : (
 							<Link to={"/aa"}>
-								<button className="btn btn-primary">
+								<button className="btn btn-primary" style={{backgroundColor:"#f9f2ea"}}>
 									Login
 								</button>
 							</Link>
@@ -247,7 +249,7 @@ function Navbar() {
 							</Link>
 						) : (
 							<Link to={"/aaa"}>
-								<button className="btn btn-primary">
+								<button className="btn btn-primary" style={{backgroundColor:"#f9f2ea"}}>
 									SignUp
 								</button>
 							</Link>
@@ -258,6 +260,7 @@ function Navbar() {
 							tabIndex={0}
 							role="button"
 							className="btn btn-ghost btn-circle avatar"
+							style={{color:"white"}}
 						>
 							<div className="w-10 rounded-full">
 								{logIn || artisanslogin ? (
@@ -280,6 +283,7 @@ function Navbar() {
 								<Link
 									className="justify-between"
 									to={"/userprofile"}
+									style={{backgroundColor:"white"}}
 								>
 									Profile
 									<span className="badge">New</span>
