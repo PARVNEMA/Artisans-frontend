@@ -49,7 +49,7 @@ function FeaturedProducts() {
 									</svg>
 								</div>
 
-								<div class="w-5/6 h-[260px] p-4 overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+								<div class="w-5/6 h-[260px] overflow-hidden mx-auto aspect-w-16 aspect-h-8">
 									<img
 										src={product.images[0]}
 										alt="Product 1"
