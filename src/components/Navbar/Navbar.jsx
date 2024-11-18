@@ -30,7 +30,7 @@ function Navbar() {
 		) {
 			setartisanslogin(true);
 		}
-	}, [state.isLoggedIn]);
+	}, [state.isLoggedIn],[statee.isLoggedIn]);
 
 	const logout = async () => {
 		const res = await axios.post(
@@ -110,7 +110,7 @@ function Navbar() {
 						/>
 					</Link>
 
-					<div className="flex text-black font-semibold  mx-[10rem] w-[40rem] justify-evenly">
+					<div className="flex text-black font-semibold  w-[40rem] justify-evenly">
 						<Link href="/">Home</Link>
 						<div>
 							<div className="dropdown dropdown-hover">
@@ -143,11 +143,14 @@ function Navbar() {
 						<Link to="/contactus">ContactUs</Link>
 						<Link to="/aboutus">About Us</Link>
 						<Link to="/artisans/page">Artisans</Link>
-						{artisanslogin && (
-							<Link to="/artisans/dashboard">
-								Dashboard
-							</Link>
-						)}
+						{artisanslogin ? 
+						(<Link to="/artisans/dashboard">
+							Dashboard
+						</Link>)
+						:
+						<></>
+						}
+						<Link to="/products">Products</Link>
 					</div>
 				</div>
 				<div
@@ -202,7 +205,7 @@ function Navbar() {
 							role="button"
 							className="btn btn-ghost btn-circle"
 						>
-							<div className="indicator">
+							<div className={`indicator ${logIn ? "block" : "hidden"}`}>
 								<Link to={"/cart"}>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
