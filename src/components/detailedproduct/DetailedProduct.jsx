@@ -1,8 +1,30 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function DetailedProduct() {
 	let { id } = useParams();
+	const [products, setproducts] = useState(null);
+	const backendurl = import.meta.env.VITE_URL;
+
+	const getAllproducts = async () => {
+		const res = await axios.get(
+			`${backendurl}/products/detail/${id}`,
+			{
+				withCredentials: true, // Ensure cookies are included in the request
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem(
+						"accessToken"
+					)}`,
+				},
+			}
+		);
+		console.log("res in detailed product  list", res.data);
+		setproducts(res.data.data);
+	};
+	useEffect(() => {
+		getAllproducts();
+	}, []);
 	return (
 		<div>
 			<div className="flex flex-col items-center">

@@ -30,6 +30,7 @@ import { ArtisansAuthProvider } from "../useContext/ArtisansContext.jsx";
 import Aa from "./components/Aa/Aa.jsx";
 import Aaa from "./components/Aaa/Aaa.jsx";
 import DetailedProduct from "./components/detailedproduct/DetailedProduct.jsx";
+import CategoryProducts from "./components/category/CategoryProducts.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
 			{
 				path: "/productdetails/:id",
 				element: <DetailedProduct />,
+			},
+			{
+				path: "/category/:categoryid",
+				element: <CategoryProducts />,
 			},
 		],
 	},
