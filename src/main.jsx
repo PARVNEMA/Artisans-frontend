@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
+	createBrowserRouter,
+	createRoutesFromElements,
+	Route,
+	RouterProvider,
 } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import Home from "./components/home/Home.jsx";
@@ -29,95 +29,97 @@ import { CookiesProvider } from "react-cookie";
 import { ArtisansAuthProvider } from "../useContext/ArtisansContext.jsx";
 import Aa from "./components/Aa/Aa.jsx";
 import Aaa from "./components/Aaa/Aaa.jsx";
+import DetailedProduct from "./components/detailedproduct/DetailedProduct.jsx";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      { path: "/", element: <Home /> },
-      { path: "/*", element: <ErrorPage /> },
-      {
-        path: "/products/:productId",
-        element: <ProductDetails />,
-      },
-      {
-        path: "/products",
-        element: <ProductList />,
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/signup",
-        element: <SignUp />,
-      },
-      {
-        path: "/contactus",
-        element: <ContactUs />,
-      },
-      {
-        path: "/userprofile",
-        element: <UserProfile />,
-      },
-      {
-        path: "/aboutus",
-        element: <Aboutus />,
-      },
-      {
-        path: "/aa",
-        element: <Aa />,
-      },
-      {
-        path: "/aaa",
-        element: <Aaa />,
-      },
-      {
-        path: "/artisans",
-        element: <Artisans />,
-        children: [
-          {
-            path: "/artisans/page",
-            element: <ArtisansPage />,
-          },
-          {
-            path: "/artisans/login",
-            element: <ArtisansLogin />,
-          },
-          {
-            path: "/artisans/signup",
-            element: <ArtisansSignup />,
-          },
-          {
-            path: "/artisans/dashboard",
-            element: <Dashboard />,
-          },
-          {
-            path: "/artisans/productlisting",
-            element: <ProductListing />,
-          },
-        ],
-      },
-    ],
-  },
+	{
+		path: "/",
+		element: <App />,
+		children: [
+			{ path: "/", element: <Home /> },
+			{ path: "/*", element: <ErrorPage /> },
+			{
+				path: "/products/:productId",
+				element: <ProductDetails />,
+			},
+			{
+				path: "/products",
+				element: <ProductList />,
+			},
+			{
+				path: "/cart",
+				element: <Cart />,
+			},
+			{
+				path: "/login",
+				element: <Login />,
+			},
+			{
+				path: "/signup",
+				element: <SignUp />,
+			},
+			{
+				path: "/contactus",
+				element: <ContactUs />,
+			},
+			{
+				path: "/userprofile",
+				element: <UserProfile />,
+			},
+			{
+				path: "/aboutus",
+				element: <Aboutus />,
+			},
+			{
+				path: "/aa",
+				element: <Aa />,
+			},
+			{
+				path: "/aaa",
+				element: <Aaa />,
+			},
+			{
+				path: "/artisans",
+				element: <Artisans />,
+				children: [
+					{
+						path: "/artisans/page",
+						element: <ArtisansPage />,
+					},
+					{
+						path: "/artisans/login",
+						element: <ArtisansLogin />,
+					},
+					{
+						path: "/artisans/signup",
+						element: <ArtisansSignup />,
+					},
+					{
+						path: "/artisans/dashboard",
+						element: <Dashboard />,
+					},
+					{
+						path: "/artisans/productlisting",
+						element: <ProductListing />,
+					},
+				],
+			},
+			{
+				path: "/productdetails/:id",
+				element: <DetailedProduct />,
+			},
+		],
+	},
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-
-    <AuthProvider>
-    <ArtisansAuthProvider>
-
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
-    </ArtisansAuthProvider>
-    </AuthProvider>
-
-  </React.StrictMode>
+	<React.StrictMode>
+		<AuthProvider>
+			<ArtisansAuthProvider>
+				<RouterProvider router={router}>
+					<App />
+				</RouterProvider>
+			</ArtisansAuthProvider>
+		</AuthProvider>
+	</React.StrictMode>
 );
