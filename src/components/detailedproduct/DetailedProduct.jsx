@@ -1,10 +1,11 @@
 import axios from "axios";
+import { IndianRupee } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function DetailedProduct() {
 	let { id } = useParams();
-	const [products, setproducts] = useState(null);
+	const [product, setproduct] = useState({});
 	const backendurl = import.meta.env.VITE_URL;
 
 	const getAllproducts = async () => {
@@ -20,7 +21,7 @@ function DetailedProduct() {
 			}
 		);
 		console.log("res in detailed product  list", res.data);
-		setproducts(res.data.data);
+		setproduct(res.data.data);
 	};
 	useEffect(() => {
 		getAllproducts();
@@ -33,105 +34,47 @@ function DetailedProduct() {
 						<div class="p-4 max-w-8xl max-md:max-w-xl mx-auto">
 							<div class="grid items-start grid-cols-1 md:grid-cols-2 gap-6">
 								<div class="w-full  top-0 flex gap-3">
-									<img
-										src="https://readymadeui.com/images/product2.webp"
-										alt="Product"
-										class="w-3/4 rounded-lg object-cover"
-									/>
-
-									<div class="w-20 flex flex-col max-sm:mb-4 gap-3">
-										<img
-											src="https://readymadeui.com/images/product1.webp"
-											alt="Product1"
-											class="w-full cursor-pointer rounded-lg"
-										/>
-										<img
-											src="https://readymadeui.com/images/product6.webp"
-											alt="Product2"
-											class="w-full cursor-pointer rounded-lg"
-										/>
-										<img
-											src="https://readymadeui.com/images/product7.webp"
-											alt="Product3"
-											class="w-full cursor-pointer rounded-lg"
-										/>
-										<img
-											src="https://readymadeui.com/images/product3.webp"
-											alt="Product4"
-											class="w-full cursor-pointer rounded-lg"
-										/>
-									</div>
+									{product?.images?.length > 0 && (
+										<>
+											{" "}
+											<img
+												src={product.images[0]}
+												alt="Product"
+												className="w-3/4 rounded-lg object-cover"
+											/>{" "}
+											<div className="w-20 flex flex-col max-sm:mb-4 gap-3">
+												{" "}
+												{product.images.map(
+													(image, index) => (
+														<img
+															key={index}
+															src={image}
+															alt={`Product ${index + 1}`}
+															className="w-full cursor-pointer rounded-lg"
+														/>
+													)
+												)}{" "}
+											</div>{" "}
+										</>
+									)}
 								</div>
 
 								<div>
 									<h2 class="text-2xl max-sm:text-2xl font-bold text-gray-800">
-										Adjective Attire | T-shirt
+										{product?.title}
 									</h2>
 									<div class="mt-8">
-										<h3 class="text-gray-800 text-4xl max-sm:text-3xl font-bold">
-											$12
+										<h3 class="text-gray-800 text-4xl max-sm:text-3xl font-bold flex">
+											<IndianRupee /> {product?.price}
 										</h3>
 									</div>
 
 									<div class="mt-8">
 										<h3 class="text-xl font-bold text-gray-800">
-											Sizes
+											Description
 										</h3>
 										<div class="flex flex-wrap gap-4 mt-4">
-											<button
-												type="button"
-												class="w-12 h-11 border-2 hover:border-gray-800 font-semibold text-xs text-gray-800 rounded-lg flex items-center justify-center shrink-0"
-											>
-												SM
-											</button>
-											<button
-												type="button"
-												class="w-12 h-11 border-2 hover:border-gray-800 border-gray-800 font-semibold text-xs text-gray-800 rounded-lg flex items-center justify-center shrink-0"
-											>
-												MD
-											</button>
-											<button
-												type="button"
-												class="w-12 h-11 border-2 hover:border-gray-800 font-semibold text-xs text-gray-800 rounded-lg flex items-center justify-center shrink-0"
-											>
-												LG
-											</button>
-											<button
-												type="button"
-												class="w-12 h-11 border-2 hover:border-gray-800 font-semibold text-xs text-gray-800 rounded-lg flex items-center justify-center shrink-0"
-											>
-												XL
-											</button>
-											<button
-												type="button"
-												class="w-12 h-11 border-2 hover:border-gray-800 font-semibold text-xs text-gray-800 rounded-lg flex items-center justify-center shrink-0"
-											>
-												XXL
-											</button>
-										</div>
-									</div>
-
-									<div class="mt-8">
-										<h3 class="text-xl font-bold text-gray-800">
-											Colors
-										</h3>
-										<div class="flex flex-wrap gap-4 mt-4">
-											<button
-												type="button"
-												class="w-12 h-11 bg-black border-2 border-white hover:border-gray-800 rounded-lg shrink-0"
-											></button>
-											<button
-												type="button"
-												class="w-12 h-11 bg-gray-400 border-2 border-white hover:border-gray-800 rounded-lg shrink-0"
-											></button>
-											<button
-												type="button"
-												class="w-12 h-11 bg-orange-400 border-2 border-white hover:border-gray-800 rounded-lg shrink-0"
-											></button>
-											<button
-												type="button"
-												class="w-12 h-11 bg-red-400 border-2 border-white hover:border-gray-800 rounded-lg shrink-0"
-											></button>
+											<p>{product?.description}</p>
 										</div>
 									</div>
 
@@ -171,37 +114,6 @@ function DetailedProduct() {
 										</button>
 									</div>
 								</div>
-							</div>
-							<div className="w-full">
-								<ul class="grid grid-cols-2 mt-10 w-full">
-									<li class="text-gray-800 font-semibold text-base text-center bg-gray-50 py-3 px-4 border-b-2 border-gray-800 cursor-pointer">
-										Details
-									</li>
-									<li class="text-gray-800 font-semibold text-base text-center py-3 border-b-2 px-4 cursor-pointer">
-										Description
-									</li>
-								</ul>
-
-								<ul class="space-y-3 list-disc pl-4 text-sm text-gray-600 mt-8">
-									<li>
-										A gray t-shirt is a wardrobe essential
-										because it is so versatile.
-									</li>
-									<li>
-										Available in a wide range of sizes, from
-										extra small to extra large, and even in
-										tall and petite sizes.
-									</li>
-									<li>
-										This is easy to care for. They can
-										usually be machine-washed and dried on
-										low heat.
-									</li>
-									<li>
-										You can add your own designs, paintings,
-										or embroidery to make it your own.
-									</li>
-								</ul>
 							</div>
 						</div>
 						{/* reviews section */}

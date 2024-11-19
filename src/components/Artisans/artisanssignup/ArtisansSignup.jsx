@@ -317,7 +317,7 @@ function ArtisansSignup() {
 										<div class="mt-3">
 											<button
 												type="submit"
-												class="w-full py-3 px-6 text-sm tracking-wider font-semibold rounded-md bg-blue-600 hover:bg-blue-700 text-white focus:outline-none"
+												class="w-full py-3 px-6 text-sm tracking-wider font-semibold rounded-md bg-three hover:bg-two text-white focus:outline-none"
 											>
 												Create an account
 											</button>

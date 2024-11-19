@@ -3,12 +3,14 @@ import daisyui from "daisyui";
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
-		colors:{
-			"one": "#3E362E",
-			"two": "#865D36",
-			"three": "#93785B",
-			"four": "#AC8968",
-			"five": "#A69080",
+		colors: {
+			one: "#3E362E",
+			two: "#865D36",
+			three: "#93785B",
+			four: "#F9F2EA",
+			five: "#A69080",
+			white: "#FFFFFF",
+			black: "#000000",
 		},
 	},
 	plugins: [daisyui],

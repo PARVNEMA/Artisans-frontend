@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { useArtisansAuth } from "../../../../useContext/ArtisansContext";
 
 function ArtisansLogin() {
 	const {
@@ -12,6 +13,7 @@ function ArtisansLogin() {
 	} = useForm();
 	const backendurl = import.meta.env.VITE_URL;
 	const navigate = useNavigate();
+	const { dispatch, state } = useArtisansAuth();
 	const onSubmit = async (data) => {
 		console.log(data);
 		try {
@@ -31,11 +33,40 @@ function ArtisansLogin() {
 				"artisansaccessToken",
 				res.data.data.accessToken
 			);
+			getCurrentUser();
 			navigate("/artisans/dashboard");
 		} catch (error) {
 			console.error("error in login form", error);
 		}
 	};
+	const getCurrentUser = async () => {
+		try {
+			const res = await axios.get(
+				`${backendurl}/artisans/current-user`,
+				{
+					withCredentials: true, // Ensure cookies are included in the request
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"artisansaccessToken"
+						)}`,
+					},
+				}
+			);
+			console.log("current artisans", res.data);
+
+			if (res.data) {
+				localStorage.setItem("isLoggedIn", "true");
+				localStorage.setItem(
+					"userData",
+					JSON.stringify(res.data.data)
+				);
+				dispatch({ type: "LOGIN", payload: res.data.data });
+			}
+		} catch (error) {
+			console.error("Error fetching current user", error);
+		}
+	};
+
 	return (
 		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
 			<div class="font-[comic sans] flex items-center justify-center p-4">
@@ -146,12 +177,12 @@ function ArtisansLogin() {
 							<div class="mt-12">
 								<button
 									type="submit"
-									class="w-full shadow-xl py-2.5 px-5 text-sm font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
+									class="w-full shadow-xl py-2.5 px-5 text-sm font-semibold rounded-md text-white bg-three hover:bg-two focus:outline-none"
 								>
 									Sign in
 								</button>
 								<p class="text-gray-800 text-sm text-center mt-6">
-									Don't have an account{" "}
+									Don't have an account ?{" "}
 									<Link
 										to={"/artisans/signup"}
 										href="javascript:void(0);"

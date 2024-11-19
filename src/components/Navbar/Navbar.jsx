@@ -15,22 +15,26 @@ function Navbar() {
 	const [logIn, setLogIn] = useState(false);
 	const [artisanslogin, setartisanslogin] = useState(false);
 
-	useEffect(() => {
-		console.log("state in navbar:", state);
+	useEffect(
+		() => {
+			console.log("state in navbar:", state);
 
-		if (
-			state.isLoggedIn ||
-			localStorage.getItem("accessToken")
-		) {
-			setLogIn(true);
-		}
-		if (
-			statee.isLoggedIn ||
-			localStorage.getItem("artisansaccessToken")
-		) {
-			setartisanslogin(true);
-		}
-	}, [state.isLoggedIn],[statee.isLoggedIn]);
+			if (
+				state.isLoggedIn ||
+				localStorage.getItem("accessToken")
+			) {
+				setLogIn(true);
+			}
+			if (
+				statee.isLoggedIn ||
+				localStorage.getItem("artisansaccessToken")
+			) {
+				setartisanslogin(true);
+			}
+		},
+		[state.isLoggedIn],
+		[statee.isLoggedIn]
+	);
 
 	const logout = async () => {
 		const res = await axios.post(
@@ -67,10 +71,9 @@ function Navbar() {
 				},
 			}
 		);
-		if (res) {
-			dispatche({ type: "LOGOUT" });
-			setartisanslogin(false);
-		}
+
+		dispatche({ type: "LOGOUT" });
+		setartisanslogin(false);
 
 		localStorage.removeItem("artisansaccessToken");
 
@@ -99,12 +102,12 @@ function Navbar() {
 	};
 	useEffect(() => {});
 	return (
-		<div className="w-full h-[5rem] flex justify-center " >
-			<div className="navbar bg-gray-700 flex justify-between p-2" >
+		<div className="w-full h-[5rem] flex justify-center ">
+			<div className="navbar flex justify-between p-2">
 				<div className="flex-1">
 					<Link to={"/"}>
 						<img
-							className="h-[5rem] w-[16rem]"
+							className="ml-3 h-[6rem] w-[16rem]"
 							src="../../../public/images/logo1.png"
 							alt="Logo"
 						/>
@@ -141,13 +144,13 @@ function Navbar() {
 							</div>
 						</div>
 						<Link to="/artisans/page">Artisans</Link>
-						{artisanslogin ? 
-						(<Link to="/artisans/dashboard">
-							Dashboard
-						</Link>)
-						:
-						<></>
-						}
+						{artisanslogin ? (
+							<Link to="/artisans/dashboard">
+								Dashboard
+							</Link>
+						) : (
+							<></>
+						)}
 						<Link to="/products">Products</Link>
 						<Link to="/aboutus">About Us</Link>
 						<Link to="/contactus">ContactUs</Link>
@@ -164,28 +167,27 @@ function Navbar() {
 						type="text"
 						value={searchTerm}
 						onChange={handleChange}
+						className="rounded-full mr-5 text-black"
 						placeholder="Search..."
 						style={{
 							width: "100%",
-							padding: "8px",
-							marginBottom:"3px",
-							borderRadius:"11%",
-							
+							padding: "12px",
+							marginBottom: "3px",
 						}}
 					/>
 					<svg
 						onClick={handleSearch} // Trigger search on click
 						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 24 24"
-						width="24px"
-						height="24px"
-						fill="black"
+						viewBox="0 0 25 25"
+						width="40px"
+						height="40px"
+						fill="white"
 						style={{ cursor: "pointer" }}
 					>
 						<path d="M10 2a8 8 0 106.32 13.91l4.41 4.38a1 1 0 001.41-1.41l-4.38-4.41A8 8 0 0010 2zm0 2a6 6 0 11-6 6 6 6 0 016-6z" />
 					</svg>
 					<ul
-						style={{ marginTop: "10px", paddingLeft: "0"  }}
+						style={{ marginTop: "10px", paddingLeft: "0" }}
 					>
 						{results.map((result, index) => (
 							<li
@@ -207,7 +209,11 @@ function Navbar() {
 							role="button"
 							className="btn btn-ghost btn-circle"
 						>
-							<div className={`indicator ${logIn ? "block" : "hidden"}`}>
+							<div
+								className={`indicator ${
+									logIn ? "block" : "hidden"
+								}`}
+							>
 								<Link to={"/cart"}>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -215,7 +221,7 @@ function Navbar() {
 										fill="black"
 										viewBox="0 0 24 24"
 										stroke="currentColor"
-										style={{color:"white"}}
+										style={{ color: "white" }}
 									>
 										<path
 											strokeLinecap="round"
@@ -236,7 +242,7 @@ function Navbar() {
 							</Link>
 						) : (
 							<Link to={"/aa"}>
-								<button className="btn btn-primary" style={{backgroundColor:"#468966"}}>
+								<button className="btn bg-four">
 									Login
 								</button>
 							</Link>
@@ -250,7 +256,7 @@ function Navbar() {
 							</Link>
 						) : (
 							<Link to={"/aaa"}>
-								<button className="btn btn-primary" style={{backgroundColor:"#468966"}}>
+								<button className="btn bg-four">
 									SignUp
 								</button>
 							</Link>
@@ -261,7 +267,7 @@ function Navbar() {
 							tabIndex={0}
 							role="button"
 							className="btn btn-ghost btn-circle avatar"
-							style={{color:"black"}}
+							style={{ color: "black" }}
 						>
 							<div className="w-10 rounded-full">
 								{logIn || artisanslogin ? (
@@ -284,7 +290,7 @@ function Navbar() {
 								<Link
 									className="justify-between"
 									to={"/userprofile"}
-									style={{backgroundColor:"white"}}
+									style={{ backgroundColor: "white" }}
 								>
 									Profile
 									<span className="badge">New</span>

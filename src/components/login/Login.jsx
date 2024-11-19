@@ -149,12 +149,12 @@ function Login() {
 							<div class="mt-12">
 								<button
 									type="submit"
-									class="w-full shadow-xl py-2.5 px-5 text-sm font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
+									class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white bg-three hover:bg-two focus:outline-none"
 								>
 									Sign in
 								</button>
 								<p class="text-gray-800 text-sm text-center mt-6">
-									Don't have an account{" "}
+									Don't have an account ?{" "}
 									<Link
 										to={"/signup"}
 										href="javascript:void(0);"
