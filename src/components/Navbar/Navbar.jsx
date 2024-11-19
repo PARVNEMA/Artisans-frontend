@@ -126,9 +126,12 @@ function Navbar() {
 								</div>
 								<ul
 									id="dropdownMenu"
-									class="dropdown-content menu bg-gray-100 rounded-box z-[1] w-52 p-2 shadow text-black"
+									class="dropdown-content menu bg-one rounded-box z-[1] w-52 p-2 shadow text-black"
 								>
-									<li class="py-3 px-6 hover:bg-gray-100 text-black text-sm cursor-pointer ">
+									<li
+										class="py-3 px-6 hover:bg-one text-black
+									text-sm cursor-pointer "
+									>
 										Furniture Store
 									</li>
 									<li class="py-3 px-6 hover:bg-gray-100 text-[#333] text-sm cursor-pointer ">
