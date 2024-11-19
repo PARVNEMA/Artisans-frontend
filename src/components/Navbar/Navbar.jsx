@@ -100,17 +100,17 @@ function Navbar() {
 	useEffect(() => {});
 	return (
 		<div className="w-full h-[5rem] flex justify-center " >
-			<div className="navbar bg-base-100 flex justify-between p-2" style={{ backgroundColor: '#FFF0A5' }}>
+			<div className="navbar bg-gray-700 flex justify-between p-2" >
 				<div className="flex-1">
 					<Link to={"/"}>
 						<img
 							className="h-[5rem] w-[16rem]"
-							src="../../../public/images/logo2.png"
+							src="../../../public/images/logo1.png"
 							alt="Logo"
 						/>
 					</Link>
 
-					<div className="flex text-black font-medium  mx-[10rem] w-[40rem] justify-evenly p-2">
+					<div className="flex text-amber-100 font-medium w-[40rem] justify-evenly p-2">
 						<Link href="/">Home</Link>
 						<div>
 							<div className="dropdown dropdown-hover ">

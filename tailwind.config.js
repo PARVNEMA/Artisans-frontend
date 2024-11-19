@@ -2,7 +2,15 @@
 import daisyui from "daisyui";
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-	theme: [],
+	theme: {
+		colors:{
+			"one": "#3E362E",
+			"two": "#865D36",
+			"three": "#93785B",
+			"four": "#AC8968",
+			"five": "#A69080",
+		},
+	},
 	plugins: [daisyui],
 	fontFamily: {
 		sans: ["Cambria", "Roboto"],
