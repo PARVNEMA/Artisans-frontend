@@ -100,7 +100,7 @@ function Navbar() {
 	useEffect(() => {});
 	return (
 		<div className="w-full h-[5rem] flex justify-center " >
-			<div className="navbar bg-base-100 flex justify-between" style={{ backgroundColor: '#FBF9F1' }}>
+			<div className="navbar bg-base-100 flex justify-between p-2" style={{ backgroundColor: '#FFF0A5' }}>
 				<div className="flex-1">
 					<Link to={"/"}>
 						<img
@@ -110,10 +110,10 @@ function Navbar() {
 						/>
 					</Link>
 
-					<div className="flex text-black font-medium  mx-[10rem] w-[40rem] justify-evenly">
+					<div className="flex text-black font-medium  mx-[10rem] w-[40rem] justify-evenly p-2">
 						<Link href="/">Home</Link>
 						<div>
-							<div className="dropdown dropdown-hover">
+							<div className="dropdown dropdown-hover ">
 								<div
 									tabIndex={0}
 									role="button"
@@ -125,23 +125,21 @@ function Navbar() {
 									id="dropdownMenu"
 									class="dropdown-content menu bg-gray-100 rounded-box z-[1] w-52 p-2 shadow text-black"
 								>
-									<li class="py-3 px-6 hover:bg-gray-100 text-black text-sm cursor-pointer">
+									<li class="py-3 px-6 hover:bg-gray-100 text-black text-sm cursor-pointer ">
 										Furniture Store
 									</li>
-									<li class="py-3 px-6 hover:bg-gray-100 text-[#333] text-sm cursor-pointer">
+									<li class="py-3 px-6 hover:bg-gray-100 text-[#333] text-sm cursor-pointer ">
 										Electronic Store
 									</li>
-									<li class="py-3 px-6 hover:bg-gray-100 text-[#333] text-sm cursor-pointer">
+									<li class="py-3 px-6 hover:bg-gray-100 text-[#333] text-sm cursor-pointer ">
 										Fashion Store
 									</li>
-									<li class="py-3 px-6 hover:bg-gray-100 text-[#333] text-sm cursor-pointer">
+									<li class="py-3 px-6 hover:bg-gray-100 text-[#333] text-sm cursor-pointer ">
 										Shoes Store
 									</li>
 								</ul>
 							</div>
 						</div>
-						<Link to="/contactus">ContactUs</Link>
-						<Link to="/aboutus">About Us</Link>
 						<Link to="/artisans/page">Artisans</Link>
 						{artisanslogin ? 
 						(<Link to="/artisans/dashboard">
@@ -151,6 +149,8 @@ function Navbar() {
 						<></>
 						}
 						<Link to="/products">Products</Link>
+						<Link to="/aboutus">About Us</Link>
+						<Link to="/contactus">ContactUs</Link>
 					</div>
 				</div>
 				<div
@@ -236,7 +236,7 @@ function Navbar() {
 							</Link>
 						) : (
 							<Link to={"/aa"}>
-								<button className="btn btn-primary" style={{backgroundColor:"#92C7CF"}}>
+								<button className="btn btn-primary" style={{backgroundColor:"#468966"}}>
 									Login
 								</button>
 							</Link>
@@ -250,7 +250,7 @@ function Navbar() {
 							</Link>
 						) : (
 							<Link to={"/aaa"}>
-								<button className="btn btn-primary" style={{backgroundColor:"#92C7CF"}}>
+								<button className="btn btn-primary" style={{backgroundColor:"#468966"}}>
 									SignUp
 								</button>
 							</Link>

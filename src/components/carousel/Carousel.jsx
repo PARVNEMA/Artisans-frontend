@@ -36,7 +36,7 @@ const Carousel = () => {
   ];
 
   return (
-    <div className="Carousel w-full h-[80vh]">
+    <div className="Carousel w-full h-[80vh]  " >
       {images.map((image, index) => (
         <div
           key={index}
@@ -44,15 +44,19 @@ const Carousel = () => {
           className={`Carousel-item relative w-full h-full ${
             index === currentIndex ? "block" : "hidden"
           }`}
+        
         >
-          <div className="absolute top-1/2 font-extrabold" style={{fontSize:"40px" ,color:"white",marginLeft:"30%",marginTop:"-5%"}}>
+          <div className="absolute top-1/2 font-extrabold,bg-gradient-to-b drop-shadow-md" style={{fontSize:"40px" ,color:"white",marginLeft:"16%",marginTop:"-5%"}}>
             <h1>{array[index].Title}</h1>
-            <button>{array[index].text}</button>
+            </div>
+            <div className="absolute top-1/2 font-extrabold" style={{marginLeft:"30%",marginTop:"3%"}}>
+            <button style={{marginRight:"30%",marginTop:"-4%"}}>{array[index].text}</button>
           </div>
           <img
             src={image}
             className="w-full h-full  "
             alt={`Slide ${index + 1}`}
+           
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
             <button onClick={handlePrev} className="btn btn-circle">
