@@ -29,10 +29,10 @@ const Carousel = () => {
   };
 
   const array = [
-    { Title: "T1", text: "text1" },
-    { Title: "T2", text: "text2" },
-    { Title: "T3", text: "text3" },
-    { Title: "T4", text: "text4" },
+    { Title: "Explore all the Authenticated product made my local Artist", text: "From local to Gobal " },
+    { Title: "Keep up wiht various trends according to the seasons here ", text: "special Seasonal offer  " },
+    { Title: "buy all the specila festival product from here ", text: " Sepcial Festive porduct   " },
+    { Title: "Order prodcut which meets your need ", text: "Custom made product " },
   ];
 
   return (
@@ -45,7 +45,7 @@ const Carousel = () => {
             index === currentIndex ? "block" : "hidden"
           }`}
         >
-          <div className="absolute top-1/2 left-1/2 font-extrabold">
+          <div className="absolute top-1/2 font-extrabold" style={{fontSize:"40px" ,color:"white",marginLeft:"30%",marginTop:"-5%"}}>
             <h1>{array[index].Title}</h1>
             <button>{array[index].text}</button>
           </div>
