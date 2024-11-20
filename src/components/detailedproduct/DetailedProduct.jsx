@@ -1,14 +1,18 @@
 import axios from "axios";
-import { IndianRupee } from "lucide-react";
+import { IndianRupee, Star } from "lucide-react";
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function DetailedProduct() {
 	let { id } = useParams();
 	const [product, setproduct] = useState({});
+	const [reviews, setreviews] = useState({});
 	const backendurl = import.meta.env.VITE_URL;
+	const [rating, setrating] = useState(0);
+	const [userReview, setuserReview] = useState("");
 
-	const getAllproducts = async () => {
+	const getproductsdetails = async () => {
 		const res = await axios.get(
 			`${backendurl}/products/detail/${id}`,
 			{
@@ -23,8 +27,44 @@ function DetailedProduct() {
 		console.log("res in detailed product  list", res.data);
 		setproduct(res.data.data);
 	};
+	const getAllReviews = async () => {
+		const res = await axios.get(
+			`${backendurl}/reviews/${id}`,
+			{
+				withCredentials: true, // Ensure cookies are included in the request
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem(
+						"accessToken"
+					)}`,
+				},
+			}
+		);
+		console.log("res in reviews list", res.data);
+		setreviews(res.data.data);
+	};
+	const postReview = async () => {
+		const res = await axios.post(
+			`${backendurl}/reviews/${id}`,
+			{
+				rating: rating,
+				reviewText: userReview,
+			},
+			{
+				withCredentials: true, // Ensure cookies are included in the request
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem(
+						"accessToken"
+					)}`,
+				},
+			}
+		);
+		console.log("res in post review", res.data);
+	};
+	// console.log("ratings", rating);
+
 	useEffect(() => {
-		getAllproducts();
+		getproductsdetails();
+		getAllReviews();
 	}, []);
 	return (
 		<div>
@@ -300,6 +340,80 @@ function DetailedProduct() {
 											</div>
 										</div>
 									</div>
+									{/* add review
+									 */}
+									{localStorage.getItem("accessToken") ? (
+										<div>
+											<h2>Add Review</h2>
+											<textarea
+												value={userReview}
+												onChange={(e) =>
+													setuserReview(e.target.value)
+												}
+												placeholder="Write your review here..."
+											/>
+											<div>
+												<button
+													onClick={() => setrating(1)}
+												>
+													<Star
+														className={`${
+															rating >= 1
+																? "bg-two"
+																: "text-gray-400"
+														} h-6 w-6`}
+													/>
+												</button>
+												<button
+													onClick={() => setrating(2)}
+													className={`${
+														rating >= 2
+															? "bg-two"
+															: "text-gray-400"
+													}`}
+												>
+													<Star />
+												</button>
+												<button
+													onClick={() => setrating(3)}
+													className={`${
+														rating >= 3
+															? "bg-two"
+															: "text-gray-400"
+													}`}
+												>
+													<Star />
+												</button>
+												<button
+													onClick={() => setrating(4)}
+													className={`${
+														rating >= 4
+															? "bg-two"
+															: "text-gray-400"
+													}`}
+												>
+													<Star className="" />
+												</button>
+												<button
+													onClick={() => setrating(5)}
+													className={`${
+														rating >= 4
+															? "bg-two"
+															: "text-gray-400"
+													}`}
+												>
+													<Star />
+												</button>
+											</div>
+											<button onClick={postReview}>
+												Submit
+											</button>
+										</div>
+									) : (
+										<div>
+											<h2>Login to add Review</h2>
+										</div>
+									)}
 								</div>
 							</div>
 						</div>
