@@ -698,14 +698,14 @@ function Home() {
 								/>
 							</div>
 
-							<div class="p-6 bg-white">
-								<h3 class="text-lg font-bold text-gray-800">
+							<div class="p-6 bg-white ">
+								<h3 class="text-lg font-bold text-gray-800 "> 
 									Sole Elegance
 								</h3>
-								<h4 class="text-lg text-gray-800 font-bold mt-2">
+								<h4 class="text-lg text-gray-800 font-bold mt-2 ">
 									$10.5
 								</h4>
-								<p class="text-gray-600 text-sm mt-2">
+								<p class="text-gray-600 text-sm mt-2 ">
 									5 types of shoos available
 								</p>
 

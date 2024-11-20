@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import DetailedProduct from "../detailedproduct/DetailedProduct";
+import FeaturedProducts from "../featuredProducts/FeaturedProducts";
+import ProductList from "../ProductList/ProductList";
+import { Link } from "react-router-dom";
 
 const images = [
 	"https://s7d1.scene7.com/is/image/wbcollab/shutterstock_551163163:1140x500?qlt=90&fmt=webp&resMode=sharp2",
@@ -38,20 +42,24 @@ const Carousel = () => {
 			Title:
 				"Explore all the Authenticated product made my local Artist",
 			text: "From local to Gobal ",
+			Link:DetailedProduct
 		},
 		{
 			Title:
 				"Keep up with various trends according to the seasons here ",
 			text: "Special seasonal offer  ",
+			Link:FeaturedProducts
 		},
 		{
 			Title:
 				"Buy all the special festival product from here ",
 			text: " Special festive product   ",
+			Link:ProductList
 		},
 		{
 			Title: "Order product which meets your need ",
 			text: "Custom made product ",
+			
 		},
 	];
 
@@ -72,12 +80,12 @@ const Carousel = () => {
 							alt={`Slide ${index + 1}`}
 						/>
 					</div>
-					<div className="flex flex-col justify-center item-center p-[5rem] gap-10">
-						<div className="text-5xl text-one text-center">
-							{array[index].Title}
+					<div className="flex flex-col justify-center item-center p-[5rem] gap-10 text-white">
+						<div className="text-5xl text-one text-center text-white">
+						<Link to={array[index].Title}>{array[index].Title}</Link>
 						</div>
-						<div className="text-center text-2xl text-one">
-							{array[index].text}
+						<div className="text-center text-2xl text-one text-white">
+						<button type="button" class="bg-amber-100 px-4 py-2 rounded">{array[index].text}</button>	
 						</div>
 					</div>
 

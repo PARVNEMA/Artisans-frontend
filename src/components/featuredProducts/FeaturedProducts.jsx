@@ -58,7 +58,7 @@ function FeaturedProducts() {
 								</div>
 
 								<div class="p-6 bg-white">
-									<h3 class="text-lg font-bold text-gray-800">
+									<h3 class="text-lg font-bold text-gray-800 ">
 										{product.title}
 									</h3>
 									<h4 class="text-lg text-gray-800 font-bold mt-2 flex flex-row">
