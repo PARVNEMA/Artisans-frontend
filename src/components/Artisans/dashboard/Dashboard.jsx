@@ -10,25 +10,8 @@ function Dashboard() {
 	const [artisansproducts, setartisansproducts] = useState(
 		[]
 	);
-
-	// const getCurrentUser = async () => {
-	// 	const res = await axios.get(
-	// 		`${backendurl}/artisans/current-user`,
-	// 		{
-	// 			withCredentials: true, // Ensure cookies are included in the request
-	// 			headers: {
-	// 				Authorization: `Bearer ${localStorage.getItem(
-	// 					"artisansaccessToken"
-	// 				)}`,
-	// 			},
-	// 		}
-	// 	);
-	// 	console.log("current artisans", res.data);
-	// 	setartisans(res.data.data);
-	// 	if (res.data) {
-	// 		dispatch({ type: "LOGIN", payload: res.data.data });
-	// 	}
-	// };
+	const [artisansmatrices, setartisansmatrices] =
+		useState(null);
 
 	const getArtisansProduct = async () => {
 		try {
@@ -49,10 +32,27 @@ function Dashboard() {
 			console.error("error in dashbooard ", error);
 		}
 	};
-	// useEffect(() => {
-	// 	getCurrentUser();
-	// }, []);
-	console.log(state);
+	const getArtisansSellerMetrices = async () => {
+		try {
+			const res = await axios.get(
+				`${backendurl}/artisans/matrices/${state.artisansData._id}`,
+				{
+					withCredentials: true, // Ensure cookies are included in the request
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"artisansaccessToken"
+						)}`,
+					},
+				}
+			);
+			console.log("current artisans metrices", res.data);
+			setartisansmatrices(res.data.data);
+		} catch (error) {
+			console.error("error in dashbooard ", error);
+		}
+	};
+
+	// console.log(state);
 
 	useEffect(() => {
 		console.log("State on mount or update:", state);
@@ -61,6 +61,7 @@ function Dashboard() {
 				"User is logged in, fetching products..."
 			);
 			getArtisansProduct();
+			getArtisansSellerMetrices();
 		}
 	}, [state.isLoggedIn, state.artisansData._id]);
 
@@ -86,6 +87,54 @@ function Dashboard() {
 						/>
 					</div>
 				))}
+			</div>
+			{/* artisans matrices */}
+			<div>
+				{artisansmatrices && (
+					<div>
+						<h2>Seller Metrices</h2>
+						<div>
+							<h2 className="text-2xl text-black">
+								Customer satisfaction
+							</h2>
+							<p>
+								{
+									artisansmatrices.metrics
+										.customerSatisfaction
+								}
+							</p>
+						</div>
+						<div>
+							<h2 className="text-2xl text-black">
+								dispute Rate
+							</h2>
+							<p>{artisansmatrices.metrics.disputeRate}</p>
+						</div>
+						<div>
+							<h2 className="text-2xl text-black">
+								productSellingRate
+							</h2>
+							<p>
+								{
+									artisansmatrices.metrics
+										.productSellingRate
+								}
+							</p>
+						</div>
+						<div>
+							<h2 className="text-2xl text-black">
+								refund Rate
+							</h2>
+							<p>{artisansmatrices.metrics.refundRate}</p>
+						</div>
+						<div>
+							<h2 className="text-2xl text-black">
+								return Rate
+							</h2>
+							<p>{artisansmatrices.metrics.returnRate}</p>
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);

@@ -26,7 +26,7 @@ function Navbar() {
 				setLogIn(true);
 			}
 			if (
-				statee.isLoggedIn ||
+				localStorage.getItem("isLoggedIn") ||
 				localStorage.getItem("artisansaccessToken")
 			) {
 				setartisanslogin(true);

@@ -4,9 +4,9 @@ export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		colors: {
-			one: "#3E362E",
+			one: "#4E2D11",
 			two: "#865D36",
-			three: "#93785B",
+			three: "#6F4C26",
 			four: "#F9F2EA",
 			five: "#A69080",
 			white: "#FFFFFF",
