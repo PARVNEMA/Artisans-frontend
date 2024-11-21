@@ -17,7 +17,7 @@ function UserProfile() {
 						<div className="text-[1rem] font-bold mr-3">
 							Full Name :
 						</div>
-						<div>{state.userData.fullName}</div>
+						<div className="uppercase">{state.userData.fullName}</div>
 					</div>
 					<div className="flex">
 						<div className="text-[1rem] font-bold mr-3">

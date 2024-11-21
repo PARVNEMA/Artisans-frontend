@@ -48,7 +48,7 @@ function ArtisansSignup() {
 							<div class="max-md:order-1 p-4 bg-white h-full">
 								<img
 									src="https://readymadeui.com/signin-image.webp"
-									class="lg:max-w-[90%] w-full h-full object-contain block mx-auto"
+									class="lg:max-w-[90%] w-full h-full object-contain mx-auto"
 									alt="login-image"
 								/>
 							</div>
@@ -62,7 +62,7 @@ function ArtisansSignup() {
 									onSubmit={handleSubmit(onSubmit)}
 								>
 									<div>
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs mb-2">
 											Full Name
 										</label>
 										<div class="relative flex items-center">
@@ -94,9 +94,9 @@ function ArtisansSignup() {
 											</svg>
 										</div>
 									</div>
-									<div>
+									<div className="mt-6">
 										<label
-											class="text-gray-800 text-xs block mb-2"
+											class="text-gray-800 text-xs mb-2"
 											htmlFor="username"
 										>
 											Username
@@ -131,7 +131,7 @@ function ArtisansSignup() {
 										</div>
 									</div>
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs mb-2">
 											Email
 										</label>
 										<div class="relative flex items-center">
@@ -182,7 +182,7 @@ function ArtisansSignup() {
 									</div>
 
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs mb-2">
 											Password
 										</label>
 										<div class="relative flex items-center">
@@ -209,7 +209,7 @@ function ArtisansSignup() {
 										</div>
 									</div>
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs mb-2">
 											Phone Number
 										</label>
 										<div class="relative flex items-center justify-between">
@@ -224,7 +224,7 @@ function ArtisansSignup() {
 										</div>
 									</div>
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs mb-2">
 											DOB
 										</label>
 										<div class="relative flex items-center justify-between">
@@ -238,20 +238,21 @@ function ArtisansSignup() {
 										</div>
 									</div>
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs mb-2">
 											About
 										</label>
 										<div class="relative flex items-center justify-between">
 											<input
 												className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 												name="about"
+												placeholder="Enter about yourself"
 												{...register("about")}
 											/>
 											<BookAIcon />
 										</div>
 									</div>
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs mb-2">
 											Experience
 										</label>
 										<div class="relative flex items-center justify-between">
@@ -259,26 +260,28 @@ function ArtisansSignup() {
 												type="number"
 												className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 												name="experience"
+												placeholder="Enter your experience"
 												{...register("experience")}
 											/>
 											<BookHeartIcon />
 										</div>
 									</div>
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs mb-2">
 											GSTIN
 										</label>
 										<div class="relative flex items-center justify-between">
 											<input
 												className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 												name="GSTIN"
+												placeholder="Enter your GSTIN"
 												{...register("GSTIN")}
 											/>
 											<CalendarRangeIcon />
 										</div>
 									</div>
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs mb-2">
 											Avatar
 										</label>
 										<div class="relative flex items-center justify-between">
@@ -302,7 +305,7 @@ function ArtisansSignup() {
 											/>
 											<label
 												for="remember-me"
-												class="ml-3 block text-sm text-gray-800"
+												class="ml-3 text-sm text-gray-800"
 											>
 												I accept the{" "}
 												<a

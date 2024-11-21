@@ -47,7 +47,7 @@ function SignUp() {
 							<div class="max-md:order-1 p-4 bg-white h-full">
 								<img
 									src="https://readymadeui.com/signin-image.webp"
-									class="lg:max-w-[90%] w-full h-full object-contain block mx-auto"
+									class="lg:max-w-[90%] w-full h-full object-contain mx-auto"
 									alt="login-image"
 								/>
 							</div>
@@ -61,7 +61,7 @@ function SignUp() {
 									onSubmit={handleSubmit(onSubmit)}
 								>
 									<div>
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs mb-2">
 											Full Name
 										</label>
 										<div class="relative flex items-center">
@@ -93,9 +93,9 @@ function SignUp() {
 											</svg>
 										</div>
 									</div>
-									<div>
+									<div className="mt-6">
 										<label
-											class="text-gray-800 text-xs block mb-2"
+											class="text-gray-800 text-xs mb-2"
 											htmlFor="username"
 										>
 											Username
@@ -130,7 +130,7 @@ function SignUp() {
 										</div>
 									</div>
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs mb-2">
 											Email
 										</label>
 										<div class="relative flex items-center">
@@ -181,7 +181,7 @@ function SignUp() {
 									</div>
 
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs  mb-2">
 											Password
 										</label>
 										<div class="relative flex items-center">
@@ -208,7 +208,7 @@ function SignUp() {
 										</div>
 									</div>
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs  mb-2">
 											Phone Number
 										</label>
 										<div class="relative flex items-center justify-between">
@@ -223,7 +223,7 @@ function SignUp() {
 										</div>
 									</div>
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs  mb-2">
 											DOB
 										</label>
 										<div class="relative flex items-center justify-between">
@@ -237,7 +237,7 @@ function SignUp() {
 										</div>
 									</div>
 									<div class="mt-6">
-										<label class="text-gray-800 text-xs block mb-2">
+										<label class="text-gray-800 text-xs  mb-2">
 											Avatar
 										</label>
 										<div class="relative flex items-center justify-between">
@@ -260,7 +260,7 @@ function SignUp() {
 											/>
 											<label
 												for="remember-me"
-												class="ml-3 block text-sm text-gray-800"
+												class="ml-3  text-sm text-gray-800"
 											>
 												I accept the{" "}
 												<a

@@ -113,7 +113,7 @@ function Navbar() {
 						/>
 					</Link>
 
-					<div className="flex text-amber-100 font-medium w-[40rem] justify-evenly p-2">
+					<div className=" text-amber-100 font-medium w-[40rem] justify-evenly p-2 hidden lg:flex">
 						<Link href="/">Home</Link>
 						<div>
 							<div className="dropdown dropdown-hover ">
@@ -126,21 +126,21 @@ function Navbar() {
 								</div>
 								<ul
 									id="dropdownMenu"
-									class="dropdown-content menu bg-one rounded-box z-[1] w-52 p-2 shadow text-black"
+									class="dropdown-content menu border bg-five rounded-box z-[1] w-52 p-2 shadow text-black"
 								>
 									<li
-										class="py-3 px-6 hover:bg-one text-black
+										class="py-3 px-6 hover:bg-three rounded-md text-black
 									text-sm cursor-pointer "
 									>
 										Furniture Store
 									</li>
-									<li class="py-3 px-6 hover:bg-gray-100 text-[#333] text-sm cursor-pointer ">
+									<li class="py-3 px-6 hover:bg-three rounded-md text-black text-sm cursor-pointer ">
 										Electronic Store
 									</li>
-									<li class="py-3 px-6 hover:bg-gray-100 text-[#333] text-sm cursor-pointer ">
+									<li class="py-3 px-6 hover:bg-three rounded-md text-black text-sm cursor-pointer ">
 										Fashion Store
 									</li>
-									<li class="py-3 px-6 hover:bg-gray-100 text-[#333] text-sm cursor-pointer ">
+									<li class="py-3 px-6 hover:bg-three rounded-md text-black text-sm cursor-pointer ">
 										Shoes Store
 									</li>
 								</ul>
@@ -170,7 +170,7 @@ function Navbar() {
 						type="text"
 						value={searchTerm}
 						onChange={handleChange}
-						className="rounded-full mr-5 text-black"
+						className="rounded-full mr-5 text-black hidden lg:flex"
 						placeholder="Search..."
 						style={{
 							width: "100%",
@@ -205,17 +205,17 @@ function Navbar() {
 						))}
 					</ul>
 				</div>
-				<div className="flex w-[25%]">
+				<div className="flex justify-end p-5 w-[25%]">
 					<div className="dropdown dropdown-end">
 						<div
 							tabIndex={0}
 							role="button"
-							className="btn btn-ghost btn-circle"
+							className={`btn m-5 hover:bg-five btn-circle justify-center bg-three ${
+								logIn ? "flex" : "hidden"
+							}`}
 						>
 							<div
-								className={`indicator ${
-									logIn ? "block" : "hidden"
-								}`}
+								className={`indicator`}
 							>
 								<Link to={"/cart"}>
 									<svg
@@ -238,32 +238,20 @@ function Navbar() {
 						</div>
 					</div>
 
-					<div className={`dropdown dropdown-end m-4`}>
-						{logIn || artisanslogin ? (
-							<Link to={"/aa"}>
-								<div className="m-9"></div>
-							</Link>
-						) : (
-							<Link to={"/aa"}>
+					<div className={`dropdown dropdown-end m-4 ${logIn || artisanslogin ? "hidden" : "flex"}`}>
+					<Link to={"/aa"}>
 								<button className="btn bg-four">
 									Login
 								</button>
 							</Link>
-						)}
 					</div>
 
-					<div className="dropdown dropdown-end m-4">
-						{logIn || artisanslogin ? (
-							<Link to={"/aa"}>
-								<div className="m-9"></div>
-							</Link>
-						) : (
-							<Link to={"/aaa"}>
+					<div className={`dropdown dropdown-end m-4 ${logIn || artisanslogin ? "hidden" : "flex"}`}>
+					<Link to={"/aaa"}>
 								<button className="btn bg-four">
 									SignUp
 								</button>
 							</Link>
-						)}
 					</div>
 					<div className="dropdown dropdown-end">
 						<div
@@ -287,13 +275,13 @@ function Navbar() {
 						</div>
 						<ul
 							tabIndex={0}
-							className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+							className="menu menu-sm dropdown-content bg-two rounded-box z-[1] mt-3 w-52 p-2 shadow"
 						>
 							<li>
 								<Link
 									className="justify-between"
 									to={"/userprofile"}
-									style={{ backgroundColor: "white" }}
+									style={{ backgroundColor: "five" }}
 								>
 									Profile
 									<span className="badge">New</span>
