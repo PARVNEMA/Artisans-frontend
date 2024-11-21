@@ -1,6 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import {
+  PieChart,
+  Pie,
+  Tooltip,
+  Cell,
+  BarChart,
+  Bar,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+} from "recharts";
 import { useArtisansAuth } from "../../../../useContext/ArtisansContext.jsx";
 import { Link } from "react-router-dom";
 
@@ -60,6 +70,38 @@ function Dashboard() {
     }
   }, [state.isLoggedIn, state.artisansData._id]);
 
+  //For pie chart
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  const data = [
+    { name: "Returns", students: 400 },
+    { name: "Sales", students: 700 },
+    { name: "Disputes", students: 200 },
+    { name: "Total", students: 1000 },
+  ];
+
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+
+  const onPieEnter = (_, index) => {
+    setActiveIndex(index);
+  };
+
+  // Bar graph
+  const data2 = [
+    { name: "Jan", sales: 400 },
+    { name: "Feb", sales: 700 },
+    { name: "Mar", sales: 200 },
+    { name: "Apr", sales: 1000 },
+    { name: "May", sales: 400 },
+    { name: "Jun", sales: 700 },
+    { name: "Jul", sales: 200 },
+    { name: "Aug", sales: 1000 },
+    { name: "Sep", sales: 400 },
+    { name: "Oct", sales: 700 },
+    { name: "Nov", sales: 200 },
+    { name: "Dec", sales: 1000 },
+  ];
+
   return (
     <div>
       <div className="flex items-center w-full">
@@ -85,14 +127,15 @@ function Dashboard() {
           <div className="grid grid-cols-4 mx-[8rem] my-20 gap-20">
             <div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-five hover:bg-three w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
               <h2 className="text-xl ">Total Products</h2>
-			  <p className="text-xl">
-				{/* {artisansmatrices.metrics.totalProducts} */}
-				0
-				</p>
+              <p className="text-xl">
+                {/* {artisansmatrices.metrics.totalProducts} */}0
+              </p>
             </div>
             <div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-five hover:bg-three w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
               <h2 className="text-xl ">Customer satisfaction</h2>
-              <p className="text-xl">{artisansmatrices.metrics.customerSatisfaction}</p>
+              <p className="text-xl">
+                {artisansmatrices.metrics.customerSatisfaction}
+              </p>
             </div>
             <div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-five hover:bg-three w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
               <h2 className="text-xl ">Dispute Rate</h2>
@@ -100,7 +143,9 @@ function Dashboard() {
             </div>
             <div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-five hover:bg-three w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
               <h2 className="text-xl ">Product Selling Rate</h2>
-              <p className="text-xl">{artisansmatrices.metrics.productSellingRate}</p>
+              <p className="text-xl">
+                {artisansmatrices.metrics.productSellingRate}
+              </p>
             </div>
             <div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-five hover:bg-three w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
               <h2 className="text-xl ">Refund Rate</h2>
@@ -113,6 +158,42 @@ function Dashboard() {
           </div>
         </div>
       )}
+
+      {/* Charts */}
+      <div className="flex mx-[10rem] justify-between">
+        {/* Bar Graph */}
+        <div className="pt-10">
+          <BarChart width={600} height={400} data={data2}>
+            <Bar dataKey="sales" fill="green" />
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="name" />
+            <YAxis />
+          </BarChart>
+        </div>
+
+        {/* Pie Chart*/}
+        <div>
+          <PieChart width={400} height={400}>
+            <Pie
+              activeIndex={activeIndex}
+              data={data}
+              dataKey="students"
+              outerRadius={200}
+              fill="green"
+              onMouseEnter={onPieEnter}
+              style={{ cursor: "pointer", outline: "none" }} // Ensure no outline on focus
+            >
+              {data.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+            <Tooltip />
+          </PieChart>
+        </div>
+      </div>
 
       {/* artisans products */}
       <div>

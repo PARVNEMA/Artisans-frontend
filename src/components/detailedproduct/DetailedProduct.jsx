@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IndianRupee, Star } from "lucide-react";
-
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -410,9 +410,11 @@ function DetailedProduct() {
 											</button>
 										</div>
 									) : (
-										<div>
+										<Link to={"/login"}>
+										<div className="text-xl font-semibold font-sans ml-8 mt-4">
 											<h2>Login to add Review</h2>
 										</div>
+										</Link>
 									)}
 								</div>
 							</div>

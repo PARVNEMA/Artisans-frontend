@@ -96,7 +96,7 @@ function ProductListing() {
 							className="w-52 inline-block"
 						/>
 					</a>
-					<h1 className="text-gray-800 text-3xl font-bold mt-6">
+					<h1 className="text-one text-3xl font-bold mt-6">
 						List your product on our website
 					</h1>
 				</div>
@@ -104,48 +104,48 @@ function ProductListing() {
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className="grid sm:grid-cols-2 gap-8">
 						<div>
-							<label className="text-gray-800 text-2xl mb-2 block">
+							<label className="text-one text-2xl mb-2 block">
 								Title
 							</label>
 							<input
 								name="title"
 								type="text"
-								className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all"
+								className="bg-five  text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
 								placeholder="Enter the product title"
 								{...register("title")}
 							/>
 						</div>
 						<div>
-							<label className="text-gray-800 text-2xl mb-2 block">
+							<label className="text-one text-2xl mb-2 block">
 								Price
 							</label>
 							<input
 								name="price"
 								type="number"
-								className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all"
+								className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
 								placeholder="Enter price"
 								{...register("price")}
 							/>
 						</div>
 						<div>
-							<label className="text-gray-800 text-2xl mb-2 block">
+							<label className="text-one text-2xl mb-2 block">
 								Stock Quantity
 							</label>
 							<input
 								name="stockQuantity"
 								type="number"
-								className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all"
+								className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
 								placeholder="Enter stock quantity"
 								{...register("stockQuantity")}
 							/>
 						</div>
 						<div>
-							<label className="text-gray-800 text-2xl mb-2 block">
+							<label className="text-one text-2xl mb-2 block">
 								Choose Category
 							</label>
 							<select
 								{...register("category")}
-								className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all"
+								className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
 							>
 								{category.map((cat) => (
 									<option value={cat.name} key={cat.name}>
@@ -155,19 +155,22 @@ function ProductListing() {
 							</select>
 						</div>
 						<div>
-							<label className="text-gray-800 text-2xl mb-2 block">
+							<label className="text-one text-2xl mb-2 block">
 								Description
 							</label>
 							<textarea
 								name="description"
 								type="text"
-								className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all"
+								className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
 								placeholder="Enter your product details"
 								{...register("description")}
 							/>
 						</div>
 						<div>
-							<div classNameName="image-upload-form">
+							<label className="text-one text-2xl mb-2 block">
+								Upload Images
+							</label>
+							<div classNameName="image-upload-form bg-five">
 								<input
 									type="file"
 									multiple
@@ -181,7 +184,7 @@ function ProductListing() {
 					<div className="!mt-12 flex justify-center">
 						<button
 							type="submit"
-							className="py-3.5 px-7 text-sm font-semibold tracking-wider rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
+							className="py-3.5 px-7 text-sm font-semibold tracking-wider rounded-md text-white bg-three hover:bg-five focus:outline-none"
 						>
 							Publish product
 						</button>
