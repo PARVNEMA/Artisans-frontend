@@ -282,7 +282,7 @@ function Navbar() {
 							</button>
 						</Link>
 					</div>
-					<div className="dropdown dropdown-end">
+					<div className={`dropdown dropdown-end ${logIn || artisanslogin ? "flex" : "hidden"}`}>
 						<div
 							tabIndex={0}
 							role="button"
@@ -324,11 +324,11 @@ function Navbar() {
 							</li>
 							{artisanslogin ? (
 								<li>
-									<a onClick={artisanslogout}>Logout</a>
+									<Link to={'/'} onClick={artisanslogout}>Logout</Link>
 								</li>
 							) : (
 								<li>
-									<a onClick={logout}>Logout</a>
+									<Link to={'/'} onClick={logout}>Logout</Link>
 								</li>
 							)}
 						</ul>

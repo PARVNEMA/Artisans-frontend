@@ -27,6 +27,7 @@ function ProductListing() {
 	// Submit handler
 	const onSubmit = async (data) => {
 		const formData = new FormData();
+		const navigate = useNavigate();
 
 		// Append form fields to FormData, ensuring both key and value are specified
 		Object.keys(data).forEach((key) => {
@@ -65,6 +66,7 @@ function ProductListing() {
 				"res from uploading product from artisanss",
 				res.data
 			);
+			navigate("/artisans/dashboard");
 		} catch (error) {
 			console.error("error in register form", error);
 		}

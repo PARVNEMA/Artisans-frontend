@@ -89,7 +89,7 @@ function ArtisansPage() {
 									>
 										<path
 											d="M0 512h512V0H0Z"
-											data-original="#000000"
+											data-original="#ffffff"
 										/>
 									</clipPath>
 								</defs>
