@@ -5,8 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../useContext/loginContext";
 import { useCookies } from "react-cookie";
 function Login() {
-	const { dispatch } = useAuth();
-
 	const {
 		register,
 		handleSubmit,
@@ -28,7 +26,7 @@ function Login() {
 					},
 				}
 			);
-			dispatch({ type: "LOGIN", payload: res.data });
+
 			console.log("res from login backend", res.data);
 			localStorage.setItem(
 				"accessToken",

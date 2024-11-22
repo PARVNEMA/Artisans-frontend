@@ -13,7 +13,7 @@ function ArtisansLogin() {
 	} = useForm();
 	const backendurl = import.meta.env.VITE_URL;
 	const navigate = useNavigate();
-	const { dispatch, state } = useArtisansAuth();
+
 	const onSubmit = async (data) => {
 		console.log(data);
 		try {
@@ -53,15 +53,6 @@ function ArtisansLogin() {
 				}
 			);
 			console.log("current artisans", res.data);
-
-			if (res.data) {
-				localStorage.setItem("isLoggedIn", "true");
-				localStorage.setItem(
-					"userData",
-					JSON.stringify(res.data.data)
-				);
-				dispatch({ type: "LOGIN", payload: res.data.data });
-			}
 		} catch (error) {
 			console.error("Error fetching current user", error);
 		}

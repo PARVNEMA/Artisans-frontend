@@ -20,7 +20,6 @@ import { Link } from "react-router-dom";
 
 function Dashboard() {
 	{
-		const { dispatch, state } = useArtisansAuth();
 		const backendurl = import.meta.env.VITE_URL;
 		const [artisansproducts, setArtisansProducts] =
 			useState([]);
@@ -92,7 +91,6 @@ function Dashboard() {
 			getCurrentArtisans();
 		}, [getCurrentArtisans]);
 		useEffect(() => {
-			console.log("State on mount or update:", state);
 			if (artisans) {
 				console.log(
 					"User is logged in, fetching products..."
