@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../../useContext/loginContext";
@@ -8,33 +8,62 @@ import { useArtisansAuth } from "../../../useContext/ArtisansContext";
 function Navbar() {
 	const backendurl = import.meta.env.VITE_URL;
 
-	const { dispatch, state } = useAuth();
-	const { dispatch: dispatche, state: statee } =
-		useArtisansAuth();
+	const [artisans, setArtisans] = useState(null);
+	const [user, setuser] = useState(null);
 
 	const [logIn, setLogIn] = useState(false);
 	const [artisanslogin, setartisanslogin] = useState(false);
 
-	useEffect(
-		() => {
-			console.log("state in navbar:", state);
+	const getCurrentArtisans = useCallback(async () => {
+		try {
+			const res = await axios.get(
+				`${backendurl}/artisans/current-user`,
+				{
+					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"artisansaccessToken"
+						)}`,
+					},
+				}
+			);
+			console.log("res in getcurrent artisans", res.data);
+			setArtisans(res.data.data);
+			setartisanslogin(true);
+		} catch (error) {
+			console.log("Error", error);
+		}
+	}, []);
+	const getCurrentUser = useCallback(async () => {
+		try {
+			const res = await axios.get(
+				`${backendurl}/customers/current-user`,
+				{
+					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"artisansaccessToken"
+						)}`,
+					},
+				}
+			);
+			console.log("res in getcurrent artisans", res.data);
+			setuser(res.data.data);
+			console.log("user=", user);
 
-			if (
-				state.isLoggedIn ||
-				localStorage.getItem("accessToken")
-			) {
-				setLogIn(true);
-			}
-			if (
-				localStorage.getItem("isLoggedIn") ||
-				localStorage.getItem("artisansaccessToken")
-			) {
-				setartisanslogin(true);
-			}
-		},
-		[state.isLoggedIn],
-		[statee.isLoggedIn]
-	);
+			setLogIn(true);
+		} catch (error) {
+			console.log("Error", error);
+		}
+	}, []);
+	useEffect(() => {
+		if (localStorage.getItem("artisansaccessToken")) {
+			getCurrentArtisans();
+		}
+		if (localStorage.getItem("accessToken")) {
+			getCurrentUser();
+		}
+	}, [getCurrentArtisans]);
 
 	const logout = async () => {
 		const res = await axios.post(
@@ -50,7 +79,6 @@ function Navbar() {
 			}
 		);
 		if (res) {
-			dispatch({ type: "LOGOUT" });
 			setLogIn(false);
 		}
 
@@ -72,7 +100,6 @@ function Navbar() {
 			}
 		);
 
-		dispatche({ type: "LOGOUT" });
 		setartisanslogin(false);
 
 		localStorage.removeItem("artisansaccessToken");
@@ -147,12 +174,10 @@ function Navbar() {
 							</div>
 						</div>
 						<Link to="/artisans/page">Artisans</Link>
-						{artisanslogin ? (
+						{artisans && (
 							<Link to="/artisans/dashboard">
 								Dashboard
 							</Link>
-						) : (
-							<></>
 						)}
 						<Link to="/products">Products</Link>
 						<Link to="/aboutus">About Us</Link>
@@ -214,9 +239,7 @@ function Navbar() {
 								logIn ? "flex" : "hidden"
 							}`}
 						>
-							<div
-								className={`indicator`}
-							>
+							<div className={`indicator`}>
 								<Link to={"/cart"}>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -238,20 +261,26 @@ function Navbar() {
 						</div>
 					</div>
 
-					<div className={`dropdown dropdown-end m-4 ${logIn || artisanslogin ? "hidden" : "flex"}`}>
-					<Link to={"/aa"}>
-								<button className="btn bg-four">
-									Login
-								</button>
-							</Link>
+					<div
+						className={`dropdown dropdown-end m-4 ${
+							logIn || artisanslogin ? "hidden" : "flex"
+						}`}
+					>
+						<Link to={"/aa"}>
+							<button className="btn bg-four">Login</button>
+						</Link>
 					</div>
 
-					<div className={`dropdown dropdown-end m-4 ${logIn || artisanslogin ? "hidden" : "flex"}`}>
-					<Link to={"/aaa"}>
-								<button className="btn bg-four">
-									SignUp
-								</button>
-							</Link>
+					<div
+						className={`dropdown dropdown-end m-4 ${
+							logIn || artisanslogin ? "hidden" : "flex"
+						}`}
+					>
+						<Link to={"/aaa"}>
+							<button className="btn bg-four">
+								SignUp
+							</button>
+						</Link>
 					</div>
 					<div className="dropdown dropdown-end">
 						<div
@@ -261,15 +290,21 @@ function Navbar() {
 							style={{ color: "black" }}
 						>
 							<div className="w-10 rounded-full">
-								{logIn || artisanslogin ? (
+								{logIn && (
 									<img
-										src={`${state.userData.avatar}`}
+										src={user?.avatar}
 										alt="user"
 										height={10}
 										width={10}
 									/>
-								) : (
-									<h1>Not logged in</h1>
+								)}
+								{artisanslogin && (
+									<img
+										src={artisans?.avatar}
+										alt="user"
+										height={10}
+										width={10}
+									/>
 								)}
 							</div>
 						</div>
