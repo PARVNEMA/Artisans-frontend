@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 function ProductListing() {
 	// State to manage images
 	const [selectedFiles, setSelectedFiles] = useState([]);
 	const [category, setcategory] = useState([]);
+	const navigate = useNavigate();
 	const onFileChange = (e) => {
 		setSelectedFiles(e.target.files);
 	}; // Single preview for each image
@@ -27,7 +29,6 @@ function ProductListing() {
 	// Submit handler
 	const onSubmit = async (data) => {
 		const formData = new FormData();
-		const navigate = useNavigate();
 
 		// Append form fields to FormData, ensuring both key and value are specified
 		Object.keys(data).forEach((key) => {
