@@ -5,10 +5,10 @@ import ProductList from "../ProductList/ProductList";
 import { Link } from "react-router-dom";
 
 const images = [
-	"https://s7d1.scene7.com/is/image/wbcollab/shutterstock_551163163:1140x500?qlt=90&fmt=webp&resMode=sharp2",
-	"https://i0.wp.com/iheartindian.wordpress.com/wp-content/uploads/2023/11/image-14.png?resize=930%2C450&ssl=1",
-	"https://i.pinimg.com/736x/c7/12/83/c71283ec60693402cb64be8e7ec299df.jpg",
-	"https://cdn.prod.website-files.com/60829aab76a98d17b68f30ae/6253deb8bd4d41e9b5186b41_5sDhfqD8ZY69cxoqhn0MamQOij8bpqIEFwRiw3K133e2PmXEEvbkgl2BxLRAC-LiP111g1WORz4_laADlgv0nzujFdNSfzQOcZir-SvuvJm39-3McNhZc7C6Mt3dq_8zP4UATRIg.jpeg",
+	"public/images/2.jpg",
+	"public/images/1.jpg",
+	"public/images/Untitled design (3).png",
+	"public/images/4.jpg.jpg",
 ];
 
 const Carousel = () => {
@@ -19,7 +19,7 @@ const Carousel = () => {
 			setCurrentIndex(
 				(prevIndex) => (prevIndex + 1) % images.length
 			);
-		}, 3000); // Change slide every 3 seconds
+		}, 10000); // Change slide every 3 seconds
 
 		return () => clearInterval(interval); // Clean up the interval on component unmount
 	}, []);
@@ -36,7 +36,7 @@ const Carousel = () => {
 			(prevIndex) => (prevIndex + 1) % images.length
 		);
 	};
-
+/*
 	const array = [
 		{
 			Title:
@@ -62,9 +62,9 @@ const Carousel = () => {
 			
 		},
 	];
-
+*/
 	return (
-		<div className="Carousel w-full h-[80vh] bg-three">
+		<div className="Carousel w-full h-full bg-three">
 			{images.map((image, index) => (
 				<div
 					key={index}
@@ -80,6 +80,7 @@ const Carousel = () => {
 							alt={`Slide ${index + 1}`}
 						/>
 					</div>
+					{/** 
 					<div className="flex flex-col justify-center item-center p-[5rem] gap-10 text-white">
 						<div className="text-5xl text-one text-center text-white">
 						<Link to={array[index].Title}>{array[index].Title}</Link>
@@ -88,7 +89,7 @@ const Carousel = () => {
 						<button type="button" class="bg-amber-100 px-4 py-2 rounded">{array[index].text}</button>	
 						</div>
 					</div>
-
+					*/}
 					<div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
 						<button
 							onClick={handlePrev}
