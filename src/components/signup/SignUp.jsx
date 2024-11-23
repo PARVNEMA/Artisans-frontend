@@ -214,6 +214,7 @@ function SignUp() {
 										<div class="relative flex items-center justify-between">
 											<input
 												type="number"
+												required
 												className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 												name="phoneNo"
 												placeholder="Enter phone number"
@@ -229,6 +230,7 @@ function SignUp() {
 										<div class="relative flex items-center justify-between">
 											<input
 												type="date"
+												required
 												className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 												name="DOB"
 												{...register("DOB")}
@@ -254,6 +256,7 @@ function SignUp() {
 										<div class="flex items-center mt-6">
 											<input
 												id="remember-me"
+												required
 												name="remember-me"
 												type="checkbox"
 												class="h-4 w-4 shrink-0 rounded"

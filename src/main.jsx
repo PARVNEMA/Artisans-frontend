@@ -31,6 +31,7 @@ import Aa from "./components/Aa/Aa.jsx";
 import Aaa from "./components/Aaa/Aaa.jsx";
 import DetailedProduct from "./components/detailedproduct/DetailedProduct.jsx";
 import CategoryProducts from "./components/category/CategoryProducts.jsx";
+import AddressForm from "./components/AddressForm/AddressForm.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
 			{
 				path: "/products",
 				element: <ProductList />,
+			},
+			{
+				path: "/address",
+				element: <AddressForm />,
 			},
 			{
 				path: "/cart",

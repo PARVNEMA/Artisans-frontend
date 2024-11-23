@@ -217,6 +217,7 @@ function ArtisansSignup() {
 												type="number"
 												className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 												name="phoneNo"
+												required
 												placeholder="Enter phone number"
 												{...register("phoneNo")}
 											/>
@@ -232,6 +233,7 @@ function ArtisansSignup() {
 												type="date"
 												className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 												name="DOB"
+												required
 												{...register("DOB")}
 											/>
 											<CalendarRangeIcon />
@@ -245,6 +247,7 @@ function ArtisansSignup() {
 											<input
 												className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 												name="about"
+												required
 												placeholder="Enter about yourself"
 												{...register("about")}
 											/>
@@ -260,6 +263,7 @@ function ArtisansSignup() {
 												type="number"
 												className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 												name="experience"
+												required
 												placeholder="Enter your experience"
 												{...register("experience")}
 											/>
@@ -274,6 +278,7 @@ function ArtisansSignup() {
 											<input
 												className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 												name="GSTIN"
+												required
 												placeholder="Enter your GSTIN"
 												{...register("GSTIN")}
 											/>
@@ -300,6 +305,7 @@ function ArtisansSignup() {
 											<input
 												id="remember-me"
 												name="remember-me"
+												required
 												type="checkbox"
 												class="h-4 w-4 shrink-0 rounded"
 											/>

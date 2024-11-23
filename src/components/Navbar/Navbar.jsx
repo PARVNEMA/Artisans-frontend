@@ -201,7 +201,7 @@ function Navbar() {
 						margin: "20px",
 					}}
 				>
-					<Searchform onSearch={handleSearch} />
+					<div className="p-2 m-2 rounded-lg bg-white"><Searchform onSearch={handleSearch}  /></div>
 					<svg
 						// onClick={handleSearch} // Trigger search on click
 						xmlns="http://www.w3.org/2000/svg"
