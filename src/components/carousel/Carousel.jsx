@@ -64,19 +64,19 @@ const Carousel = () => {
 	];
 */
 	return (
-		<div className="Carousel w-full h-full bg-three">
+		<div className="Carousel w-full h-full relative  ">
 			{images.map((image, index) => (
 				<div
 					key={index}
 					id={`slide ${index + 1}`}
-					className={`flex Carousel-item relative w-full h-full ${
+					className={`flex Carousel-item w-full h-full ${
 						index === currentIndex ? "block" : "hidden"
 					}`}
 				>
 					<div>
 						<img
 							src={image}
-							className="w-full h-full"
+							className="w-full h-full object-cover "
 							alt={`Slide ${index + 1}`}
 						/>
 					</div>

@@ -129,8 +129,8 @@ function Navbar() {
 	};
 	useEffect(() => {});
 	return (
-		<div className="w-full h-[5rem] flex justify-center bg-transparent !important ">
-			<div className="navbar flex justify-between p-2 bg-transparent !important">
+		<div className="w-full h-[5rem] flex justify-center   ">
+			<div className="navbar flex justify-between p-2 ">
 				<div className="flex-1">
 					<Link to={"/"}>
 						<img
@@ -140,7 +140,7 @@ function Navbar() {
 						/>
 					</Link>
 
-					<div className=" text-amber-100 font-medium w-[40rem] justify-evenly p-2 hidden lg:flex bg-transparent !important">
+					<div className=" text-amber-100 font-medium w-[40rem] justify-evenly p-2 hidden lg:flex ">
 						<Link href="/">Home</Link>
 						<div>
 							<div className="dropdown dropdown-hover ">
