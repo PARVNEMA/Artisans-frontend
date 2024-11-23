@@ -5,6 +5,8 @@ import { useAuth } from "../../../useContext/loginContext";
 import { useEffect } from "react";
 import axios from "axios";
 import { useArtisansAuth } from "../../../useContext/ArtisansContext";
+import { Searchform } from "../search/Searchform";
+
 function Navbar() {
 	const backendurl = import.meta.env.VITE_URL;
 
@@ -13,6 +15,11 @@ function Navbar() {
 
 	const [logIn, setLogIn] = useState(false);
 	const [artisanslogin, setartisanslogin] = useState(false);
+	let location = useLocation();
+	console.log(location.pathname);
+	const [searchTerm, setsearchTerm] = useState([]);
+	const [results, setresult] = useState([]);
+	const [isWishlisted, setIsWishlisted] = useState(false);
 
 	const getCurrentArtisans = useCallback(async () => {
 		try {
@@ -107,27 +114,30 @@ function Navbar() {
 		console.log("logout artisans", res);
 	};
 
-	let location = useLocation();
-	console.log(location.pathname);
-	const [searchTerm, setsearchTerm] = useState([]);
-	const [results, setresult] = useState([]);
-	const [isWishlisted, setIsWishlisted] = useState(false);
-
 	// Toggle wishlist state
 	const toggleWishlist = () => {
 		setIsWishlisted(!isWishlisted);
 	};
 
-	const handleChange = (e) => {
-		setsearchTerm(e.target.value);
+	const handleSearch = async (searchTerm) => {
+		// Implement your search logic here, such as making API calls
+		console.log("Search term:", searchTerm);
+		try {
+			const res = await axios.get(
+				`${backendurl}/products/search/${searchTerm}`
+			);
+			console.log("res of search", res.data);
+		} catch (error) {
+			console.log("error in search", error);
+		}
 	};
-	const handleSearch = () => {
-		const filterResult = data.filter((item) =>
-			item.toLowerCase().includes(searchTerm.toLowerCase())
-		);
-		setresult(filterResult);
-	};
-	useEffect(() => {});
+	// const handleSearch = () => {
+	// 	const filterResult = data.filter((item) =>
+	// 		item.toLowerCase().includes(searchTerm.toLowerCase())
+	// 	);
+	// 	setresult(filterResult);
+	// };
+	// useEffect(() => {});
 	return (
 		<div className="w-full h-[5rem] flex justify-center ">
 			<div className="navbar flex justify-between p-2">
@@ -191,20 +201,9 @@ function Navbar() {
 						margin: "20px",
 					}}
 				>
-					<input
-						type="text"
-						value={searchTerm}
-						onChange={handleChange}
-						className="rounded-full mr-5 text-black hidden lg:flex"
-						placeholder="Search..."
-						style={{
-							width: "100%",
-							padding: "12px",
-							marginBottom: "3px",
-						}}
-					/>
+					<Searchform onSearch={handleSearch} />
 					<svg
-						onClick={handleSearch} // Trigger search on click
+						// onClick={handleSearch} // Trigger search on click
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 25 25"
 						width="40px"
@@ -282,7 +281,11 @@ function Navbar() {
 							</button>
 						</Link>
 					</div>
-					<div className={`dropdown dropdown-end ${logIn || artisanslogin ? "flex" : "hidden"}`}>
+					<div
+						className={`dropdown dropdown-end ${
+							logIn || artisanslogin ? "flex" : "hidden"
+						}`}
+					>
 						<div
 							tabIndex={0}
 							role="button"
@@ -324,11 +327,15 @@ function Navbar() {
 							</li>
 							{artisanslogin ? (
 								<li>
-									<Link to={'/'} onClick={artisanslogout}>Logout</Link>
+									<Link to={"/"} onClick={artisanslogout}>
+										Logout
+									</Link>
 								</li>
 							) : (
 								<li>
-									<Link to={'/'} onClick={logout}>Logout</Link>
+									<Link to={"/"} onClick={logout}>
+										Logout
+									</Link>
 								</li>
 							)}
 						</ul>
