@@ -139,7 +139,7 @@ function Navbar() {
 	// };
 	// useEffect(() => {});
 	return (
-		<div className="w-full h-[5rem] flex justify-center   ">
+		<div className="w-full h-[5rem] flex justify-center" style={{backgroundColor:"#6d5636"}}>
 			<div className="navbar flex justify-between p-2 ">
 				<div className="flex-1">
 					<Link to={"/"}>
