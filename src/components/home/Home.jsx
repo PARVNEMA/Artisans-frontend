@@ -42,7 +42,7 @@ function Home() {
 			<Category />
 
 			{/* Seasonal Products */}
-			<div id="seasonal" className="bg-[url('https://img.freepik.com/free-vector/yellow-stylish-luxury-background_1055-7309.jpg?t=st=1731436061~exp=1731439661~hmac=eda972ca3c1091d3bb24cee125d7b7f516e15284a910836fe8345502cf89d2e1&w=740')]">
+			{/* <div id="seasonal" className="bg-[url('https://img.freepik.com/free-vector/yellow-stylish-luxury-background_1055-7309.jpg?t=st=1731436061~exp=1731439661~hmac=eda972ca3c1091d3bb24cee125d7b7f516e15284a910836fe8345502cf89d2e1&w=740')]">
 				<div class="my-[1.3rem] font-[comic sans] py-4 mx-auto lg:max-w-7xl sm:max-w-full">
 					<h2 class="text-4xl text-center font-extrabold text-gray-950 mb-12">
 						Seasonal Products
@@ -667,7 +667,7 @@ function Home() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 
 			{/* Feature section  */}
 			<div class="mb-[3rem] max-w-6xl mx-auto font-[comic sans]">

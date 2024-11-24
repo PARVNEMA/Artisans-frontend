@@ -21,7 +21,7 @@ function CategoryProducts() {
 			}
 		);
 		console.log("res in category product  list", res.data);
-		setproducts(res.data.data.products);
+		setproducts(res.data.data.convertedProducts);
 	};
 	useEffect(() => {
 		getAllCategoryproducts();
@@ -72,7 +72,12 @@ function CategoryProducts() {
 
 									<div class="flex space-x-2 mt-4">
 										<svg
-											class="w-4 fill-[#facc15]"
+											className={`w-4  ${
+												Math.floor(product.averageRating) >=
+												1
+													? "fill-[#facc15]"
+													: "fill-[#e5e7eb]"
+											}`}
 											viewBox="0 0 14 13"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +85,12 @@ function CategoryProducts() {
 											<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
 										</svg>
 										<svg
-											class="w-4 fill-[#facc15]"
+											className={`w-4  ${
+												Math.floor(product.averageRating) >=
+												2
+													? "fill-[#facc15]"
+													: "fill-[#e5e7eb]"
+											}`}
 											viewBox="0 0 14 13"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +98,12 @@ function CategoryProducts() {
 											<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
 										</svg>
 										<svg
-											class="w-4 fill-[#facc15]"
+											className={`w-4  ${
+												Math.floor(product.averageRating) >=
+												3
+													? "fill-[#facc15]"
+													: "fill-[#e5e7eb]"
+											}`}
 											viewBox="0 0 14 13"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +111,12 @@ function CategoryProducts() {
 											<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
 										</svg>
 										<svg
-											class="w-4 fill-[#CED5D8]"
+											className={`w-4  ${
+												Math.floor(product.averageRating) >=
+												4
+													? "fill-[#facc15]"
+													: "fill-[#e5e7eb]"
+											}`}
 											viewBox="0 0 14 13"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +124,12 @@ function CategoryProducts() {
 											<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
 										</svg>
 										<svg
-											class="w-4 fill-[#CED5D8]"
+											className={`w-4  ${
+												Math.floor(product.averageRating) >=
+												5
+													? "fill-[#facc15]"
+													: "fill-[#e5e7eb]"
+											}`}
 											viewBox="0 0 14 13"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"

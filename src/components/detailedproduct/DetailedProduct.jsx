@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 function DetailedProduct() {
 	let { id } = useParams();
 	const [product, setproduct] = useState({});
-	const [reviews, setreviews] = useState({});
+	const [reviews, setreviews] = useState([]);
 	const backendurl = import.meta.env.VITE_URL;
 	const [rating, setrating] = useState(0);
 	const [userReview, setuserReview] = useState("");
@@ -80,7 +80,7 @@ function DetailedProduct() {
 											<img
 												src={product.images[0]}
 												alt="Product"
-												className="w-3/4 rounded-lg object-cover"
+												className="w-3/4 rounded-lg object-cover "
 											/>{" "}
 											<div className="w-20 flex flex-col max-sm:mb-4 gap-3">
 												{" "}
@@ -356,53 +356,82 @@ function DetailedProduct() {
 												<button
 													onClick={() => setrating(1)}
 												>
-													<Star
-														className={`${
+													<svg
+														className={`w-8 h-8  ${
 															rating >= 1
-																? "bg-two"
-																: "text-gray-400"
-														} h-6 w-6`}
-													/>
+																? "fill-[#facc15]"
+																: "fill-[#e5e7eb]"
+														} `}
+														viewBox="0 0 14 13"
+														fill="none"
+														xmlns="http://www.w3.org/2000/svg"
+													>
+														<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+													</svg>
 												</button>
 												<button
 													onClick={() => setrating(2)}
-													className={`${
-														rating >= 2
-															? "bg-two"
-															: "text-gray-400"
-													}`}
 												>
-													<Star />
+													<svg
+														className={`w-8 h-8 ${
+															rating >= 2
+																? "fill-[#facc15]"
+																: "fill-[#e5e7eb]"
+														}`}
+														viewBox="0 0 14 13"
+														fill="none"
+														xmlns="http://www.w3.org/2000/svg"
+													>
+														<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+													</svg>
 												</button>
 												<button
 													onClick={() => setrating(3)}
-													className={`${
-														rating >= 3
-															? "bg-two"
-															: "text-gray-400"
-													}`}
 												>
-													<Star />
+													<svg
+														className={`w-8 h-8  ${
+															rating >= 3
+																? "fill-[#facc15]"
+																: "fill-[#e5e7eb]"
+														}`}
+														viewBox="0 0 14 13"
+														fill="none"
+														xmlns="http://www.w3.org/2000/svg"
+													>
+														<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+													</svg>
 												</button>
 												<button
 													onClick={() => setrating(4)}
-													className={`${
-														rating >= 4
-															? "bg-two"
-															: "text-gray-400"
-													}`}
 												>
-													<Star className="" />
+													<svg
+														className={`w-8 h-8  ${
+															rating >= 4
+																? "fill-[#facc15]"
+																: "fill-[#e5e7eb]"
+														}`}
+														viewBox="0 0 14 13"
+														fill="none"
+														xmlns="http://www.w3.org/2000/svg"
+													>
+														<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+													</svg>
 												</button>
 												<button
 													onClick={() => setrating(5)}
-													className={`${
-														rating >= 4
-															? "bg-two"
-															: "text-gray-400"
-													}`}
 												>
-													<Star />
+													<svg
+														className={`w-8 h-8  ${
+															rating >= 5
+																? "fill-[#facc15]"
+																: "fill-[#e5e7eb]"
+														}`}
+														viewBox="0 0 14 13"
+														fill="none"
+														xmlns="http://www.w3.org/2000/svg"
+													>
+														<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+													</svg>
 												</button>
 											</div>
 											<button onClick={postReview}>
@@ -411,11 +440,100 @@ function DetailedProduct() {
 										</div>
 									) : (
 										<Link to={"/login"}>
-										<div className="text-xl font-semibold font-sans ml-8 mt-4">
-											<h2>Login to add Review</h2>
-										</div>
+											<div className="text-xl font-semibold font-sans ml-8 mt-4">
+												<h2>Login to add Review</h2>
+											</div>
 										</Link>
 									)}
+								</div>
+
+								{/* all reviews  */}
+								<div>
+									{reviews &&
+										reviews.map((review) => (
+											<div class="flex items-start">
+												<img
+													src="https://readymadeui.com/team-2.webp"
+													class="w-12 h-12 rounded-full border-2 border-white"
+												/>
+												<div class="ml-3">
+													<h4 class="text-sm font-bold text-gray-800">
+														{
+															review.reviewerDetails
+																.fullName
+														}
+													</h4>
+													<div class="flex space-x-1 mt-1">
+														<svg
+															className={`w-4  ${
+																review.rating >= 1
+																	? "fill-[#facc15]"
+																	: "fill-[#e5e7eb]"
+															}`}
+															viewBox="0 0 14 13"
+															fill="none"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+														</svg>
+														<svg
+															className={`w-4 h-4 ${
+																review.rating >= 2
+																	? "fill-[#facc15]"
+																	: "fill-[#e5e7eb]"
+															}`}
+															viewBox="0 0 14 13"
+															fill="none"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+														</svg>
+														<svg
+															className={`w-4 h-4 ${
+																review.rating >= 3
+																	? "fill-[#facc15]"
+																	: "fill-[#e5e7eb]"
+															}`}
+															viewBox="0 0 14 13"
+															fill="none"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+														</svg>
+														<svg
+															className={`w-4 h-4 ${
+																review.rating >= 4
+																	? "fill-[#facc15]"
+																	: "fill-[#e5e7eb]"
+															}`}
+															viewBox="0 0 14 13"
+															fill="none"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+														</svg>
+														<svg
+															className={`w-4 h-4 ${
+																review.rating >= 5
+																	? "fill-[#facc15]"
+																	: "fill-[#e5e7eb]"
+															}`}
+															viewBox="0 0 14 13"
+															fill="none"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+														</svg>
+														<p class="text-xs !ml-2 font-semibold text-gray-800">
+															{review.createdAt}
+														</p>
+													</div>
+													<p class="text-md mt-4 text-gray-800">
+														{review.reviewText}
+													</p>
+												</div>
+											</div>
+										))}
 								</div>
 							</div>
 						</div>

@@ -20,6 +20,7 @@ function Navbar() {
 	const [searchTerm, setsearchTerm] = useState([]);
 	const [results, setresult] = useState([]);
 	const [isWishlisted, setIsWishlisted] = useState(false);
+	const [category, setcategory] = useState([]);
 
 	const getCurrentArtisans = useCallback(async () => {
 		try {
@@ -63,6 +64,19 @@ function Navbar() {
 			console.log("Error", error);
 		}
 	}, []);
+	const getAllCategories = async () => {
+		const res = await axios.get(`${backendurl}/category`, {
+			withCredentials: true, // Ensure cookies are included in the request
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem(
+					"accessToken"
+				)}`,
+			},
+		});
+		console.log("categories =", res.data);
+		setcategory(res.data.data);
+	};
+
 	useEffect(() => {
 		if (localStorage.getItem("artisansaccessToken")) {
 			getCurrentArtisans();
@@ -70,6 +84,7 @@ function Navbar() {
 		if (localStorage.getItem("accessToken")) {
 			getCurrentUser();
 		}
+		getAllCategories();
 	}, [getCurrentArtisans]);
 
 	const logout = async () => {
@@ -139,7 +154,10 @@ function Navbar() {
 	// };
 	// useEffect(() => {});
 	return (
-		<div className="w-full h-[5rem] flex justify-center" style={{backgroundColor:"#6d5636"}}>
+		<div
+			className="w-full h-[5rem] flex justify-center"
+			style={{ backgroundColor: "#6d5636" }}
+		>
 			<div className="navbar flex justify-between p-2 ">
 				<div className="flex-1">
 					<Link to={"/"}>
@@ -159,27 +177,28 @@ function Navbar() {
 									role="button"
 									className="btn-ghost "
 								>
-									Craft
+									Categories
 								</div>
 								<ul
 									id="dropdownMenu"
 									class="dropdown-content menu border bg-five rounded-box z-[1] w-52 p-2 shadow text-black"
 								>
-									<li
-										class="py-3 px-6 hover:bg-three rounded-md text-black
+									{category.map((cat) => (
+										<li
+											class="py-3 px-6 hover:bg-three rounded-md text-black
 									text-sm cursor-pointer "
-									>
-										Furniture Store
-									</li>
-									<li class="py-3 px-6 hover:bg-three rounded-md text-black text-sm cursor-pointer ">
-										Electronic Store
-									</li>
-									<li class="py-3 px-6 hover:bg-three rounded-md text-black text-sm cursor-pointer ">
-										Fashion Store
-									</li>
-									<li class="py-3 px-6 hover:bg-three rounded-md text-black text-sm cursor-pointer ">
-										Shoes Store
-									</li>
+										>
+											<Link to={`/category/${cat._id}`}>
+												<img
+													src={cat.categoryImage}
+													alt=""
+													height={50}
+													width={50}
+												/>
+												{cat.name}
+											</Link>
+										</li>
+									))}
 								</ul>
 							</div>
 						</div>
@@ -201,7 +220,9 @@ function Navbar() {
 						margin: "20px",
 					}}
 				>
-					<div className="p-2 m-2 rounded-lg bg-white"><Searchform onSearch={handleSearch}  /></div>
+					<div className="p-2 m-2 rounded-lg bg-white">
+						<Searchform onSearch={handleSearch} />
+					</div>
 					<svg
 						// onClick={handleSearch} // Trigger search on click
 						xmlns="http://www.w3.org/2000/svg"
