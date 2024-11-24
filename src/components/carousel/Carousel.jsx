@@ -114,10 +114,12 @@ const Carousel = () => {
 export default Carousel;*/
 
 import React, { useEffect, useState } from "react";
-//import DetailedProduct from "../detailedproduct/DetailedProduct";
-//import FeaturedProducts from "../featuredProducts/FeaturedProducts";
-//import ProductList from "../ProductList/ProductList";
-//import { Link } from "react-router-dom";
+
+import DetailedProduct from "../detailedproduct/DetailedProduct";
+import FeaturedProducts from "../featuredProducts/FeaturedProducts";
+import ProductList from "../ProductList/ProductList";
+//import Artisans from "../Artisans/Dashboard/Dashboard";
+import { Link } from "react-router-dom";
 
 const images = [
 	"public/images/Untitled design (5).png",
@@ -129,22 +131,19 @@ const images = [
 const array = [
 	{
 		Title: "Explore all the Authenticated product made by local Artists",
-		text: "From local to Global",
-		
-	},
-	{
-		Title: "Keep up with various trends according to the seasons here",
-		text: "Special seasonal offer",
-		
+	    Link: FeaturedProducts
 	},
 	{
 		Title: "Buy all the special festival products from here",
-		text: "Special festive products",
-		
+		Link:ProductList	
 	},
 	{
 		Title: "Order products that meet your needs",
-		text: "Custom-made products",
+     
+	},
+	{
+		Title: "Keep up with various trends according to the seasons here",
+	Link:DetailedProduct
 	},
 ];
 
@@ -168,33 +167,19 @@ const Carousel = () => {
 	};
 
 	return (
-		<div className="Carousel relative w-full h-screen bg-brown-500 overflow-hidden isolate z-0"   style={{ backgroundColor: "#bec9ae" }}>
-			{images.map((image, index) => (
-				<div
-					key={index}
-					className={`absolute inset-0 flex flex-col justify-center items-center transition-opacity duration-500 ${
-						index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
-					}`}
-				>
-					<div className="relative w-[70%] h-[70%]  rounded-lg shadow-md overflow-hidden">
-					<img
-						src={image}
-						alt={`Slide ${index + 1}`}
-						className="w-full h-100 object-cover"
-					/>
-					<div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center">
-						<h1 className="text-5xl font-bold text-white text-center mb-4">
-							{array[index]?.Title}
-						</h1>
-						<p className="text-2xl text-white text-center mb-6">{array[index]?.text}</p>
-						<button className="bg-amber-100 text-black px-6 py-2 rounded">
-							Explore
-						</button>
-					</div>
-				</div>
-				</div>
-			))}
-			<div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+		<div className="Carousel relative w-full h-screen bg-brown-500 overflow-hidden isolate z-0"  >
+			<div
+      style={{position: "relative",width: "100%",height: 0,paddingTop: "56.2225%",boxShadow: "0 2px 8px 0 rgba(63,69,81,0.16)",
+        marginBottom: "0.9em",overflow: "hidden",borderRadius: "8px",willChange: "transform",  }}>
+      <iframe
+        loading="lazy"
+        style={{position: "absolute",width: "100%",height: "100%",top: 0,left: 0,border: "none",padding: 0,margin: 0, }}
+        src="https://www.canva.com/design/DAGXX-hGHdY/M8xIQ5o12i4c8aA9t1gzmQ/view?embed"
+        allowFullScreen
+        allow="fullscreen"
+        ></iframe>
+    </div>
+	<div className="absolute top-1/2 flex justify-between w-full px-80 transform -translate-y-1/2  duration-300 ">
 				<button onClick={handlePrev} className="btn btn-circle">
 					❮
 				</button>
@@ -202,6 +187,42 @@ const Carousel = () => {
 					❯
 				</button>
 			</div>
+
+
+
+			{images.map((image, index) => (
+				<div
+					key={index}
+					className={`absolute inset-0 flex flex-col justify-center items-center transition-opacity duration-500 ${
+						index === currentIndex ? "opacity-95 z-10" : "opacity-0 z-0"
+					}`}
+				>
+					<div className="relative w-[50%] h-[50%]  rounded-lg shadow-md overflow-hidden">
+					<img
+						src={image}
+						alt={`Slide ${index + 1}`}
+						className="w-full h-100 object-cover"
+					/>
+					<div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center ">
+						<h1 className="text-3xl font-bold text-white text-center mb-8">
+							{array[index]?.Title}
+						</h1>
+						
+						<button className="bg-amber-100 text-black px-6 py-2 rounded">
+						<p className="text-2xl text-white text-center mb-4">Explore</p>
+						</button>
+					</div>
+				</div>
+				</div>
+			))}
+			{/*<div className="absolute top-1/2 flex justify-between w-full px-80 transform -translate-y-1/2  duration-300 ">
+				<button onClick={handlePrev} className="btn btn-circle">
+					❮
+				</button>
+				<button onClick={handleNext} className="btn btn-circle">
+					❯
+				</button>
+			</div>*/}
 		</div>
 	);
 };
