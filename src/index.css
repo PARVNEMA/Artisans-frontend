@@ -6,4 +6,9 @@
   html {
     font-family: "comic sans", system-ui, sans-serif;
   }
+  html,
+body {
+  height: 100%;
+  margin: 0;
+}
 }

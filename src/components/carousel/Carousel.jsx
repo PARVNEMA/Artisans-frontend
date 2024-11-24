@@ -1,3 +1,4 @@
+/*
 import React, { useEffect, useState } from "react";
 import DetailedProduct from "../detailedproduct/DetailedProduct";
 import FeaturedProducts from "../featuredProducts/FeaturedProducts";
@@ -5,10 +6,10 @@ import ProductList from "../ProductList/ProductList";
 import { Link } from "react-router-dom";
 
 const images = [
+	"public/images/Untitled design (5).png",
 	"public/images/2.jpg",
 	"public/images/1.jpg",
-	"public/images/Untitled design (3).png",
-	"public/images/4.jpg.jpg",
+	"public/images/slide4.png",
 ];
 
 const Carousel = () => {
@@ -62,9 +63,9 @@ const Carousel = () => {
 			
 		},
 	];
-*/
+
 	return (
-		<div className="Carousel w-full h-full relative  ">
+		<div className="Carousel w-full h-full relative  overflow-hidden ">
 			{images.map((image, index) => (
 				<div
 					key={index}
@@ -76,7 +77,7 @@ const Carousel = () => {
 					<div>
 						<img
 							src={image}
-							className="w-full h-full object-cover "
+							className="w-full h-full object-center  overflow-hidden"
 							alt={`Slide ${index + 1}`}
 						/>
 					</div>
@@ -89,7 +90,7 @@ const Carousel = () => {
 						<button type="button" class="bg-amber-100 px-4 py-2 rounded">{array[index].text}</button>	
 						</div>
 					</div>
-					*/}
+					
 					<div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
 						<button
 							onClick={handlePrev}
@@ -110,4 +111,100 @@ const Carousel = () => {
 	);
 };
 
+export default Carousel;*/
+
+import React, { useEffect, useState } from "react";
+//import DetailedProduct from "../detailedproduct/DetailedProduct";
+//import FeaturedProducts from "../featuredProducts/FeaturedProducts";
+//import ProductList from "../ProductList/ProductList";
+//import { Link } from "react-router-dom";
+
+const images = [
+	"public/images/Untitled design (5).png",
+	"public/images/2.jpg",
+	"public/images/1.jpg",
+	"public/images/slide4.png",
+];
+
+const array = [
+	{
+		Title: "Explore all the Authenticated product made by local Artists",
+		text: "From local to Global",
+		
+	},
+	{
+		Title: "Keep up with various trends according to the seasons here",
+		text: "Special seasonal offer",
+		
+	},
+	{
+		Title: "Buy all the special festival products from here",
+		text: "Special festive products",
+		
+	},
+	{
+		Title: "Order products that meet your needs",
+		text: "Custom-made products",
+	},
+];
+
+const Carousel = () => {
+	const [currentIndex, setCurrentIndex] = useState(0);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+		}, 10000); // Change slide every 10 seconds
+
+		return () => clearInterval(interval); // Clean up the interval on component unmount
+	}, []);
+
+	const handlePrev = () => {
+		setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+	};
+
+	const handleNext = () => {
+		setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+	};
+
+	return (
+		<div className="Carousel relative w-full h-screen bg-brown-500 overflow-hidden isolate z-0"   style={{ backgroundColor: "#bec9ae" }}>
+			{images.map((image, index) => (
+				<div
+					key={index}
+					className={`absolute inset-0 flex flex-col justify-center items-center transition-opacity duration-500 ${
+						index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+					}`}
+				>
+					<div className="relative w-[70%] h-[70%]  rounded-lg shadow-md overflow-hidden">
+					<img
+						src={image}
+						alt={`Slide ${index + 1}`}
+						className="w-full h-100 object-cover"
+					/>
+					<div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center">
+						<h1 className="text-5xl font-bold text-white text-center mb-4">
+							{array[index]?.Title}
+						</h1>
+						<p className="text-2xl text-white text-center mb-6">{array[index]?.text}</p>
+						<button className="bg-amber-100 text-black px-6 py-2 rounded">
+							Explore
+						</button>
+					</div>
+				</div>
+				</div>
+			))}
+			<div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+				<button onClick={handlePrev} className="btn btn-circle">
+					❮
+				</button>
+				<button onClick={handleNext} className="btn btn-circle">
+					❯
+				</button>
+			</div>
+		</div>
+	);
+};
+
 export default Carousel;
+
