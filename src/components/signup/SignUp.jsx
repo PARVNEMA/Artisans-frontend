@@ -4,11 +4,17 @@ import {
 	Phone,
 	User2Icon,
 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function SignUp() {
+	const [otpmodal, setotpmodal] = useState(false);
+	const [otp, setotp] = useState(null);
+	const [verified, setverified] = useState(false);
+	const [email, setemail] = useState("");
+
 	const {
 		register,
 		handleSubmit,
@@ -20,29 +26,151 @@ function SignUp() {
 	const onSubmit = async (data) => {
 		console.log("signup", data);
 		data.avatar = data.avatar[0];
+
+		if (verified) {
+			try {
+				const res = await axios.post(
+					`${backendurl}/customers/register`,
+					data,
+					{
+						withCredentials: true, // Ensure cookies are included in the request
+						headers: {
+							"Content-Type": "multipart/form-data",
+						},
+					}
+				);
+
+				console.log("res from register backend", res.data);
+				navigate("/");
+			} catch (error) {
+				console.error("error in register form", error);
+			}
+		} else {
+			setotpmodal(true);
+			verifyUserEmail();
+			toast.error("verify the email first ", {
+				position: "bottom-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+				transition: Slide,
+			});
+		}
+	};
+
+	const verifyUserEmail = async () => {
+		console.log("otp=", otp);
+		console.log("email otp=", email);
 		try {
 			const res = await axios.post(
-				`${backendurl}/customers/register`,
-				data,
+				`${backendurl}/customers/send-otp`,
+				{ email },
 				{
 					withCredentials: true, // Ensure cookies are included in the request
 					headers: {
-						"Content-Type": "multipart/form-data",
+						"Content-Type": "application/json",
 					},
 				}
 			);
-
-			console.log("res from register backend", res.data);
-			navigate("/");
+			console.log("res from send otp ", res.data);
 		} catch (error) {
-			console.error("error in register form", error);
+			console.log("error in otp form", error);
 		}
 	};
+	const verifyUserEmail2 = async () => {
+		console.log("otp verify=", otp);
+		console.log("email  verify otp=", email);
+		try {
+			const res = await axios.post(
+				`${backendurl}/customers/verify-otp`,
+				{ email, otp },
+				{
+					withCredentials: true, // Ensure cookies are included in the request
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			);
+			console.log("res from verify otp ", res.data);
+			toast.success("email verified", {
+				position: "bottom-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+			});
+			setverified(true);
+		} catch (error) {
+			console.log("error in otp form", error);
+		}
+	};
+
 	return (
 		<>
 			<div className="w-auto h-autooverflow-hidden ">
 				<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
 					<div class="font-[comic sans] ">
+						{
+							<div
+								className={`${
+									otpmodal === true ? "block" : "hidden"
+								}`}
+							>
+								{/* You can open the modal using document.getElementById('ID').showModal() method */}
+
+								<dialog
+									id="my_modal_3"
+									className={`modal ${
+										otpmodal === true
+											? "modal-open"
+											: "hidden"
+									}`}
+								>
+									<div className="modal-box">
+										<form method="dialog">
+											{/* if there is a button in form, it will close the modal */}
+											<button
+												className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+												onClick={() => setotpmodal(false)}
+											>
+												✕
+											</button>
+										</form>
+										<h3 className="font-bold text-lg">
+											Verification Code sended to your email
+										</h3>
+										<p className="py-4">
+											<input
+												type="string"
+												placeholder="Enter Otp"
+												className="input input-bordered input-success w-full max-w-xs"
+												maxLength={6}
+												value={otp}
+												onChange={(e) =>
+													setotp(e.target.value)
+												}
+											/>
+										</p>
+										<button
+											type="button"
+											onClick={() => {
+												setotpmodal(false);
+												verifyUserEmail2();
+											}}
+										>
+											Verify
+										</button>
+									</div>
+								</dialog>
+							</div>
+						}
 						<div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] bg-white max-w-6xl max-md:max-w-lg m-4 rounded-md p-6 grid md:grid-cols-2 items-center gap-8 h-auto">
 							<div class="max-md:order-1 p-4 bg-white h-full">
 								<img
@@ -141,6 +269,10 @@ function SignUp() {
 												class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
 												placeholder="Enter email"
 												{...register("email")}
+												value={email}
+												onChange={(e) =>
+													setemail(e.target.value)
+												}
 											/>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -291,9 +423,21 @@ function SignUp() {
 													Login here
 												</a>
 											</p>
+
+											{/* verification */}
 										</div>
 									</div>
 								</form>
+								<button
+									type="button"
+									className="btn"
+									onClick={() => {
+										setotpmodal(true);
+										verifyUserEmail();
+									}}
+								>
+									verify email
+								</button>
 							</div>
 						</div>
 					</div>

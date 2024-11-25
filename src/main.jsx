@@ -32,18 +32,16 @@ import Aaa from "./components/Aaa/Aaa.jsx";
 import DetailedProduct from "./components/detailedproduct/DetailedProduct.jsx";
 import CategoryProducts from "./components/category/CategoryProducts.jsx";
 import AddressForm from "./components/AddressForm/AddressForm.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
 		children: [
-			{   path: "/", 
-				element: <Home /> 
-			},
-			{   path: "/*", 
-				element: <ErrorPage /> 
-			},
+			{ path: "/", element: <Home /> },
+			{ path: "/*", element: <ErrorPage /> },
 			{
 				path: "/products",
 				element: <ProductList />,
@@ -128,6 +126,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			<ArtisansAuthProvider>
 				<RouterProvider router={router}>
 					<App />
+					<ToastContainer />
 				</RouterProvider>
 			</ArtisansAuthProvider>
 		</AuthProvider>
