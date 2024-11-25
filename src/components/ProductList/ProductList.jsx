@@ -62,6 +62,22 @@ function ProductList() {
 										<IndianRupee />
 										{product.price}
 									</h4>
+									<Link
+										to={`/artisans/${product.createdBy._id}`}
+									>
+										<div className="flex flex-row gap-4">
+											<img
+												src={product.createdBy.avatar}
+												alt=""
+												height={30}
+												width={30}
+												className="rounded-full"
+											/>
+											<h3 class="text-lg text-gray-800 font-medium mt-2 flex flex-row">
+												{product.createdBy.username}
+											</h3>
+										</div>
+									</Link>
 									<p class="text-gray-600 text-sm mt-2">
 										{product.description}
 									</p>
@@ -71,8 +87,7 @@ function ProductList() {
 									<div class="flex space-x-2 mt-4">
 										<svg
 											className={`w-4  ${
-												Math.floor(product.averageRating) >=
-												1
+												Math.floor(product.avgRating) >= 1
 													? "fill-[#facc15]"
 													: "fill-[#e5e7eb]"
 											}`}
@@ -84,8 +99,7 @@ function ProductList() {
 										</svg>
 										<svg
 											className={`w-4  ${
-												Math.floor(product.averageRating) >=
-												2
+												Math.floor(product.avgRating) >= 2
 													? "fill-[#facc15]"
 													: "fill-[#e5e7eb]"
 											}`}
@@ -97,8 +111,7 @@ function ProductList() {
 										</svg>
 										<svg
 											className={`w-4  ${
-												Math.floor(product.averageRating) >=
-												3
+												Math.floor(product.avgRating) >= 3
 													? "fill-[#facc15]"
 													: "fill-[#e5e7eb]"
 											}`}
@@ -110,8 +123,7 @@ function ProductList() {
 										</svg>
 										<svg
 											className={`w-4  ${
-												Math.floor(product.averageRating) >=
-												4
+												Math.floor(product.avgRating) >= 4
 													? "fill-[#facc15]"
 													: "fill-[#e5e7eb]"
 											}`}
@@ -123,8 +135,7 @@ function ProductList() {
 										</svg>
 										<svg
 											className={`w-4  ${
-												Math.floor(product.averageRating) >=
-												5
+												Math.floor(product.avgRating) >= 5
 													? "fill-[#facc15]"
 													: "fill-[#e5e7eb]"
 											}`}

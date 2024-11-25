@@ -34,6 +34,7 @@ import CategoryProducts from "./components/category/CategoryProducts.jsx";
 import AddressForm from "./components/AddressForm/AddressForm.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import OtherArtisans from "./components/Artisans/otherartisans/OtherArtisans.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -115,6 +116,10 @@ const router = createBrowserRouter([
 			{
 				path: "/category/:categoryid",
 				element: <CategoryProducts />,
+			},
+			{
+				path: "/artisans/:artisanid",
+				element: <OtherArtisans />,
 			},
 		],
 	},
