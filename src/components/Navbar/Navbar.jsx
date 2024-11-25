@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useArtisansAuth } from "../../../useContext/ArtisansContext";
 import { Searchform } from "../search/Searchform";
+import GTranslateLoader from "../Translate/GTranslateLoader";
 
 function Navbar() {
 	const backendurl = import.meta.env.VITE_URL;
@@ -167,7 +168,7 @@ function Navbar() {
 							alt="Logo"
 						/>
 					</Link>
-
+					<GTranslateLoader />
 					<div className=" text-amber-100 font-medium w-[40rem] justify-evenly p-2 hidden lg:flex ">
 						<Link href="/">Home</Link>
 						<div>

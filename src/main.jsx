@@ -35,6 +35,7 @@ import AddressForm from "./components/AddressForm/AddressForm.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OtherArtisans from "./components/Artisans/otherartisans/OtherArtisans.jsx";
+import GTranslateLoader from "./components/Translate/GTranslateLoader.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -131,6 +132,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			<ArtisansAuthProvider>
 				<RouterProvider router={router}>
 					<App />
+
 					<ToastContainer />
 				</RouterProvider>
 			</ArtisansAuthProvider>
