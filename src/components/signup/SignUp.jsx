@@ -57,7 +57,6 @@ function SignUp() {
 				draggable: true,
 				progress: undefined,
 				theme: "light",
-				transition: Slide,
 			});
 		}
 	};
@@ -428,16 +427,6 @@ function SignUp() {
 										</div>
 									</div>
 								</form>
-								<button
-									type="button"
-									className="btn"
-									onClick={() => {
-										setotpmodal(true);
-										verifyUserEmail();
-									}}
-								>
-									verify email
-								</button>
 							</div>
 						</div>
 					</div>
