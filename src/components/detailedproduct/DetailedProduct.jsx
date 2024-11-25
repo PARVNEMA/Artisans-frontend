@@ -168,9 +168,9 @@ function DetailedProduct() {
 									</div>
 
 									<div>
-										<h1>{product?.createdBy.username}</h1>
+										<h1>{product?.createdBy?.username}</h1>
 										<img
-											src={product?.createdBy.avatar}
+											src={product?.createdBy?.avatar}
 											alt=""
 										/>
 									</div>
