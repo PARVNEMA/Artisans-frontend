@@ -113,6 +113,7 @@ const Carousel = () => {
 
 export default Carousel;*/
 
+
 import React, { useEffect, useState } from "react";
 
 import DetailedProduct from "../detailedproduct/DetailedProduct";
@@ -120,6 +121,7 @@ import FeaturedProducts from "../featuredProducts/FeaturedProducts";
 import ProductList from "../ProductList/ProductList";
 //import Artisans from "../Artisans/Dashboard/Dashboard";
 import { Link } from "react-router-dom";
+ 
 
 const images = [
 	"public/images/Untitled design (5).png",
@@ -127,7 +129,7 @@ const images = [
 	"public/images/1.jpg",
 	"public/images/slide4.png",
 ];
-
+{/*
 const array = [
 	{
 		Title: "Explore all the Authenticated product made by local Artists",
@@ -146,7 +148,7 @@ const array = [
 	Link:DetailedProduct
 	},
 ];
-
+*/}
 const Carousel = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -179,6 +181,9 @@ const Carousel = () => {
         allow="fullscreen"
         ></iframe>
     </div>
+
+
+	{/*
 	<div className="absolute top-1/2 flex justify-between w-full px-80 transform -translate-y-1/2  duration-300 ">
 				<button onClick={handlePrev} className="btn btn-circle">
 					❮
@@ -214,7 +219,7 @@ const Carousel = () => {
 					</div>
 				</div>
 				</div>
-			))}
+			))}*/}
 			{/*<div className="absolute top-1/2 flex justify-between w-full px-80 transform -translate-y-1/2  duration-300 ">
 				<button onClick={handlePrev} className="btn btn-circle">
 					❮

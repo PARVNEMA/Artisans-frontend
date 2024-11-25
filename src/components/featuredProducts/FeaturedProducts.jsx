@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IndianRupee } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef } from "react";
 import { Link } from "react-router-dom";
 
 function FeaturedProducts() {
@@ -31,10 +31,10 @@ function FeaturedProducts() {
 				<h2 class="text-4xl font-extrabold text-amber-100 mb-12 text-center">
 					Featured Products
 				</h2>
-				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 scroll-smooth focus:scroll-auto">
 					{products.map((product) => (
 						<Link to={`/productdetails/${product._id}`}>
-							<div class="bg-white shadow-md overflow-hidden rounded-lg h-[30rem] cursor-pointer hover:-translate-y-2 transition-all relative">
+							<div class="bg-transparent  overflow-hidden rounded-lg h-[30rem] cursor-pointer hover:-translate-y-2 transition-all relative">
 								<div class="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ function FeaturedProducts() {
 									</svg>
 								</div>
 
-								<div class=" h-[240px] overflow-hidden mx-auto aspect-w-16 aspect-h-8">
+								<div class=" h-[240px] overflow-hidden mx-auto aspect-w-16 aspect-h-8  translate-x-6">
 									<img
 										src={product.images[0]}
 										alt="Product 1"
@@ -57,7 +57,7 @@ function FeaturedProducts() {
 									/>
 								</div>
 
-								<div class="p-6 bg-white">
+								<div class="p-6 bg-transparent">
 									<h3 class="text-lg font-bold text-gray-800 ">
 										{product.title}
 									</h3>

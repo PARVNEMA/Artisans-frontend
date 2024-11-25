@@ -4,8 +4,8 @@ export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		colors: {
-			one: "#3E362E",
-			two: "#865D36",
+			one: "#25372c	",
+			two: "#f3efe8",
 			three: "#93785B",
 			four: "#F9F2EA",
 			five: "#A69080",
@@ -15,7 +15,8 @@ export default {
 	},
 	plugins: [daisyui],
 	fontFamily: {
-		sans: ["Cambria", "Roboto"],
+		sans: [ "Playfair Display", "seri", "system-ui"],
+		
 	},
 	daisyui: {
 		themes: [
