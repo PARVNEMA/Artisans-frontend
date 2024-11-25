@@ -3,6 +3,7 @@ import { IndianRupee, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { over } from "lodash";
 
 function DetailedProduct() {
 	let { id } = useParams();
@@ -11,9 +12,10 @@ function DetailedProduct() {
 	const backendurl = import.meta.env.VITE_URL;
 	const [rating, setrating] = useState(0);
 	const [userReview, setuserReview] = useState("");
+	const [overallrating, setoverallrating] = useState([]);
 
 	const [quantity, setQuantity] = useState(1);
-	const [coupon, setcoupon] = useState("");
+
 	const handleIncrement = () => {
 		if (quantity < 5) {
 			setQuantity(quantity + 1);
@@ -55,6 +57,21 @@ function DetailedProduct() {
 		console.log("res in reviews list", res.data);
 		setreviews(res.data.data);
 	};
+	const getOverallRating = async () => {
+		const res = await axios.get(
+			`${backendurl}/reviews/${id}/ratings-stats`,
+			{
+				withCredentials: true, // Ensure cookies are included in the request
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem(
+						"accessToken"
+					)}`,
+				},
+			}
+		);
+		console.log("overall reviews data", res.data);
+		setoverallrating(res.data.data.ratingsData);
+	};
 	const postReview = async () => {
 		const res = await axios.post(
 			`${backendurl}/reviews/${id}`,
@@ -74,15 +91,11 @@ function DetailedProduct() {
 		console.log("res in post review", res.data);
 	};
 	const addToCart = async () => {
-		const isCouponApplied =
-			coupon.length > 0 ? true : false;
 		const res = await axios.post(
 			`${backendurl}/cart/create-cart`,
 			{
 				productId: product._id,
 				quantity: quantity,
-				couponCode: coupon,
-				isCouponApplied,
 			},
 			{
 				withCredentials: true, // Ensure cookies are included in the request
@@ -100,6 +113,7 @@ function DetailedProduct() {
 	useEffect(() => {
 		getproductsdetails();
 		getAllReviews();
+		getOverallRating();
 	}, []);
 	return (
 		<div>
@@ -153,6 +167,13 @@ function DetailedProduct() {
 										</div>
 									</div>
 
+									<div>
+										<h1>{product?.createdBy.username}</h1>
+										<img
+											src={product?.createdBy.avatar}
+											alt=""
+										/>
+									</div>
 									<div class="mt-10 flex flex-wrap gap-4 ">
 										<button
 											type="button"
@@ -274,17 +295,6 @@ function DetailedProduct() {
 
 										{/* coupon input field */}
 
-										<div>
-											<input
-												type="text"
-												name="coupon"
-												id=""
-												value={coupon}
-												onChange={(e) =>
-													setcoupon(e.target.value)
-												}
-											/>
-										</div>
 										<button
 											type="button"
 											class="flex items-center justify-center px-8 py-4 bg-transparent hover:bg-gray-50 text-gray-800 border border-gray-800 text-base rounded-lg"
@@ -315,105 +325,28 @@ function DetailedProduct() {
 										</h3>
 										<div class="grid md:grid-cols-2 gap-12 mt-4">
 											<div class="space-y-3">
-												<div class="flex items-center">
-													<p class="text-sm text-gray-800 font-bold">
-														5.0
-													</p>
-													<svg
-														class="w-5 fill-blue-600 ml-1"
-														viewBox="0 0 14 13"
-														fill="none"
-														xmlns="http://www.w3.org/2000/svg"
-													>
-														<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-													</svg>
-													<div class="bg-gray-400 rounded w-full h-2 ml-3">
-														<div class="w-2/3 h-full rounded bg-blue-600"></div>
-													</div>
-													<p class="text-sm text-gray-800 font-bold ml-3">
-														66%
-													</p>
-												</div>
-
-												<div class="flex items-center">
-													<p class="text-sm text-gray-800 font-bold">
-														4.0
-													</p>
-													<svg
-														class="w-5 fill-blue-600 ml-1"
-														viewBox="0 0 14 13"
-														fill="none"
-														xmlns="http://www.w3.org/2000/svg"
-													>
-														<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-													</svg>
-													<div class="bg-gray-400 rounded w-full h-2 ml-3">
-														<div class="w-1/3 h-full rounded bg-blue-600"></div>
-													</div>
-													<p class="text-sm text-gray-800 font-bold ml-3">
-														33%
-													</p>
-												</div>
-
-												<div class="flex items-center">
-													<p class="text-sm text-gray-800 font-bold">
-														3.0
-													</p>
-													<svg
-														class="w-5 fill-blue-600 ml-1"
-														viewBox="0 0 14 13"
-														fill="none"
-														xmlns="http://www.w3.org/2000/svg"
-													>
-														<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-													</svg>
-													<div class="bg-gray-400 rounded w-full h-2 ml-3">
-														<div class="w-1/6 h-full rounded bg-blue-600"></div>
-													</div>
-													<p class="text-sm text-gray-800 font-bold ml-3">
-														16%
-													</p>
-												</div>
-
-												<div class="flex items-center">
-													<p class="text-sm text-gray-800 font-bold">
-														2.0
-													</p>
-													<svg
-														class="w-5 fill-blue-600 ml-1"
-														viewBox="0 0 14 13"
-														fill="none"
-														xmlns="http://www.w3.org/2000/svg"
-													>
-														<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-													</svg>
-													<div class="bg-gray-400 rounded w-full h-2 ml-3">
-														<div class="w-1/12 h-full rounded bg-blue-600"></div>
-													</div>
-													<p class="text-sm text-gray-800 font-bold ml-3">
-														8%
-													</p>
-												</div>
-
-												<div class="flex items-center">
-													<p class="text-sm text-gray-800 font-bold">
-														1.0
-													</p>
-													<svg
-														class="w-5 fill-blue-600 ml-1"
-														viewBox="0 0 14 13"
-														fill="none"
-														xmlns="http://www.w3.org/2000/svg"
-													>
-														<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-													</svg>
-													<div class="bg-gray-400 rounded w-full h-2 ml-3">
-														<div class="w-[6%] h-full rounded bg-blue-600"></div>
-													</div>
-													<p class="text-sm text-gray-800 font-bold ml-3">
-														6%
-													</p>
-												</div>
+												{overallrating &&
+													overallrating.map((item) => (
+														<div class="flex items-center">
+															<p class="text-sm text-gray-800 font-bold">
+																{item.rating}
+															</p>
+															<svg
+																class={`w-5 fill-blue-600 ml-1 `}
+																viewBox="0 0 14 13"
+																fill="none"
+																xmlns="http://www.w3.org/2000/svg"
+															>
+																<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+															</svg>
+															<div class="bg-gray-400 rounded w-full h-2 ml-3">
+																<div class="w-1/3 h-full rounded bg-blue-600"></div>
+															</div>
+															<p class="text-sm text-gray-800 font-bold ml-3">
+																{item.percentage} %
+															</p>
+														</div>
+													))}
 											</div>
 
 											<div>
@@ -602,7 +535,9 @@ function DetailedProduct() {
 										reviews.map((review) => (
 											<div class="flex items-start">
 												<img
-													src="https://readymadeui.com/team-2.webp"
+													src={
+														review.reviewerDetails.avatar
+													}
 													class="w-12 h-12 rounded-full border-2 border-white"
 												/>
 												<div class="ml-3">
