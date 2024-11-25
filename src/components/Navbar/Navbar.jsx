@@ -143,6 +143,7 @@ function Navbar() {
 				`${backendurl}/products/search/${searchTerm}`
 			);
 			console.log("res of search", res.data);
+			setsearchTerm(res.data.data);
 		} catch (error) {
 			console.log("error in search", error);
 		}
@@ -169,7 +170,7 @@ function Navbar() {
 						/>
 					</Link>
 					<GTranslateLoader />
-					<div className=" text-amber-100 font-medium w-[40rem] justify-evenly p-2 hidden lg:flex ">
+					<div className=" text-black font-medium w-[40rem] justify-evenly p-2 hidden lg:flex ">
 						<Link href="/">Home</Link>
 						<div>
 							<div className="dropdown dropdown-hover ">
@@ -189,7 +190,7 @@ function Navbar() {
 											class="py-3 px-6 hover:bg-three rounded-md text-black
 									text-sm cursor-pointer "
 										>
-											<Link to={`/category/${cat._id}`}>
+											<a href={`/category/${cat._id}`}>
 												<img
 													src={cat.categoryImage}
 													alt=""
@@ -197,7 +198,7 @@ function Navbar() {
 													width={50}
 												/>
 												{cat.name}
-											</Link>
+											</a>
 										</li>
 									))}
 								</ul>
