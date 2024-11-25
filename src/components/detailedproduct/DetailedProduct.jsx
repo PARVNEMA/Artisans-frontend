@@ -301,16 +301,16 @@ function DetailedProduct() {
                           overallrating.map((item) => (
                             <div class="flex items-center">
                               <p class="text-sm text-gray-800 font-bold">
-                                {item.rating}
+                                {item.rating}({item.count})
                               </p>
-                              <div className="border ml-10 h-2  w-[100rem]">
+                              <div className="border ml-3 h-2  w-[100rem]">
                                 <div
                                   className="bg-blue-600 h-2"
                                   style={{ width: `${item.percentage}%` }}
                                 ></div>
                               </div>
                               <p class="text-sm text-gray-800 font-bold ml-3">
-                                {item.percentage} %
+                                {item.percentage}%
                               </p>
                             </div>
                           ))}
@@ -388,17 +388,13 @@ function DetailedProduct() {
                       </div>
                     </div>
                   </div>
-                  {/* add review
-                   */}
+
+                  {/* add review*/}
+
                   {localStorage.getItem("accessToken") ? (
-                    <div>
-                      <h2>Add Review</h2>
-                      <textarea
-                        value={userReview}
-                        onChange={(e) => setuserReview(e.target.value)}
-                        placeholder="Write your review here..."
-                      />
-                      <div>
+                    <div className="mt-10 ml-10 flex flex-col">
+                      <h2 className="text-2xl font-bold mb-8">Add Your Review</h2>
+                      <div className="mb-5">
                         <button onClick={() => setrating(1)}>
                           <svg
                             className={`w-8 h-8  ${
@@ -460,7 +456,13 @@ function DetailedProduct() {
                           </svg>
                         </button>
                       </div>
-                      <button onClick={postReview}>Submit</button>
+                      <textarea
+                        value={userReview}
+                        onChange={(e) => setuserReview(e.target.value)}
+                        placeholder="Write your review here..."
+                        className="focus:outline-double p-3 border border-black border-dotted "
+                      />
+                      <button className="bg-blue-500 m-3 items-center text-white rounded-md w-[16rem]" onClick={postReview}>Submit</button>
                     </div>
                   ) : (
                     <Link to={"/login"}>
@@ -472,89 +474,91 @@ function DetailedProduct() {
                 </div>
 
                 {/* all reviews  */}
-                <div>
-                  {reviews &&
-                    reviews.map((review) => (
-                      <div class="flex items-start">
-                        <img
-                          src={review.reviewerDetails.avatar}
-                          class="w-12 h-12 rounded-full border-2 border-white"
-                        />
-                        <div class="ml-3">
-                          <h4 class="text-sm font-bold text-gray-800">
-                            {review.reviewerDetails.fullName}
-                          </h4>
-                          <div class="flex space-x-1 mt-1">
-                            <svg
-                              className={`w-4  ${
-                                review.rating >= 1
-                                  ? "fill-[#facc15]"
-                                  : "fill-[#e5e7eb]"
-                              }`}
-                              viewBox="0 0 14 13"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                            </svg>
-                            <svg
-                              className={`w-4 h-4 ${
-                                review.rating >= 2
-                                  ? "fill-[#facc15]"
-                                  : "fill-[#e5e7eb]"
-                              }`}
-                              viewBox="0 0 14 13"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                            </svg>
-                            <svg
-                              className={`w-4 h-4 ${
-                                review.rating >= 3
-                                  ? "fill-[#facc15]"
-                                  : "fill-[#e5e7eb]"
-                              }`}
-                              viewBox="0 0 14 13"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                            </svg>
-                            <svg
-                              className={`w-4 h-4 ${
-                                review.rating >= 4
-                                  ? "fill-[#facc15]"
-                                  : "fill-[#e5e7eb]"
-                              }`}
-                              viewBox="0 0 14 13"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                            </svg>
-                            <svg
-                              className={`w-4 h-4 ${
-                                review.rating >= 5
-                                  ? "fill-[#facc15]"
-                                  : "fill-[#e5e7eb]"
-                              }`}
-                              viewBox="0 0 14 13"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
-                            </svg>
-                            <p class="text-xs !ml-2 font-semibold text-gray-800">
-                              {review.createdAt}
+                <div className="m-5 shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)]">
+                  <div className=" p-4 grid grid-cols-3 gap-5">
+                    {reviews &&
+                      reviews.map((review) => (
+                        <div class="flex items-start">
+                          <img
+                            src={review.reviewerDetails.avatar}
+                            class="w-12 h-12 rounded-full border-2 border-white"
+                          />
+                          <div class="ml-3">
+                            <h4 class="text-sm font-bold text-gray-800">
+                              {review.reviewerDetails.fullName}
+                            </h4>
+                            <div class="flex space-x-1 mt-1">
+                              <svg
+                                className={`w-4  ${
+                                  review.rating >= 1
+                                    ? "fill-[#facc15]"
+                                    : "fill-[#e5e7eb]"
+                                }`}
+                                viewBox="0 0 14 13"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                              </svg>
+                              <svg
+                                className={`w-4 h-4 ${
+                                  review.rating >= 2
+                                    ? "fill-[#facc15]"
+                                    : "fill-[#e5e7eb]"
+                                }`}
+                                viewBox="0 0 14 13"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                              </svg>
+                              <svg
+                                className={`w-4 h-4 ${
+                                  review.rating >= 3
+                                    ? "fill-[#facc15]"
+                                    : "fill-[#e5e7eb]"
+                                }`}
+                                viewBox="0 0 14 13"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                              </svg>
+                              <svg
+                                className={`w-4 h-4 ${
+                                  review.rating >= 4
+                                    ? "fill-[#facc15]"
+                                    : "fill-[#e5e7eb]"
+                                }`}
+                                viewBox="0 0 14 13"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                              </svg>
+                              <svg
+                                className={`w-4 h-4 ${
+                                  review.rating >= 5
+                                    ? "fill-[#facc15]"
+                                    : "fill-[#e5e7eb]"
+                                }`}
+                                viewBox="0 0 14 13"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
+                              </svg>
+                            </div>
+                            <p class="text-xs mt-2 font-semibold text-gray-800">
+                              {review.createdAt.slice(0, 10)}
+                            </p>
+                            <p class="text-md mt-2 text-gray-800">
+                              {review.reviewText}
                             </p>
                           </div>
-                          <p class="text-md mt-4 text-gray-800">
-                            {review.reviewText}
-                          </p>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
                 </div>
               </div>
             </div>
