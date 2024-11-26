@@ -3,37 +3,33 @@ import Login from "../login/Login";
 import ArtisansLogin from "../Artisans/artisanslogin/ArtisansLogin";
 
 const Aa = () => {
-	const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
 
-	return (
-		<div className="flex items-center justify-center p-3 ">
-			<div className="bg-white p-8 rounded-lg shadow-lg">
-				<div className="flex justify-between">
-					<button
-						className={`w-1/2 text-center py-2 ${
-							isLogin
-								? "bg-three text-white rounded-3xl bg-[#25372c]"
-								: "text-blue-700"
-						}`}
-						onClick={() => setIsLogin(true)}
-					>
-						User
-					</button>
-					<button
-						className={`w-1/2 text-center py-2 ${
-							!isLogin
-								? "bg-three text-white rounded-3xl bg-[#25372c]"
-								: "text-blue-700"
-						}`}
-						onClick={() => setIsLogin(false)}
-					>
-						Artisans
-					</button>
-				</div>
-				{isLogin ? <Login /> : <ArtisansLogin />}
-			</div>
-		</div>
-	);
+  return (
+    <div className="flex items-center justify-center p-3 ">
+      <div className="bg-white p-8 rounded-lg shadow-lg">
+        <div className="flex justify-between">
+          <button
+            className={`w-1/2 text-center py-2 ${
+              isLogin ? "text-white rounded-3xl bg-blue-600" : "text-blue-700"
+            }`}
+            onClick={() => setIsLogin(true)}
+          >
+            User
+          </button>
+          <button
+            className={`w-1/2 text-center py-2 ${
+              !isLogin ? " text-white rounded-3xl bg-blue-600" : "text-blue-700"
+            }`}
+            onClick={() => setIsLogin(false)}
+          >
+            Artisans
+          </button>
+        </div>
+        {isLogin ? <Login /> : <ArtisansLogin />}
+      </div>
+    </div>
+  );
 };
 
 export default Aa;
