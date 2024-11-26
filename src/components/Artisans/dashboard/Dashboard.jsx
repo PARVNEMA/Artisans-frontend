@@ -91,6 +91,26 @@ function Dashboard() {
 				console.log("Error", error);
 			}
 		}, []);
+		const deleteProduct = useCallback(async (productId) => {
+			try {
+				console.log("product to be deleted", productId);
+
+				const res = await axios.delete(
+					`${backendurl}/products/${productId}`,
+					{
+						withCredentials: true,
+						headers: {
+							Authorization: `Bearer ${localStorage.getItem(
+								"artisansaccessToken"
+							)}`,
+						},
+					}
+				);
+				console.log("product deleted =", res.data);
+			} catch (error) {
+				console.log("Error", error);
+			}
+		}, []);
 		useEffect(() => {
 			getCurrentArtisans();
 		}, [getCurrentArtisans]);
@@ -151,7 +171,7 @@ function Dashboard() {
 					{/* Header */}
 					<div className="w-[85%] pl-[8rem]">
 						<img
-							src={artisans.avatar}
+							src={artisans?.avatar}
 							alt=""
 							className="h-25 w-25 rounded-full"
 						/>
@@ -312,6 +332,15 @@ function Dashboard() {
 								<div className="text-xl flex justify-center items-center">
 									<IndianRupee /> {product.price}
 								</div>
+							</div>
+
+							<div>
+								<button
+									className="btn btn-error"
+									onClick={() => deleteProduct(product._id)}
+								>
+									Delete Prouct
+								</button>
 							</div>
 						</div>
 					))}

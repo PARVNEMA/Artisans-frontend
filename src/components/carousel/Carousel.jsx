@@ -113,7 +113,6 @@ const Carousel = () => {
 
 export default Carousel;*/
 
-
 import React, { useEffect, useState } from "react";
 
 import DetailedProduct from "../detailedproduct/DetailedProduct";
@@ -121,15 +120,15 @@ import FeaturedProducts from "../featuredProducts/FeaturedProducts";
 import ProductList from "../ProductList/ProductList";
 //import Artisans from "../Artisans/Dashboard/Dashboard";
 import { Link } from "react-router-dom";
- 
 
 const images = [
-	"public/images/Untitled design (5).png",
-	"public/images/2.jpg",
-	"public/images/1.jpg",
-	"public/images/slide4.png",
+  "public/images/Untitled design (5).png",
+  "public/images/2.jpg",
+  "public/images/1.jpg",
+  "public/images/slide4.png",
 ];
-{/*
+{
+  /*
 const array = [
 	{
 		Title: "Explore all the Authenticated product made by local Artists",
@@ -148,42 +147,63 @@ const array = [
 	Link:DetailedProduct
 	},
 ];
-*/}
+*/
+}
 const Carousel = () => {
-	const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-		}, 10000); // Change slide every 10 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 10000); // Change slide every 10 seconds
 
-		return () => clearInterval(interval); // Clean up the interval on component unmount
-	}, []);
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, []);
 
-	const handlePrev = () => {
-		setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-	};
+  const handlePrev = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
 
-	const handleNext = () => {
-		setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-	};
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
 
-	return (
-		<div className="Carousel relative w-full h-screen bg-brown-500 overflow-hidden isolate z-0"  >
-			<div
-      style={{position: "relative",width: "100%",height: 0,paddingTop: "56.2225%",boxShadow: "0 2px 8px 0 rgba(63,69,81,0.16)",
-        marginBottom: "0.9em",overflow: "hidden",borderRadius: "8px",willChange: "transform",  }}>
-      <iframe
-        loading="lazy"
-        style={{position: "absolute",width: "100%",height: "100%",top: 0,left: 0,border: "none",padding: 0,margin: 0, }}
-        src="https://www.canva.com/design/DAGXX-hGHdY/M8xIQ5o12i4c8aA9t1gzmQ/view?embed"
-        allowFullScreen
-        allow="fullscreen"
+  return (
+    <div className="Carousel relative w-full h-screen bg-brown-500 overflow-hidden isolate z-0">
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: 0,
+          paddingTop: "56.2225%",
+          boxShadow: "0 2px 8px 0 rgba(63,69,81,0.16)",
+          marginBottom: "0.9em",
+          overflow: "hidden",
+          borderRadius: "8px",
+          willChange: "transform",
+        }}
+      >
+        <iframe
+          loading="lazy"
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            top: 0,
+            left: 0,
+            border: "none",
+            padding: 0,
+            margin: 0,
+          }}
+          src="https://www.canva.com/design/DAGXX-hGHdY/M8xIQ5o12i4c8aA9t1gzmQ/view?embed"
+          allowFullScreen
+          allow="fullscreen"
         ></iframe>
-    </div>
+      </div>
 
-
-	{/*
+      {/*
 	<div className="absolute top-1/2 flex justify-between w-full px-80 transform -translate-y-1/2  duration-300 ">
 				<button onClick={handlePrev} className="btn btn-circle">
 					❮
@@ -220,7 +240,7 @@ const Carousel = () => {
 				</div>
 				</div>
 			))}*/}
-			{/*<div className="absolute top-1/2 flex justify-between w-full px-80 transform -translate-y-1/2  duration-300 ">
+      {/*<div className="absolute top-1/2 flex justify-between w-full px-80 transform -translate-y-1/2  duration-300 ">
 				<button onClick={handlePrev} className="btn btn-circle">
 					❮
 				</button>
@@ -228,9 +248,8 @@ const Carousel = () => {
 					❯
 				</button>
 			</div>*/}
-		</div>
-	);
+    </div>
+  );
 };
 
 export default Carousel;
-

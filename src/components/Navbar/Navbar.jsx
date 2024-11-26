@@ -7,6 +7,7 @@ import axios from "axios";
 import { useArtisansAuth } from "../../../useContext/ArtisansContext";
 import { Searchform } from "../search/Searchform";
 import GTranslateLoader from "../Translate/GTranslateLoader";
+import { set } from "lodash";
 
 function Navbar() {
 	const backendurl = import.meta.env.VITE_URL;
@@ -22,6 +23,7 @@ function Navbar() {
 	const [results, setresult] = useState([]);
 	const [isWishlisted, setIsWishlisted] = useState(false);
 	const [category, setcategory] = useState([]);
+	const [currency, setcurrency] = useState("INR");
 
 	const getCurrentArtisans = useCallback(async () => {
 		try {
@@ -183,11 +185,11 @@ function Navbar() {
 								</div>
 								<ul
 									id="dropdownMenu"
-									class="dropdown-content menu border bg-five rounded-box z-[1] w-52 p-2 shadow text-black"
+									class="dropdown-content menu border bg-five rounded-box z-[1] w-52 shadow text-black"
 								>
 									{category.map((cat) => (
 										<li
-											class="py-3 px-6 hover:bg-three rounded-md text-black
+											class="rounded-md text-black
 									text-sm cursor-pointer "
 										>
 											<a href={`/category/${cat._id}`}>

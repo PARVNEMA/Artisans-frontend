@@ -7,7 +7,7 @@ function Cards({ product }) {
 		<div>
 			<Link to={`/productdetails/${product._id}`}>
 				<div class="bg-gray-50  overflow-hidden  cursor-pointer hover:-translate-y-2 transition-all relative boder-box">
-					<div class="bg-black opacity-80 hover:opacity-100 p-5 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
+					<div class="bg-black opacity-80 hover:opacity-100 p-5 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3 ">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="40px"
@@ -30,30 +30,29 @@ function Cards({ product }) {
 					</div>
 
 					<div class="p-6 bg-transparent">
-						<h3 class="text-lg font-medium text-gray-800 group-hover:text-blue-600">
+						<h3 class="text-lg font-medium text-gray-800 group-hover:text-blue-600 truncate">
 							{product.title}
 						</h3>
-						<h4 class="text-lg text-gray-800 font-medium mt-2 flex flex-row">
-							<IndianRupee />
-							{product.price}
-						</h4>
 						<Link to={`/artisans/${product.createdBy._id}`}>
 							<div className="flex flex-row gap-4">
 								<img
 									src={product.createdBy.avatar}
 									alt=""
 									height={30}
-									width={30}
+									width={40}
 									className="rounded-full"
 								/>
-								<h3 class="text-lg text-gray-800 font-medium mt-2 flex flex-row">
-									{product.createdBy.username}
+								<h3 class="text-md text-gray-800 font-medium mt-2 flex flex-row">
+									{product.createdBy.fullName}
 								</h3>
 							</div>
 						</Link>
-						<p class="text-gray-600 text-sm mt-2">
-							{product.description}
-						</p>
+						<h4 class="text-lg text-gray-800 font-medium mt-2 flex flex-row">
+							<IndianRupee />
+							{product.price}
+						</h4>
+
+						{/* <p class="text-gray-600 text-sm mt-2">{product.description}</p> */}
 
 						{/* <div className=""></div> */}
 
