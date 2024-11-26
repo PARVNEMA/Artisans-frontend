@@ -157,8 +157,8 @@ function Navbar() {
 	// useEffect(() => {});
 	return (
 		<div
-			className="w-full h-[5rem] flex justify-center bg-gradient-to-br from-blue-400 via-violet-500 to-blue-700"
-			style={{ backgroundColor: "#6d5636" }}
+			className="w-full h-[5rem] flex justify-center "
+			style={{ backgroundColor: "#25362c" }}
 		>
 			<div className="navbar flex justify-between p-2 ">
 				<div className="flex-1">
@@ -170,7 +170,7 @@ function Navbar() {
 						/>
 					</Link>
 					<GTranslateLoader />
-					<div className=" text-black font-medium w-[40rem] justify-evenly p-2 hidden lg:flex ">
+					<div className=" text-[#F5F5DC] font-medium w-[40rem] justify-evenly p-2 hidden lg:flex ">
 						<Link href="/">Home</Link>
 						<div>
 							<div className="dropdown dropdown-hover ">

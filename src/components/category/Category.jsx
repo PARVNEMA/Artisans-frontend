@@ -25,7 +25,7 @@ function Category() {
 	}, []);
 	return (
 		<div className="mt-4 " >
-			<h2 class="text-4xl text-center font-extrabold text-amber-100 mb-12">
+			<h2 class="text-4xl text-center font-extrabold text-black mb-12">
 				Categories
 			</h2>
 
