@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useArtisansAuth } from "../../../useContext/ArtisansContext";
 import { Searchform } from "../search/Searchform";
+import GTranslateLoader from "../Translate/GTranslateLoader";
 
 function Navbar() {
 	const backendurl = import.meta.env.VITE_URL;
@@ -142,6 +143,7 @@ function Navbar() {
 				`${backendurl}/products/search/${searchTerm}`
 			);
 			console.log("res of search", res.data);
+			setsearchTerm(res.data.data);
 		} catch (error) {
 			console.log("error in search", error);
 		}
@@ -155,20 +157,20 @@ function Navbar() {
 	// useEffect(() => {});
 	return (
 		<div
-			className="w-full h-[5rem] flex justify-center"
-			
+			className="w-full h-[5rem] flex justify-center bg-gradient-to-br from-blue-400 via-violet-500 to-blue-700"
+			style={{ backgroundColor: "#6d5636" }}
 		>
 			<div className="navbar flex justify-between p-2 ">
 				<div className="flex-1">
 					<Link to={"/"}>
 						<img
-							className="ml-3 h-[6rem] w-[16rem]"
+							className="ml-3 h-[5rem] w-[6rem]"
 							src="../../../public/images/logo1.png"
 							alt="Logo"
 						/>
 					</Link>
-
-					<div className=" text-amber-100 font-medium w-[40rem] justify-evenly p-2 hidden lg:flex ">
+					<GTranslateLoader />
+					<div className=" text-black font-medium w-[40rem] justify-evenly p-2 hidden lg:flex ">
 						<Link href="/">Home</Link>
 						<div>
 							<div className="dropdown dropdown-hover ">
@@ -188,7 +190,7 @@ function Navbar() {
 											class="py-3 px-6 hover:bg-three rounded-md text-black
 									text-sm cursor-pointer "
 										>
-											<Link to={`/category/${cat._id}`}>
+											<a href={`/category/${cat._id}`}>
 												<img
 													src={cat.categoryImage}
 													alt=""
@@ -196,7 +198,7 @@ function Navbar() {
 													width={50}
 												/>
 												{cat.name}
-											</Link>
+											</a>
 										</li>
 									))}
 								</ul>
