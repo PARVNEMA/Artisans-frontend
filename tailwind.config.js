@@ -4,11 +4,11 @@ export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		colors: {
-			one: "#25372c	",
-			two: "#f3efe8",
+			one: "#25372c", // navabr and footer 
+			two: "#bcd267",
 			three: "#93785B",
-			four: "#F9F2EA",
-			five: "#A69080",
+			four: "#F9F2EA",// background and button
+			five: "#e8f3f5",// text 
 			white: "#FFFFFF",
 			black: "#000000",
 		},

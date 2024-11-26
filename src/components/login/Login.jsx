@@ -147,7 +147,7 @@ function Login() {
 							<div class="mt-12">
 								<button
 									type="submit"
-									class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white bg-three hover:bg-two focus:outline-none"
+									class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white bg-three hover:bg-two focus:outline-none bg-[#25372c]"
 								>
 									Sign in
 								</button>

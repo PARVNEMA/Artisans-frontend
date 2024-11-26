@@ -35,7 +35,6 @@ function FeaturedProducts() {
 				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 scroll-smooth focus:scroll-auto">
 					{products.map((product) => (
 						<Cards product={product} />
-						
 					))}
 				</div>
 			</div>

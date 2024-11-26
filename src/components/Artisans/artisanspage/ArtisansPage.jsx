@@ -5,20 +5,15 @@ function ArtisansPage() {
 	return (
 		<div>
 			{/* Join Us */}
-			<div className="flex bg-five ">
+			<div className="flex bg-three ">
 				<div className="h-auto w-full gap-3 flex flex-col justify-center items-center p-16">
 					<h1 className="text-4xl font-bold">
 						Create Your Art Portfolio
 					</h1>
-					<p className="text-center text-wrap">
-						Lorem ipsum dolor sit amet consectetur
-						adipisicing elit. Sunt illo nulla asperiores
-						delectus, libero natus, quos, commodi modi
-						expedita odit ad repudiandae ipsum! Dicta odit
-						ratione id dolor, quod omnis odio minus sint
-						reprehenderit inventore, beatae tempora vitae
-						voluptates pariatur.
+					<p className="text-center text-wrap text-lg">
+						Reach the right customer for your art !!
 					</p>
+
 					<Link
 						to={"/artisans/signup"}
 						className="bg-one h-[2rem] p-6 rounded-3xl text-white flex items-center"

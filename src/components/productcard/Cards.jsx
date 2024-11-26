@@ -6,8 +6,8 @@ function Cards({ product }) {
 	return (
 		<div>
 			<Link to={`/productdetails/${product._id}`}>
-				<div class="bg-gray-50 shadow-md overflow-hidden rounded-lg cursor-pointer hover:-translate-y-2 transition-all relative">
-					<div class="bg-black opacity-80 hover:opacity-100 p-3 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
+				<div class="bg-gray-50  overflow-hidden  cursor-pointer hover:-translate-y-2 transition-all relative boder-box">
+					<div class="bg-black opacity-80 hover:opacity-100 p-5 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="40px"
@@ -29,11 +29,11 @@ function Cards({ product }) {
 						/>
 					</div>
 
-					<div class="p-6 bg-white">
-						<h3 class="text-lg font-bold text-gray-800">
+					<div class="p-6 bg-transparent">
+						<h3 class="text-lg font-medium text-gray-800 group-hover:text-blue-600">
 							{product.title}
 						</h3>
-						<h4 class="text-lg text-gray-800 font-bold mt-2 flex flex-row">
+						<h4 class="text-lg text-gray-800 font-medium mt-2 flex flex-row">
 							<IndianRupee />
 							{product.price}
 						</h4>

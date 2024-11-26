@@ -26,13 +26,13 @@ function ProductList() {
 		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
 			<div class="font-[comic sans] py-4 mx-auto lg:max-w-7xl sm:max-w-full">
 				<h2 class="text-4xl font-extrabold text-gray-800 mb-12">
-					Premium Sneakers
+					Products 
 				</h2>
 				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 					{products.map((product) => (
 						<Link to={`/productdetails/${product._id}`}>
-							<div class="bg-gray-50 shadow-md overflow-hidden rounded-lg cursor-pointer hover:-translate-y-2 transition-all relative">
-								<div class="bg-black opacity-80 hover:opacity-100 p-3 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
+							<div class="bg-gray-50  overflow-hidden  cursor-pointer hover:-translate-y-2 transition-all relative">
+								<div class="opacity-80 hover:opacity-100 p-3 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="40px"
@@ -54,8 +54,8 @@ function ProductList() {
 									/>
 								</div>
 
-								<div class="p-6 bg-white">
-									<h3 class="text-lg font-bold text-gray-800">
+								<div class="p-6   ">
+									<h3 class="text-lg font-bold  hover:text-blue-600">
 										{product.title}
 									</h3>
 									<h4 class="text-lg text-gray-800 font-bold mt-2 flex flex-row">
