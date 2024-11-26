@@ -47,7 +47,7 @@ function UserProfile() {
 					},
 				}
 			);
-			console.log("res in getcurrent artisans", res.data);
+			console.log("res in getcurrent user", res.data);
 			setuser(res.data.data);
 			console.log("user=", user);
 
@@ -56,14 +56,31 @@ function UserProfile() {
 			console.log("Error", error);
 		}
 	}, []);
+	const getCurrentUserAddress = useCallback(async () => {
+		try {
+			const res = await axios.get(`${backendurl}/address`, {
+				withCredentials: true,
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem(
+						"accessToken"
+					)}`,
+				},
+			});
+			console.log("addres in", res.data);
+			setuser({ ...user, address: res.data.data });
+		} catch (error) {
+			console.log("Error in getting user address", error);
+		}
+	}, []);
 	useEffect(() => {
 		if (localStorage.getItem("artisansaccessToken")) {
 			getCurrentArtisans();
 		}
 		if (localStorage.getItem("accessToken")) {
 			getCurrentUser();
+			getCurrentUserAddress();
 		}
-	}, [getCurrentArtisans]);
+	}, []);
 	return (
 		<div>
 			<div className="flex justify-center m-[3rem] gap-32">
@@ -114,7 +131,7 @@ function UserProfile() {
 						<div className="text-[1rem] font-bold mr-3">
 							Address :
 						</div>
-						<div>Address of User</div>
+						<div>{user?.address?.address}</div>
 					</div>
 					<div className="flex">
 						<div className="text-[1rem] font-bold mr-3">
