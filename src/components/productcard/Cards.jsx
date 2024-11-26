@@ -30,9 +30,10 @@ function Cards({ product }) {
           </div>
 
           <div class="p-6 bg-transparent">
-            <h3 class="text-lg font-medium text-gray-800 group-hover:text-blue-600">
+            <h3 class="text-lg font-medium text-gray-800 group-hover:text-blue-600 truncate">
               {product.title}
             </h3>
+
             <h4 class="text-lg text-gray-800 font-medium mt-2 flex flex-row">
               <IndianRupee />
               {product.price}
@@ -51,7 +52,7 @@ function Cards({ product }) {
                 </h3>
               </div>
             </Link>
-            <p class="text-gray-600 text-sm mt-2">{product.description}</p>
+            {/* <p class="text-gray-600 text-sm mt-2">{product.description}</p> */}
 
             {/* <div className=""></div> */}
 
