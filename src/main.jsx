@@ -37,6 +37,7 @@ import "react-toastify/dist/ReactToastify.css";
 import OtherArtisans from "./components/Artisans/otherartisans/OtherArtisans.jsx";
 import GTranslateLoader from "./components/Translate/GTranslateLoader.jsx";
 import CurrencyProvider from "../useContext/CurrencyContext.jsx";
+import UpdateProduct from "./components/updateproduct/UpdateProduct.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -108,6 +109,10 @@ const router = createBrowserRouter([
 					{
 						path: "/artisans/productlisting",
 						element: <ProductListing />,
+					},
+					{
+						path: "/artisans/updateproduct/:productId",
+						element: <UpdateProduct />,
 					},
 				],
 			},

@@ -27,6 +27,7 @@ function ProductListing() {
 	// Add image to the list of images
 
 	// Submit handler
+
 	const onSubmit = async (data) => {
 		const formData = new FormData();
 
@@ -57,7 +58,7 @@ function ProductListing() {
 					headers: {
 						"Content-Type": "multipart/form-data",
 						Authorization: `Bearer ${localStorage.getItem(
-							"accessToken"
+							"artisanaccessToken"
 						)}`,
 					},
 				}

@@ -342,6 +342,15 @@ function Dashboard() {
 									Delete Prouct
 								</button>
 							</div>
+							<div>
+								<Link
+									to={`/artisans/updateproduct/${product._id}`}
+								>
+									<button className="btn btn-warning">
+										Update Prouct
+									</button>
+								</Link>
+							</div>
 						</div>
 					))}
 				</div>
