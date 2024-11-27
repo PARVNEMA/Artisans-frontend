@@ -1,27 +1,33 @@
 import axios from "axios";
 import React, {
 	useCallback,
+	useContext,
 	useEffect,
 	useState,
 } from "react";
+import { CurrencyContext } from "../../../useContext/CurrencyContext";
 
 function Cart() {
 	const [cart, setcart] = useState([]);
 	const [cartlength, setcartlength] = useState(1);
 	const [totalprice, settotalprice] = useState(0);
+	const { currency } = useContext(CurrencyContext);
 	// const [updatequantity, setupdatequantity] = useState(0);
 
 	const backendurl = import.meta.env.VITE_URL;
 	const getCartItems = useCallback(async () => {
 		try {
-			const res = await axios.get(`${backendurl}/cart`, {
-				withCredentials: true,
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem(
-						"accessToken"
-					)}`,
-				},
-			});
+			const res = await axios.get(
+				`${backendurl}/cart?currency=${currency}`,
+				{
+					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"accessToken"
+						)}`,
+					},
+				}
+			);
 			console.log("current cart items=", res.data);
 
 			setcart(res.data.data.items);
@@ -81,7 +87,7 @@ function Cart() {
 
 	useEffect(() => {
 		getCartItems();
-	}, [deleteCartItems, updateQuantity]);
+	}, [deleteCartItems, updateQuantity, currency]);
 	return (
 		<>
 			{cartlength > 0 ? (

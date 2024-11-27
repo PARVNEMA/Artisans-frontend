@@ -1,16 +1,23 @@
 import axios from "axios";
 import { IndianRupee } from "lucide-react";
-import React, { useEffect, useState, useRef } from "react";
+import React, {
+	useEffect,
+	useState,
+	useRef,
+	useContext,
+} from "react";
 import { Link } from "react-router-dom";
 import Cards from "../productcard/Cards";
+import { CurrencyContext } from "../../../useContext/CurrencyContext";
 
 function FeaturedProducts() {
+	const { currency } = useContext(CurrencyContext);
 	const [products, setproducts] = useState([]);
 	const backendurl = import.meta.env.VITE_URL;
 
 	const getAllFeaturedproducts = async () => {
 		const res = await axios.get(
-			`${backendurl}/products/featured`,
+			`${backendurl}/products/featured?currency=${currency}`,
 			{
 				withCredentials: true, // Ensure cookies are included in the request
 				headers: {
@@ -25,7 +32,7 @@ function FeaturedProducts() {
 	};
 	useEffect(() => {
 		getAllFeaturedproducts();
-	}, []);
+	}, [currency]);
 	return (
 		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
 			<div class="font-[comic sans] py-4 mx-auto lg:max-w-7xl sm:max-w-full">

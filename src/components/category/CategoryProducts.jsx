@@ -1,17 +1,23 @@
 import axios from "axios";
 import { IndianRupee } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, {
+	useContext,
+	useEffect,
+	useState,
+} from "react";
 import { Link, useParams } from "react-router-dom";
 import Cards from "../productcard/Cards";
+import { CurrencyContext } from "../../../useContext/CurrencyContext";
 
 function CategoryProducts() {
+	const { currency } = useContext(CurrencyContext);
 	let { categoryid } = useParams();
 	const [products, setproducts] = useState([]);
 	const backendurl = import.meta.env.VITE_URL;
 
 	const getAllCategoryproducts = async () => {
 		const res = await axios.get(
-			`${backendurl}/category/${categoryid}`,
+			`${backendurl}/category/${categoryid}?currency=${currency}`,
 			{
 				withCredentials: true, // Ensure cookies are included in the request
 				headers: {

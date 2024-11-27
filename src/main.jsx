@@ -36,6 +36,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OtherArtisans from "./components/Artisans/otherartisans/OtherArtisans.jsx";
 import GTranslateLoader from "./components/Translate/GTranslateLoader.jsx";
+import CurrencyProvider from "../useContext/CurrencyContext.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -130,11 +131,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<AuthProvider>
 			<ArtisansAuthProvider>
-				<RouterProvider router={router}>
-					<App />
+				<CurrencyProvider>
+					<RouterProvider router={router}>
+						<App />
 
-					<ToastContainer />
-				</RouterProvider>
+						<ToastContainer />
+					</RouterProvider>
+				</CurrencyProvider>
 			</ArtisansAuthProvider>
 		</AuthProvider>
 	</React.StrictMode>
