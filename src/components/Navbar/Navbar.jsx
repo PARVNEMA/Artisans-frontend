@@ -13,6 +13,7 @@ import { Searchform } from "../search/Searchform";
 import GTranslateLoader from "../Translate/GTranslateLoader";
 import { set } from "lodash";
 import { CurrencyContext } from "../../../useContext/CurrencyContext";
+import { HeartHandshakeIcon } from "lucide-react";
 
 function Navbar() {
 	const backendurl = import.meta.env.VITE_URL;
@@ -229,6 +230,7 @@ function Navbar() {
 						<option value="EUR">EUR</option>
 					</select>
 				</div>
+
 				<div
 					className="relative"
 					style={{
@@ -280,6 +282,11 @@ function Navbar() {
 					) : (
 						<div></div>
 					)}
+				</div>
+				<div>
+					<Link to={"/wishlist"}>
+						<HeartHandshakeIcon />
+					</Link>
 				</div>
 				<div className="flex justify-end p-5 w-[25%]">
 					<div className="dropdown dropdown-end">

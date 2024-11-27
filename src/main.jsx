@@ -38,6 +38,7 @@ import OtherArtisans from "./components/Artisans/otherartisans/OtherArtisans.jsx
 import GTranslateLoader from "./components/Translate/GTranslateLoader.jsx";
 import CurrencyProvider from "../useContext/CurrencyContext.jsx";
 import UpdateProduct from "./components/updateproduct/UpdateProduct.jsx";
+import Wishlist from "./components/wishlist/Wishlist.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
 			{
 				path: "/cart",
 				element: <Cart />,
+			},
+			{
+				path: "/wishlist",
+				element: <Wishlist />,
 			},
 			{
 				path: "/login",
