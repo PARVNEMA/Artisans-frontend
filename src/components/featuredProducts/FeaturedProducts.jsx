@@ -9,6 +9,7 @@ import React, {
 import { Link } from "react-router-dom";
 import Cards from "../productcard/Cards";
 import { CurrencyContext } from "../../../useContext/CurrencyContext";
+import { Bounce, toast } from "react-toastify";
 
 function FeaturedProducts() {
 	const { currency } = useContext(CurrencyContext);
@@ -29,6 +30,7 @@ function FeaturedProducts() {
 		);
 		console.log("res in product list", res.data);
 		setproducts(res.data.data);
+		toast("data aaya chacha", res.data.data);
 	};
 	useEffect(() => {
 		getAllFeaturedproducts();

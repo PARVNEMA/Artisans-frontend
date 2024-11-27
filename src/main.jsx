@@ -32,8 +32,7 @@ import Aaa from "./components/Aaa/Aaa.jsx";
 import DetailedProduct from "./components/detailedproduct/DetailedProduct.jsx";
 import CategoryProducts from "./components/category/CategoryProducts.jsx";
 import AddressForm from "./components/AddressForm/AddressForm.jsx";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import OtherArtisans from "./components/Artisans/otherartisans/OtherArtisans.jsx";
 import GTranslateLoader from "./components/Translate/GTranslateLoader.jsx";
 import CurrencyProvider from "../useContext/CurrencyContext.jsx";
@@ -144,8 +143,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 				<CurrencyProvider>
 					<RouterProvider router={router}>
 						<App />
-
-						<ToastContainer />
 					</RouterProvider>
 				</CurrencyProvider>
 			</ArtisansAuthProvider>
