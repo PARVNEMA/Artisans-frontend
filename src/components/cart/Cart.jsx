@@ -6,13 +6,14 @@ import React, {
 	useState,
 } from "react";
 import { CurrencyContext } from "../../../useContext/CurrencyContext";
+import { Link } from "react-router-dom";
 
 function Cart() {
 	const [cart, setcart] = useState([]);
 	const [cartlength, setcartlength] = useState(1);
 	const [totalprice, settotalprice] = useState(0);
 	const { currency } = useContext(CurrencyContext);
-	// const [updatequantity, setupdatequantity] = useState(0);
+	const [useraddress, setuseraddress] = useState({});
 
 	const backendurl = import.meta.env.VITE_URL;
 	const getCartItems = useCallback(async () => {
@@ -43,9 +44,9 @@ function Cart() {
 	}, []);
 	const deleteCartItems = useCallback(async (productId) => {
 		try {
-			const res = await axios.delete(
-				`${backendurl}/cart/remove-cart`,
-				productId,
+			const res = await axios.patch(
+				`${backendurl}/cart/update-quantity`,
+				{ productId: productId, quantity: 0 },
 				{
 					withCredentials: true,
 					headers: {
@@ -84,9 +85,25 @@ function Cart() {
 		},
 		[]
 	);
-
+	const getCurrentUserAddress = useCallback(async () => {
+		try {
+			const res = await axios.get(`${backendurl}/address`, {
+				withCredentials: true,
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem(
+						"accessToken"
+					)}`,
+				},
+			});
+			console.log("addres in", res.data);
+			setuseraddress(res.data.data);
+		} catch (error) {
+			console.log("Error in getting user address", error);
+		}
+	}, []);
 	useEffect(() => {
 		getCartItems();
+		getCurrentUserAddress();
 	}, [deleteCartItems, updateQuantity, currency]);
 	return (
 		<>
@@ -262,6 +279,89 @@ function Cart() {
 									/>
 								</div>
 							</div>
+
+							{/* address */}
+							{Object.keys(useraddress).length === 0 ? (
+								<>
+									<div>
+										please add Your Address First
+										<Link to={"/address"}>
+											<button className="btn btn-outline">
+												Address
+											</button>
+										</Link>
+									</div>
+								</>
+							) : (
+								<div class="bg-white rounded-md px-4 py-6 h-max shadow-[0_2px_12px_-3px_rgba(6,81,237,0.3)]">
+									<ul class="text-gray-800 space-y-4">
+										<li class="flex flex-wrap gap-4 text-sm">
+											Address
+											<span class="ml-auto font-bold">
+												{useraddress?.address}
+											</span>
+										</li>
+										<li class="flex flex-wrap gap-4 text-sm">
+											country
+											<span class="ml-auto font-bold">
+												{useraddress?.country}
+											</span>
+										</li>
+										<li class="flex flex-wrap gap-4 text-sm">
+											state
+											<span class="ml-auto font-bold">
+												{useraddress?.state}
+											</span>
+										</li>
+										<li class="flex flex-wrap gap-4 text-sm">
+											city
+											<span class="ml-auto font-bold">
+												{useraddress?.city}
+											</span>
+										</li>
+										<hr class="border-gray-300" />
+										<li class="flex flex-wrap gap-4 text-sm font-bold">
+											Pincode
+											<span class="ml-auto">
+												{useraddress?.zipCode}
+											</span>
+										</li>
+									</ul>
+
+									<div class="mt-8 space-y-2">
+										<button
+											type="button"
+											class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
+										>
+											Buy Now
+										</button>
+										<button
+											type="button"
+											class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent hover:bg-gray-100 text-gray-800 border border-gray-300 rounded-md"
+										>
+											Continue Shopping{" "}
+										</button>
+									</div>
+
+									<div class="mt-4 flex flex-wrap justify-center gap-4">
+										<img
+											src="https://readymadeui.com/images/master.webp"
+											alt="card1"
+											class="w-10 object-contain"
+										/>
+										<img
+											src="https://readymadeui.com/images/visa.webp"
+											alt="card2"
+											class="w-10 object-contain"
+										/>
+										<img
+											src="https://readymadeui.com/images/american-express.webp"
+											alt="card3"
+											class="w-10 object-contain"
+										/>
+									</div>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
