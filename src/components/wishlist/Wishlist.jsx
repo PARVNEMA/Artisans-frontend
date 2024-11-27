@@ -264,7 +264,15 @@ function Wishlist() {
           </div>
         </div>
       ) : (
-        <div>wishlist is Empty</div>
+        <div className="h-full w-full mb-20 flex flex-col justify-center items-center">
+          <img
+            src="./images/empty_wishlist.png"
+            className="h-[30rem] w-[30rem]"
+          />
+          <div className=" text-4xl italic font-serif">
+            Nothing in your wishlist !!
+          </div>
+        </div>
       )}
     </>
   );

@@ -185,18 +185,6 @@ function Navbar() {
             <Link to="/aboutus">About Us</Link>
             <Link to="/contactus">ContactUs</Link>
           </div>
-
-          <select
-            className="text-black"
-            name="currency"
-            id=""
-            onChange={(e) => setCurrency(e.target.value)}
-            value={currency}
-          >
-            <option value="INR">INR</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-          </select>
         </div>
 
         <div
@@ -246,6 +234,17 @@ function Navbar() {
           )}
         </div>
         <div className="flex justify-end p-5 w-[25%]">
+          <select
+            className="text-black p-2 rounded-sm mr-4 bg-four"
+            name="currency"
+            id=""
+            onChange={(e) => setCurrency(e.target.value)}
+            value={currency}
+          >
+            <option value="INR">INR</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </select>
           {logIn ? (
             <div>
               <Link to={"/wishlist"}>
