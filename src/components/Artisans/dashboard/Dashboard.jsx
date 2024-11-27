@@ -269,31 +269,6 @@ function Dashboard() {
                 </div>
               </div>
 
-<<<<<<< Updated upstream
-							<div>
-								<button
-									className="btn btn-error"
-									onClick={() => deleteProduct(product._id)}
-								>
-									Delete Prouct
-								</button>
-							</div>
-							<div>
-								<Link
-									to={`/artisans/updateproduct/${product._id}`}
-								>
-									<button className="btn btn-warning">
-										Update Prouct
-									</button>
-								</Link>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-		);
-	}
-=======
               <div>
                 <button
                   className="btn btn-error"
@@ -302,13 +277,17 @@ function Dashboard() {
                   Delete Prouct
                 </button>
               </div>
+              <div>
+                <Link to={`/artisans/updateproduct/${product._id}`}>
+                  <button className="btn btn-warning">Update Prouct</button>
+                </Link>
+              </div>
             </div>
           ))}
         </div>
       </div>
     );
   }
->>>>>>> Stashed changes
 }
 
 export default Dashboard;
