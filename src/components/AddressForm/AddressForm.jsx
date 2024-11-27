@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function AddressForm() {
   const [selectedCountry, setSelectedCountry] = useState("India");
@@ -77,6 +78,7 @@ function AddressForm() {
         },
       });
       navigate("/");
+      toast.success("Address added successfully");
     } catch (error) {
       console.error("error in address form", error);
     }

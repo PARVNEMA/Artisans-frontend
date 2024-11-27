@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -28,6 +29,7 @@ function ArtisansLogin() {
       localStorage.setItem("artisansaccessToken", res.data.data.accessToken);
       getCurrentUser();
       navigate("/artisans/dashboard");
+      toast("Login successfully", { type: "success" });
     } catch (error) {
       console.error("error in login form", error);
     }

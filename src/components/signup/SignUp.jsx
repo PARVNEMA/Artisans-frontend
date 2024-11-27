@@ -34,6 +34,7 @@ function SignUp() {
 
         console.log("res from register backend", res.data);
         navigate("/");
+        toast("Signup successfully", { type: "success" });
       } catch (error) {
         console.error("error in register form", error);
       }

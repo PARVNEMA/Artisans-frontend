@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../useContext/loginContext";
 import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 function Login() {
   const {
     register,
@@ -27,6 +28,7 @@ function Login() {
       console.log("res from login backend", res.data);
       localStorage.setItem("accessToken", res.data.data.accessToken);
       navigate("/");
+      toast("Login successfully", { type: "success" });
     } catch (error) {
       console.error("error in login form", error);
     }
