@@ -1,16 +1,50 @@
 import { IndianRupee } from "lucide-react";
-import React from "react";
+import React, { useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
+import { CurrencyContext } from "../../../useContext/CurrencyContext";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function Cards({ product }) {
+	const { currency } = useContext(CurrencyContext);
+
+	const backendurl = import.meta.env.VITE_URL;
+	const addWishlistItem = useCallback(async (productId) => {
+		try {
+			console.log("productId", productId);
+			const res = await axios.post(
+				`${backendurl}/wishlist`,
+				{ productId: product._id },
+				{
+					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"accessToken"
+						)}`,
+					},
+				}
+			);
+			console.log("add to  wishlisted items=", res.data);
+			toast("Added to wishlist", {
+				type: "success",
+				theme: "colored",
+			});
+		} catch (error) {
+			console.log("Error", error);
+		}
+	}, []);
 	return (
 		<div>
-			<Link to={`/productdetails/${product._id}`}>
-				<div class="bg-gray-50  overflow-hidden  cursor-pointer hover:-translate-y-2 transition-all relative boder-box">
-					<div class="bg-black opacity-80 hover:opacity-100 p-5 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3 ">
+			{/* <Link to={`/productdetails/${product._id}`}> */}
+			<div class="bg-gray-50  overflow-hidden  cursor-pointer hover:-translate-y-2 transition-all relative boder-box">
+				<div class="bg-black opacity-80 hover:opacity-100 p-5 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3 ">
+					<button
+						onClick={addWishlistItem}
+						className="z-40"
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							width="40px"
+							width="25px"
 							class="fill-white inline-block"
 							viewBox="0 0 64 64"
 						>
@@ -19,8 +53,10 @@ function Cards({ product }) {
 								data-original="#000000"
 							></path>
 						</svg>
-					</div>
+					</button>
+				</div>
 
+				<Link to={`/productdetails/${product._id}`}>
 					<div class="h-[260px] overflow-hidden mx-auto aspect-w-16 aspect-h-8">
 						<img
 							src={product.images[0]}
@@ -48,7 +84,11 @@ function Cards({ product }) {
 							</div>
 						</Link>
 						<h4 class="text-lg text-gray-800 font-medium mt-2 flex flex-row">
-							<IndianRupee />
+							{currency === "INR"
+								? "₹"
+								: currency === "USD"
+								? "$"
+								: "€ "}
 							{product.price}
 						</h4>
 
@@ -119,8 +159,9 @@ function Cards({ product }) {
 							</svg>
 						</div>
 					</div>
-				</div>
-			</Link>
+				</Link>
+			</div>
+			{/* </Link> */}
 		</div>
 	);
 }

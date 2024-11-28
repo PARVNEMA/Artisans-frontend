@@ -22,11 +22,11 @@ import { IndianRupee, IndianRupeeIcon } from "lucide-react";
 function Dashboard() {
 	{
 		const backendurl = import.meta.env.VITE_URL;
-		const [artisansproducts, setArtisansProducts] =
-			useState([]);
 		const [artisansmatrices, setArtisansMatrices] =
 			useState(null);
 		const [artisans, setArtisans] = useState(null);
+		const [artisansproducts, setArtisansProducts] =
+			useState([]);
 		const getArtisansProduct = useCallback(async () => {
 			try {
 				const res = await axios.get(
@@ -50,7 +50,7 @@ function Dashboard() {
 			useCallback(async () => {
 				try {
 					const res = await axios.get(
-						`${backendurl}/artisans/matrices/${artisans?._id}`,
+						`${backendurl}/artisans/dashboard`,
 						{
 							withCredentials: true,
 							headers: {
@@ -61,7 +61,7 @@ function Dashboard() {
 						}
 					);
 					console.log(
-						"current artisans metrices",
+						"current artisans metrices =",
 						res.data
 					);
 					setArtisansMatrices(res.data.data);
@@ -170,11 +170,6 @@ function Dashboard() {
 				<div className="flex items-center w-full">
 					{/* Header */}
 					<div className="w-[85%] pl-[8rem]">
-						<img
-							src={artisans?.avatar}
-							alt=""
-							className="h-25 w-25 rounded-full"
-						/>
 						<h1 className="text-5xl font-bold uppercase text-center mt-10 mb-3">
 							Welcome !! {artisans?.fullName}
 						</h1>
@@ -209,38 +204,34 @@ function Dashboard() {
 								</h2>
 								<p className="text-xl">
 									{
-										artisansmatrices.metrics
-											.customerSatisfaction
+										artisansmatrices.customerSatisfactionRate
 									}
 								</p>
 							</div>
 							<div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-five hover:bg-three w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
 								<h2 className="text-xl ">Dispute Rate</h2>
 								<p className="text-xl">
-									{artisansmatrices.metrics.disputeRate}
+									{artisansmatrices.disputeRate}
 								</p>
 							</div>
 							<div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-five hover:bg-three w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
 								<h2 className="text-xl ">
-									Product Selling Rate
+									Product refundAndReturnRate
 								</h2>
 								<p className="text-xl">
-									{
-										artisansmatrices.metrics
-											.productSellingRate
-									}
+									{artisansmatrices.refundAndReturnRate}
 								</p>
 							</div>
-							<div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-five hover:bg-three w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
+							{/* <div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-five hover:bg-three w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
 								<h2 className="text-xl ">Refund Rate</h2>
 								<p className="text-xl">
-									{artisansmatrices.metrics.refundRate}
+									{artisansmatrices.refundRate}
 								</p>
-							</div>
+							</div> */}
 							<div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-five hover:bg-three w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
-								<h2 className="text-xl ">Return Rate</h2>
+								<h2 className="text-xl ">Revenue</h2>
 								<p className="text-xl">
-									{artisansmatrices.metrics.returnRate}
+									{artisansmatrices.totalRevenue}
 								</p>
 							</div>
 						</div>
@@ -341,6 +332,15 @@ function Dashboard() {
 								>
 									Delete Prouct
 								</button>
+							</div>
+							<div>
+								<Link
+									to={`/artisans/updateproduct/${product._id}`}
+								>
+									<button className="btn btn-warning">
+										Update Prouct
+									</button>
+								</Link>
 							</div>
 						</div>
 					))}

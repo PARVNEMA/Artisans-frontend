@@ -1,5 +1,6 @@
 import axios from "axios";
-import React from "react";
+import { toast } from "react-toastify";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useArtisansAuth } from "../../../../useContext/ArtisansContext";
@@ -13,7 +14,7 @@ function ArtisansLogin() {
   } = useForm();
   const backendurl = import.meta.env.VITE_URL;
   const navigate = useNavigate();
-
+  const [showPassword, setShowPassword] = useState(false);
   const onSubmit = async (data) => {
     console.log(data);
     try {
@@ -28,6 +29,7 @@ function ArtisansLogin() {
       localStorage.setItem("artisansaccessToken", res.data.data.accessToken);
       getCurrentUser();
       navigate("/artisans/dashboard");
+      toast("Login successfully", { type: "success" });
     } catch (error) {
       console.error("error in login form", error);
     }
@@ -131,7 +133,7 @@ function ArtisansLogin() {
                 <div class="relative flex items-center">
                   <input
                     name="password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     required
                     class="w-full text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                     placeholder="Enter password"
@@ -140,6 +142,7 @@ function ArtisansLogin() {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="#bbb"
+                    onClick={() => setShowPassword(!showPassword)}
                     stroke="#bbb"
                     class="w-[18px] h-[18px] absolute right-2 cursor-pointer"
                     viewBox="0 0 128 128"

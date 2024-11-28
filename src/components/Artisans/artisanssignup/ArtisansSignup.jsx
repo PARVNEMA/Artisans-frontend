@@ -37,6 +37,7 @@ function ArtisansSignup() {
 
         console.log("res from register backend", res.data);
         navigate("/artisans/login");
+        toast("Signup successfully", { type: "success" });
       } catch (error) {
         console.error("error in register form", error);
       }
