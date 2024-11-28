@@ -130,8 +130,13 @@ function Navbar() {
       setresults(res.data.data);
       console.log("results", res.data.data);
     } catch (error) {
+      setresults([]);
       console.log("error in search", error);
     }
+
+    useEffect(() => {
+      handleSearch(searchTerm);
+    }, handleSearch);
   };
   return (
     <div
@@ -148,7 +153,7 @@ function Navbar() {
             />
           </Link>
           <GTranslateLoader />
-          <div className="xl:hidden ml-10">
+          <div className="xl:hidden ml-5 sm:ml-10">
             {" "}
             <select
               name="page"
@@ -158,9 +163,8 @@ function Navbar() {
             >
               {" "}
               <option value="/">Home</option>{" "}
-              <option value="/category"></option>
               <option value="/artisans/page">Artisans</option>{" "}
-              <option value="/product">Products</option>{" "}
+              <option value="/products">Products</option>{" "}
               <option value="/aboutus">About Us</option>{" "}
               <option value="/contactus">Contact Us</option>{" "}
             </select>{" "}
@@ -203,35 +207,34 @@ function Navbar() {
           </div>
         </div>
 
-        <div className="">
-          <div id="searchBar" className="p-2 m-2 rounded-lg bg-white">
-            <Searchform onSearch={handleSearch} />
-          </div>
-          {results ? (
-            <ul className="absolute top-[4.5rem] z-10 bg-white text-black">
-              {results.map((result, index) => (
-                <li
-                  key={index}
-                  style={{
-                    listStyleType: "none",
-                    padding: "5px 0",
-                  }}
-                >
-                  <Link
-                    to={`/productdetails/${result._id}`}
-                    className="flex p-1 gap-2 truncate"
-                  >
-                    <img src={result.images[0]} className="h-6 w-6" />
-                    <div>{result.title}</div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <div></div>
-          )}
-        </div>
+        <div className=""></div>
         <div className="flex justify-end p-5 w-[25%]">
+          <div id="searchBar" className="">
+            <Searchform onSearch={handleSearch} />
+            {results ? (
+              <ul className="absolute top-[4.5rem] px-2 rounded-md z-10 bg-white text-black">
+                {results.map((result, index) => (
+                  <li
+                    key={index}
+                    style={{
+                      listStyleType: "none",
+                      padding: "5px 0",
+                    }}
+                  >
+                    <Link
+                      to={`/productdetails/${result._id}`}
+                      className="flex p-1 gap-2 truncate"
+                    >
+                      <img src={result.images[0]} className="h-6 w-6" />
+                      <div>{result.title}</div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div></div>
+            )}
+          </div>
           <select
             className="text-black p-2 rounded-sm mr-4 bg-four"
             name="currency"
