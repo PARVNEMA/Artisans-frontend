@@ -93,8 +93,10 @@ function Navbar() {
 	useEffect(() => {
 		if (localStorage.getItem("artisansaccessToken")) {
 			getCurrentArtisans();
+			setartisansloggedIn(true);
 		}
 		if (localStorage.getItem("accessToken")) {
+			setloggedIn(true);
 			getCurrentUser();
 		}
 		getAllCategories();
@@ -337,7 +339,7 @@ function Navbar() {
 					>
 						<Link to={"/aa"}>
 							<button className="btn bg-four">
-								loggedIn
+								SignIn
 							</button>
 						</Link>
 					</div>
