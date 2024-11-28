@@ -2,12 +2,12 @@ import React from "react";
 
 function Footer() {
 	return (
-		<footer class="font-[comic sans] tracking-wide  px-4 py-8">
+		<footer class="font-[comic sans] tracking-wide  px-4 py-8 bg-[#002244]">
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
 				<div>
 					<a href="/#home">
 						<img
-							src="../../../public/images/logo1.png"
+							src="public/images/Elegant Peacock Indian Wedding Logo (3).png"
 							alt="logo"
 							class="w-[20rem]"
 						/>
