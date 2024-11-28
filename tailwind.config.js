@@ -6,7 +6,7 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				one: "#25362c", // background
+				one: "#002244", // background
 				two: "#FFB000", // boader and headline
 				three: "#F5F5DC", // cream color on  button and such
 				four: "#def5db", // fully background

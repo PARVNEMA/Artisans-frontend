@@ -179,7 +179,7 @@ const Carousel = () => {
           height: 0,
           paddingTop: "56.2225%",
           boxShadow: "0 2px 8px 0 rgba(63,69,81,0.16)",
-          marginBottom: "0.9em",
+         
           overflow: "hidden",
           borderRadius: "8px",
           willChange: "transform",
@@ -197,7 +197,7 @@ const Carousel = () => {
             padding: 0,
             margin: 0,
           }}
-          src="https://www.canva.com/design/DAGXX-hGHdY/M8xIQ5o12i4c8aA9t1gzmQ/view?embed"
+          src="https://www.canva.com/design/DAGXe3M_zds/eIKOb_BpaddlZi3dOB0X7A/view?embed"
           allowFullScreen
           allow="fullscreen"
         ></iframe>

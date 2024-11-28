@@ -56,7 +56,7 @@ function ArtisansLogin() {
         <div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl max-md:max-w-lg rounded-md p-6">
           <a href="javascript:void(0)">
             <img
-              src="/public/images/logo2.png"
+              src="public/images/Elegant Peacock Indian Wedding Logo (3).png"
               alt="logo"
               class="w-40 md:mb-4 mb-12"
             />
