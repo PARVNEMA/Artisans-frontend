@@ -38,6 +38,9 @@ import GTranslateLoader from "./components/Translate/GTranslateLoader.jsx";
 import CurrencyProvider from "../useContext/CurrencyContext.jsx";
 import UpdateProduct from "./components/updateproduct/UpdateProduct.jsx";
 import Wishlist from "./components/wishlist/Wishlist.jsx";
+import AdminSignup from "./components/admin/AdminSignup.jsx";
+import AdminLogin from "./components/admin/AdminLogin.jsx";
+import AdminHome from "./components/admin/AdminHome.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -131,6 +134,18 @@ const router = createBrowserRouter([
 			{
 				path: "/artisans/:artisanid",
 				element: <OtherArtisans />,
+			},
+			{
+				path: "/adminsignup",
+				element: <AdminSignup />,
+			},
+			{
+				path: "/adminlogin",
+				element: <AdminLogin />,
+			},
+			{
+				path: "/admin",
+				element: <AdminHome />,
 			},
 		],
 	},
