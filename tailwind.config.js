@@ -6,10 +6,10 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				one: "#002244", // background
-				two: "#FFB000", // boader and headline
-				three: "#F5F5DC", // cream color on  button and such
-				four: "#def5db", // fully background
+				one: "#0C084C", // background
+				two: "#F0EEC8", // boader and headline
+				three: "#00B7A8", // cream color on  button and such
+				four: "#F0EEC8", // fully background
 				five: "#A69080",
 			},
 			fontFamily: {
