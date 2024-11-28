@@ -150,7 +150,7 @@ function Navbar() {
             />
           </Link>
           <GTranslateLoader />
-          <div className=" text-[#F5F5DC] font-medium w-[40rem] justify-evenly p-2 hidden lg:flex ">
+          <div className=" text-white font-medium w-[40rem] justify-evenly p-2 hidden lg:flex ">
             <Link href="/">Home</Link>
             <div>
               <div className="dropdown dropdown-hover ">
