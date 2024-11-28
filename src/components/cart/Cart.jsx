@@ -46,14 +46,13 @@ function Cart() {
         }
       );
       console.log("delete cart items=", res.data);
+      getCartItems();
       toast.success("Product removed from cart");
     } catch (error) {
       console.log("Error", error);
     }
   }, []);
   const updateQuantity = useCallback(async (productId, quantity) => {
-    // console.log("updatedquantiy=", updatequantity);
-
     try {
       const res = await axios.patch(
         `${backendurl}/cart/update-quantity`,
@@ -87,7 +86,7 @@ function Cart() {
   useEffect(() => {
     getCartItems();
     getCurrentUserAddress();
-  }, [deleteCartItems, updateQuantity, currency]);
+  }, [getCartItems, updateQuantity, currency]);
   return (
     <>
       {cartlength > 0 ? (
