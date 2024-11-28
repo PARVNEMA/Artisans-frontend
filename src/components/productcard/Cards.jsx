@@ -31,6 +31,7 @@ function Cards({ product }) {
 			});
 		} catch (error) {
 			console.log("Error", error);
+			toast.error("Please login first");
 		}
 	}, []);
 	return (
