@@ -8,8 +8,8 @@ export default {
       colors: {
         one: "#25362c",// background
         two: "#FFB000",// boader and headline
-        three: "#F5F5DC",// cream color on  button and such
-        four: "#F5F5DC",// fully background
+        three: "#FFF8E8",// cream color on  button and such
+        four: "#FCF8F3",// fully background
         five: "#A69080",
       },
       fontFamily: {

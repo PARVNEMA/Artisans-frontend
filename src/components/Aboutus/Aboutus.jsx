@@ -28,12 +28,12 @@ const Aboutus = () => {
       
             <div  className=' logo flex px-10 '>
                 <img
-                className='h-56rem w-52rem  '
+                className='h-48rem w-48rem  '
                 src="public/images/logo1.png"
                 alt="Crafted India "
                 />
             </div>
-           
+            
         </div>
         {/** introduce the problem */}
         <div className=" flex justify-between p-10 px-40">
@@ -69,14 +69,18 @@ const Aboutus = () => {
     
     {/** what unique about us  */}
     <div class="mb-[3rem] max-w-6xl mx-auto font-[comic sans]">
-				<h2 class="text-gray-800 sm:text-4xl text-2xl font-extrabold text-center mb-16">
-					Discover Our Exclusive Features
+				<h2 class="text-5xl font-bold pb-4  text-center">
+					What makes us unique
 				</h2>
 
-				<div class="grid lg:grid-cols-3 md:grid-cols-2 max-md:max-w-lg mx-auto gap-12">
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
+				<div class="grid lg:grid-cols-3 md:grid-cols-2 max-md:max-w-lg mx-auto gap-12 ">
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+                        <img 
+                        src="https://img.freepik.com/free-vector/two-business-partners-shaking-hands-big-briefcase-partnership-agreement-cooperation-deal-completed-concept-white-background_335657-1643.jpg?t=st=1732643288~exp=1732646888~hmac=e5a6ea280d78aca6b12afbdfb895cdba0754861a2199ea1e65bc34911bf4a277&w=996"
+                        class="w-36 h-36 p-3  shrink-0"
+                        />
+						{/*<svg
+							xmlns="https://img.freepik.com/free-vector/two-business-partners-shaking-hands-big-briefcase-partnership-agreement-cooperation-deal-completed-concept-white-background_335657-1643.jpg?t=st=1732643288~exp=1732646888~hmac=e5a6ea280d78aca6b12afbdfb895cdba0754861a2199ea1e65bc34911bf4a277&w=996"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
 							viewBox="0 0 32 32"
@@ -89,20 +93,23 @@ const Aboutus = () => {
 								d="M16 9a7 7 0 1 0 7 7 7.008 7.008 0 0 0-7-7Zm0 12a5 5 0 1 1 5-5 5.006 5.006 0 0 1-5 5Z"
 								data-original="#000000"
 							/>
-						</svg>
+						</svg>*/}
 						<div>
-							<h3 class="text-gray-800 text-xl font-semibold mb-3">
+							<h3 class="text-two text-xl font-semibold mb-3">
 								Customization
 							</h3>
-							<p class="text-gray-600 text-sm">
-								Tailor our product to suit your needs Expand
-								your reach with our global network.
+							<p class="text-three text-sm">
+                            Make art that speaks to you! Connect with the right artist and customize the product that you love.
+						
 							</p>
 						</div>
 					</div>
 
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300">
-						<svg
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+                        <img 
+                        src="https://content.jdmagicbox.com/comp/jabalpur/u3/9999px761.x761.170604180802.q6u3/catalogue/india-post-office-kamla-nehru-jabalpur-post-office-services-3raa4.jpg"
+                        class="w-36 h-36 p-3  shrink-0"/>
+						{/*<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
@@ -138,20 +145,22 @@ const Aboutus = () => {
 									data-original="#000000"
 								/>
 							</g>
-						</svg>
+						</svg>*/}
 						<div>
-							<h3 class="text-gray-800 text-xl font-semibold mb-3">
-								Security
+							<h3 class="text-two text-xl font-semibold mb-3">
+                            Transportation
 							</h3>
-							<p class="text-gray-600 text-sm">
-								Your data is protected by the latest
-								security measures.
+							<p class="text-three text-sm">
+                            Receive product at every corner of the globe through Indian post.
 							</p>
 						</div>
 					</div>
 
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300">
-						<svg
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+                        <img
+                        src="https://img.freepik.com/free-vector/stylish-diwali-discount-sale-banner-template-design_1017-15786.jpg?t=st=1732643855~exp=1732647455~hmac=a60821e7553b634c9633ca10de4534622b9da67ef158644bd0a70983002a7a78&w=740"
+                        class="w-36 h-36 p-3  shrink-0"/>
+						{/*<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
@@ -161,20 +170,23 @@ const Aboutus = () => {
 								d="M271.029 0c-33.091 0-61 27.909-61 61s27.909 61 61 61 60-27.909 60-61-26.909-61-60-61zm66.592 122c-16.485 18.279-40.096 30-66.592 30-26.496 0-51.107-11.721-67.592-30-14.392 15.959-23.408 36.866-23.408 60v15c0 8.291 6.709 15 15 15h151c8.291 0 15-6.709 15-15v-15c0-23.134-9.016-44.041-23.408-60zM144.946 460.404 68.505 307.149c-7.381-14.799-25.345-20.834-40.162-13.493l-19.979 9.897c-7.439 3.689-10.466 12.73-6.753 20.156l90 180c3.701 7.423 12.704 10.377 20.083 6.738l19.722-9.771c14.875-7.368 20.938-25.417 13.53-40.272zM499.73 247.7c-12.301-9-29.401-7.2-39.6 3.9l-82 100.8c-5.7 6-16.5 9.6-22.2 9.6h-69.901c-8.401 0-15-6.599-15-15s6.599-15 15-15h60c16.5 0 30-13.5 30-30s-13.5-30-30-30h-78.6c-7.476 0-11.204-4.741-17.1-9.901-23.209-20.885-57.949-30.947-93.119-22.795-19.528 4.526-32.697 12.415-46.053 22.993l-.445-.361-21.696 19.094L174.28 452h171.749c28.2 0 55.201-13.5 72.001-36l87.999-126c9.9-13.201 7.2-32.399-6.299-42.3z"
 								data-original="#000000"
 							/>
-						</svg>
+						</svg>*/}
 						<div>
-							<h3 class="text-gray-800 text-xl font-semibold mb-3">
-								Support
+							<h3 class="text-two text-xl font-semibold mb-3">
+                            Seasonal Recommendation
 							</h3>
-							<p class="text-gray-600 text-sm">
-								Tailor our product to suit your needs 24/7
-								customer support for all your inquiries.
+							<p class="text-three text-sm">
+                            Experiences the taste of Indian season, though highly curated seasonal recommendation products.
 							</p>
 						</div>
 					</div>
 
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300">
-						<svg
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+                        <img 
+                        src="https://img.freepik.com/free-vector/hand-drawn-international-trade-with-coins_23-2149145946.jpg?t=st=1732644010~exp=1732647610~hmac=a2eaafca1a5c3862d7c000b143d4208b6d1cd192704ec4d21c9d72f308d1faf6&w=740"
+                        class="w-36 h-36 p-3  shrink-0"
+                        />
+						{/*<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
@@ -194,20 +206,24 @@ const Aboutus = () => {
 									data-original="#000000"
 								/>
 							</g>
-						</svg>
+						</svg>*/}
 						<div>
-							<h3 class="text-gray-800 text-xl font-semibold mb-3">
-								Performance
+							<h3 class="text-two text-xl font-semibold mb-3">
+    Multi-curreny
 							</h3>
-							<p class="text-gray-600 text-sm">
-								Experience blazing-fast performance with our
-								product.
+							<p class="text-three text-sm">
+                            Buy product  with easy in any  currency , through out multi-currency system
+								
 							</p>
 						</div>
 					</div>
 
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300">
-						<svg
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+                        <img
+                        src="https://img.freepik.com/free-vector/team-spirit-concept-illustration_114360-1473.jpg?t=st=1732644281~exp=1732647881~hmac=f4f9c5864beee95507d3dbf625e97c7840480f795544f893d2beb4e1db4be198&w=740"
+                        class="w-36 h-36 p-3  shrink-0"
+                        />
+						{/*<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
@@ -241,20 +257,23 @@ const Aboutus = () => {
 								d="M494.359 499.947c-.155 0-.315-.005-.47-.01l-66.757-3.042c-5.702-.263-10.108-5.088-9.85-10.79.263-5.702 5.113-9.984 10.79-9.85l55.219 2.515-3.641-55.332c-.372-5.692 3.941-10.609 9.633-10.986 5.625-.398 10.609 3.946 10.986 9.633l4.401 66.85a10.33 10.33 0 0 1-2.929 7.902 10.323 10.323 0 0 1-7.382 3.11z"
 								data-original="#000000"
 							/>
-						</svg>
+						</svg>*/}
 						<div>
-							<h3 class="text-gray-800 text-xl font-semibold mb-3">
-								Global Reach
+							<h3 class="text-two text-xl font-semibold mb-3">
+								Find a community
 							</h3>
-							<p class="text-gray-600 text-sm">
-								Tailor our product to suit your needs Expand
-								your reach with our global network.
+							<p class="text-three text-sm">
+                            Connect with people who understand and appreciate your art, and create a valuable product with your skill set.
 							</p>
 						</div>
 					</div>
 
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300">
-						<svg
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+                        <img 
+                        src="https://media.istockphoto.com/id/1415211237/vector/translation-icon-people-multilanguage-comunication-linguist-chat-bubbles-with-language.jpg?s=2048x2048&w=is&k=20&c=_cuNx3tDgssmH15MnvwZB-0deSn0Hi2k44BSyUKyuWs="
+                        class="w-36 h-36 p-3  shrink-0"
+                        />
+						{/*<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
@@ -284,14 +303,13 @@ const Aboutus = () => {
 									data-original="#000000"
 								/>
 							</g>
-						</svg>
+						</svg>*/}
 						<div>
-							<h3 class="text-gray-800 text-xl font-semibold mb-3">
+							<h3 class="text-two text-xl font-semibold mb-3">
 								Communication
 							</h3>
-							<p class="text-gray-600 text-sm">
-								Tailor our product to suit your needs
-								Seamless communication for your team.
+							<p class="text-three text-sm">
+                            Only know a specific language, no problem! browse our product easily in any language
 							</p>
 						</div>
 					</div>
