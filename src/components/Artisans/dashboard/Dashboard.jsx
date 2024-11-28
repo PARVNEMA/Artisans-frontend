@@ -15,7 +15,7 @@ import {
 	XAxis,
 	YAxis,
 } from "recharts";
-import { useArtisansAuth } from "../../../../useContext/ArtisansContext.jsx";
+import { useAuthArtisans } from "../../../../useContext/ArtisansContext.jsx";
 import { Link } from "react-router-dom";
 import { IndianRupee, IndianRupeeIcon } from "lucide-react";
 
