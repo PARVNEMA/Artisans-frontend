@@ -11,7 +11,7 @@ const Aa = () => {
         <div className="flex justify-between">
           <button
             className={`w-1/2 text-center py-2 ${
-              isLogin ? "text-white rounded-3xl bg-blue-600" : "text-blue-700"
+              isLogin ? "text-[#F0EEC8] rounded-3xl bg-[#0C084C]" : "text-blue-700"
             }`}
             onClick={() => setIsLogin(true)}
           >
@@ -19,7 +19,7 @@ const Aa = () => {
           </button>
           <button
             className={`w-1/2 text-center py-2 ${
-              !isLogin ? " text-white rounded-3xl bg-blue-600" : "text-blue-700"
+              !isLogin ? " text-[#F0EEC8] rounded-3xl bg-[#0C084C]" : "text-blue-700"
             }`}
             onClick={() => setIsLogin(false)}
           >

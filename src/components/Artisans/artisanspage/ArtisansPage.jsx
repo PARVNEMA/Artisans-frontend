@@ -5,7 +5,7 @@ function ArtisansPage() {
 	return (
 		<div>
 			{/* Join Us */}
-			<div className="flex bg-one ">
+			<div className="flex bg-[#096386] ">
 				<div className="h-auto w-full gap-3 flex flex-col justify-center items-center p-16">
 					<h1 className="text-4xl font-bold text-two">
 						Create Your Art Portfolio
@@ -31,12 +31,12 @@ function ArtisansPage() {
 
 			{/* artisans features */}
 			<div>
-				<div class=" font-[sans-serif] flex max-lg:flex-col px-16 mx-8 my-8 gap-12 max-w-full flex-col">
-					<div>
+				<div class=" font-[sans-serif] flex max-lg:flex-col px-16 mx-8 my-8 gap-12 max-w-full flex-col ">
+					<div >
 						<h2 class="text-gray-800 text-4xl font-extrabold mb-6 text-center">
 							Discover Our Exclusive Features
 						</h2>
-						<p class="text-gray-600 text-sm leading-relaxed text-center">
+						<p class="text-three text-sm leading-relaxed text-center">
 							Laboris qui Lorem ad tempor ut reprehenderit.
 							Nostrud anim nulla officia ea sit deserunt. Eu
 							eu quis anim aute Laboris qui Lorem ad tempor
@@ -44,8 +44,8 @@ function ArtisansPage() {
 						</p>
 					</div>
 
-					<div class="grid md:grid-cols-2 gap-8 max-md:max-w-lg mx-auto">
-						<div class="text-left bg-blue-50 rounded-lg shadow p-6">
+					<div class="grid md:grid-cols-2 gap-8 max-md:max-w-lg mx-auto ">
+						<div class="text-left rounded-lg shadow p-6 bg-[#096386]">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="fill-blue-600 w-12 inline-block bg-white p-3 rounded-full"
@@ -60,18 +60,15 @@ function ArtisansPage() {
 									data-original="#000000"
 								/>
 							</svg>
-							<h3 class="text-gray-800 text-xl font-semibold mt-6 mb-3">
+							<h3 class="text-two text-xl font-semibold mt-6 mb-3">
 								Customization
 							</h3>
-							<p class="text-gray-600 text-sm leading-relaxed">
-								Laboris qui Lorem ad tempor ut
-								reprehenderit. Nostrud anim nulla officia ea
-								sit deserunt. Eu eu quis anim aute Laboris
-								qui Lorem ad tempor ut reprehenderit.
+							<p class="text-three text-sm leading-relaxed">
+							Offer you skill to people who love it! Create your Portfolio , show your skill and create custimoize product according to the client needs and get paied accordingly.
 							</p>
 						</div>
 
-						<div class="text-left bg-blue-50 rounded-lg shadow p-6">
+						<div class="text-left  rounded-lg shadow p-6 bg-[#096386]">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="w-12 inline-block bg-white p-3 rounded-full"
@@ -108,21 +105,18 @@ function ArtisansPage() {
 									/>
 								</g>
 							</svg>
-							<h3 class="text-gray-800 text-xl font-semibold mt-6 mb-3">
+							<h3 class="text-two text-xl font-semibold mt-6 mb-3">
 								Security
 							</h3>
-							<p class="text-gray-600 text-sm leading-relaxed">
-								Laboris qui Lorem ad tempor ut
-								reprehenderit. Nostrud anim nulla officia ea
-								sit deserunt. Eu eu quis anim aute Laboris
-								qui Lorem ad tempor ut reprehenderit.
+							<p class="text-three text-sm leading-relaxed">
+								Reach out to verified artist !  keep upto date wiht your products creation throuhgt excclusive chat  and have you payment securd by indian post 
 							</p>
 							{/* <button type="button" class="text-gray-800 border border-gray-300 px-4 py-2 rounded-lg font-bold flex items-center text-sm mt-6 hover:bg-white">
             Learn more <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" class="rotate-90 ml-1.5"><path fill="#333" d="M12.006 1a1 1 0 0 1 .838.463l7 11a1 1 0 0 1-.985 1.527l-3.364-.48a.434.434 0 0 0-.495.43V20c0 1.645-1.355 3-3 3s-3-1.355-3-3v-6.06a.434.434 0 0 0-.495-.43l-3.364.48a1 1 0 0 1-.985-1.527l7-11a1 1 0 0 1 .85-.463z" data-original="#000000" paint-order="fill markers stroke"></path></svg>
           </button> */}
 						</div>
 
-						<div class="text-left bg-blue-50 rounded-lg shadow p-6">
+						<div class="text-left  rounded-lg shadow p-6 bg-[#096386]">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="fill-blue-600 w-12 inline-block bg-white p-3 rounded-full"
@@ -133,10 +127,10 @@ function ArtisansPage() {
 									data-original="#000000"
 								/>
 							</svg>
-							<h3 class="text-gray-800 text-xl font-semibold mt-6 mb-3">
+							<h3 class="text-two text-xl font-semibold mt-6 mb-3">
 								Support
 							</h3>
-							<p class="text-gray-600 text-sm leading-relaxed">
+							<p class="text-three text-sm leading-relaxed">
 								Laboris qui Lorem ad tempor ut
 								reprehenderit. Nostrud anim nulla officia ea
 								sit deserunt. Eu eu quis anim aute Laboris
@@ -144,7 +138,7 @@ function ArtisansPage() {
 							</p>
 						</div>
 
-						<div class="text-left bg-blue-50 rounded-lg shadow p-6">
+						<div class="text-left  rounded-lg shadow p-6 bg-[#096386]">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="fill-blue-600 w-12 inline-block bg-white p-3 rounded-full"
@@ -165,10 +159,10 @@ function ArtisansPage() {
 									/>
 								</g>
 							</svg>
-							<h3 class="text-gray-800 text-xl font-semibold mt-6 mb-3">
+							<h3 class="text-two text-xl font-semibold mt-6 mb-3">
 								Performance
 							</h3>
-							<p class="text-gray-600 text-sm leading-relaxed">
+							<p class="text-three text-sm leading-relaxed">
 								Laboris qui Lorem ad tempor ut
 								reprehenderit. Nostrud anim nulla officia ea
 								sit deserunt. Eu eu quis anim aute Laboris

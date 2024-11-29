@@ -165,15 +165,15 @@ function Navbar() {
 	};
 	return (
 		<div
-			className="w-full h-[5rem] flex justify-center "
-			style={{ backgroundColor: "#25362c" }}
+			className="w-full h-[5rem] flex justify-center bg-[#002244] "
+			
 		>
 			<div className="navbar flex justify-between p-2 ">
 				<div className="flex-1">
 					<Link to={"/"}>
 						<img
-							className="ml-3 h-[5rem] w-[6rem]"
-							src="../../../public/images/logo1.png"
+							className="ml-3 h-[5rem] w-[5rem]"
+							src="public/images/Elegant Peacock Indian Wedding Logo (3).png"
 							alt="Logo"
 						/>
 					</Link>

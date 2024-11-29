@@ -379,7 +379,7 @@ function SignUp() {
                     <div class="mt-3">
                       <button
                         type="submit"
-                        class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] bg-blue-600 focus:outline-none hover:bg-blue-700 hover:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.5)]"
+                        class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] bg-[#0C084C] focus:outline-none hover:bg-blue-700 hover:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.5)]"
                       >
                         Create an account
                       </button>

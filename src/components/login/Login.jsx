@@ -71,7 +71,7 @@ function Login() {
 							<div class="mb-12">
 								<h3
 									classname="sign"
-									class="text-4xl font-extrabold text-blue-600"
+									class="text-4xl font-extrabold text-[#0C084C]"
 								>
 									Sign in
 								</h3>
