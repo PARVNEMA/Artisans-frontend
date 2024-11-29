@@ -10,6 +10,7 @@ function AdminHome() {
 	const [currentartisans, setcurrentartisans] = useState(
 		[]
 	);
+	const [totalArtisans,setTotalArtisans] = useState(0);
 	const [currentusers, setcurrentusers] = useState(0);
 
 	const backendurl = import.meta.env.VITE_URL;
@@ -30,12 +31,6 @@ function AdminHome() {
 				"current product analytics=",
 				res.data.data
 			);
-			//       Productcount
-			// :
-			// artisanPerProduct
-			// :
-			// avgProductPerArtisan
-			// :
 		} catch (error) {
 			console.log("Error", error);
 		}
@@ -84,6 +79,7 @@ function AdminHome() {
 			// toast.error(error.message);
 		}
 	}, []);
+	var index = 1;
 	const getActiveArtisansDetails = useCallback(async () => {
 		try {
 			const res = await axios.get(
@@ -101,6 +97,7 @@ function AdminHome() {
 				"current Active Artisans analytics=",
 				res.data.data
 			);
+			setTotalArtisans(res.data.data.totalArtisans);
 			setcurrentartisans(res.data.data.activeArtisans);
 		} catch (error) {
 			console.log("Error", error);
@@ -140,33 +137,35 @@ function AdminHome() {
 
 	return (
 		<div>
-			<h1 className="text-4xl  ">Admin Home Main</h1>
+			<h1 className="text-4xl text-center font-bold font-serif m-2 ">Admin Home Main</h1>
 
 			{/* calling active artisans */}
-			<div>
+			<div className="w-[100vw] flex justify-center text-center">
 				<table className="border border-solid border-black">
-					<tr className="border border-solid border-black">
-						<th>Id</th>
-						<th>avatar</th>
-						<th>fullName</th>
-						<th>username</th>
-						<th>email</th>
-						<th>phoneNo</th>
+					<tr className="p-3 border border-solid border-black">
+						<th className="w-16 border border-solid border-black uppercase">SNO</th>
+						<th className="w-64 border border-solid border-black uppercase">ID</th>
+						<th className="w-44 border border-solid border-black uppercase">Avatar</th>
+						<th className="w-44 border border-solid border-black uppercase">fullName</th>
+						<th className="w-44 border border-solid border-black uppercase">username</th>
+						<th className="w-44 border border-solid border-black uppercase">email</th>
+						<th className="w-44 border border-solid border-black uppercase">phoneNo</th>
 					</tr>
 					{currentartisans.map((artisan) => (
-						<tr className="border border-solid border-black">
-							<td>{artisan._id}</td>
-							<td>
+						<tr className="p-3 border border-solid border-black">
+							<td className="border border-solid border-black">{index++}</td>
+							<td className="border border-solid border-black">{artisan._id}</td>
+							<td className="border border-solid  flex justify-center">
 								<img
 									src={artisan.avatar}
 									alt=""
 									className="h-16 w-16"
 								/>
 							</td>
-							<td>{artisan.fullName}</td>
-							<td>{artisan.username}</td>
-							<td>{artisan.email}</td>
-							<td>{artisan.phoneNo}</td>
+							<td className="border border-solid border-black">{artisan.fullName}</td>
+							<td className="border border-solid border-black">{artisan.username}</td>
+							<td className="border border-solid border-black">{artisan.email}</td>
+							<td className="border border-solid border-black">{artisan.phoneNo}</td>
 						</tr>
 					))}
 				</table>
@@ -174,8 +173,9 @@ function AdminHome() {
 
 			{/* customer count */}
 			<div>
-				<h1>Total customer count:</h1>
-				{currentusers}
+				<h1 className="text-4xl text-center font-bold font-serif m-2 ">Total user count: {currentusers}</h1>
+				<h1 className="text-4xl text-center font-bold font-serif m-2 ">Total artisans count: {totalArtisans}</h1>
+				<h1 className="text-4xl text-center font-bold font-serif m-2 ">Active artisans count: {currentartisans.length}</h1>
 			</div>
 		</div>
 	);

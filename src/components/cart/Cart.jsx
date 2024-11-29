@@ -187,96 +187,72 @@ function Cart() {
                 ))}
               </div>
 
-              <div class="bg-white rounded-md px-4 py-6 h-max shadow-[0_2px_12px_-3px_rgba(6,81,237,0.3)]">
-                <ul class="text-gray-800 space-y-4">
-                  <li class="flex flex-wrap gap-4 text-sm">
-                    Subtotal <span class="ml-auto font-bold">$200.00</span>
-                  </li>
-                  <li class="flex flex-wrap gap-4 text-sm">
-                    Shipping <span class="ml-auto font-bold">$2.00</span>
-                  </li>
-                  <li class="flex flex-wrap gap-4 text-sm">
-                    Tax <span class="ml-auto font-bold">$4.00</span>
-                  </li>
-                  <hr class="border-gray-300" />
-                  <li class="flex flex-wrap gap-4 text-sm font-bold">
-                    Total <span class="ml-auto">{totalprice}</span>
-                  </li>
-                </ul>
-
-                <div class="mt-8 space-y-2">
-                  <button
-                    type="button"
-                    class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
-                  >
-                    Buy Now
-                  </button>
-                  <button
-                    type="button"
-                    class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent hover:bg-gray-100 text-gray-800 border border-gray-300 rounded-md"
-                  >
-                    Continue Shopping{" "}
-                  </button>
-                </div>
-
-                <div class="mt-4 flex flex-wrap justify-center gap-4">
-                  <img
-                    src="https://readymadeui.com/images/master.webp"
-                    alt="card1"
-                    class="w-10 object-contain"
-                  />
-                  <img
-                    src="https://readymadeui.com/images/visa.webp"
-                    alt="card2"
-                    class="w-10 object-contain"
-                  />
-                  <img
-                    src="https://readymadeui.com/images/american-express.webp"
-                    alt="card3"
-                    class="w-10 object-contain"
-                  />
-                </div>
-              </div>
-
-              {/* address */}
-              {Object.keys(useraddress).length === 0 ? (
-                <>
+              <div>
+                {/* address */}
+                {Object.keys(useraddress).length === 0 ? (
+                  <>
+                    <div>
+                      please add Your Address First
+                      <Link to={"/address"}>
+                        <button className="btn btn-outline">Address</button>
+                      </Link>
+                    </div>
+                  </>
+                ) : (
                   <div>
-                    please add Your Address First
-                    <Link to={"/address"}>
-                      <button className="btn btn-outline">Address</button>
-                    </Link>
+                    <div className="w-auto bg-white mb-4 rounded-md px-4 py-6 h-max shadow-[0_2px_12px_-3px_rgba(6,81,237,0.3)]">
+                      <div>
+                        <ul class="text-gray-800 space-y-4">
+                          <li class="flex flex-wrap gap-4 text-sm">
+                            Address
+                            <span class="ml-auto font-bold">
+                              {useraddress?.address}
+                            </span>
+                          </li>
+                          <li class="flex flex-wrap gap-4 text-sm">
+                            country
+                            <span class="ml-auto font-bold">
+                              {useraddress?.country}
+                            </span>
+                          </li>
+                          <li class="flex flex-wrap gap-4 text-sm">
+                            state
+                            <span class="ml-auto font-bold">
+                              {useraddress?.state}
+                            </span>
+                          </li>
+                          <li class="flex flex-wrap gap-4 text-sm">
+                            city
+                            <span class="ml-auto font-bold">
+                              {useraddress?.city}
+                            </span>
+                          </li>
+                          <hr class="border-gray-300" />
+                          <li class="flex flex-wrap gap-4 text-sm font-bold">
+                            Pincode
+                            <span class="ml-auto">{useraddress?.zipCode}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                </>
-              ) : (
+                )}
+
+                {/* Cost total */}
                 <div class="bg-white rounded-md px-4 py-6 h-max shadow-[0_2px_12px_-3px_rgba(6,81,237,0.3)]">
                   <ul class="text-gray-800 space-y-4">
                     <li class="flex flex-wrap gap-4 text-sm">
-                      Address
-                      <span class="ml-auto font-bold">
-                        {useraddress?.address}
-                      </span>
+                      Subtotal <span class="ml-auto font-bold">$200.00</span>
                     </li>
                     <li class="flex flex-wrap gap-4 text-sm">
-                      country
-                      <span class="ml-auto font-bold">
-                        {useraddress?.country}
-                      </span>
+                      Shipping <span class="ml-auto font-bold">$2.00</span>
                     </li>
                     <li class="flex flex-wrap gap-4 text-sm">
-                      state
-                      <span class="ml-auto font-bold">
-                        {useraddress?.state}
-                      </span>
-                    </li>
-                    <li class="flex flex-wrap gap-4 text-sm">
-                      city
-                      <span class="ml-auto font-bold">{useraddress?.city}</span>
+                      Tax <span class="ml-auto font-bold">$4.00</span>
                     </li>
                     <hr class="border-gray-300" />
                     <li class="flex flex-wrap gap-4 text-sm font-bold">
-                      Pincode
-                      <span class="ml-auto">{useraddress?.zipCode}</span>
+                      Total <span class="ml-auto">{totalprice}</span>
                     </li>
                   </ul>
 
@@ -313,7 +289,7 @@ function Cart() {
                     />
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </div>

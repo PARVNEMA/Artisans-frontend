@@ -41,6 +41,7 @@ import Wishlist from "./components/wishlist/Wishlist.jsx";
 import AdminSignup from "./components/admin/AdminSignup.jsx";
 import AdminLogin from "./components/admin/AdminLogin.jsx";
 import AdminHome from "./components/admin/AdminHome.jsx";
+import customize from "./components/customize/customize.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
 			{
 				path: "/products",
 				element: <ProductList />,
+			},
+			{
+				path: "/customize",
+				element: <customize />,
 			},
 			{
 				path: "/address",

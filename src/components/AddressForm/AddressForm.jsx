@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -9,14 +9,27 @@ function AddressForm() {
   const [selectedState, setSelectedState] = useState("");
   const [countryNames, setCountryNames] = useState([]);
   const navigate = useNavigate();
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm();
 
   const handleCountryChange = (event) => {
-    setSelectedCountry(event.target.value);
+    const country = event.target.value;
+    setSelectedCountry(country);
     setSelectedState(""); // Reset the state when country changes
+    setValue("country", country); // Update the form value
+    console.log("Country changed to:", country);
   };
 
   const handleStateChange = (event) => {
-    setSelectedState(event.target.value);
+    const state = event.target.value;
+    setSelectedState(state);
+    setValue("state", state); // Update the form value
+    console.log("State changed to:", state);
   };
 
   const states = [
@@ -55,19 +68,14 @@ function AddressForm() {
       const response = await axios.get("https://restcountries.com/v3.1/all");
       const names = response.data.map((country) => country.name.common);
       setCountryNames(names);
+      console.log("Fetched country names:", names);
     } catch (error) {
       console.error("Error fetching country names:", error);
     }
   }
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
   const onSubmit = async (data) => {
-    console.log("Data in address=", data);
+    console.log("Data in address form:", data);
     const backendurl = import.meta.env.VITE_URL;
     try {
       await axios.post(`${backendurl}/address`, data, {
@@ -80,7 +88,7 @@ function AddressForm() {
       navigate("/");
       toast.success("Address added successfully");
     } catch (error) {
-      console.error("error in address form", error);
+      console.error("Error in address form:", error);
     }
   };
 
@@ -88,10 +96,15 @@ function AddressForm() {
     getCountries();
   }, []);
 
+  useEffect(() => {
+    setValue("country", selectedCountry);
+    setValue("state", selectedState);
+  }, [selectedCountry, selectedState, setValue]);
+
   return (
     <div className="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] bg-white max-md:max-w-lg m-8 rounded-md md:grid-cols-2 items-center gap-8 h-auto max-w-4xl mx-auto font-[sans-serif] py-6 px-[7rem]">
       <div className="text-center mb-16">
-        <a href="javascript:void(0)">
+        <a href="#">
           <img
             src="../images/logo2.png"
             alt="logo"
@@ -112,8 +125,11 @@ function AddressForm() {
               type="text"
               className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
               placeholder="Enter address"
-              {...register("address")}
+              {...register("address", { required: "Address is required" })}
             />
+            {errors.address && (
+              <span className="text-red-500">{errors.address.message}</span>
+            )}
           </div>
           <div>
             <label className="text-one text-2xl mb-2 block">City</label>
@@ -122,8 +138,11 @@ function AddressForm() {
               type="text"
               className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
               placeholder="Enter city"
-              {...register("city")}
+              {...register("city", { required: "City is required" })}
             />
+            {errors.city && (
+              <span className="text-red-500">{errors.city.message}</span>
+            )}
           </div>
           <div>
             <label className="text-one text-2xl mb-2 block">State</label>
@@ -131,9 +150,9 @@ function AddressForm() {
               <select
                 value={selectedState}
                 onChange={handleStateChange}
-                {...register("state")}
                 className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
               >
+                <option value="">Select State</option>
                 {states.map((s) => (
                   <option value={s} key={s}>
                     {s}
@@ -146,38 +165,62 @@ function AddressForm() {
                 type="text"
                 className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
                 placeholder="Enter state"
-                {...register("state")}
+                {...register("state", { required: "State is required" })}
               />
+            )}
+            {errors.state && (
+              <span className="text-red-500">{errors.state.message}</span>
             )}
           </div>
           <div>
             <label className="text-one text-2xl mb-2 block">Country</label>
-            <select
-              value={selectedCountry}
-              onChange={handleCountryChange}
-              {...register("country")}
-              className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
-            >
-              {countryNames.map((c) => (
-                <option value={c} key={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
+            <Controller
+              name="country"
+              control={control}
+              defaultValue={selectedCountry}
+              render={({ field }) => (
+                <select
+                  {...field}
+                  value={selectedCountry}
+                  onChange={(event) => {
+                    field.onChange(event);
+                    handleCountryChange(event);
+                  }}
+                  className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
+                >
+                  <option value="">Select Country</option>
+                  {countryNames.map((c) => (
+                    <option value={c} key={c}>
+                      {c}
+                    </option>
+                  ))}
+                </select>
+              )}
+            />
+            {errors.country && (
+              <span className="text-red-500">{errors.country.message}</span>
+            )}
           </div>
           <div>
             <label className="text-one text-2xl mb-2 block">
               {selectedCountry === "India" ? "Pincode" : "Zipcode"}
             </label>
             <input
-              name="zipcode"
+              name="zipCode"
               type="text"
               className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
               placeholder={`Enter ${
                 selectedCountry === "India" ? "Pincode" : "Zipcode"
               }`}
-              {...register("zipCode")}
+              {...register("zipCode", {
+                required: `${
+                  selectedCountry === "India" ? "Pincode" : "Zipcode"
+                } is required`,
+              })}
             />
+            {errors.zipCode && (
+              <span className="text-red-500">{errors.zipCode.message}</span>
+            )}
           </div>
         </div>
 

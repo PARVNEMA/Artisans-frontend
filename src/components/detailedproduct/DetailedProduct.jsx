@@ -281,6 +281,15 @@ function DetailedProduct() {
                       </svg>
                       Add to cart
                     </button>
+                    
+                    {/* Customize Button */}
+                    <div>
+                      <Link to={'/customize'}>
+                        <div class="bg-two flex items-center justify-center px-8 py-4 hover:bg-gray-900 text-white border border-gray-800 text-base rounded-lg">
+                          Customize
+                        </div>
+                      </Link>
+                    </div>
 
                     {/* created by */}
                     <div className="flex justify-start mt-8 gap-10 items-center">
