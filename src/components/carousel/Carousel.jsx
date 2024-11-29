@@ -88,37 +88,37 @@ const Carousel = () => {
 				<div
 					key={index}
 					id={`slide ${index + 1}`}
-					className={`absolute inset-0 flex flex-col items-center transition-opacity duration-500 w-100 h-100 bg-black opacity-80   ${
+					className={`absolute inset-0 flex flex-col items-center transition-opacity duration-500 w-100 h-100 bg-black opacity-80::after delay-300  ${
 						index === currentIndex ? "block" : "hidden"
 					}`}
 				>
-					<div className="relative w-full h-full  rounded-lg shadow-md overflow-hidden bg-black opacity-90 ">
+					<div className="relative w-full h-full rounded-lg shadow-md overflow-hidden bg-black opacity-90   ">
 						<img
 							src={image}
-							className="w-100 h-100 object-cover"
+							className="w-100 h-100 object-cover z-20"
 							alt={`Slide ${index + 1}`}
 						/>
 					</div>
 					
 					<div className="absolute inset-0  flex flex-col justify-center  item-center mt-7 pl-80 pr-80 pb-19">
-						<div className="text-6xl font-bold text-[#F0EEC8] text-center px-10  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) ">
+						<div className="text-6xl font-bold text-white text-center px-10  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7) ">
 						<Link to={array[index].Title}>{array[index].Title}</Link>
 						</div>
-						<div className="text-center text-2xl text-one text-black">
-						<button type="button" class="bg-[#F0EEC8] px-4 py-2 rounded mt-60">{array[index].text}</button>	
+						<div className="text-center text-2xl text-black text-black">
+						<button type="button" class="bg-white px-4 py-2 rounded mt-60">{array[index].text}</button>	
 						</div>
 					</div>
 					
-					<div className="absolute  top-1/2 flex -translate-y-1/2 transform justify-between">
+					<div className="absolute  w-[100%] h-[100%] top-1/2 flex -translate-y-1/2 transform justify-between">
 						<button
 							onClick={handlePrev}
-							className="btn btn-circle mx-60 mt-80"
+							className="btn btn-circle mx-90 mt-80"
 						>
 							❮
 						</button>
 						<button
 							onClick={handleNext}
-							className="btn btn-circle mx-60 mt-80"
+							className="btn btn-circle mx-90 mt-80"
 						>
 							❯
 						</button>
