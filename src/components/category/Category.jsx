@@ -22,11 +22,7 @@ function Category() {
   }, []);
   return (
     <div className="mt-4  w-30 h-20">
-    
-      
-      <h2 class="text-4xl text-center font-extrabold mb-12 text-[#096386]">
-        WE GOT IT ALL HERE !
-      </h2>
+      <h2 class="text-4xl text-center font-extrabold mb-12 text-[#096386]  p-2">WE GOT IT ALL HERE ! </h2>
 
       <div className=" relative z-10 grid grid-cols-5 gap-5 mx-90 mb-10 mt-4 mx-auto aspect-w-16 aspect-h-8">
         {category.map((cat) => (
@@ -38,7 +34,7 @@ function Category() {
                 <img
                   src={cat.categoryImage}
                   alt=""
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover "
                 />
               </div>
               <h1 className="absolute items-center font-semibold text-black bg-white bg-opacity-75 p-1 px-3  text-lg blur-0">

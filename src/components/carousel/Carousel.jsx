@@ -88,7 +88,7 @@ const Carousel = () => {
 				<div
 					key={index}
 					id={`slide ${index + 1}`}
-					className={`absolute inset-0 flex flex-col items-center transition-opacity duration-500 w-100 h-100   ${
+					className={`absolute inset-0 flex flex-col items-center transition-opacity duration-500 w-100 h-100 bg-black opacity-80   ${
 						index === currentIndex ? "block" : "hidden"
 					}`}
 				>

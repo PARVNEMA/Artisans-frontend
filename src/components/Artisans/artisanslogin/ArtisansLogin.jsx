@@ -78,8 +78,8 @@ function ArtisansLogin() {
 					<div class="grid md:grid-cols-2 items-center gap-8">
 						<div class="max-md:order-1 lg:min-w-[450px]">
 							<img
-								src="https://readymadeui.com/signin-image.webp"
-								class="lg:w-11/12 w-full object-cover"
+								src="https://files.oaiusercontent.com/file-GCCiZiAc84bUcaVK8xL6CW?se=2024-11-29T12%3A29%3A28Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D8519c267-e999-4220-917f-c0bb5bb51fcf.webp&sig=juL4JvfNaUrdUuAlnkXYacvC8fzDs%2BZYTk9h1GYhmS8%3D"
+								class="lg:w-11/12 w-full object-cover rounded-lg"
 								alt="login-image"
 							/>
 						</div>
