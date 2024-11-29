@@ -15,7 +15,7 @@ const Aboutus = () => {
     <div>
         {/**Introsection */}
 		
-        <div className="flex justify-between p-10 bg-one" >
+        <div className="flex justify-between p-10 bg-[#0C084C]" >
             <div className=' px-40 pt-10'>
             <h1 class="text-5xl font-bold pb-4 text-two"> Crafted India</h1>
                 <p class="pb-4 text-3xl font-semibold text-three"> Looking for authentic Indian products made by local artists? We got you.  </p>
@@ -29,7 +29,7 @@ const Aboutus = () => {
             <div  className=' logo flex px-10 '>
                 <img
                 className='h-48rem w-48rem  '
-                src="public/images/logo1.png"
+                src="public/images/Elegant Peacock Indian Wedding Logo (3).png"
                 alt="Crafted India "
                 />
             </div>
@@ -74,7 +74,7 @@ const Aboutus = () => {
 				</h2>
 
 				<div class="grid lg:grid-cols-3 md:grid-cols-2 max-md:max-w-lg mx-auto gap-12 ">
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
                         <img 
                         src="https://img.freepik.com/free-vector/two-business-partners-shaking-hands-big-briefcase-partnership-agreement-cooperation-deal-completed-concept-white-background_335657-1643.jpg?t=st=1732643288~exp=1732646888~hmac=e5a6ea280d78aca6b12afbdfb895cdba0754861a2199ea1e65bc34911bf4a277&w=996"
                         class="w-36 h-36 p-3  shrink-0"
@@ -105,7 +105,7 @@ const Aboutus = () => {
 						</div>
 					</div>
 
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
                         <img 
                         src="https://content.jdmagicbox.com/comp/jabalpur/u3/9999px761.x761.170604180802.q6u3/catalogue/india-post-office-kamla-nehru-jabalpur-post-office-services-3raa4.jpg"
                         class="w-36 h-36 p-3  shrink-0"/>
@@ -156,7 +156,7 @@ const Aboutus = () => {
 						</div>
 					</div>
 
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
                         <img
                         src="https://img.freepik.com/free-vector/stylish-diwali-discount-sale-banner-template-design_1017-15786.jpg?t=st=1732643855~exp=1732647455~hmac=a60821e7553b634c9633ca10de4534622b9da67ef158644bd0a70983002a7a78&w=740"
                         class="w-36 h-36 p-3  shrink-0"/>
@@ -181,7 +181,7 @@ const Aboutus = () => {
 						</div>
 					</div>
 
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
                         <img 
                         src="https://img.freepik.com/free-vector/hand-drawn-international-trade-with-coins_23-2149145946.jpg?t=st=1732644010~exp=1732647610~hmac=a2eaafca1a5c3862d7c000b143d4208b6d1cd192704ec4d21c9d72f308d1faf6&w=740"
                         class="w-36 h-36 p-3  shrink-0"
@@ -218,7 +218,7 @@ const Aboutus = () => {
 						</div>
 					</div>
 
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
                         <img
                         src="https://img.freepik.com/free-vector/team-spirit-concept-illustration_114360-1473.jpg?t=st=1732644281~exp=1732647881~hmac=f4f9c5864beee95507d3dbf625e97c7840480f795544f893d2beb4e1db4be198&w=740"
                         class="w-36 h-36 p-3  shrink-0"
@@ -268,7 +268,7 @@ const Aboutus = () => {
 						</div>
 					</div>
 
-					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
                         <img 
                         src="https://media.istockphoto.com/id/1415211237/vector/translation-icon-people-multilanguage-comunication-linguist-chat-bubbles-with-language.jpg?s=2048x2048&w=is&k=20&c=_cuNx3tDgssmH15MnvwZB-0deSn0Hi2k44BSyUKyuWs="
                         class="w-36 h-36 p-3  shrink-0"

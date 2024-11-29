@@ -158,7 +158,7 @@ function SignUp() {
             <div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] bg-white max-w-6xl max-md:max-w-lg m-4 rounded-md p-6 grid md:grid-cols-2 items-center gap-8 h-auto">
               <div class="max-md:order-1 p-4 bg-white h-full">
                 <img
-                  src="https://readymadeui.com/signin-image.webp"
+                  src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7875.jpg?t=st=1732882004~exp=1732885604~hmac=b9d297c67256d7cf94fac61c382a7969e6c7839311a81b421b289e9a2f727294&w=740"
                   class="lg:max-w-[90%] w-full h-full object-contain mx-auto"
                   alt="login-image"
                 />
@@ -379,7 +379,7 @@ function SignUp() {
                     <div class="mt-3">
                       <button
                         type="submit"
-                        class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] bg-blue-600 focus:outline-none hover:bg-blue-700 hover:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.5)]"
+                        class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] bg-[#0C084C] focus:outline-none hover:bg-blue-700 hover:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.5)]"
                       >
                         Create an account
                       </button>

@@ -12,7 +12,7 @@ const Aaa = () => {
           <button
             className={`w-1/2 text-center py-2 ${
               isLogin
-                ? "text-[#e8f3f5] rounded-3xl bg-blue-600"
+                ? "text-[#F0EEC8] rounded-3xl bg-[#0C084C]"
                 : "text-blue-700"
             }`}
             onClick={() => setIsLogin(true)}
@@ -22,7 +22,7 @@ const Aaa = () => {
           <button
             className={`w-1/2 text-center py-2 ${
               !isLogin
-                ? "text-[#e8f3f5] rounded-3xl bg-blue-600"
+                ? "text-[#F0EEC8] rounded-3xl bg-[#0C084C]"
                 : "text-blue-700 "
             }`}
             onClick={() => setIsLogin(false)}

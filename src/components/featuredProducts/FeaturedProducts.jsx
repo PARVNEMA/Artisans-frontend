@@ -30,10 +30,10 @@ function FeaturedProducts() {
   return (
     <div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
       <div class="font-[comic sans] py-4 mx-auto lg:max-w-7xl sm:max-w-full">
-        <h2 class="text-4xl font-extrabold mb-12 text-center">
-          Featured Products
+        <h2 class="text-4xl font-extrabold mb-12 text-center text-[#096386] ">
+        SHOP NOW
         </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 scroll-smooth focus:scroll-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 scroll-smooth focus:scroll-smooth ">
           {products.map((product) => (
             <Cards product={product} />
           ))}

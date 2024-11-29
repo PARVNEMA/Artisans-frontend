@@ -58,7 +58,7 @@ function Login() {
 					<div class="grid md:grid-cols-2 items-center gap-8">
 						<div class="max-md:order-1 lg:min-w-[450px]">
 							<img
-								src="https://readymadeui.com/signin-image.webp"
+								src="https://img.freepik.com/free-vector/login-concept-illustration_114360-4525.jpg?t=st=1732881876~exp=1732885476~hmac=01520ff2c2505ca2b69e01e943475bca6b55965d28795bc29c732ab49050e8f9&w=740"
 								class="lg:w-11/12 w-full object-cover"
 								alt="login-image"
 							/>
@@ -71,7 +71,7 @@ function Login() {
 							<div class="mb-12">
 								<h3
 									classname="sign"
-									class="text-4xl font-extrabold text-blue-600"
+									class="text-4xl font-extrabold text-[#0C084C]"
 								>
 									Sign in
 								</h3>

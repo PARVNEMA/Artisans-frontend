@@ -33,7 +33,7 @@ function ContactUs() {
                     </div>
 
                     <button type="button"
-                        class="mt-8 flex items-center justify-center text-sm w-full rounded-md px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white">
+                        class="mt-8 flex items-center justify-center text-sm w-full rounded-md px-6 py-3 bg-[#0C084C] hover:bg-blue-700 text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff' class="mr-2"
                             viewBox="0 0 548.244 548.244">
                             <path fill-rule="evenodd"
@@ -69,9 +69,9 @@ function ContactUs() {
                     </li>
                 </ul>
             </div>
-            <div class="z-10 relative left-[11rem] w-[300px] h-[400px] max-md:min-h-[650px]">
+            <div class="z-10 relative left-[11rem] w-[300px] h-[400px] max-md:min-h-[650px] bg-[#0C084C]">
                 <iframe src="https://maps.google.com/maps?q=jabalpur&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    class="left-0 top-0 h-full w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg" frameborder="0"
+                    class="left-0 top-0 h-full w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg bg-[#0C084C]" frameborder="0"
                     allowfullscreen></iframe>
             </div>
         </div>
