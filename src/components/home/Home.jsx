@@ -700,7 +700,7 @@ function Home() {
             </div>
           </div>
 
-          <div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-one">
+          <div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
             <img
               src="https://content.jdmagicbox.com/comp/jabalpur/u3/9999px761.x761.170604180802.q6u3/catalogue/india-post-office-kamla-nehru-jabalpur-post-office-services-3raa4.jpg"
               class="w-36 h-36 p-3  shrink-0"
