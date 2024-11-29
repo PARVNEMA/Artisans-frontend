@@ -140,7 +140,7 @@ function AdminHome() {
 
 	return (
 		<div>
-			<h1>Admin Home</h1>
+			<h1 className="text-4xl  ">Admin Home Main</h1>
 
 			{/* calling active artisans */}
 			<div>
