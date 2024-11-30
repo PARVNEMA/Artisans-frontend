@@ -7,76 +7,53 @@ import axios from "axios";
 import ProductList from "../ProductList/ProductList";
 import FeaturedProducts from "../featuredProducts/FeaturedProducts";
 function Home() {
-  const backendurl = import.meta.env.VITE_URL;
+	const backendurl = import.meta.env.VITE_URL;
 
-  const getCurrentUser = async () => {
-    const res = await axios.get(`${backendurl}/customers/current-user`, {
-      withCredentials: true, // Ensure cookies are included in the request
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    });
-    console.log("current user", res.data);
-  };
-  useEffect(() => {
-    getCurrentUser();
-  }, []);
-  return (
-    <div id="home">
-      {/* <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "100vh",
-          paddingTop: "0%",
-          boxShadow: "0 2px 8px 0 rgba(63,69,81,0.16)",
-          overflow: "hidden",
-          borderRadius: "8px",
-          willChange: "transform",
-        }}
-      >
-        <iframe
-          loading="lazy"
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "80vh",
-            top: 0,
-            left: 0,
-            border: "none",
-            padding: 0,
-            margin: 0,
-          }}
-          src="https://www.canva.com/design/DAGXe3M_zds/eIKOb_BpaddlZi3dOB0X7A/view?embed"
-        ></iframe>
-      </div> */}
+	const getCurrentUser = async () => {
+		const res = await axios.get(
+			`${backendurl}/customers/current-user`,
+			{
+				withCredentials: true, // Ensure cookies are included in the request
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem(
+						"accessToken"
+					)}`,
+				},
+			}
+		);
+		console.log("current user", res.data);
+	};
+	useEffect(() => {
+		getCurrentUser();
+	}, []);
+	return (
+		<div id="home" className="bg-four">
+			{/* Carousel */}
+			<Carousel />
 
-      {/* Carousel */}
-      <Carousel />
+			{/* Products */}
+			<div>
+				<FeaturedProducts />
+			</div>
 
-      {/* Products */}
-      <div>
-        <FeaturedProducts />
-      </div>
+			{/* Category */}
+			<div id="categories" className="mx-[6rem]">
+				<Category />
+			</div>
 
-      {/* Category */}
-      <div id="categories" className="mx-[6rem]">
-        <Category />
-      </div>
+			{/* Feature section  */}
+			<div class="mb-[3rem] max-w-6xl mx-auto font-[comic sans]">
+				<h2 class="text-gray-800 sm:text-4xl text-2xl font-extrabold text-center mb-16">
+					Discover Our Exclusive Features
+				</h2>
 
-      {/* Feature section  */}
-      <div class="mb-[3rem] max-w-6xl mx-auto font-[comic sans]">
-        <h2 class="text-gray-800 sm:text-4xl text-2xl font-extrabold text-center mb-16">
-          Discover Our Exclusive Features
-        </h2>
-
-        <div class="grid lg:grid-cols-3 md:grid-cols-2 max-md:max-w-lg mx-auto gap-12 ">
-          <div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
-            <img
-              src="https://img.freepik.com/free-vector/two-business-partners-shaking-hands-big-briefcase-partnership-agreement-cooperation-deal-completed-concept-white-background_335657-1643.jpg?t=st=1732643288~exp=1732646888~hmac=e5a6ea280d78aca6b12afbdfb895cdba0754861a2199ea1e65bc34911bf4a277&w=996"
-              class="w-36 h-36 p-3  shrink-0"
-            />
-            {/*<svg
+				<div class="grid lg:grid-cols-3 md:grid-cols-2 max-md:max-w-lg mx-auto gap-12 ">
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
+						<img
+							src="https://img.freepik.com/free-vector/two-business-partners-shaking-hands-big-briefcase-partnership-agreement-cooperation-deal-completed-concept-white-background_335657-1643.jpg?t=st=1732643288~exp=1732646888~hmac=e5a6ea280d78aca6b12afbdfb895cdba0754861a2199ea1e65bc34911bf4a277&w=996"
+							class="w-36 h-36 p-3  shrink-0"
+						/>
+						{/*<svg
 							xmlns="https://img.freepik.com/free-vector/two-business-partners-shaking-hands-big-briefcase-partnership-agreement-cooperation-deal-completed-concept-white-background_335657-1643.jpg?t=st=1732643288~exp=1732646888~hmac=e5a6ea280d78aca6b12afbdfb895cdba0754861a2199ea1e65bc34911bf4a277&w=996"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
@@ -91,21 +68,24 @@ function Home() {
 								data-original="#000000"
 							/>
 						</svg>*/}
-            <div>
-              <h3 class="text-two text-xl font-semibold mb-3">Customization</h3>
-              <p class="text-three text-sm">
-                Make art that speaks to you! Connect with the right artist and
-                customize the product that you love.
-              </p>
-            </div>
-          </div>
+						<div>
+							<h3 class="text-two text-xl font-semibold mb-3">
+								Customization
+							</h3>
+							<p class="text-three text-sm">
+								Make art that speaks to you! Connect with
+								the right artist and customize the product
+								that you love.
+							</p>
+						</div>
+					</div>
 
-          <div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
-            <img
-              src="https://content.jdmagicbox.com/comp/jabalpur/u3/9999px761.x761.170604180802.q6u3/catalogue/india-post-office-kamla-nehru-jabalpur-post-office-services-3raa4.jpg"
-              class="w-36 h-36 p-3  shrink-0"
-            />
-            {/*<svg
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
+						<img
+							src="https://content.jdmagicbox.com/comp/jabalpur/u3/9999px761.x761.170604180802.q6u3/catalogue/india-post-office-kamla-nehru-jabalpur-post-office-services-3raa4.jpg"
+							class="w-36 h-36 p-3  shrink-0"
+						/>
+						{/*<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
@@ -142,23 +122,23 @@ function Home() {
 								/>
 							</g>
 						</svg>*/}
-            <div>
-              <h3 class="text-two text-xl font-semibold mb-3">
-                Transportation
-              </h3>
-              <p class="text-three text-sm">
-                Receive product at every corner of the globe through Indian
-                post.
-              </p>
-            </div>
-          </div>
+						<div>
+							<h3 class="text-two text-xl font-semibold mb-3">
+								Transportation
+							</h3>
+							<p class="text-three text-sm">
+								Receive product at every corner of the globe
+								through Indian post.
+							</p>
+						</div>
+					</div>
 
-          <div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
-            <img
-              src="https://img.freepik.com/free-vector/stylish-diwali-discount-sale-banner-template-design_1017-15786.jpg?t=st=1732643855~exp=1732647455~hmac=a60821e7553b634c9633ca10de4534622b9da67ef158644bd0a70983002a7a78&w=740"
-              class="w-36 h-36 p-3  shrink-0"
-            />
-            {/*<svg
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
+						<img
+							src="https://img.freepik.com/free-vector/stylish-diwali-discount-sale-banner-template-design_1017-15786.jpg?t=st=1732643855~exp=1732647455~hmac=a60821e7553b634c9633ca10de4534622b9da67ef158644bd0a70983002a7a78&w=740"
+							class="w-36 h-36 p-3  shrink-0"
+						/>
+						{/*<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
@@ -169,23 +149,24 @@ function Home() {
 								data-original="#000000"
 							/>
 						</svg>*/}
-            <div>
-              <h3 class="text-two text-xl font-semibold mb-3">
-                Seasonal Recommendation
-              </h3>
-              <p class="text-three text-sm">
-                Experiences the taste of Indian season, though highly curated
-                seasonal recommendation products.
-              </p>
-            </div>
-          </div>
+						<div>
+							<h3 class="text-two text-xl font-semibold mb-3">
+								Seasonal Recommendation
+							</h3>
+							<p class="text-three text-sm">
+								Experiences the taste of Indian season,
+								though highly curated seasonal
+								recommendation products.
+							</p>
+						</div>
+					</div>
 
-          <div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
-            <img
-              src="https://img.freepik.com/free-vector/hand-drawn-international-trade-with-coins_23-2149145946.jpg?t=st=1732644010~exp=1732647610~hmac=a2eaafca1a5c3862d7c000b143d4208b6d1cd192704ec4d21c9d72f308d1faf6&w=740"
-              class="w-36 h-36 p-3  shrink-0"
-            />
-            {/*<svg
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
+						<img
+							src="https://img.freepik.com/free-vector/hand-drawn-international-trade-with-coins_23-2149145946.jpg?t=st=1732644010~exp=1732647610~hmac=a2eaafca1a5c3862d7c000b143d4208b6d1cd192704ec4d21c9d72f308d1faf6&w=740"
+							class="w-36 h-36 p-3  shrink-0"
+						/>
+						{/*<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
@@ -206,21 +187,23 @@ function Home() {
 								/>
 							</g>
 						</svg>*/}
-            <div>
-              <h3 class="text-two text-xl font-semibold mb-3">Multi-curreny</h3>
-              <p class="text-three text-sm">
-                Buy product  with easy in any  currency , through out
-                multi-currency system
-              </p>
-            </div>
-          </div>
+						<div>
+							<h3 class="text-two text-xl font-semibold mb-3">
+								Multi-curreny
+							</h3>
+							<p class="text-three text-sm">
+								Buy product  with easy in any  currency ,
+								through out multi-currency system
+							</p>
+						</div>
+					</div>
 
-          <div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
-            <img
-              src="https://img.freepik.com/free-vector/team-spirit-concept-illustration_114360-1473.jpg?t=st=1732644281~exp=1732647881~hmac=f4f9c5864beee95507d3dbf625e97c7840480f795544f893d2beb4e1db4be198&w=740"
-              class="w-36 h-36 p-3  shrink-0"
-            />
-            {/*<svg
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
+						<img
+							src="https://img.freepik.com/free-vector/team-spirit-concept-illustration_114360-1473.jpg?t=st=1732644281~exp=1732647881~hmac=f4f9c5864beee95507d3dbf625e97c7840480f795544f893d2beb4e1db4be198&w=740"
+							class="w-36 h-36 p-3  shrink-0"
+						/>
+						{/*<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
@@ -255,23 +238,24 @@ function Home() {
 								data-original="#000000"
 							/>
 						</svg>*/}
-            <div>
-              <h3 class="text-two text-xl font-semibold mb-3">
-                Find a community
-              </h3>
-              <p class="text-three text-sm">
-                Connect with people who understand and appreciate your art, and
-                create a valuable product with your skill set.
-              </p>
-            </div>
-          </div>
+						<div>
+							<h3 class="text-two text-xl font-semibold mb-3">
+								Find a community
+							</h3>
+							<p class="text-three text-sm">
+								Connect with people who understand and
+								appreciate your art, and create a valuable
+								product with your skill set.
+							</p>
+						</div>
+					</div>
 
-          <div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
-            <img
-              src="https://media.istockphoto.com/id/1415211237/vector/translation-icon-people-multilanguage-comunication-linguist-chat-bubbles-with-language.jpg?s=2048x2048&w=is&k=20&c=_cuNx3tDgssmH15MnvwZB-0deSn0Hi2k44BSyUKyuWs="
-              class="w-36 h-36 p-3  shrink-0"
-            />
-            {/*<svg
+					<div class="p-4 flex gap-6 rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 bg-[#0C084C]">
+						<img
+							src="https://media.istockphoto.com/id/1415211237/vector/translation-icon-people-multilanguage-comunication-linguist-chat-bubbles-with-language.jpg?s=2048x2048&w=is&k=20&c=_cuNx3tDgssmH15MnvwZB-0deSn0Hi2k44BSyUKyuWs="
+							class="w-36 h-36 p-3  shrink-0"
+						/>
+						{/*<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
 							class="w-12 h-12 bg-blue-100 p-3 rounded-lg shrink-0"
@@ -302,28 +286,29 @@ function Home() {
 								/>
 							</g>
 						</svg>*/}
-            <div>
-              <h3 class="text-two text-xl font-semibold mb-3">Communication</h3>
-              <p class="text-three text-sm">
-                Tailor our product to suit your needs Seamless communication for
-                your team.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+						<div>
+							<h3 class="text-two text-xl font-semibold mb-3">
+								Communication
+							</h3>
+							<p class="text-three text-sm">
+								Tailor our product to suit your needs
+								Seamless communication for your team.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default Home;
 
-
 {
-  /* Seasonal Products */
+	/* Seasonal Products */
 }
 {
-  /* <div id="seasonal" className="bg-[url('https://img.freepik.com/free-vector/yellow-stylish-luxury-background_1055-7309.jpg?t=st=1731436061~exp=1731439661~hmac=eda972ca3c1091d3bb24cee125d7b7f516e15284a910836fe8345502cf89d2e1&w=740')]">
+	/* <div id="seasonal" className="bg-[url('https://img.freepik.com/free-vector/yellow-stylish-luxury-background_1055-7309.jpg?t=st=1731436061~exp=1731439661~hmac=eda972ca3c1091d3bb24cee125d7b7f516e15284a910836fe8345502cf89d2e1&w=740')]">
 				<div class="my-[1.3rem] font-[comic sans] py-4 mx-auto lg:max-w-7xl sm:max-w-full">
 					<h2 class="text-4xl text-center font-extrabold text-gray-950 mb-12">
 						Seasonal Products
