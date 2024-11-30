@@ -17,7 +17,12 @@ import {
 } from "recharts";
 import { useAuthArtisans } from "../../../../useContext/ArtisansContext.jsx";
 import { Link } from "react-router-dom";
-import { IndianRupee, IndianRupeeIcon } from "lucide-react";
+import {
+	ArrowRightCircle,
+	Edit,
+	IndianRupee,
+	IndianRupeeIcon,
+} from "lucide-react";
 
 function Dashboard() {
 	{
@@ -27,6 +32,9 @@ function Dashboard() {
 		const [artisans, setArtisans] = useState(null);
 		const [artisansproducts, setArtisansProducts] =
 			useState([]);
+		const [stockid, setstockid] = useState(null);
+		const [stockquantity, setstockquantity] = useState(0);
+
 		const getArtisansProduct = useCallback(async () => {
 			try {
 				const res = await axios.get(
@@ -115,7 +123,7 @@ function Dashboard() {
 			getCurrentArtisans();
 		}, [getCurrentArtisans]);
 		useEffect(() => {
-			if (artisans) {
+			if (localStorage.getItem("artisansaccessToken")) {
 				console.log(
 					"User is logged in, fetching products..."
 				);
@@ -165,6 +173,26 @@ function Dashboard() {
 			{ name: "Dec", sales: 1000 },
 		];
 
+		const updateStock = async (productId) => {
+			try {
+				const res = await axios.patch(
+					`${backendurl}/products/${productId}/stock`,
+					{
+						stock: stockquantity,
+						withCredentials: true,
+						headers: {
+							Authorization: `Bearer ${localStorage.getItem(
+								"artisansaccessToken"
+							)}`,
+						},
+					}
+				);
+				console.log("stock updated", res.data);
+			} catch (error) {
+				console.log("Error", error);
+			}
+		};
+
 		return (
 			<div>
 				<div className="flex items-center w-full">
@@ -179,7 +207,7 @@ function Dashboard() {
 					</div>
 
 					{/* Add new product */}
-					<div className="bg-three hover:bg-two rounded-full flex justify-center">
+					<div className="bg-three hover:bg-opacity-80 text-white rounded-full flex justify-center">
 						<Link to={"/artisans/productlisting"}>
 							<button className="p-5 font-bold ">
 								Add new product
@@ -283,7 +311,7 @@ function Dashboard() {
 						Your Products
 					</div>
 					{artisansproducts.map((product) => (
-						<div className="flex justify-between items-center p-4 border rounded-lg m-2 flex-col lg:flex-row">
+						<div className="flex justify-between items-center p-4 border rounded-lg m-2 flex-col lg:flex-row bg-four bg-opacity-45">
 							<img
 								src={product.images}
 								alt=""
@@ -302,10 +330,6 @@ function Dashboard() {
 								{product.description}
 							</p>
 							<div className="text-xl">
-								<p>
-									<b className="uppercase">Stock:</b>{" "}
-									{product.stockQuantity}
-								</p>
 								<p>
 									<b className="uppercase">Sales:</b>{" "}
 									{product.sales}
@@ -337,10 +361,38 @@ function Dashboard() {
 								<Link
 									to={`/artisans/updateproduct/${product._id}`}
 								>
-									<button className="btn btn-warning">
+									<button className="btn bg-three text-white">
 										Update Prouct
 									</button>
 								</Link>
+							</div>
+							<div>
+								<p>
+									<b className="uppercase">Stock:</b>{" "}
+									{product.stockQuantity}
+								</p>
+								<Edit
+									onClick={() => setstockid(product._id)}
+								/>
+								<input
+									type="number"
+									name="stock"
+									id=""
+									className={`${
+										stockid === product._id
+											? "block"
+											: "hidden"
+									}`}
+									placeholder="Enter Stock Quantity"
+								/>
+								<button
+									onClick={() => {
+										updateStock(product._id);
+										setstockid("");
+									}}
+								>
+									<ArrowRightCircle />
+								</button>
 							</div>
 						</div>
 					))}

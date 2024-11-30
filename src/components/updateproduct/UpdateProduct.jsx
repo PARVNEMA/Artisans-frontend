@@ -78,7 +78,7 @@ function UpdateProduct() {
 	}, []);
 	return (
 		<div>
-			<div className="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)]  bg-white max-md:max-w-lg m-8 rounded-md md:grid-cols-2 items-center gap-8 h-auto max-w-4xl mx-auto font-[sans-serif] py-6 px-[7rem]">
+			<div className="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)]  bg-one max-md:max-w-lg m-8 rounded-md md:grid-cols-2 items-center gap-8 h-auto max-w-4xl mx-auto font-[sans-serif] py-6 px-[7rem]">
 				<div className="text-center mb-16">
 					<a href="javascript:void(0)">
 						<img
@@ -87,7 +87,7 @@ function UpdateProduct() {
 							className="w-52 inline-block"
 						/>
 					</a>
-					<h1 className="text-one text-3xl font-bold mt-6">
+					<h1 className="text-three text-3xl font-bold mt-6">
 						List your product on our website
 					</h1>
 				</div>
@@ -95,13 +95,13 @@ function UpdateProduct() {
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className="grid sm:grid-cols-2 gap-8">
 						<div>
-							<label className="text-one text-2xl mb-2 block">
+							<label className="text-three text-2xl mb-2 block">
 								Title
 							</label>
 							<input
 								name="title"
 								type="text"
-								className="bg-five  text-black placeholder:text-black w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
+								className="bg-four  text-black placeholder:text-black w-full text-sm px-4 py-3.5 rounded-md  outline-blue-500 transition-all"
 								placeholder="Enter the product title"
 								{...register("title")}
 								defaultValue={product?.title}
@@ -114,7 +114,7 @@ function UpdateProduct() {
 							<input
 								name="price"
 								type="number"
-								className="bg-five text-black placeholder:text-black w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
+								className="bg-four text-black placeholder:text-black w-full text-sm px-4 py-3.5 rounded-md  outline-blue-500 transition-all"
 								placeholder="Enter price"
 								{...register("price")}
 								defaultValue={product?.price}
@@ -127,7 +127,7 @@ function UpdateProduct() {
 							<input
 								name="stockQuantity"
 								type="number"
-								className="bg-five text-black placeholder:text-black w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
+								className="bg-four text-black placeholder:text-black w-full text-sm px-4 py-3.5 rounded-md  outline-blue-500 transition-all"
 								placeholder="Enter stock quantity"
 								{...register("stockQuantity")}
 							/>
@@ -138,7 +138,7 @@ function UpdateProduct() {
 							</label>
 							<select
 								{...register("category")}
-								className="bg-five text-black placeholder:text-black w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
+								className="bg-four text-black placeholder:text-black w-full text-sm px-4 py-3.5 rounded-md  outline-blue-500 transition-all"
 								defaultValue={product?.category}
 							>
 								{category.map((cat) => (
@@ -155,7 +155,7 @@ function UpdateProduct() {
 							<textarea
 								name="description"
 								type="text"
-								className="bg-five text-black placeholder:text-black w-full text-sm px-4 py-3.5 rounded-md focus:bg-three outline-blue-500 transition-all"
+								className="bg-four text-black placeholder:text-black w-full text-sm px-4 py-3.5 rounded-md  outline-blue-500 transition-all"
 								placeholder="Enter your product details"
 								{...register("description")}
 								defaultValue={product?.description}
@@ -166,7 +166,7 @@ function UpdateProduct() {
 					<div className="!mt-12 flex justify-center">
 						<button
 							type="submit"
-							className="py-3.5 px-7 text-sm font-semibold tracking-wider rounded-md text-black bg-three hover:bg-five focus:outline-none"
+							className="py-3.5 px-7 text-sm font-semibold tracking-wider rounded-md text-black bg-three hover:bg-four focus:outline-none"
 						>
 							Update product
 						</button>
