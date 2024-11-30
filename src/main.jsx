@@ -42,7 +42,7 @@ import AdminSignup from "./components/admin/AdminSignup.jsx";
 import AdminLogin from "./components/admin/AdminLogin.jsx";
 import AdminHome from "./components/admin/AdminHome.jsx";
 import customize from "./components/customize/customize.jsx";
-
+import Chatapp from "./components/chat/Chatapp.jsx";
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -151,6 +151,10 @@ const router = createBrowserRouter([
 			{
 				path: "/admin",
 				element: <AdminHome />,
+			},
+			{
+				path: "/chat/:artisanId",
+				element: <Chatapp />,
 			},
 		],
 	},
