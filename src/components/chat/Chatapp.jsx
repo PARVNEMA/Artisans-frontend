@@ -141,7 +141,7 @@ const Chatapp = () => {
 								roomId={roomId}
 								userId={userId}
 							/>
-							<div>
+							{/* <div>
 								{messages.map((msg, index) => (
 									<div key={index}>{msg.message}</div>
 								))}
@@ -153,7 +153,7 @@ const Chatapp = () => {
 									}
 								/>
 								<button onClick={sendMessage}>Send</button>
-							</div>
+							</div> */}
 						</>
 					)}
 				</>

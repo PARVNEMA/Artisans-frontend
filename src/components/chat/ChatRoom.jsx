@@ -1,168 +1,76 @@
-import React, {
-	useCallback,
-	useEffect,
-	useState,
-} from "react";
-import { io } from "socket.io-client";
-import ChatRoom from "./Chatroom";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const Chatapp = () => {
-	const { artisanId } = useParams();
-	const [roomId, setRoomId] = useState("");
-	const [userId, setUserId] = useState("");
-	const [socket, setSocket] = useState(null);
-	const [messages, setMessages] = useState([]);
-	const [newMessage, setNewMessage] = useState("");
+const ChatRoom = ({ socket, roomId, userId }) => {
+	const [messages, setMessages] = useState([]); // State to store chat messages
+	const [newMessage, setNewMessage] = useState(""); // State to track input message
 
-	const backendurl = import.meta.env.VITE_URL;
-
-	const getCurrentUser = useCallback(async () => {
-		try {
-			const res = await axios.get(
-				`${backendurl}/customers/current-user`,
-				{
-					withCredentials: true,
-					headers: {
-						Authorization: `Bearer ${localStorage.getItem(
-							"artisansaccessToken"
-						)}`,
-					},
-				}
-			);
-			console.log(
-				"res in getcurrent artisans chatapp",
-				res.data
-			);
-			setUserId(res.data.data._id);
-		} catch (error) {
-			console.log("Error", error);
-		}
-	}, [backendurl]);
-
+	// Listen for incoming messages and join the room on component mount
 	useEffect(() => {
-		getCurrentUser();
-	}, [getCurrentUser]);
-
-	useEffect(() => {
-		const socketInstance = io(`${backendurl}`, {
-			transports: ["websocket"], // ensures that websocket transport is used
+		// Listener for receiving messages from the server
+		socket.on("receive_message", (message) => {
+			setMessages((prevMessages) => [
+				...prevMessages,
+				message,
+			]);
 		});
 
-		setSocket(socketInstance);
+		// Join the chat room
+		socket.emit("join_room", roomId);
 
+		// Cleanup event listener when the component unmounts
 		return () => {
-			socketInstance.disconnect();
+			socket.off("receive_message");
 		};
-	}, [backendurl]);
+	}, [socket, roomId]);
 
-	const handleJoinRoom = () => {
-		if (!artisanId) {
-			console.error("Artisan ID is undefined");
-			return;
-		}
-		if (!userId) {
-			console.error("User ID is undefined");
-			return;
-		}
-		const newRoomId = `${artisanId}${userId}`;
-		console.log("roomid=", newRoomId);
-		setRoomId(newRoomId);
-		if (socket) {
-			socket.emit("join_room", newRoomId);
-		}
-	};
-
-	const getRoomMessages = useCallback(async () => {
-		try {
-			const res = await axios.get(
-				`${backendurl}/messages/${roomId}`,
-				{
-					withCredentials: true,
-					headers: {
-						Authorization: `Bearer ${localStorage.getItem(
-							"accessToken"
-						)}`,
-					},
-				}
-			);
-			console.log("res in getRoomMessages", res.data);
-			setMessages(res.data.data);
-		} catch (error) {
-			console.log("Error", error);
-		}
-	}, [backendurl, roomId]);
-
-	useEffect(() => {
-		if (roomId) {
-			getRoomMessages();
-		}
-	}, [getRoomMessages, roomId]);
-
-	useEffect(() => {
-		if (socket) {
-			socket.on("receive_message", (message) => {
-				setMessages((prevMessages) => [
-					...prevMessages,
-					message,
-				]);
-			});
-
-			return () => {
-				socket.off("receive_message");
-			};
-		}
-	}, [socket]);
-
+	// Function to send a new message to the server
 	const sendMessage = () => {
 		if (newMessage.trim()) {
-			console.log("Sending message:", newMessage);
+			// Emit a message event to the server with message details
 			socket.emit("send_message", {
 				roomId: roomId,
 				senderId: userId,
-				receiverId: artisanId,
+				receiverId: "receiverId", // Update this as per your backend logic
 				message: newMessage,
 			});
-			setNewMessage(""); // Clear input after sending
+
+			// Clear the input field after sending the message
+			setNewMessage("");
+		} else {
+			// Optionally, alert the user if the input is empty
+			console.log("Cannot send an empty message");
 		}
 	};
 
 	return (
 		<div>
-			{userId ? (
-				<>
-					<button onClick={handleJoinRoom}>
-						Join Chat
-					</button>
-					{roomId && socket && (
-						<>
-							<ChatRoom
-								socket={socket}
-								roomId={roomId}
-								userId={userId}
-							/>
-							<div>
-								{messages.map((msg, index) => (
-									<div key={index}>{msg.message}</div>
-								))}
-								<input
-									type="text"
-									value={newMessage}
-									onChange={(e) =>
-										setNewMessage(e.target.value)
-									}
-								/>
-								<button onClick={sendMessage}>Send</button>
+			<div>
+				<h2>Chat Room: {roomId}</h2>
+				<div>
+					{messages.length > 0 ? (
+						messages.map((msg, index) => (
+							<div key={index}>
+								<strong>{msg.senderId}:</strong>{" "}
+								{msg.message}
 							</div>
-						</>
+						))
+					) : (
+						<p>No messages yet</p>
 					)}
-				</>
-			) : (
-				<p>Loading user information...</p>
-			)}
+				</div>
+			</div>
+
+			<div>
+				<input
+					type="text"
+					placeholder="Type a message"
+					value={newMessage}
+					onChange={(e) => setNewMessage(e.target.value)}
+				/>
+				<button onClick={sendMessage}>Send</button>
+			</div>
 		</div>
 	);
 };
 
-export default Chatapp;
+export default ChatRoom;
