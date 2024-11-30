@@ -169,8 +169,7 @@ function Navbar() {
 	};
 	return (
 		<div
-			className="h-[5rem] flex justify-center "
-			style={{ backgroundColor: "#0C084C" }}
+			className="h-[5rem] flex justify-center z-40 absolute"
 		>
 			<div className="navbar flex justify-between p-2 ">
 				<div className="flex-1">
@@ -187,7 +186,7 @@ function Navbar() {
 						<select
 							name="page"
 							id="page-select"
-							className="bg-three text-black rounded-lg p-2 outline-none"
+							className="text-black rounded-lg p-2 outline-none"
 							onChange={handleSelectChange}
 						>
 							{" "}
@@ -200,7 +199,7 @@ function Navbar() {
 							<option value="/contactus">Contact Us</option>{" "}
 						</select>{" "}
 					</div>
-					<div className=" text-[#F5F5DC] font-medium w-[40rem] justify-evenly p-2 hidden xl:flex ">
+					<div className=" text-black font-medium w-[40rem] justify-evenly p-2 hidden xl:flex ">
 						<Link href="/">Home</Link>
 						<div>
 							<div className="dropdown dropdown-hover ">
@@ -213,7 +212,7 @@ function Navbar() {
 								</div>
 								<ul
 									id="dropdownMenu"
-									class="dropdown-content menu border bg-five rounded-box z-[1] w-52 shadow text-black"
+									class="dropdown-content menu border rounded-box z-[1] w-52 shadow text-black"
 								>
 									{category.map((cat) => (
 										<li
@@ -251,7 +250,7 @@ function Navbar() {
 					<div id="searchBar" className="">
 						<Searchform onSearch={handleSearch} />
 						{results ? (
-							<ul className="absolute top-[4.5rem] px-2 rounded-md z-10 bg-white text-black">
+							<ul className="absolute top-[4.5rem] px-2 rounded-md z-10 text-black">
 								{results.map((result, index) => (
 									<li
 										key={index}
@@ -278,7 +277,7 @@ function Navbar() {
 						)}
 					</div>
 					<select
-						className="text-black p-2 rounded-sm mr-4 bg-four"
+						className="text-black p-2 rounded-sm mr-4"
 						name="currency"
 						id=""
 						onChange={(e) => {
@@ -304,7 +303,7 @@ function Navbar() {
 						<div
 							tabIndex={0}
 							role="button"
-							className={`btn m-5 hover:bg-five btn-circle justify-center bg-three ${
+							className={`btn m-5 btn-circle justify-center ${
 								loggedIn ? "flex" : "hidden"
 							}`}
 						>
@@ -316,7 +315,6 @@ function Navbar() {
 										fill="black"
 										viewBox="0 0 24 24"
 										stroke="currentColor"
-										style={{ color: "white" }}
 									>
 										<path
 											strokeLinecap="round"
@@ -338,7 +336,7 @@ function Navbar() {
 						}`}
 					>
 						<Link to={"/aa"}>
-							<button className="btn bg-four">
+							<button className="btn">
 								SignIn
 							</button>
 						</Link>
@@ -352,7 +350,7 @@ function Navbar() {
 						}`}
 					>
 						<Link to={"/aaa"}>
-							<button className="btn bg-four">
+							<button className="btn ">
 								SignUp
 							</button>
 						</Link>
@@ -368,7 +366,6 @@ function Navbar() {
 							tabIndex={0}
 							role="button"
 							className="btn btn-ghost btn-circle avatar"
-							style={{ color: "black" }}
 						>
 							<div className="w-10 rounded-full">
 								{loggedIn && (
@@ -391,13 +388,12 @@ function Navbar() {
 						</div>
 						<ul
 							tabIndex={0}
-							className="menu menu-sm dropdown-content bg-two rounded-box z-[1] mt-14 w-52 p-2 shadow"
+							className="menu menu-sm dropdown-content rounded-box z-[1] mt-14 w-52 p-2 shadow"
 						>
 							<li>
 								<Link
 									className="justify-between"
 									to={"/userprofile"}
-									style={{ backgroundColor: "five" }}
 								>
 									Profile
 									<span className="badge">New</span>
