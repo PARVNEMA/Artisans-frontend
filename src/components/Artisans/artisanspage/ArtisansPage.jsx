@@ -6,17 +6,17 @@ function ArtisansPage() {
 		<div>
 			{/* Join Us */}
 			<div className="flex bg-four ">
-				<div className="h-auto w-full gap-3 flex flex-col justify-center items-center p-16">
-					<h1 className="text-4xl font-bold text-three">
+				<div className="h-auto w-full gap-3 flex text-center flex-col justify-center items-center p-16">
+					<h1 className="text-5xl font-bold text-three">
 						Create Your Art Portfolio
 					</h1>
-					<p className="text-center text-wrap text-lg text-two">
+					<p className="text-center text-wrap text-xl text-two">
 						Reach the right customer for your art !!
 					</p>
 
 					<Link
 						to={"/artisans/signup"}
-						className="bg-three h-[2rem] p-6 rounded-3xl text-one hover:bg-opacity-85 flex items-center"
+						className="bg-three h-[2rem] p-6 text-lg rounded-3xl text-one hover:bg-opacity-85 flex items-center"
 					>
 						Join the Art Network
 					</Link>
