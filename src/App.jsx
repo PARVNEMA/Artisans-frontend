@@ -11,10 +11,10 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
 	return (
 		<div className="flex flex-col ">
-			<div className="bg-one text-white">
+			<nav className="bg-one text-white">
 				<Navbar />
-			</div>
-			<main className="bg-four text-black">
+			</nav>
+			<main className="bg-one text-black">
 				<Outlet />
 				<ToastContainer
 					position="bottom-right"
@@ -30,9 +30,9 @@ function App() {
 					transition:Slide
 				/>
 			</main>
-			<div className="bg-one text-five">
+			<footer>
 				<Footer />
-			</div>
+			</footer>
 		</div>
 	);
 }

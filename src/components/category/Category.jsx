@@ -24,8 +24,8 @@ function Category() {
 
   return (
     <div className="mt-8 px-4">
-      <h2 className="text-4xl text-center font-bold text-three mb-12">
-        WE GOT IT ALL HERE!
+      <h2 className="sm:text-4xl text-2xl text-center font-bold text-three mb-12">
+        We Got It All Here !
       </h2>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">

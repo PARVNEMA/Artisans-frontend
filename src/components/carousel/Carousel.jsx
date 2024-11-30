@@ -36,21 +36,21 @@ const Carousel = () => {
     {
       Title: "Explore all the Authenticated product made by local Artists",
       text: "From local to Global",
-      Link: DetailedProduct,
+      Link: "/DetailedProduct"
     },
     {
       Title: "Keep up with various trends according to the seasons here",
       text: "Special seasonal offer",
-      Link: FeaturedProducts,
+      Link: "/FeaturedProducts"
     },
     {
       Title: "Buy all the special festival products from here",
       text: "Special festive products",
-      Link: ProductList,
+      Link: "/ProductList"
     },
     {
       Title: "Order products which meet your needs",
-      text: "Custom made products",
+      text: "Custom made products"
     },
   ];
 

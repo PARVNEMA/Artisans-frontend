@@ -171,7 +171,7 @@ function Navbar() {
 		}, handleSearch);
 	};
 	return (
-    <div className="h-[5rem] flex justify-center z-40 sticky top-0 bg-four shadow-md">
+    <div className="h-[5rem] flex justify-center z-40 sticky top-0 bg-four bg-opacity-60 shadow-md">
       {" "}
       <div className="navbar flex justify-between items-center w-full p-2">
         {" "}
@@ -250,10 +250,10 @@ function Navbar() {
             {" "}
             <Searchform onSearch={handleSearch} />{" "}
             {results && (
-              <ul className="absolute top-[4rem] bg-stone-400 rounded-md shadow-lg z-50 text-three">
+              <ul className="absolute top-[4rem] text-center bg-gray-200 rounded-md shadow-lg z-40 w-[20rem] text-three">
                 {" "}
                 {results.map((result, index) => (
-                  <li key={index} className="p-2 hover:bg-gray-200">
+                  <li key={index} className="p-2 hover:bg-stone-400">
                     {" "}
                     <Link
                       to={`/productdetails/${result._id}`}
@@ -273,7 +273,7 @@ function Navbar() {
             )}{" "}
           </div>{" "}
           <select
-            className="text-four bg-three text-lg opacity-60 hover:opacity-80 p-2 rounded-md"
+            className="text-white bg-three text-lg bg-opacity-60 hover:bg-opacity-80 p-2 rounded-md"
             name="currency"
             onChange={(e) => {
               setCurrency(e.target.value);
@@ -286,7 +286,10 @@ function Navbar() {
             <option value="EUR">EUR</option>{" "}
           </select>{" "}
           {loggedIn && (
-            <Link to="/wishlist" className="text-black">
+            <Link
+              to="/wishlist"
+              className="text-black hover:bg-three text-center hover:bg-opacity-10 p-3 rounded-full"
+            >
               {" "}
               <HeartIcon />{" "}
             </Link>
@@ -295,7 +298,9 @@ function Navbar() {
             {" "}
             <Link
               to="/cart"
-              className={`btn btn-circle ${loggedIn ? "flex" : "hidden"}`}
+              className={`p-3 rounded-full bg-one hover:bg-three hover:bg-opacity-40 ${
+                loggedIn ? "flex" : "hidden"
+              }`}
             >
               {" "}
               <svg
@@ -320,13 +325,13 @@ function Navbar() {
               {" "}
               <Link
                 to="/aa"
-                className=" bg-three p-3 rounded-lg hover:opacity-90  text-lg text-white"
+                className=" bg-three p-3 rounded-lg hover:bg-opacity-90 text-center text-lg text-white"
               >
                 Sign In
               </Link>{" "}
               <Link
                 to="/aaa"
-                className=" bg-three p-3 rounded-lg hover:opacity-85 text-lg text-white"
+                className=" bg-three p-3 rounded-lg hover:bg-opacity-85 text-lg text-center text-white"
               >
                 Sign Up
               </Link>{" "}
@@ -351,7 +356,7 @@ function Navbar() {
               </div>{" "}
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 p-2 shadow z-50 bg-one font-semibold text-lg text-three rounded-box w-52"
               >
                 {" "}
                 <li>

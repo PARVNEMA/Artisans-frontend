@@ -35,7 +35,7 @@ export default {
         one: "#D7CEC7",
         two: "#565656",
         three: "#76323F",
-        four: "#C09F980",
+        four: "#C09F80",
       },
       fontFamily: {
         sans: ["Cambria", "Roboto"],
