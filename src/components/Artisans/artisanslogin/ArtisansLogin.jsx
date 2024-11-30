@@ -91,7 +91,7 @@ function ArtisansLogin() {
 							<div class="mb-12">
 								<h3
 									classname="sign"
-									class="text-4xl font-extrabold text-[#0C084C]"
+									class="text-4xl font-extrabold text-three"
 								>
 									Artisans Sign in
 								</h3>
