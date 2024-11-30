@@ -360,7 +360,7 @@ function DetailedProduct() {
 										<div class="grid md:grid-cols-2 gap-12 mt-4">
 											<div class="space-y-3">
 												<h3 class="text-xl font-bold text-gray-800">
-													Reviews(10)
+													Reviews({reviews.length})
 												</h3>
 
 												{overallrating &&
