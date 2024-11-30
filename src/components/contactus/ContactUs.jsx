@@ -3,7 +3,7 @@ import React from "react";
 function ContactUs() {
 	return (
 		<div className="mb-6">
-			<div class="grid md:grid-cols-2 gap-16 items-center relative overflow-hidden p-8 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-3xl max-w-6xl mx-auto bg-white mt-4 font-[sans-serif] before:absolute before:right-0 before:w-[500px] before:bg-three before:bg-opacity-70 before:h-full max-md:before:hidden">
+			<div class="grid md:grid-cols-2 gap-16 items-center relative overflow-hidden p-8 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-3xl max-w-6xl mx-auto bg-white mt-4 before:absolute before:right-0 before:w-[500px] before:bg-three before:bg-opacity-70 before:h-full max-md:before:hidden">
 				<div>
 					<h2 class="text-three text-3xl font-extrabold">
 						Get In Touch

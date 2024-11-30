@@ -191,7 +191,7 @@ function Navbar() {
             <select
               name="page"
               id="page-select"
-              className="text-black rounded-lg p-2 outline-none"
+              className="text-three rounded-lg p-2 outline-none"
               onChange={handleSelectChange}
             >
               {" "}
