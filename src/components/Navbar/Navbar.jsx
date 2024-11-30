@@ -273,7 +273,7 @@ function Navbar() {
             )}{" "}
           </div>{" "}
           <select
-            className="text-four bg-three text-lg opacity-60 p-2 rounded-md"
+            className="text-four bg-three text-lg opacity-60 hover:opacity-80 p-2 rounded-md"
             name="currency"
             onChange={(e) => {
               setCurrency(e.target.value);
@@ -318,10 +318,16 @@ function Navbar() {
           {!loggedIn && !artisansloggedIn && (
             <>
               {" "}
-              <Link to="/aa" className="btn bg-three text-lg text-white">
+              <Link
+                to="/aa"
+                className=" bg-three p-3 rounded-lg hover:opacity-90  text-lg text-white"
+              >
                 Sign In
               </Link>{" "}
-              <Link to="/aaa" className="btn bg-three text-lg text-white">
+              <Link
+                to="/aaa"
+                className=" bg-three p-3 rounded-lg hover:opacity-85 text-lg text-white"
+              >
                 Sign Up
               </Link>{" "}
             </>
