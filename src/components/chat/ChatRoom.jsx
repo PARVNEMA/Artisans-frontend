@@ -3,47 +3,81 @@ import React, {
 	useEffect,
 	useState,
 } from "react";
-import Message from "./Message";
+import { io } from "socket.io-client";
+import ChatRoom from "./Chatroom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const ChatRoom = ({ socket, roomId, userId }) => {
+const Chatapp = () => {
+	const { artisanId } = useParams();
+	const [roomId, setRoomId] = useState("");
+	const [userId, setUserId] = useState("");
+	const [socket, setSocket] = useState(null);
 	const [messages, setMessages] = useState([]);
 	const [newMessage, setNewMessage] = useState("");
+
 	const backendurl = import.meta.env.VITE_URL;
-	// Listen for new messages from the server
+
+	const getCurrentUser = useCallback(async () => {
+		try {
+			const res = await axios.get(
+				`${backendurl}/customers/current-user`,
+				{
+					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"artisansaccessToken"
+						)}`,
+					},
+				}
+			);
+			console.log(
+				"res in getcurrent artisans chatapp",
+				res.data
+			);
+			setUserId(res.data.data._id);
+		} catch (error) {
+			console.log("Error", error);
+		}
+	}, [backendurl]);
+
 	useEffect(() => {
-		socket.on("receive_message", (message) => {
-			setMessages((prevMessages) => [
-				...prevMessages,
-				message,
-			]);
+		getCurrentUser();
+	}, [getCurrentUser]);
+
+	useEffect(() => {
+		const socketInstance = io(`${backendurl}`, {
+			transports: ["websocket"], // ensures that websocket transport is used
 		});
 
-		// Load previous messages on room join
-		socket.emit("join_room", roomId);
+		setSocket(socketInstance);
 
 		return () => {
-			socket.off("receive_message");
+			socketInstance.disconnect();
 		};
-	}, [socket, roomId]);
+	}, [backendurl]);
 
-	// Send a new message to the server
-	const sendMessage = () => {
-		if (newMessage.trim()) {
-			socket.emit("send_message", {
-				roomId: roomId,
-				senderId: userId,
-				receiverId: "receiverId", // Define the receiver ID as needed
-				message: newMessage,
-			});
-			setNewMessage(""); // Clear input after sending
+	const handleJoinRoom = () => {
+		if (!artisanId) {
+			console.error("Artisan ID is undefined");
+			return;
+		}
+		if (!userId) {
+			console.error("User ID is undefined");
+			return;
+		}
+		const newRoomId = `${artisanId}${userId}`;
+		console.log("roomid=", newRoomId);
+		setRoomId(newRoomId);
+		if (socket) {
+			socket.emit("join_room", newRoomId);
 		}
 	};
 
 	const getRoomMessages = useCallback(async () => {
 		try {
 			const res = await axios.get(
-				`${backendurl}/messages`,
+				`${backendurl}/messages/${roomId}`,
 				{
 					withCredentials: true,
 					headers: {
@@ -53,48 +87,82 @@ const ChatRoom = ({ socket, roomId, userId }) => {
 					},
 				}
 			);
-			console.log(
-				"res in getcurrent artisans chatapp",
-				res.data
-			);
+			console.log("res in getRoomMessages", res.data);
 			setMessages(res.data.data);
 		} catch (error) {
 			console.log("Error", error);
 		}
-	}, [backendurl]);
+	}, [backendurl, roomId]);
 
 	useEffect(() => {
-		getRoomMessages();
-	}, []);
+		if (roomId) {
+			getRoomMessages();
+		}
+	}, [getRoomMessages, roomId]);
+
+	useEffect(() => {
+		if (socket) {
+			socket.on("receive_message", (message) => {
+				setMessages((prevMessages) => [
+					...prevMessages,
+					message,
+				]);
+			});
+
+			return () => {
+				socket.off("receive_message");
+			};
+		}
+	}, [socket]);
+
+	const sendMessage = () => {
+		if (newMessage.trim()) {
+			console.log("Sending message:", newMessage);
+			socket.emit("send_message", {
+				roomId: roomId,
+				senderId: userId,
+				receiverId: artisanId,
+				message: newMessage,
+			});
+			setNewMessage(""); // Clear input after sending
+		}
+	};
 
 	return (
 		<div>
-			<div>
-				<h2>Chat Room: {roomId}</h2>
-				<div>
-					{messages.map((msg, index) => (
-						<div key={index}>
-							<strong>{msg.senderId}:</strong> {msg.message}
-							<Message
-								senderId={msg.senderId}
-								message={msg.message}
+			{userId ? (
+				<>
+					<button onClick={handleJoinRoom}>
+						Join Chat
+					</button>
+					{roomId && socket && (
+						<>
+							<ChatRoom
+								socket={socket}
+								roomId={roomId}
+								userId={userId}
 							/>
-						</div>
-					))}
-				</div>
-			</div>
-
-			<div>
-				<input
-					type="text"
-					placeholder="Type a message"
-					value={newMessage}
-					onChange={(e) => setNewMessage(e.target.value)}
-				/>
-				<button onClick={sendMessage}>Send</button>
-			</div>
+							<div>
+								{messages.map((msg, index) => (
+									<div key={index}>{msg.message}</div>
+								))}
+								<input
+									type="text"
+									value={newMessage}
+									onChange={(e) =>
+										setNewMessage(e.target.value)
+									}
+								/>
+								<button onClick={sendMessage}>Send</button>
+							</div>
+						</>
+					)}
+				</>
+			) : (
+				<p>Loading user information...</p>
+			)}
 		</div>
 	);
 };
 
-export default ChatRoom;
+export default Chatapp;
