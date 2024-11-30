@@ -90,6 +90,9 @@ function Navbar() {
 		setcategory(res.data.data);
 	};
 
+	const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
 	useEffect(() => {
 		if (localStorage.getItem("artisansaccessToken")) {
 			getCurrentArtisans();
@@ -168,256 +171,213 @@ function Navbar() {
 		}, handleSearch);
 	};
 	return (
-		<div
-			className="h-[5rem] flex justify-center z-40 absolute"
-		>
-			<div className="navbar flex justify-between p-2 ">
-				<div className="flex-1">
-					<Link to={"/"}>
-						<img
-							className="ml-3 h-[5rem] w-[6rem]"
-							src="public/images/Elegant Peacock Indian Wedding Logo (3).png"
-							alt="Logo"
-						/>
-					</Link>
-					<GTranslateLoader />
-					<div className="xl:hidden ml-5 sm:ml-10">
-						{" "}
-						<select
-							name="page"
-							id="page-select"
-							className="text-black rounded-lg p-2 outline-none"
-							onChange={handleSelectChange}
-						>
-							{" "}
-							<option value="/">Home</option>{" "}
-							<option value="/artisans/page">
-								Artisans
-							</option>{" "}
-							<option value="/products">Products</option>{" "}
-							<option value="/aboutus">About Us</option>{" "}
-							<option value="/contactus">Contact Us</option>{" "}
-						</select>{" "}
-					</div>
-					<div className=" text-black font-medium w-[40rem] justify-evenly p-2 hidden xl:flex ">
-						<Link href="/">Home</Link>
-						<div>
-							<div className="dropdown dropdown-hover ">
-								<div
-									tabIndex={0}
-									role="button"
-									className="btn-ghost "
-								>
-									Categories
-								</div>
-								<ul
-									id="dropdownMenu"
-									class="dropdown-content menu border rounded-box z-[1] w-52 shadow text-black"
-								>
-									{category.map((cat) => (
-										<li
-											class="rounded-md text-black
-									text-sm cursor-pointer "
-										>
-											<a href={`/category/${cat._id}`}>
-												<img
-													src={cat.categoryImage}
-													alt=""
-													height={50}
-													width={50}
-												/>
-												{cat.name}
-											</a>
-										</li>
-									))}
-								</ul>
-							</div>
-						</div>
-						<Link to="/artisans/page">Artisans</Link>
-						{artisans && (
-							<Link to="/artisans/dashboard">
-								Dashboard
-							</Link>
-						)}
-						<Link to="/products">Products</Link>
-						<Link to="/aboutus">About Us</Link>
-						<Link to="/contactus">ContactUs</Link>
-					</div>
-				</div>
-
-				<div className=""></div>
-				<div className="flex justify-end p-5 w-[25%]">
-					<div id="searchBar" className="">
-						<Searchform onSearch={handleSearch} />
-						{results ? (
-							<ul className="absolute top-[4.5rem] px-2 rounded-md z-10 text-black">
-								{results.map((result, index) => (
-									<li
-										key={index}
-										style={{
-											listStyleType: "none",
-											padding: "5px 0",
-										}}
-									>
-										<Link
-											to={`/productdetails/${result._id}`}
-											className="flex p-1 gap-2 truncate"
-										>
-											<img
-												src={result.images[0]}
-												className="h-6 w-6"
-											/>
-											<div>{result.title}</div>
-										</Link>
-									</li>
-								))}
-							</ul>
-						) : (
-							<div></div>
-						)}
-					</div>
-					<select
-						className="text-black p-2 rounded-sm mr-4"
-						name="currency"
-						id=""
-						onChange={(e) => {
-							setCurrency(e.target.value);
-							toast.success("Currency Changed");
-						}}
-						value={currency}
-					>
-						<option value="INR">INR</option>
-						<option value="USD">USD</option>
-						<option value="EUR">EUR</option>
-					</select>
-					{loggedIn ? (
-						<div>
-							<Link to={"/wishlist"}>
-								<HeartIcon />
-							</Link>
-						</div>
-					) : (
-						<div></div>
-					)}
-					<div className="dropdown dropdown-end">
-						<div
-							tabIndex={0}
-							role="button"
-							className={`btn m-5 btn-circle justify-center ${
-								loggedIn ? "flex" : "hidden"
-							}`}
-						>
-							<div className={`indicator`}>
-								<Link to={"/cart"}>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="h-6 w-6"
-										fill="black"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth="2"
-											d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-										/>
-									</svg>
-								</Link>
-							</div>
-						</div>
-					</div>
-
-					<div
-						className={`dropdown dropdown-end m-4 ${
-							loggedIn || artisansloggedIn
-								? "hidden"
-								: "flex"
-						}`}
-					>
-						<Link to={"/aa"}>
-							<button className="btn">
-								SignIn
-							</button>
-						</Link>
-					</div>
-
-					<div
-						className={`dropdown dropdown-end m-4 ${
-							loggedIn || artisansloggedIn
-								? "hidden"
-								: "flex"
-						}`}
-					>
-						<Link to={"/aaa"}>
-							<button className="btn ">
-								SignUp
-							</button>
-						</Link>
-					</div>
-					<div
-						className={`dropdown dropdown-end ${
-							loggedIn || artisansloggedIn
-								? "flex"
-								: "hidden"
-						}`}
-					>
-						<div
-							tabIndex={0}
-							role="button"
-							className="btn btn-ghost btn-circle avatar"
-						>
-							<div className="w-10 rounded-full">
-								{loggedIn && (
-									<img
-										src={user?.avatar}
-										alt="user"
-										height={10}
-										width={10}
-									/>
-								)}
-								{artisansloggedIn && (
-									<img
-										src={artisans?.avatar}
-										alt="user"
-										height={10}
-										width={10}
-									/>
-								)}
-							</div>
-						</div>
-						<ul
-							tabIndex={0}
-							className="menu menu-sm dropdown-content rounded-box z-[1] mt-14 w-52 p-2 shadow"
-						>
-							<li>
-								<Link
-									className="justify-between"
-									to={"/userprofile"}
-								>
-									Profile
-									<span className="badge">New</span>
-								</Link>
-							</li>
-							{artisansloggedIn ? (
-								<li>
-									<Link to={"/"} onClick={artisanslogout}>
-										Logout
-									</Link>
-								</li>
-							) : (
-								<li>
-									<Link to={"/"} onClick={logout}>
-										Logout
-									</Link>
-								</li>
-							)}
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+    <div className="h-[5rem] flex justify-center z-40 sticky top-0 bg-four shadow-md">
+      {" "}
+      <div className="navbar flex justify-between items-center w-full p-2">
+        {" "}
+        <div className="flex items-center">
+          {" "}
+          <Link to="/">
+            {" "}
+            <img
+              className="ml-3 h-[5rem] w-[6rem]"
+              src="public/images/Elegant Peacock Indian Wedding Logo (3).png"
+              alt="Logo"
+            />{" "}
+          </Link>{" "}
+          <GTranslateLoader />{" "}
+          <div className="xl:hidden ml-5 sm:ml-10">
+            {" "}
+            <select
+              name="page"
+              id="page-select"
+              className="text-black rounded-lg p-2 outline-none"
+              onChange={handleSelectChange}
+            >
+              {" "}
+              <option value="/">Home</option>{" "}
+              <option value="/artisans/page">Artisans</option>{" "}
+              <option value="/products">Products</option>{" "}
+              <option value="/aboutus">About Us</option>{" "}
+              <option value="/contactus">Contact Us</option>{" "}
+            </select>{" "}
+          </div>{" "}
+          <div className="hidden xl:flex items-center text-three font-semibold text-xl space-x-8 ml-10">
+            {" "}
+            <Link to="/">Home</Link>{" "}
+            <div className="relative">
+              {" "}
+              <button onClick={toggleMenu} className="focus:outline-none">
+                {" "}
+                Categories{" "}
+              </button>{" "}
+              {menuOpen && (
+                <ul className="absolute left-0 mt-2 w-52 bg-white border rounded-md shadow-lg z-50">
+                  {" "}
+                  {category.map((cat) => (
+                    <li
+                      key={cat._id}
+                      className="text-black text-sm p-2 hover:bg-gray-200"
+                    >
+                      {" "}
+                      <a
+                        href={`/category/${cat._id}`}
+                        className="flex items-center"
+                      >
+                        {" "}
+                        <img
+                          src={cat.categoryImage}
+                          alt={cat.name}
+                          className="h-6 w-6 mr-2"
+                        />{" "}
+                        {cat.name}{" "}
+                      </a>{" "}
+                    </li>
+                  ))}{" "}
+                </ul>
+              )}{" "}
+            </div>{" "}
+            <Link to="/artisans/page">Artisans</Link>{" "}
+            {artisans && <Link to="/artisans/dashboard">Dashboard</Link>}{" "}
+            <Link to="/products">Products</Link>{" "}
+            <Link to="/aboutus">About Us</Link>{" "}
+            <Link to="/contactus">Contact Us</Link>{" "}
+          </div>{" "}
+        </div>{" "}
+        <div className="flex items-center space-x-4">
+          {" "}
+          <div id="searchBar" className="relative">
+            {" "}
+            <Searchform onSearch={handleSearch} />{" "}
+            {results && (
+              <ul className="absolute top-[4rem] bg-stone-400 rounded-md shadow-lg z-50 text-three">
+                {" "}
+                {results.map((result, index) => (
+                  <li key={index} className="p-2 hover:bg-gray-200">
+                    {" "}
+                    <Link
+                      to={`/productdetails/${result._id}`}
+                      className="flex items-center space-x-2"
+                    >
+                      {" "}
+                      <img
+                        src={result.images[0]}
+                        className="h-6 w-6"
+                        alt={result.title}
+                      />{" "}
+                      <span>{result.title}</span>{" "}
+                    </Link>{" "}
+                  </li>
+                ))}{" "}
+              </ul>
+            )}{" "}
+          </div>{" "}
+          <select
+            className="text-four bg-three text-lg opacity-60 p-2 rounded-md"
+            name="currency"
+            onChange={(e) => {
+              setCurrency(e.target.value);
+              toast.success("Currency Changed");
+            }}
+            value={currency}
+          >
+            {" "}
+            <option value="INR">INR</option> <option value="USD">USD</option>{" "}
+            <option value="EUR">EUR</option>{" "}
+          </select>{" "}
+          {loggedIn && (
+            <Link to="/wishlist" className="text-black">
+              {" "}
+              <HeartIcon />{" "}
+            </Link>
+          )}{" "}
+          <div className="relative">
+            {" "}
+            <Link
+              to="/cart"
+              className={`btn btn-circle ${loggedIn ? "flex" : "hidden"}`}
+            >
+              {" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="black"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {" "}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />{" "}
+              </svg>{" "}
+            </Link>{" "}
+          </div>{" "}
+          {!loggedIn && !artisansloggedIn && (
+            <>
+              {" "}
+              <Link to="/aa" className="btn bg-three text-lg text-white">
+                Sign In
+              </Link>{" "}
+              <Link to="/aaa" className="btn bg-three text-lg text-white">
+                Sign Up
+              </Link>{" "}
+            </>
+          )}{" "}
+          {loggedIn || artisansloggedIn ? (
+            <div className="dropdown dropdown-end">
+              {" "}
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                {" "}
+                <div className="w-10 rounded-full">
+                  {" "}
+                  {loggedIn && <img src={user?.avatar} alt="user" />}{" "}
+                  {artisansloggedIn && (
+                    <img src={artisans?.avatar} alt="user" />
+                  )}{" "}
+                </div>{" "}
+              </div>{" "}
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52"
+              >
+                {" "}
+                <li>
+                  {" "}
+                  <Link className="justify-between" to="/userprofile">
+                    Profile<span className="badge">New</span>
+                  </Link>{" "}
+                </li>{" "}
+                {artisansloggedIn ? (
+                  <li>
+                    {" "}
+                    <Link to="/" onClick={artisanslogout}>
+                      Logout
+                    </Link>{" "}
+                  </li>
+                ) : (
+                  <li>
+                    {" "}
+                    <Link to="/" onClick={logout}>
+                      Logout
+                    </Link>{" "}
+                  </li>
+                )}{" "}
+              </ul>{" "}
+            </div>
+          ) : (
+            <div className="flex items-center space-x-2"></div>
+          )}{" "}
+        </div>{" "}
+      </div>{" "}
+    </div>
+  );
 }
 
 export default Navbar;
