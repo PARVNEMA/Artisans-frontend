@@ -87,7 +87,7 @@ function Cards({ product }) {
 				{" "}
 				<button
 					onClick={addWishlistItem}
-					className="bg-black bg-opacity-50 hover:bg-opacity-75 p-2 rounded-full"
+					className="bg-three hover:bg-opacity-75 p-2 rounded-full z-10"
 				>
 					{" "}
 					<svg
@@ -106,7 +106,7 @@ function Cards({ product }) {
 				className="block"
 			>
 				{" "}
-				<div className="h-[260px] overflow-hidden mx-auto aspect-w-16 aspect-h-9 hover:scale-105 transition-transform duration-300">
+				<div className="h-[260px] overflow-hidden mx-auto aspect-w-16 aspect-h-9 hover:scale-[1.03] transition-transform duration-300">
 					{" "}
 					<img
 						src={product.images[0]}
@@ -114,15 +114,15 @@ function Cards({ product }) {
 						className="h-full w-full object-top object-cover bg-transparent rounded-t-lg"
 					/>{" "}
 				</div>{" "}
-				<div className="p-6">
+				<div className="p-2">
 					{" "}
-					<h3 className="text-lg font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300 truncate">
+					<h3 className="text-xl font-semibold text-gray-800 transition-colors duration-300 truncate">
 						{" "}
 						{product.title}{" "}
 					</h3>{" "}
 					<Link
 						to={`/artisans/${product.createdBy._id}`}
-						className="flex flex-row gap-4 items-center mt-2"
+						className="flex flex-row gap-4 items-center mt-2 "
 					>
 						{" "}
 						<img
@@ -132,7 +132,7 @@ function Cards({ product }) {
 							width={40}
 							className="rounded-full object-contain"
 						/>{" "}
-						<h3 className="text-md text-gray-600 font-semibold">
+						<h3 className="text-md text-gray-500 font-semibold">
 							{" "}
 							{product.createdBy.fullName}{" "}
 						</h3>{" "}
@@ -165,7 +165,7 @@ function Cards({ product }) {
 				</div>{" "}
 				<button
 					onClick={() => addToCart(product._id)}
-					className="bg-blue-500 hover:bg-green-700 p-2 rounded-full w-full h- flex justify-center items-center text-white"
+					className="bg-three bg-opacity-[85%] hover:bg-opacity-[95%] p-2 rounded-full w-full h- flex justify-center items-center text-white"
 				>
 					{" "}
 					<h1 className="font-semibold">Add To Cart</h1>
