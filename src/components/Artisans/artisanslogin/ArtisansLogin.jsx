@@ -64,21 +64,21 @@ function ArtisansLogin() {
 	};
 
 	return (
-		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
+		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5 bg-white">
 			<div class="font-[comic sans] flex items-center justify-center p-4">
 				<div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl max-md:max-w-lg rounded-md p-6">
-					<a href="javascript:void(0)">
+					{/* <a href="javascript:void(0)">
 						<img
 							src="public/images/Elegant Peacock Indian Wedding Logo (3).png"
 							alt="logo"
 							class="w-40 md:mb-4 mb-12"
 						/>
-					</a>
+					</a> */}
 
 					<div class="grid md:grid-cols-2 items-center gap-8">
 						<div class="max-md:order-1 lg:min-w-[450px]">
 							<img
-								src="https://files.oaiusercontent.com/file-GCCiZiAc84bUcaVK8xL6CW?se=2024-11-29T12%3A29%3A28Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D8519c267-e999-4220-917f-c0bb5bb51fcf.webp&sig=juL4JvfNaUrdUuAlnkXYacvC8fzDs%2BZYTk9h1GYhmS8%3D"
+								src="https://img.freepik.com/free-vector/people-making-pottery-flat-design_23-2148221533.jpg?ga=GA1.1.1757563762.1732983894&semt=ais_hybrid"
 								class="lg:w-11/12 w-full object-cover rounded-lg"
 								alt="login-image"
 							/>
@@ -178,7 +178,7 @@ function ArtisansLogin() {
 							<div class="mt-12">
 								<button
 									type="submit"
-									class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] bg-blue-600 focus:outline-none hover:bg-blue-700 hover:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.5)]"
+									class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] bg-three focus:outline-none  hover:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.5)]"
 								>
 									Sign in
 								</button>

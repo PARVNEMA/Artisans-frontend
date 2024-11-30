@@ -47,13 +47,13 @@ function Login() {
 		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
 			<div class="font-[comic sans] flex items-center justify-center p-4 ">
 				<div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl bg-white max-md:max-w-lg rounded-md p-6">
-					<a href="javascript:void(0)">
+					{/* <a href="javascript:void(0)">
 						<img
 							src="public/images/Elegant Peacock Indian Wedding Logo (3).png"
 							alt="logo"
 							class="w-40 md:mb-4 mb-12"
 						/>
-					</a>
+					</a> */}
 
 					<div class="grid md:grid-cols-2 items-center gap-8">
 						<div class="max-md:order-1 lg:min-w-[450px]">
@@ -158,7 +158,7 @@ function Login() {
 							<div class="mt-12">
 								<button
 									type="submit"
-									class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] bg-blue-600 focus:outline-none hover:bg-blue-700 hover:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.5)]"
+									class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] bg-three focus:outline-none  hover:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.5)]"
 								>
 									Sign in
 								</button>
