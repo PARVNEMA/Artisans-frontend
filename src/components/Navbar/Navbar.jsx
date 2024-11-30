@@ -298,7 +298,7 @@ function Navbar() {
             {" "}
             <Link
               to="/cart"
-              className={`p-3 rounded-full bg-one hover:bg-three hover:bg-opacity-40 ${
+              className={`p-3 rounded-full hover:bg-one bg-three bg-opacity-40 ${
                 loggedIn ? "flex" : "hidden"
               }`}
             >
