@@ -49,7 +49,7 @@ const Aboutus = () => {
         <div className="flex insert y-0 right-0">
           <img
             className=" h-48 w-48"
-            src="public/images/Kutch (1).jpg"
+            src="/public/images/Elegant Peacock Indian Wedding Logo (3).png"
             alt="Artist"
           />
         </div>
