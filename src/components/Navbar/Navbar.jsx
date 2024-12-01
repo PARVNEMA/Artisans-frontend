@@ -168,10 +168,12 @@ function Navbar() {
               id="page-select"
               className="text-three rounded-lg p-2 outline-none"
               onChange={handleSelectChange}
+              value={location.pathname}
             >
               {" "}
               <option value="/">Home</option>{" "}
               <option value="/artisans/page">Artisans</option>{" "}
+              {artisans && <option value="/artisans/dashboard">Dashboard</option>}
               <option value="/products">Products</option>{" "}
               <option value="/aboutus">About Us</option>{" "}
               <option value="/contactus">Contact Us</option>{" "}

@@ -139,12 +139,14 @@ function Dashboard() {
 		//For pie chart
 		const [activeIndex, setActiveIndex] = useState(-1);
 
-		const data = [
-			{ name: "Returns", students: 400 },
-			{ name: "Sales", students: 700 },
-			{ name: "Disputes", students: 200 },
-			{ name: "Total", students: 1000 },
-		];
+		const data = artisansmatrices?.countryStats
+      ? artisansmatrices.countryStats.map((item) => ({
+          name: item.country,
+          count: item.count,
+        }))
+      : [];
+
+
 
 		const COLORS = [
 			"#0088FE",
@@ -158,6 +160,12 @@ function Dashboard() {
 		};
 
 		// Bar graph
+		// ACTUAL CALL
+		// const data2 = artisansmatrices.salesByMonth.map((item) => ({
+		// 	name: item.month,
+		// 	sales: item.sales,
+		// })):[];
+		// DUMMY DATA
 		const data2 = [
 			{ name: "Jan", sales: 400 },
 			{ name: "Feb", sales: 700 },
@@ -172,7 +180,6 @@ function Dashboard() {
 			{ name: "Nov", sales: 200 },
 			{ name: "Dec", sales: 1000 },
 		];
-
 		const updateStock = async (
 			productId,
 			stockquantity
@@ -239,6 +246,12 @@ function Dashboard() {
 								</p>
 							</div>
 							<div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-four bg-opacity-90 hover:bg-opacity-75 w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
+								<h2 className="text-xl ">Products Sold</h2>
+								<p className="text-xl">
+									{artisansmatrices.productsSold}
+								</p>
+							</div>
+							<div className="h-auto shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] rounded-3xl bg-four bg-opacity-90 hover:bg-opacity-75 w-auto flex flex-col p-12 gap-5 justify-center items-center text-center">
 								<h2 className="text-xl ">
 									Customer satisfaction
 								</h2>
@@ -296,7 +309,7 @@ function Dashboard() {
 							<Pie
 								activeIndex={activeIndex}
 								data={data}
-								dataKey="students"
+								dataKey="count"
 								outerRadius={200}
 								fill="green"
 								onMouseEnter={onPieEnter}
