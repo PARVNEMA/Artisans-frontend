@@ -50,7 +50,7 @@ function PostCoupon() {
 						className="w-52 inline-block"
 					/>
 				</a>
-				<h1 className="text-one text-3xl font-bold mt-6">
+				<h1 className="text-three text-3xl font-bold mt-6">
 					Enter Your Coupon Details to add
 				</h1>
 			</div>
@@ -58,13 +58,13 @@ function PostCoupon() {
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="grid sm:grid-cols-2 gap-8">
 					<div>
-						<label className="text-one text-2xl mb-2 block">
+						<label className="text-three text-2xl mb-2 block">
 							Code
 						</label>
 						<input
 							name="Code"
 							type="text"
-							className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
+							className="bg-one text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
 							placeholder="Enter Code"
 							{...register("code", {
 								required: "Code is required",
@@ -77,16 +77,17 @@ function PostCoupon() {
 						)}
 					</div>
 					<div>
-						<label className="text-one text-2xl mb-2 block">
+						<label className="text-three text-2xl mb-2 block">
 							discountType
 						</label>
 						<select
 							name="discountType"
 							id=""
-							className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
+							className="bg-one text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
 							onChange={(e) =>
 								setValue("discountType", e.target.value)
 							}
+							defaultValue={"percentage"}
 						>
 							<option value="percentage">percentage</option>
 							<option value="flat">flat</option>
@@ -99,13 +100,13 @@ function PostCoupon() {
 						)}
 					</div>
 					<div>
-						<label className="text-one text-2xl mb-2 block">
+						<label className="text-three text-2xl mb-2 block">
 							discountValue
 						</label>
 						<input
 							name="discountValue"
 							type="text"
-							className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
+							className="bg-one text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
 							placeholder="Enter discountValue"
 							{...register("discountValue", {
 								required: "discountValue is required",
@@ -118,13 +119,13 @@ function PostCoupon() {
 						)}
 					</div>
 					<div>
-						<label className="text-one text-2xl mb-2 block">
+						<label className="text-three text-2xl mb-2 block">
 							minPurchase
 						</label>
 						<input
 							name="minPurchase"
 							type="number"
-							className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
+							className="bg-one text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
 							placeholder="Enter discountValue"
 							{...register("minPurchase", {
 								required: "minPurchase is required",
@@ -137,13 +138,13 @@ function PostCoupon() {
 						)}
 					</div>
 					<div>
-						<label className="text-one text-2xl mb-2 block">
+						<label className="text-three text-2xl mb-2 block">
 							maxDiscount
 						</label>
 						<input
 							name="maxDiscount"
 							type="number"
-							className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
+							className="bg-one text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
 							placeholder="Enter discountValue"
 							{...register("maxDiscount", {
 								required: "maxDiscount is required",
@@ -156,13 +157,13 @@ function PostCoupon() {
 						)}
 					</div>
 					<div>
-						<label className="text-one text-2xl mb-2 block">
+						<label className="text-three text-2xl mb-2 block">
 							validFrom
 						</label>
 						<input
 							name="validFrom"
 							type="date"
-							className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
+							className="bg-one text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
 							placeholder="Enter validFrom"
 							{...register("validFrom", {
 								required: "validFrom is required",
@@ -175,13 +176,13 @@ function PostCoupon() {
 						)}
 					</div>
 					<div>
-						<label className="text-one text-2xl mb-2 block">
+						<label className="text-three text-2xl mb-2 block">
 							validTill
 						</label>
 						<input
 							name="validTill"
 							type="date"
-							className="bg-five text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
+							className="bg-one text-white placeholder:text-white w-full text-sm px-4 py-3.5 rounded-md focus:bg-one outline-blue-500 transition-all"
 							placeholder="Enter validTill"
 							{...register("validTill", {
 								required: "validTill is required",
@@ -198,7 +199,7 @@ function PostCoupon() {
 				<div className="!mt-12 flex justify-center">
 					<button
 						type="submit"
-						className="py-3.5 px-7 text-sm font-semibold tracking-wider rounded-md text-white bg-one hover:bg-five focus:outline-none"
+						className="py-3.5 px-7 text-sm font-semibold tracking-wider rounded-md text-white bg-three hover:bg-opacity-70 focus:outline-none"
 					>
 						Publish product
 					</button>
