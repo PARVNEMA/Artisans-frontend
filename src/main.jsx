@@ -43,121 +43,126 @@ import AdminLogin from "./components/admin/AdminLogin.jsx";
 import AdminHome from "./components/admin/AdminHome.jsx";
 import customize from "./components/customize/customize.jsx";
 import Chatapp from "./components/chat/Chatapp.jsx";
+import Bill from "./components/Bill/Bill.jsx";
 const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <App />,
-		children: [
-			{ path: "/", element: <Home /> },
-			{ path: "/*", element: <ErrorPage /> },
-			{
-				path: "/products",
-				element: <ProductList />,
-			},
-			{
-				path: "/customize",
-				element: <customize />,
-			},
-			{
-				path: "/address",
-				element: <AddressForm />,
-			},
-			{
-				path: "/cart",
-				element: <Cart />,
-			},
-			{
-				path: "/wishlist",
-				element: <Wishlist />,
-			},
-			{
-				path: "/login",
-				element: <Login />,
-			},
-			{
-				path: "/signup",
-				element: <SignUp />,
-			},
-			{
-				path: "/contactus",
-				element: <ContactUs />,
-			},
-			{
-				path: "/userprofile",
-				element: <UserProfile />,
-			},
-			{
-				path: "/aboutus",
-				element: <Aboutus />,
-			},
-			{
-				path: "/aa",
-				element: <Aa />,
-			},
-			{
-				path: "/aaa",
-				element: <Aaa />,
-			},
-			{
-				path: "/artisans",
-				element: <Artisans />,
-				children: [
-					{
-						path: "/artisans/page",
-						element: <ArtisansPage />,
-					},
-					{
-						path: "/artisans/login",
-						element: <ArtisansLogin />,
-					},
-					{
-						path: "/artisans/signup",
-						element: <ArtisansSignup />,
-					},
-					{
-						path: "/artisans/dashboard",
-						element: <Dashboard />,
-					},
-					{
-						path: "/artisans/productlisting",
-						element: <ProductListing />,
-					},
-					{
-						path: "/artisans/updateproduct/:productId",
-						element: <UpdateProduct />,
-					},
-				],
-			},
-			{
-				path: "/productdetails/:id",
-				element: <DetailedProduct />,
-			},
-			{
-				path: "/category/:categoryid",
-				element: <CategoryProducts />,
-			},
-			{
-				path: "/artisans/:artisanid",
-				element: <OtherArtisans />,
-			},
-			{
-				path: "/adminsignup",
-				element: <AdminSignup />,
-			},
-			{
-				path: "/adminlogin",
-				element: <AdminLogin />,
-			},
-			{
-				path: "/admin",
-				element: <AdminHome />,
-			},
-			{
-				path: "/chat/:artisanId",
-				element: <Chatapp />,
-			},
-		],
-	},
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/*", element: <ErrorPage /> },
+      {
+        path: "/products",
+        element: <ProductList />,
+      },
+      {
+        path: "/customize",
+        element: <customize />,
+      },
+      {
+        path: "/address",
+        element: <AddressForm />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/bill",
+        element: <Bill />,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
+        path: "/contactus",
+        element: <ContactUs />,
+      },
+      {
+        path: "/userprofile",
+        element: <UserProfile />,
+      },
+      {
+        path: "/aboutus",
+        element: <Aboutus />,
+      },
+      {
+        path: "/aa",
+        element: <Aa />,
+      },
+      {
+        path: "/aaa",
+        element: <Aaa />,
+      },
+      {
+        path: "/artisans",
+        element: <Artisans />,
+        children: [
+          {
+            path: "/artisans/page",
+            element: <ArtisansPage />,
+          },
+          {
+            path: "/artisans/login",
+            element: <ArtisansLogin />,
+          },
+          {
+            path: "/artisans/signup",
+            element: <ArtisansSignup />,
+          },
+          {
+            path: "/artisans/dashboard",
+            element: <Dashboard />,
+          },
+          {
+            path: "/artisans/productlisting",
+            element: <ProductListing />,
+          },
+          {
+            path: "/artisans/updateproduct/:productId",
+            element: <UpdateProduct />,
+          },
+        ],
+      },
+      {
+        path: "/productdetails/:id",
+        element: <DetailedProduct />,
+      },
+      {
+        path: "/category/:categoryid",
+        element: <CategoryProducts />,
+      },
+      {
+        path: "/artisans/:artisanid",
+        element: <OtherArtisans />,
+      },
+      {
+        path: "/adminsignup",
+        element: <AdminSignup />,
+      },
+      {
+        path: "/adminlogin",
+        element: <AdminLogin />,
+      },
+      {
+        path: "/admin",
+        element: <AdminHome />,
+      },
+      {
+        path: "/chat/:artisanId",
+        element: <Chatapp />,
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

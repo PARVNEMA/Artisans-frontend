@@ -257,12 +257,12 @@ function Cart() {
                   </ul>
 
                   <div class="mt-8 space-y-2">
-                    <button
-                      type="button"
+                    <Link
+                      to={"/bill"}
                       class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
                     >
                       Buy Now
-                    </button>
+                    </Link>
                     <button
                       type="button"
                       class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent hover:bg-gray-100 text-gray-800 border border-gray-300 rounded-md"
