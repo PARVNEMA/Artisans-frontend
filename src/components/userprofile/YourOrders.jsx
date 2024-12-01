@@ -4,6 +4,7 @@ import React, {
 	useEffect,
 	useState,
 } from "react";
+import { toast } from "react-toastify";
 
 function YourOrders() {
 	const backendurl = import.meta.env.VITE_URL;
@@ -24,6 +25,33 @@ function YourOrders() {
 			console.log("Error", error);
 		}
 	}, []);
+	const cancelProductOrder = useCallback(
+		async (orderId, orderItemId) => {
+			console.log("orderId", orderId);
+			console.log("orderItemId", orderItemId);
+
+			try {
+				const res = await axios.delete(
+					`${backendurl}/order/cancel-order/${orderId}/${orderItemId}`,
+					{
+						withCredentials: true,
+						headers: {
+							Authorization: `Bearer ${localStorage.getItem(
+								"accessToken"
+							)}`,
+						},
+					}
+				);
+				console.log("product order cancelled", res.data);
+				toast.success("product order cancelled");
+				showBill();
+			} catch (error) {
+				console.log("Error", error);
+				toast.error(error.message);
+			}
+		},
+		[]
+	);
 	useEffect(() => {
 		showBill();
 	}, []);
@@ -75,6 +103,17 @@ function YourOrders() {
 										</div>
 									</div>
 								</div>
+								<button
+									className="btn btn-error"
+									onClick={() =>
+										cancelProductOrder(
+											item._id,
+											prod.orderItemId
+										)
+									}
+								>
+									Cancel Order
+								</button>
 							</div>
 						))}
 					</div>
