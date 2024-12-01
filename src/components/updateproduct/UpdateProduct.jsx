@@ -35,6 +35,11 @@ function UpdateProduct() {
 		setproduct(res.data.data);
 	};
 	const onSubmit = async (data) => {
+		console.log(
+			"local storage token",
+			localStorage.getItem("artisansaccessToken")
+		);
+
 		try {
 			const res = await axios.patch(
 				`${backendurl}/products/update/${productId}`,
@@ -77,43 +82,43 @@ function UpdateProduct() {
 		getproductsdetails();
 	}, []);
 	return (
-    <div>
-      <div className="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)]  bg-white max-md:max-w-lg m-8 rounded-md md:grid-cols-2 items-center gap-8 h-auto max-w-4xl mx-auto py-6 px-[7rem]">
-        <div className="text-center mb-16">
-          <h1 className="text-three text-5xl font-bold mt-6">
-            Update your product
-          </h1>
-        </div>
+		<div>
+			<div className="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)]  bg-white max-md:max-w-lg m-8 rounded-md md:grid-cols-2 items-center gap-8 h-auto max-w-4xl mx-auto py-6 px-[7rem]">
+				<div className="text-center mb-16">
+					<h1 className="text-three text-5xl font-bold mt-6">
+						Update your product
+					</h1>
+				</div>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid sm:grid-cols-2 gap-8">
-            <div>
-              <label className="text-three text-2xl font-bold mb-2 block">
-                Title
-              </label>
-              <input
-                name="title"
-                type="text"
-                className="bg-four  text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md  outline-blue-500 transition-all"
-                placeholder="Enter the product title"
-                {...register("title")}
-                defaultValue={product?.title}
-              />
-            </div>
-            <div>
-              <label className="text-three text-2xl font-bold mb-2 block">
-                Price
-              </label>
-              <input
-                name="price"
-                type="number"
-                className="bg-four text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md  outline-blue-500 transition-all"
-                placeholder="Enter price"
-                {...register("price")}
-                defaultValue={product?.price}
-              />
-            </div>
-            {/* <div>
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<div className="grid sm:grid-cols-2 gap-8">
+						<div>
+							<label className="text-three text-2xl font-bold mb-2 block">
+								Title
+							</label>
+							<input
+								name="title"
+								type="text"
+								className="bg-four  text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md  outline-blue-500 transition-all"
+								placeholder="Enter the product title"
+								{...register("title")}
+								defaultValue={product?.title}
+							/>
+						</div>
+						<div>
+							<label className="text-three text-2xl font-bold mb-2 block">
+								Price
+							</label>
+							<input
+								name="price"
+								type="number"
+								className="bg-four text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md  outline-blue-500 transition-all"
+								placeholder="Enter price"
+								{...register("price")}
+								defaultValue={product?.price}
+							/>
+						</div>
+						{/* <div>
 							<label className="text-three text-2xl mb-2 block">
 								Stock Quantity
 							</label>
@@ -125,7 +130,7 @@ function UpdateProduct() {
 								{...register("stockQuantity")}
 							/>
 						</div> */}
-            {/* <div>
+						{/* <div>
 							<label className="text-three text-2xl mb-2 block">
 								Choose Category
 							</label>
@@ -141,33 +146,33 @@ function UpdateProduct() {
 								))}
 							</select>
 						</div> */}
-            <div>
-              <label className="text-three text-2xl font-bold mb-2 block">
-                Description
-              </label>
-              <textarea
-                name="description"
-                type="text"
-                className="bg-four text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md  outline-blue-500 transition-all"
-                placeholder="Enter your product details"
-                {...register("description")}
-                defaultValue={product?.description}
-              />
-            </div>
-          </div>
+						<div>
+							<label className="text-three text-2xl font-bold mb-2 block">
+								Description
+							</label>
+							<textarea
+								name="description"
+								type="text"
+								className="bg-four text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md  outline-blue-500 transition-all"
+								placeholder="Enter your product details"
+								{...register("description")}
+								defaultValue={product?.description}
+							/>
+						</div>
+					</div>
 
-          <div className="!mt-12 flex justify-center">
-            <button
-              type="submit"
-              className="py-3.5 px-7 text-sm font-semibold tracking-wider rounded-md text-white bg-three bg-opacity-90 hover:bg-opacity-80 focus:outline-none"
-            >
-              Update product
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+					<div className="!mt-12 flex justify-center">
+						<button
+							type="submit"
+							className="py-3.5 px-7 text-sm font-semibold tracking-wider rounded-md text-white bg-three bg-opacity-90 hover:bg-opacity-80 focus:outline-none"
+						>
+							Update product
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	);
 }
 
 export default UpdateProduct;
