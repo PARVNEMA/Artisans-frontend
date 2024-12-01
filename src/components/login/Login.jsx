@@ -35,8 +35,14 @@ function Login() {
 				"accessToken",
 				res.data.data.accessToken
 			);
+			localStorage.setItem(
+				"refreshToken",
+				res.data.data.refreshToken
+			);
 			setloggedIn(true);
-			navigate("/");
+			setTimeout(() => {
+				navigate("/");
+			}, 2000);
 			toast("Login successfully", { type: "success" });
 		} catch (error) {
 			console.error("error in login form", error);
