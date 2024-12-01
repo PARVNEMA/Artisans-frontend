@@ -140,13 +140,11 @@ function Dashboard() {
 		const [activeIndex, setActiveIndex] = useState(-1);
 
 		const data = artisansmatrices?.countryStats
-      ? artisansmatrices.countryStats.map((item) => ({
-          name: item.country,
-          count: item.count,
-        }))
-      : [];
-
-
+			? artisansmatrices.countryStats.map((item) => ({
+					name: item.country,
+					count: item.count,
+			  }))
+			: [];
 
 		const COLORS = [
 			"#0088FE",
@@ -330,6 +328,73 @@ function Dashboard() {
 					</div>
 				</div>
 
+				{/* pending products  */}
+				<div className="mx-[10rem] flex items-center w-full">
+					<div className="text-5xl font-extrabold text-three text-center p-8">
+						Pending Orders
+					</div>
+
+					<div>
+						{artisansmatrices &&
+							artisansmatrices.orderRequests[0] && (
+								<div>
+									<div className="flex justify-between items-center p-4 border rounded-lg m-2 flex-col lg:flex-row bg-four bg-opacity-45  ">
+										<div className="flex flex-col justify-between">
+											<h2 className="text-2xl uppercase">
+												<b>Title:</b>{" "}
+												{
+													artisansmatrices.orderRequests[0]
+														.productName
+												}
+											</h2>
+										</div>
+
+										<div className="text-xl">
+											<p>
+												<b className="uppercase">
+													Quantity:
+												</b>{" "}
+												{
+													artisansmatrices.orderRequests[0]
+														.quantity
+												}
+											</p>
+										</div>
+
+										<div className="text-start flex lg:block">
+											<p className="text-xl font-bold uppercase">
+												<b className="uppercase">
+													Order Date:
+												</b>{" "}
+											</p>
+											<div className="text-xl flex justify-center items-center">
+												<p>
+													{artisansmatrices.orderRequests[0].orderDate.slice(
+														0,
+														10
+													)}
+												</p>
+											</div>
+										</div>
+										<div className="text-start flex lg:block">
+											<p className="text-xl font-bold uppercase">
+												Status:{" "}
+											</p>
+											<div className="text-xl flex justify-center items-center">
+												{
+													artisansmatrices.orderRequests[0]
+														.status
+												}
+											</div>
+										</div>
+									</div>
+									<Link to={"/artisans/pendingorders"}>
+										<button>More Products</button>
+									</Link>
+								</div>
+							)}
+					</div>
+				</div>
 				{/* artisans products */}
 				<div className="mx-[10rem] text-start">
 					<div className="text-5xl font-extrabold text-three text-center p-8">

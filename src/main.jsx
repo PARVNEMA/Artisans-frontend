@@ -45,6 +45,7 @@ import customize from "./components/customize/customize.jsx";
 import Chatapp from "./components/chat/Chatapp.jsx";
 import Bill from "./components/Bill/Bill.jsx";
 import YourOrders from "./components/userprofile/YourOrders.jsx";
+import PendingOrders from "./components/Artisans/dashboard/PendingOrders.jsx";
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -131,6 +132,10 @@ const router = createBrowserRouter([
 					{
 						path: "/artisans/updateproduct/:productId",
 						element: <UpdateProduct />,
+					},
+					{
+						path: "/artisans/pendingorders",
+						element: <PendingOrders />,
 					},
 				],
 			},
