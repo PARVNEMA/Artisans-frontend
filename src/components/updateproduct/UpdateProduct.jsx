@@ -35,11 +35,12 @@ function UpdateProduct() {
 		setproduct(res.data.data);
 	};
 	const onSubmit = async (data) => {
-		console.log(
-			"local storage token",
-			localStorage.getItem("artisansaccessToken")
-		);
-
+		// console.log(
+		// 	"local storage token",
+		// 	localStorage.getItem("artisansaccessToken")
+		// );
+		data.price = Number(data.price);
+		console.log("price type", typeof data.price);
 		try {
 			const res = await axios.patch(
 				`${backendurl}/products/update/${productId}`,
