@@ -7,6 +7,8 @@ import React, {
 import { useAuth } from "../../../useContext/loginContext";
 import axios from "axios";
 import { useAuthArtisans } from "../../../useContext/ArtisansContext";
+import { set } from "lodash";
+import { Link } from "react-router-dom";
 
 function UserProfile() {
 	const [artisans, setArtisans] = useState(null);
@@ -172,9 +174,11 @@ function UserProfile() {
 				</button>
 			</div>
 			<div className="flex justify-center gap-10 my-10 mx-[10rem]">
-				<div className="p-4 bg-three w-[10rem] text-center">
-					Orders
-				</div>
+				<Link to={"/myorders"}>
+					<div className="p-4 bg-three w-[10rem] text-center">
+						Orders
+					</div>
+				</Link>
 				<div className="p-4 bg-three w-[10rem] text-center">
 					Wishlist
 				</div>
