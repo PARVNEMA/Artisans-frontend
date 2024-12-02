@@ -165,7 +165,7 @@ const router = createBrowserRouter([
 				element: <AdminHome />,
 			},
 			{
-				path: "/chat/:artisanId",
+				path: "/chat/:artisanId/:userId",
 				element: <ChatPage />,
 			},
 			{
