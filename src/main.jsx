@@ -44,6 +44,9 @@ import AdminHome from "./components/admin/AdminHome.jsx";
 // import customize from "./components/customize/customize.jsx";
 // import Chatapp from "./components/chat/Chatapp.jsx";
 import ChatPage from "./components/chatpage/ChatPage.jsx";
+import Bill from "./components/Bill/Bill.jsx";
+import YourOrders from "./components/userprofile/YourOrders.jsx";
+import PendingOrders from "./components/Artisans/dashboard/PendingOrders.jsx";
 const router = createBrowserRouter([
 	{
 		path: "/",
