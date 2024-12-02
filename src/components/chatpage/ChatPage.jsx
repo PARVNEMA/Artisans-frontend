@@ -10,14 +10,36 @@ const socket = io(
 );
 
 const ChatPage = () => {
-	const { artisanId, userId } = useParams(); // Extract artisanId and userId from the URL
+	const { artisanId, userId, productId } = useParams(); // Extract artisanId and userId from the URL
 	const [messages, setMessages] = useState([]);
 	const [message, setMessage] = useState("");
+	const [product, setproduct] = useState({});
+
+	const getproductsdetails = async () => {
+		const res = await axios.get(
+			`${backendurl}/products/detail/${id}?currency=${currency}`,
+			{
+				withCredentials: true, // Ensure cookies are included in the request
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem(
+						"accessToken"
+					)}`,
+				},
+			}
+		);
+		console.log("res in detailed product  list", res.data);
+		setproduct(res.data.data);
+	};
 
 	// Generate a consistent room ID
+
+	useEffect(() => {
+		getproductsdetails();
+	}, []);
+
 	const generateRoomId = (artisanId, userId) => {
-		const sortedIds = [artisanId, userId].sort();
-		return `${sortedIds[0]}-${sortedIds[1]}`;
+		const sortedIds = [artisanId, userId, productId].sort();
+		return `${sortedIds[0]}-${sortedIds[1]}-${sortedIds[2]}`;
 	};
 
 	// Use generated roomId

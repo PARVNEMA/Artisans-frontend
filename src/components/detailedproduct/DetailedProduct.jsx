@@ -340,7 +340,7 @@ function DetailedProduct() {
 										{/* Customize Button */}
 										<div>
 											<Link
-												to={`/chat/${product?.createdBy?._id}/${userId}`}
+												to={`/chat/${product?.createdBy?._id}/${userId}/${product?._id}`}
 											>
 												<div className="bg-two flex items-center justify-center px-8 py-4 hover:bg-gray-900 text-white border border-gray-800 text-base rounded-lg">
 													Customize
