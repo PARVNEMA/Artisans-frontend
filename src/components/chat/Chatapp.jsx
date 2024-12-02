@@ -4,7 +4,7 @@ import React, {
 	useState,
 } from "react";
 import { io } from "socket.io-client";
-import ChatRoom from "./Chatroom";
+// import ChatRoom from "./Chatroom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -136,11 +136,11 @@ const Chatapp = () => {
 					</button>
 					{roomId && socket && (
 						<>
-							<ChatRoom
+							{/* <ChatRoom
 								socket={socket}
 								roomId={roomId}
 								userId={userId}
-							/>
+							/> */}
 							{/* <div>
 								{messages.map((msg, index) => (
 									<div key={index}>{msg.message}</div>

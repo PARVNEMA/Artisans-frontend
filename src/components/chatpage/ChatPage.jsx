@@ -2,77 +2,107 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import { useParams } from "react-router-dom";
 
-const socket = io("http://localhost:8000/"); // Replace with your backend URL
+const backendurl = import.meta.env.VITE_URL;
+
+// Initialize socket connection outside the component
+const socket = io(
+	import.meta.env.VITE_SOCKET_URL || "http://localhost:8000"
+);
 
 const ChatPage = () => {
-   const { roomId } = useParams(); // Extract roomId from the URL
-   const [messages, setMessages] = useState([]);
-   const [message, setMessage] = useState("");
+	const { artisanId, userId } = useParams(); // Extract artisanId and userId from the URL
+	const [messages, setMessages] = useState([]);
+	const [message, setMessage] = useState("");
 
-   useEffect(() => {
-      // Join the chat room
-      socket.emit("join_room", '4');
+	// Generate a consistent room ID
+	const generateRoomId = (artisanId, userId) => {
+		const sortedIds = [artisanId, userId].sort();
+		return `${sortedIds[0]}-${sortedIds[1]}`;
+	};
 
-      // Load previous messages
-      socket.on("load_previous_messages", (loadedMessages) => {
-         setMessages(loadedMessages);
-         useEffect();
-      });
+	// Use generated roomId
+	const roomId = generateRoomId(artisanId, userId);
 
-      // Receive new messages
-      socket.on("receive_message", (newMessage) => {
-         setMessages((prevMessages) => [...prevMessages, newMessage]);
-      });
+	useEffect(() => {
+		// Join the generated room ID
+		socket.emit("join_room", roomId);
+		console.log(`User joined room: ${roomId}`);
 
-      // Cleanup on component unmount
-      return () => {
-         socket.disconnect();
-      };
-   }, [roomId]);
+		// Listen for previous messages from the server
+		socket.on(
+			"load_previous_messages",
+			(loadedMessages) => {
+				setMessages(loadedMessages);
+			}
+		);
 
-   const sendMessage = () => {
-      const data = {
-         roomId: 4,
-         senderId: "1", // Replace with sender logic
-         receiverId: "2", // Replace with receiver logic
-         message,
-         timestamp: new Date(),
-      };
+		// Listen for new messages from the server
+		socket.on("receive_message", (newMessage) => {
+			setMessages((prevMessages) => [
+				...prevMessages,
+				newMessage,
+			]);
+		});
 
-      socket.emit("send_message", data);
-      setMessages((prevMessages) => [...prevMessages, data]); // Add sent message to local state
-      setMessage(""); // Clear input after sending
-   };
+		// Cleanup on component unmount
+		return () => {
+			socket.emit("leave_room", roomId); // Inform the server about leaving the room
+			socket.off("load_previous_messages");
+			socket.off("receive_message");
+		};
+	}, [roomId]);
 
-   return (
-      <div className="chat-container">
-         <div className="chat-header">Chat Room</div>
-         <div className="chat-messages">
-            {messages.map((msg, index) => (
-               <div
-                  key={index}
-                  className={`message ${
-                     msg.senderId === "1" ? "sent" : "received"
-                  }`}
-               >
-                  <span>{msg.message}</span>
-               </div>
-            ))}
-         </div>
-         <div className="chat-input-container">
-            <input
-               type="text"
-               value={message}
-               onChange={(e) => setMessage(e.target.value)}
-               placeholder="Type a message"
-               className="chat-input"
-            />
-            <button onClick={sendMessage} className="send-button">
-               Send
-            </button>
-         </div>
-      </div>
-   );
+	const sendMessage = () => {
+		if (!message.trim()) return; // Prevent sending empty messages
+
+		const data = {
+			roomId,
+			senderId: userId,
+			receiverId: artisanId,
+			message,
+			timestamp: new Date(),
+		};
+
+		// Send message to the server
+		socket.emit("send_message", data);
+
+		// Update local state
+		setMessages((prevMessages) => [...prevMessages, data]);
+		setMessage(""); // Clear the input field
+	};
+
+	return (
+		<div className="chat-container">
+			<div className="chat-header">Chat Room</div>
+			<div className="chat-messages">
+				{messages.map((msg, index) => (
+					<div
+						key={index}
+						className={`message ${
+							msg.senderId === userId ? "sent" : "received"
+						}`}
+					>
+						<span>{msg.message}</span>
+					</div>
+				))}
+			</div>
+			<div className="chat-input-container">
+				<input
+					type="text"
+					value={message}
+					onChange={(e) => setMessage(e.target.value)}
+					placeholder="Type a message"
+					className="chat-input"
+				/>
+				<button
+					onClick={sendMessage}
+					className="send-button"
+				>
+					Send
+				</button>
+			</div>
+		</div>
+	);
 };
 
 export default ChatPage;

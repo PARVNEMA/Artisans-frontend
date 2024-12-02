@@ -26,7 +26,7 @@ function DetailedProduct() {
 	const [overallrating, setoverallrating] = useState([]);
 	const { currency } = useContext(CurrencyContext);
 	const [quantity, setQuantity] = useState(1);
-
+	const [userId, setuserId] = useState("");
 	const handleIncrement = () => {
 		if (quantity < 5) {
 			setQuantity(quantity + 1);
@@ -147,10 +147,34 @@ function DetailedProduct() {
 			toast.error("Please login first");
 		}
 	}, []);
+
+	const getCurrentUser = useCallback(async () => {
+		try {
+			const res = await axios.get(
+				`${backendurl}/customers/current-user`,
+				{
+					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"accessToken"
+						)}`,
+					},
+				}
+			);
+			console.log(
+				"res in getcurrent artisans chatapp",
+				res.data
+			);
+			setuserId(res.data.data._id);
+		} catch (error) {
+			console.log("Error", error);
+		}
+	}, [backendurl]);
 	useEffect(() => {
 		getproductsdetails();
 		getAllReviews();
 		getOverallRating();
+		getCurrentUser();
 	}, [currency]);
 	return (
 		<div>
@@ -315,7 +339,9 @@ function DetailedProduct() {
 
 										{/* Customize Button */}
 										<div>
-											<Link to={`/chat/${product?.createdBy?._id}`}>
+											<Link
+												to={`/chat/${product?.createdBy?._id}/${userId}`}
+											>
 												<div className="bg-two flex items-center justify-center px-8 py-4 hover:bg-gray-900 text-white border border-gray-800 text-base rounded-lg">
 													Customize
 												</div>
@@ -396,10 +422,11 @@ function DetailedProduct() {
 															onClick={() => setrating(1)}
 														>
 															<svg
-																className={`w-8 h-8  ${rating >= 1
+																className={`w-8 h-8  ${
+																	rating >= 1
 																		? "fill-[#facc15]"
 																		: "fill-[#e5e7eb]"
-																	} `}
+																} `}
 																viewBox="0 0 14 13"
 																fill="none"
 																xmlns="http://www.w3.org/2000/svg"
@@ -411,10 +438,11 @@ function DetailedProduct() {
 															onClick={() => setrating(2)}
 														>
 															<svg
-																className={`w-8 h-8 ${rating >= 2
+																className={`w-8 h-8 ${
+																	rating >= 2
 																		? "fill-[#facc15]"
 																		: "fill-[#e5e7eb]"
-																	}`}
+																}`}
 																viewBox="0 0 14 13"
 																fill="none"
 																xmlns="http://www.w3.org/2000/svg"
@@ -426,10 +454,11 @@ function DetailedProduct() {
 															onClick={() => setrating(3)}
 														>
 															<svg
-																className={`w-8 h-8  ${rating >= 3
+																className={`w-8 h-8  ${
+																	rating >= 3
 																		? "fill-[#facc15]"
 																		: "fill-[#e5e7eb]"
-																	}`}
+																}`}
 																viewBox="0 0 14 13"
 																fill="none"
 																xmlns="http://www.w3.org/2000/svg"
@@ -441,10 +470,11 @@ function DetailedProduct() {
 															onClick={() => setrating(4)}
 														>
 															<svg
-																className={`w-8 h-8  ${rating >= 4
+																className={`w-8 h-8  ${
+																	rating >= 4
 																		? "fill-[#facc15]"
 																		: "fill-[#e5e7eb]"
-																	}`}
+																}`}
 																viewBox="0 0 14 13"
 																fill="none"
 																xmlns="http://www.w3.org/2000/svg"
@@ -456,10 +486,11 @@ function DetailedProduct() {
 															onClick={() => setrating(5)}
 														>
 															<svg
-																className={`w-8 h-8  ${rating >= 5
+																className={`w-8 h-8  ${
+																	rating >= 5
 																		? "fill-[#facc15]"
 																		: "fill-[#e5e7eb]"
-																	}`}
+																}`}
 																viewBox="0 0 14 13"
 																fill="none"
 																xmlns="http://www.w3.org/2000/svg"
@@ -494,10 +525,11 @@ function DetailedProduct() {
 																onClick={() => setrating(1)}
 															>
 																<svg
-																	className={`w-8 h-8  ${rating >= 1
+																	className={`w-8 h-8  ${
+																		rating >= 1
 																			? "fill-[#facc15]"
 																			: "fill-[#e5e7eb]"
-																		} `}
+																	} `}
 																	viewBox="0 0 14 13"
 																	fill="none"
 																	xmlns="http://www.w3.org/2000/svg"
@@ -509,10 +541,11 @@ function DetailedProduct() {
 																onClick={() => setrating(2)}
 															>
 																<svg
-																	className={`w-8 h-8 ${rating >= 2
+																	className={`w-8 h-8 ${
+																		rating >= 2
 																			? "fill-[#facc15]"
 																			: "fill-[#e5e7eb]"
-																		}`}
+																	}`}
 																	viewBox="0 0 14 13"
 																	fill="none"
 																	xmlns="http://www.w3.org/2000/svg"
@@ -524,10 +557,11 @@ function DetailedProduct() {
 																onClick={() => setrating(3)}
 															>
 																<svg
-																	className={`w-8 h-8  ${rating >= 3
+																	className={`w-8 h-8  ${
+																		rating >= 3
 																			? "fill-[#facc15]"
 																			: "fill-[#e5e7eb]"
-																		}`}
+																	}`}
 																	viewBox="0 0 14 13"
 																	fill="none"
 																	xmlns="http://www.w3.org/2000/svg"
@@ -539,10 +573,11 @@ function DetailedProduct() {
 																onClick={() => setrating(4)}
 															>
 																<svg
-																	className={`w-8 h-8  ${rating >= 4
+																	className={`w-8 h-8  ${
+																		rating >= 4
 																			? "fill-[#facc15]"
 																			: "fill-[#e5e7eb]"
-																		}`}
+																	}`}
 																	viewBox="0 0 14 13"
 																	fill="none"
 																	xmlns="http://www.w3.org/2000/svg"
@@ -554,10 +589,11 @@ function DetailedProduct() {
 																onClick={() => setrating(5)}
 															>
 																<svg
-																	className={`w-8 h-8  ${rating >= 5
+																	className={`w-8 h-8  ${
+																		rating >= 5
 																			? "fill-[#facc15]"
 																			: "fill-[#e5e7eb]"
-																		}`}
+																	}`}
 																	viewBox="0 0 14 13"
 																	fill="none"
 																	xmlns="http://www.w3.org/2000/svg"
@@ -611,10 +647,11 @@ function DetailedProduct() {
 														</h4>
 														<div class="flex space-x-1 mt-1">
 															<svg
-																className={`w-4  ${review.rating >= 1
+																className={`w-4  ${
+																	review.rating >= 1
 																		? "fill-[#facc15]"
 																		: "fill-[#e5e7eb]"
-																	}`}
+																}`}
 																viewBox="0 0 14 13"
 																fill="none"
 																xmlns="http://www.w3.org/2000/svg"
@@ -622,10 +659,11 @@ function DetailedProduct() {
 																<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
 															</svg>
 															<svg
-																className={`w-4 h-4 ${review.rating >= 2
+																className={`w-4 h-4 ${
+																	review.rating >= 2
 																		? "fill-[#facc15]"
 																		: "fill-[#e5e7eb]"
-																	}`}
+																}`}
 																viewBox="0 0 14 13"
 																fill="none"
 																xmlns="http://www.w3.org/2000/svg"
@@ -633,10 +671,11 @@ function DetailedProduct() {
 																<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
 															</svg>
 															<svg
-																className={`w-4 h-4 ${review.rating >= 3
+																className={`w-4 h-4 ${
+																	review.rating >= 3
 																		? "fill-[#facc15]"
 																		: "fill-[#e5e7eb]"
-																	}`}
+																}`}
 																viewBox="0 0 14 13"
 																fill="none"
 																xmlns="http://www.w3.org/2000/svg"
@@ -644,10 +683,11 @@ function DetailedProduct() {
 																<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
 															</svg>
 															<svg
-																className={`w-4 h-4 ${review.rating >= 4
+																className={`w-4 h-4 ${
+																	review.rating >= 4
 																		? "fill-[#facc15]"
 																		: "fill-[#e5e7eb]"
-																	}`}
+																}`}
 																viewBox="0 0 14 13"
 																fill="none"
 																xmlns="http://www.w3.org/2000/svg"
@@ -655,10 +695,11 @@ function DetailedProduct() {
 																<path d="M7 0L9.4687 3.60213L13.6574 4.83688L10.9944 8.29787L11.1145 12.6631L7 11.2L2.8855 12.6631L3.00556 8.29787L0.342604 4.83688L4.5313 3.60213L7 0Z" />
 															</svg>
 															<svg
-																className={`w-4 h-4 ${review.rating >= 5
+																className={`w-4 h-4 ${
+																	review.rating >= 5
 																		? "fill-[#facc15]"
 																		: "fill-[#e5e7eb]"
-																	}`}
+																}`}
 																viewBox="0 0 14 13"
 																fill="none"
 																xmlns="http://www.w3.org/2000/svg"
