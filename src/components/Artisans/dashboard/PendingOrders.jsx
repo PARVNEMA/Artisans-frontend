@@ -61,7 +61,7 @@ function PendingOrders() {
         <div className="mx-[10rem]">
           {artisansmatrices.map((product) => (
             <div className="flex justify-between items-center p-4 border rounded-lg m-2 flex-col lg:flex-row bg-four bg-opacity-45">
-              {/* <img src={product?.images} alt="" className="h-20 w-20 " /> */}
+              <img src={product?.productImage[0]} alt="" className="h-20 w-20 " />
               <div className="flex flex-col justify-between">
                 <h2 className="text-2xl uppercase">
                   <b>Title:</b> {product?.productName}
