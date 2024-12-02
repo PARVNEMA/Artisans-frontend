@@ -41,11 +41,9 @@ import Wishlist from "./components/wishlist/Wishlist.jsx";
 import AdminSignup from "./components/admin/AdminSignup.jsx";
 import AdminLogin from "./components/admin/AdminLogin.jsx";
 import AdminHome from "./components/admin/AdminHome.jsx";
-import customize from "./components/customize/customize.jsx";
-import Chatapp from "./components/chat/Chatapp.jsx";
-import Bill from "./components/Bill/Bill.jsx";
-import YourOrders from "./components/userprofile/YourOrders.jsx";
-import PendingOrders from "./components/Artisans/dashboard/PendingOrders.jsx";
+// import customize from "./components/customize/customize.jsx";
+// import Chatapp from "./components/chat/Chatapp.jsx";
+import ChatPage from "./components/chatpage/ChatPage.jsx";
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -59,7 +57,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/customize",
-				element: <customize />,
+				element: <ChatPage />,
 			},
 			{
 				path: "/address",
@@ -165,7 +163,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/chat/:artisanId",
-				element: <Chatapp />,
+				element: <ChatPage />,
 			},
 			{
 				path: "/myorders",
