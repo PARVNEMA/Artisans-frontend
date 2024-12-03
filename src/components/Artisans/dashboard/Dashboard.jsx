@@ -254,6 +254,20 @@ function Dashboard() {
 							</button>
 						</Link>
 					</div>
+					<div className="bg-three hover:bg-opacity-75 bg-opacity-95 text-white rounded-full flex justify-center">
+						<Link to={"/address"}>
+							<button className="p-5 font-bold ">
+								Add Your Address
+							</button>
+						</Link>
+					</div>
+					<div className="bg-three hover:bg-opacity-75 bg-opacity-95 text-white rounded-full flex justify-center">
+						<Link to={"/artisans/updateprofile"}>
+							<button className="p-5 font-bold ">
+								Update Your Profile
+							</button>
+						</Link>
+					</div>
 				</div>
 
 				{/* artisans matrices */}
