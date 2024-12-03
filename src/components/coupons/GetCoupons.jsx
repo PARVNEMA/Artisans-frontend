@@ -37,7 +37,7 @@ function GetCoupons() {
 
 	return (
 		<div>
-			<table className="border border-solid border-black">
+			<table className="border border-solid border-black m-8">
 				<tr className="p-3 border border-solid border-black">
 					<th className="w-16 border border-solid border-black uppercase">
 						SNO
