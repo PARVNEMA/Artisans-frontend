@@ -91,70 +91,103 @@ function UserProfile() {
 	]);
 
 	return (
-    <div>
-      <div className="flex justify-center gap-8 mt-8">
-        {artisans && (
-          <img className="h-[10rem] w-[10rem]" src={artisans?.avatar} alt="" />
-        )}
-        {user && (
-          <img className="h-[10rem] w-[10rem]" src={user?.avatar} alt="" />
-        )}
-        <div>
-          {user || artisans ? (
-            <>
-              <table className="w-full text-lg text-start">
-                <tr>
-                  <td className="font-bold">Full Name</td>
-                  <td className="uppercase"> : {user?.fullName || artisans?.fullName}</td>
-                </tr>
-                <tr>
-                  <td className="font-bold">User Name</td>
-                  <td> : {loggedIn ? user?.username : artisans?.username}</td>
-                </tr>
-                <tr>
-                  <td className="font-bold">Phone No.</td>
-                  <td> : {loggedIn ? user?.phoneNo : artisans?.phoneNo}</td>
-                </tr>
-                <tr>
-                  <td className="font-bold">Address</td>
-                  <td> : {user?.address?.address}</td>
-                </tr>
-                <tr>
-                  <td className="font-bold">Email</td>
-                  <td> : {loggedIn ? user?.email : artisans?.email}</td>
-                </tr>
-                <tr>
-                  <td className="font-bold">DOB</td>
-                  <td>
-                    :{" "}
-                    {loggedIn
-                      ? user?.DOB?.slice(0, 10)
-                      : artisans?.DOB?.slice(0, 10)}
-                  </td>
-                </tr>
-              </table>
-            </>
-          ) : (
-            <div>Loading...</div>
-          )}
-        </div>
-        <button className="font-bold flex gap-3 text-xl">
-          Edit Profile <PenIcon />
-        </button>
-      </div>
-      <div className="flex justify-center gap-10 my-10 mx-[10rem]">
-        <Link to={"/myorders"}>
-          <div className="p-4 bg-three text-white rounded-lg hover:bg-opacity-90 w-[10rem] text-center">Orders</div>
-        </Link>
-        <Link to={"/wishlist"}>
-          <div className="p-4 bg-three text-white rounded-lg hover:bg-opacity-90 w-[10rem] text-center">Wishlist</div>
-        </Link>
-        <div className="p-4 bg-three text-white rounded-lg hover:bg-opacity-90 w-[10rem] text-center">
-          Recommendations
-        </div>
-      </div>
-    </div>
-  );
+		<div>
+			<div className="flex justify-center gap-8 mt-8">
+				{artisans && (
+					<img
+						className="h-[10rem] w-[10rem]"
+						src={artisans?.avatar}
+						alt=""
+					/>
+				)}
+				{user && (
+					<img
+						className="h-[10rem] w-[10rem]"
+						src={user?.avatar}
+						alt=""
+					/>
+				)}
+				<div>
+					{user || artisans ? (
+						<>
+							<table className="w-full text-lg text-start">
+								<tr>
+									<td className="font-bold">Full Name</td>
+									<td className="uppercase">
+										{" "}
+										: {user?.fullName || artisans?.fullName}
+									</td>
+								</tr>
+								<tr>
+									<td className="font-bold">User Name</td>
+									<td>
+										{" "}
+										:{" "}
+										{loggedIn
+											? user?.username
+											: artisans?.username}
+									</td>
+								</tr>
+								<tr>
+									<td className="font-bold">Phone No.</td>
+									<td>
+										{" "}
+										:{" "}
+										{loggedIn
+											? user?.phoneNo
+											: artisans?.phoneNo}
+									</td>
+								</tr>
+								<tr>
+									<td className="font-bold">Address</td>
+									<td> : {user?.address?.address}</td>
+								</tr>
+								<tr>
+									<td className="font-bold">Email</td>
+									<td>
+										{" "}
+										:{" "}
+										{loggedIn
+											? user?.email
+											: artisans?.email}
+									</td>
+								</tr>
+								<tr>
+									<td className="font-bold">DOB</td>
+									<td>
+										:{" "}
+										{loggedIn
+											? user?.DOB?.slice(0, 10)
+											: artisans?.DOB?.slice(0, 10)}
+									</td>
+								</tr>
+							</table>
+						</>
+					) : (
+						<div>Loading...</div>
+					)}
+				</div>
+				<button className="font-bold flex gap-3 text-xl">
+					Edit Profile <PenIcon />
+				</button>
+			</div>
+			<div className="flex justify-center gap-10 my-10 mx-[10rem]">
+				<Link to={"/myorders"}>
+					<div className="p-4 bg-three text-white rounded-lg hover:bg-opacity-90 w-[10rem] text-center">
+						Orders
+					</div>
+				</Link>
+				<Link to={"/wishlist"}>
+					<div className="p-4 bg-three text-white rounded-lg hover:bg-opacity-90 w-[10rem] text-center">
+						Wishlist
+					</div>
+				</Link>
+				<div className="p-4 bg-three text-white rounded-lg hover:bg-opacity-90 w-[10rem] text-center">
+					Recommendations
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default UserProfile;
