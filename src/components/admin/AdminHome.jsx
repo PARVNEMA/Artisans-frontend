@@ -236,200 +236,169 @@ function AdminHome() {
 	}, []);
 
 	return (
-    <div>
-      <h1 className="text-4xl text-center font-bold font-serif m-2 ">
-        Admin Home Main
-      </h1>
-      <button onClick={adminlogout} className="btn btn-error">
-        Logout
-      </button>
-      {/* calling active artisans */}
-      <div className="w-[100vw] flex justify-center text-center">
-        <table className="border border-solid border-black">
-          <tr className="p-3 border border-solid border-black">
-            <th className="w-16 border border-solid border-black uppercase">
-              SNO
-            </th>
-            <th className="w-64 border border-solid border-black uppercase">
-              ID
-            </th>
-            <th className="w-44 border border-solid border-black uppercase">
-              Avatar
-            </th>
-            <th className="w-44 border border-solid border-black uppercase">
-              fullName
-            </th>
-            <th className="w-44 border border-solid border-black uppercase">
-              username
-            </th>
-            <th className="w-44 border border-solid border-black uppercase">
-              email
-            </th>
-            <th className="w-44 border border-solid border-black uppercase">
-              phoneNo
-            </th>
-          </tr>
-          {currentartisans.map((artisan) => (
-            <tr className="p-3 border border-solid border-black">
-              <td className="border border-solid border-black">{index++}</td>
-              <td className="border border-solid border-black">
-                {artisan._id}
-              </td>
-              <td className="border border-solid  flex justify-center">
-                <img src={artisan.avatar} alt="" className="h-16 w-16" />
-              </td>
-              <td className="border border-solid border-black">
-                {artisan.fullName}
-              </td>
-              <td className="border border-solid border-black">
-                {artisan.username}
-              </td>
-              <td className="border border-solid border-black">
-                {artisan.email}
-              </td>
-              <td className="border border-solid border-black">
-                {artisan.phoneNo}
-              </td>
-              <td className="border border-solid border-black">
-                {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                <button
-                  className="btn btn-error"
-                  onClick={() =>
-                    document.getElementById("my_modal_3").showModal()
-                  }
-                >
-                  Ban
-                </button>
-                <dialog id="my_modal_3" className="modal">
-                  <div className="modal-box">
-                    <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
-                      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                        ✕
-                      </button>
-                    </form>
-                    <h3 className="font-bold text-lg">
-                      Do You Want To Ban This Artisan
-                    </h3>
-                    <p className="pt-2">
-                      <button
-                        className="p-2 rounded-md bg-gray-400 text-white"
-                        onClick={() => BanArtisan(artisan._id)}
-                      >
-                        Confirm
-                      </button>
-                    </p>
-                  </div>
-                </dialog>
-              </td>
-            </tr>
-          ))}
-        </table>
-      </div>
+		<div>
+			<h1 className="text-4xl text-center font-bold font-serif m-2 ">
+				Admin Home Main
+			</h1>
+			<button
+				onClick={adminlogout}
+				className="btn btn-error"
+			>
+				Logout
+			</button>
+			{/* calling active artisans */}
+			<div className="w-[100vw] flex justify-center text-center">
+				<table className="border border-solid border-black">
+					<tr className="p-3 border border-solid border-black">
+						<th className="w-16 border border-solid border-black uppercase">
+							SNO
+						</th>
+						<th className="w-64 border border-solid border-black uppercase">
+							ID
+						</th>
+						<th className="w-44 border border-solid border-black uppercase">
+							Avatar
+						</th>
+						<th className="w-44 border border-solid border-black uppercase">
+							fullName
+						</th>
+						<th className="w-44 border border-solid border-black uppercase">
+							username
+						</th>
+						<th className="w-44 border border-solid border-black uppercase">
+							email
+						</th>
+						<th className="w-44 border border-solid border-black uppercase">
+							phoneNo
+						</th>
+					</tr>
+					{currentartisans.map((artisan) => (
+						<tr className="p-3 border border-solid border-black">
+							<td className="border border-solid border-black">
+								{index++}
+							</td>
+							<td className="border border-solid border-black">
+								{artisan._id}
+							</td>
+							<td className="border border-solid  flex justify-center">
+								<img
+									src={artisan.avatar}
+									alt=""
+									className="h-16 w-16"
+								/>
+							</td>
+							<td className="border border-solid border-black">
+								{artisan.fullName}
+							</td>
+							<td className="border border-solid border-black">
+								{artisan.username}
+							</td>
+							<td className="border border-solid border-black">
+								{artisan.email}
+							</td>
+							<td className="border border-solid border-black">
+								{artisan.phoneNo}
+							</td>
+							<td className="border border-solid border-black">
+								{/* You can open the modal using document.getElementById('ID').showModal() method */}
+								<button
+									className="btn btn-error"
+									onClick={() => BanArtisan(artisan._id)}
+								>
+									Ban
+								</button>
+							</td>
+						</tr>
+					))}
+				</table>
+			</div>
 
-      {/* customer count */}
-      <div>
-        <h1 className="text-4xl text-center font-bold font-serif m-2 ">
-          Total user count: {currentusers}
-        </h1>
-        <h1 className="text-4xl text-center font-bold font-serif m-2 ">
-          Total artisans count: {totalArtisans}
-        </h1>
-        <h1 className="text-4xl text-center font-bold font-serif m-2 ">
-          Active artisans count: {currentartisans.length}
-        </h1>
-      </div>
+			{/* customer count */}
+			<div>
+				<h1 className="text-4xl text-center font-bold font-serif m-2 ">
+					Total user count: {currentusers}
+				</h1>
+				<h1 className="text-4xl text-center font-bold font-serif m-2 ">
+					Total artisans count: {totalArtisans}
+				</h1>
+				<h1 className="text-4xl text-center font-bold font-serif m-2 ">
+					Active artisans count: {currentartisans.length}
+				</h1>
+			</div>
 
-      {/* discount coupon apply */}
-      <div>
-        <GetCoupons />
-      </div>
-      <div>
-        <PostCoupon />
-      </div>
+			{/* discount coupon apply */}
+			<div>
+				<GetCoupons />
+			</div>
+			<div>
+				<PostCoupon />
+			</div>
 
-      {/* Banned artisans */}
-      <div className="w-[100vw] flex justify-center text-center">
-        <table className="border border-solid border-black">
-          <tr className="p-3 border border-solid border-black">
-            <th className="w-16 border border-solid border-black uppercase">
-              SNO
-            </th>
-            <th className="w-64 border border-solid border-black uppercase">
-              ID
-            </th>
-            <th className="w-44 border border-solid border-black uppercase">
-              Avatar
-            </th>
-            <th className="w-44 border border-solid border-black uppercase">
-              fullName
-            </th>
-            <th className="w-44 border border-solid border-black uppercase">
-              username
-            </th>
-            <th className="w-44 border border-solid border-black uppercase">
-              email
-            </th>
-            <th className="w-44 border border-solid border-black uppercase">
-              phoneNo
-            </th>
-          </tr>
-          {bannedArtisans.map((artisan) => (
-            <tr className="p-3 border border-solid border-black">
-              <td className="border border-solid border-black">{index++}</td>
-              <td className="border border-solid border-black">
-                {artisan._id}
-              </td>
-              <td className="border border-solid  flex justify-center">
-                <img src={artisan.avatar} alt="" className="h-16 w-16" />
-              </td>
-              <td className="border border-solid border-black">
-                {artisan.fullName}
-              </td>
-              <td className="border border-solid border-black">
-                {artisan.username}
-              </td>
-              <td className="border border-solid border-black">
-                {artisan.email}
-              </td>
-              <td className="border border-solid border-black">
-                {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                <button
-                  className="btn btn-error"
-                  onClick={() =>
-                    document.getElementById("my_modal_3").showModal()
-                  }
-                >
-                  Unban
-                </button>
-                <dialog id="my_modal_3" className="modal">
-                  <div className="modal-box">
-                    <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
-                      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                        ✕
-                      </button>
-                    </form>
-                    <h3 className="font-bold text-lg">
-                      Do You Want To Unban This Artisan
-                    </h3>
-                    <p className="pt-2">
-                      <button
-                        className="p-2 rounded-md bg-gray-400 text-white"
-                        onClick={() => unBanArtisan(artisan._id)}
-                      >
-                        Confirm
-                      </button>
-                    </p>
-                  </div>
-                </dialog>
-              </td>
-            </tr>
-          ))}
-        </table>
-      </div>
-    </div>
-  );
+			{/* Banned artisans */}
+			<div className="w-[100vw] flex justify-center text-center">
+				<table className="border border-solid border-black">
+					<tr className="p-3 border border-solid border-black">
+						<th className="w-16 border border-solid border-black uppercase">
+							SNO
+						</th>
+						<th className="w-64 border border-solid border-black uppercase">
+							ID
+						</th>
+						<th className="w-44 border border-solid border-black uppercase">
+							Avatar
+						</th>
+						<th className="w-44 border border-solid border-black uppercase">
+							fullName
+						</th>
+						<th className="w-44 border border-solid border-black uppercase">
+							username
+						</th>
+						<th className="w-44 border border-solid border-black uppercase">
+							email
+						</th>
+						<th className="w-44 border border-solid border-black uppercase">
+							phoneNo
+						</th>
+					</tr>
+					{bannedArtisans.map((artisan) => (
+						<tr className="p-3 border border-solid border-black">
+							<td className="border border-solid border-black">
+								{index++}
+							</td>
+							<td className="border border-solid border-black">
+								{artisan._id}
+							</td>
+							<td className="border border-solid  flex justify-center">
+								<img
+									src={artisan.avatar}
+									alt=""
+									className="h-16 w-16"
+								/>
+							</td>
+							<td className="border border-solid border-black">
+								{artisan.fullName}
+							</td>
+							<td className="border border-solid border-black">
+								{artisan.username}
+							</td>
+							<td className="border border-solid border-black">
+								{artisan.email}
+							</td>
+							<td className="border border-solid border-black">
+								{/* You can open the modal using document.getElementById('ID').showModal() method */}
+								<button
+									className="btn btn-error"
+									onClick={() => unBanArtisan(artisan._id)}
+								>
+									Unban
+								</button>
+							</td>
+						</tr>
+					))}
+				</table>
+			</div>
+		</div>
+	);
 }
 
 export default AdminHome;

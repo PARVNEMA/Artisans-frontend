@@ -163,6 +163,7 @@ function ProductList() {
 					<label className="block mb-2">
 						Price Range
 					</label>{" "}
+					<p>Min:</p>
 					<input
 						type="range"
 						min="0"
@@ -176,6 +177,7 @@ function ProductList() {
 						}
 						className="w-full mb-2"
 					/>{" "}
+					<p>Max:</p>
 					<input
 						type="range"
 						min="0"
