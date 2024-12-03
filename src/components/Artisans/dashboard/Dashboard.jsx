@@ -534,7 +534,11 @@ function Dashboard() {
 										setstockid("");
 									}}
 								>
-									<ArrowRightCircle />
+									{stockid === product._id ? (
+										<ArrowRightCircle />
+									) : (
+										""
+									)}
 								</button>
 							</div>
 						</div>
