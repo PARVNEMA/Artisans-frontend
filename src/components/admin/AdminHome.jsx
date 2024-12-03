@@ -13,6 +13,7 @@ function AdminHome() {
 	const [currentartisans, setcurrentartisans] = useState(
 		[]
 	);
+	const [bannerArtisans, setbannerArtisans] = useState([]);
 	const navigate = useNavigate();
 	const [totalArtisans, setTotalArtisans] = useState(0);
 	const [currentusers, setcurrentusers] = useState(0);
@@ -131,6 +132,29 @@ function AdminHome() {
 			toast.error(error.message);
 		}
 	}, []);
+	const getBannedArtisans = useCallback(async () => {
+		try {
+			const res = await axios.get(
+				`${backendurl}/admin/nastrigo/getDisabledArtisanAccount`,
+				{
+					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"adminaccessToken"
+						)}`,
+					},
+				}
+			);
+			console.log(
+				"current Ban Active User analytics=",
+				res.data.data
+			);
+			setbannerArtisans(res.data.data);
+		} catch (error) {
+			console.log("Error", error);
+			toast.error(error.message);
+		}
+	}, []);
 	const adminlogout = useCallback(async () => {
 		try {
 			const res = await axios.post(
@@ -155,12 +179,37 @@ function AdminHome() {
 			toast.error(error.message);
 		}
 	}, []);
+
+	const BanArtisan = useCallback(async (artisanId) => {
+		try {
+			const res = await axios.put(
+				`${backendurl}/admin/nastrigo/disable/${artisanId}`,
+				null,
+				{
+					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"adminaccessToken"
+						)}`,
+					},
+				}
+			);
+			console.log(
+				"current Active Artisans ban=",
+				res.data.data
+			);
+		} catch (error) {
+			console.log("Error", error);
+			toast.error(error.message);
+		}
+	}, []);
 	useEffect(() => {
 		getProductAnalytics();
 		getSalesAnalytics();
 		getFinanceAnalytics();
 		getActiveArtisansDetails();
 		getActiveUserDetails();
+		getBannedArtisans();
 	}, []);
 
 	return (
@@ -226,6 +275,42 @@ function AdminHome() {
 							</td>
 							<td className="border border-solid border-black">
 								{artisan.phoneNo}
+							</td>
+							<td className="border border-solid border-black">
+								{/* You can open the modal using document.getElementById('ID').showModal() method */}
+								<button
+									className="btn btn-error"
+									onClick={() =>
+										document
+											.getElementById("my_modal_3")
+											.showModal()
+									}
+								>
+									Ban
+								</button>
+								<dialog id="my_modal_3" className="modal">
+									<div className="modal-box">
+										<form method="dialog">
+											{/* if there is a button in form, it will close the modal */}
+											<button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+												✕
+											</button>
+										</form>
+										<h3 className="font-bold text-lg">
+											Did You Want To Ban This Artisan
+										</h3>
+										<p className="py-4">
+											<button
+												className="btn btn-error"
+												onClick={() =>
+													BanArtisan(artisan._id)
+												}
+											>
+												Ban
+											</button>
+										</p>
+									</div>
+								</dialog>
 							</td>
 						</tr>
 					))}
