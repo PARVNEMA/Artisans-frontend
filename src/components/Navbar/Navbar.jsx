@@ -30,7 +30,8 @@ function Navbar() {
 		artisans,
 		setArtisans,
 	} = useAuthArtisans();
-	const { currency } = useContext(CurrencyContext);
+	const { currency, setCurrency } =
+		useContext(CurrencyContext);
 	const getCurrentArtisans = useCallback(async () => {
 		try {
 			const res = await axios.get(
@@ -113,12 +114,12 @@ function Navbar() {
 	}, []);
 	useEffect(() => {
 		if (localStorage.getItem("artisansaccessToken")) {
-			getCurrentArtisans();
 			setartisansloggedIn(true);
+			getCurrentArtisans();
 		}
 		if (localStorage.getItem("accessToken")) {
-			getCurrentUser();
 			setloggedIn(true);
+			getCurrentUser();
 		}
 		getAllCategories();
 	}, [getCurrentArtisans, getCurrentUser]);
