@@ -53,6 +53,8 @@ import ArtisansChat from "./components/Artisans/artisanschat/ArtisansChat.jsx";
 import LogHome from "./components/Logistics/logHome/logHome.jsx";
 import LogSignIn from "./components/Logistics/LogSignIn/LogSignIn.jsx";
 import LogSignUp from "./components/Logistics/LogSignup/LogSignUp.jsx";
+import Recommendations from "./components/Recommendations/Recommendations.jsx";
+import Seasonal from "./components/Seasonal/Seasonal.jsx";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +106,14 @@ const router = createBrowserRouter([
       {
         path: "/aboutus",
         element: <Aboutus />,
+      },
+      {
+        path:"/recommendation",
+        element:<Recommendations />
+      },
+      {
+        path:"/seasonal",
+        element:<Seasonal />
       },
       {
         path: "/aa",
