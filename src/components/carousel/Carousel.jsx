@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import DetailedProduct from "../detailedproduct/DetailedProduct";
-import FeaturedProducts from "../featuredProducts/FeaturedProducts";
-import ProductList from "../ProductList/ProductList";
 import { Link } from "react-router-dom";
 
 const images = [
@@ -17,7 +14,7 @@ const Carousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change slide every 10 seconds
+    }, 3000); // Change slide every 3 seconds
 
     return () => clearInterval(interval); // Clean up the interval on component unmount
   }, []);
@@ -34,28 +31,28 @@ const Carousel = () => {
 
   const array = [
     {
-      Title: "Explore all the Authenticated product made by local Artists",
-      text: "From local to Global",
-      Link: "/DetailedProduct"
+      Title: "Explore all the Authenticated products made by local Artists",
+      text: "From Local to Global",
+      Link: "/DetailedProduct",
     },
     {
       Title: "Keep up with various trends according to the seasons here",
-      text: "Special seasonal offer",
-      Link: "/FeaturedProducts"
+      text: "Special Seasonal Offer",
+      Link: "/FeaturedProducts",
     },
     {
       Title: "Buy all the special festival products from here",
-      text: "Special festive products",
-      Link: "/ProductList"
+      text: "Special Festive Products",
+      Link: "/ProductList",
     },
     {
       Title: "Order products which meet your needs",
-      text: "Custom made products"
+      text: "Custom Made Products",
     },
   ];
 
   return (
-    <div className="carousel relative w-full h-[80vh] overflow-hidden">
+    <div className="relative w-full h-[80vh] overflow-hidden">
       {images.map((image, index) => (
         <div
           key={index}
@@ -69,10 +66,10 @@ const Carousel = () => {
             alt={`Slide ${index + 1}`}
           />
           <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50">
-            <h2 className="text-6xl font-bold mx-20 text-one text-center mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mx-10 lg:mx-20 text-one text-center mb-4">
               <Link to={array[index].Link}>{array[index].Title}</Link>
             </h2>
-            <button className="text-white font-serif text-2xl px-4 py-2 rounded">
+            <button className="text-white font-serif text-xl md:text-2xl px-4 py-2 rounded bg-three bg-opacity-80 hover:bg-opacity-100 transition duration-300">
               {array[index].text}
             </button>
           </div>

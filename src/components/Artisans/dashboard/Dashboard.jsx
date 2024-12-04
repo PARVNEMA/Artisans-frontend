@@ -243,63 +243,66 @@ function Dashboard() {
 
 		return (
       <div>
-        <div className="flex items-center w-full">
-          {/* Header */}
-          <div className="w-[85%] pl-[8rem]">
-            <h1 className="text-5xl font-extrabold uppercase text-three text-center mt-10 mb-3">
-              Welcome !! {artisans?.fullName}
-            </h1>
-            <p className="font-semibold text-three text-center">
-              Here is your dashboard
-            </p>
-          </div>
-
-          {/* Add new product */}
-          <div className="bg-three hover:bg-opacity-75 bg-opacity-95 text-white rounded-full flex justify-center">
-            <Link to={"/artisans/productlisting"}>
-              <button className="p-5 font-bold ">Add new product</button>
-            </Link>
-          </div>
-          <div className="bg-three hover:bg-opacity-75 bg-opacity-95 text-white rounded-full flex justify-center">
-            <Link to={"/address"}>
-              <button className="p-5 font-bold ">Add Your Address</button>
-            </Link>
-          </div>
-          <div className="bg-three hover:bg-opacity-75 bg-opacity-95 text-white rounded-full flex justify-center">
-            <Link to={"/artisans/updateprofile"}>
-              <button className="p-5 font-bold ">Update Your Profile</button>
-            </Link>
-          </div>
-          <div className="bg-three hover:bg-opacity-75 bg-opacity-95 text-white rounded-full flex justify-center">
-            <Link to={`/artisans/chat/${artisans?._id}`}>
-              <button className="p-5 font-bold ">See Chats</button>
-            </Link>
-          </div>
-        </div>
-        {/* artisans matrices */}
-        <div className="flex justify-center p-auto">
+        {/* Header */}{" "}
+        <div className="flex flex-col lg:flex-row items-center w-full p-6 bg-one">
           {" "}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 mx-[8rem] my-20 gap-12">
+          <div className="lg:w-3/4 w-full lg:pl-[8rem] text-center lg:text-left">
             {" "}
-            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-blue-500 to-blue-300 text-white w-auto flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
+            <h1 className="text-5xl font-extrabold uppercase text-three mt-10 mb-3">
+              {" "}
+              Welcome!! {artisans?.fullName}{" "}
+            </h1>{" "}
+            <p className="font-semibold text-three"> Here is your dashboard </p>{" "}
+          </div>{" "}
+          <div className="flex flex-wrap gap-4 mt-4 lg:mt-0">
+            {" "}
+            <Link
+              to={"/artisans/productlisting"}
+              className="bg-three hover:bg-opacity-75 text-white rounded-full p-5 font-bold transition duration-300"
+            >
+              {" "}
+              Add New Product{" "}
+            </Link>{" "}
+            <Link
+              to={"/address"}
+              className="bg-three hover:bg-opacity-75 text-white rounded-full p-5 font-bold transition duration-300"
+            >
+              {" "}
+              Add Your Address{" "}
+            </Link>{" "}
+            <Link
+              to={`/artisans/chat/${artisans?._id}`}
+              className="bg-three hover:bg-opacity-75 text-white rounded-full p-5 font-bold transition duration-300"
+            >
+              {" "}
+              See Chats{" "}
+            </Link>{" "}
+          </div>{" "}
+        </div>{" "}
+        {/* Artisans Matrices */}{" "}
+        <div className="flex justify-center p-6">
+          {" "}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full max-w-6xl">
+            {" "}
+            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-blue-500 to-blue-300 text-white flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
               {" "}
               <FaCubes className="text-4xl" />{" "}
               <h2 className="text-2xl font-bold">Total Products</h2>{" "}
               <p className="text-xl">{artisansproducts?.length}</p>{" "}
             </div>{" "}
-            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-green-500 to-green-300 text-white w-auto flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
+            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-green-500 to-green-300 text-white flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
               {" "}
               <FaClipboardCheck className="text-4xl" />{" "}
               <h2 className="text-2xl font-bold">Products Sold</h2>{" "}
               <p className="text-xl">{artisansmatrices?.productsSold}</p>{" "}
             </div>{" "}
-            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-purple-500 to-purple-300 text-white w-auto flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
+            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-purple-500 to-purple-300 text-white flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
               {" "}
               <FaExchangeAlt className="text-4xl" />{" "}
               <h2 className="text-2xl font-bold">Refund & Return Rate</h2>{" "}
               <p className="text-xl">{artisansmatrices?.refundAndReturnRate}</p>{" "}
             </div>{" "}
-            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-yellow-500 to-yellow-300 text-white w-auto flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
+            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-yellow-500 to-yellow-300 text-white flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
               {" "}
               <FaSmile className="text-4xl" />{" "}
               <h2 className="text-2xl font-bold">Customer Satisfaction</h2>{" "}
@@ -307,79 +310,77 @@ function Dashboard() {
                 {artisansmatrices?.customerSatisfactionRate}
               </p>{" "}
             </div>{" "}
-            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-red-500 to-red-300 text-white w-auto flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
+            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-red-500 to-red-300 text-white flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
               {" "}
               <FaExchangeAlt className="text-4xl" />{" "}
               <h2 className="text-2xl font-bold">Dispute Rate</h2>{" "}
               <p className="text-xl">{artisansmatrices?.disputeRate}</p>{" "}
             </div>{" "}
-            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-indigo-500 to-indigo-300 text-white w-auto flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
+            <div className="h-auto shadow-lg rounded-3xl bg-gradient-to-r from-indigo-500 to-indigo-300 text-white flex flex-col p-8 gap-5 justify-center items-center text-center transform transition-transform hover:scale-105">
               {" "}
               <FaDollarSign className="text-4xl" />{" "}
               <h2 className="text-2xl font-bold">Revenue</h2>{" "}
               <p className="text-xl">
                 {" "}
-                {currency === "INR"
-                  ? "₹"
-                  : currency === "USD"
-                  ? "$"
-                  : "€ "}{" "}
+                {currency === "INR" ? "₹" : currency === "USD" ? "$" : "€"}{" "}
                 {artisansmatrices?.totalRevenue}{" "}
               </p>{" "}
             </div>{" "}
           </div>{" "}
-        </div>
-        {/* Charts */}
-        <div>
+        </div>{" "}
+        {/* Charts */}{" "}
+        <div className="p-6">
+          {" "}
           <h1 className="text-5xl font-extrabold uppercase text-three text-center mb-8">
-            Sales Analytics
-          </h1>
-          <div className="container flex justify-center p-4">
-            <div className="flex justify-between items-center flex-col lg:flex-row gap-10 lg:gap-20">
+            {" "}
+            Sales Analytics{" "}
+          </h1>{" "}
+          <div className="flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-20">
+            {" "}
+            {/* Bar Chart */}{" "}
+            <div className="p-4 rounded-lg shadow-lg bg-white w-full lg:w-auto">
               {" "}
-              {/* Bar Graph */}{" "}
-              <div className="p-4 rounded-lg shadow-lg bg-white w-full lg:w-auto">
+              <h3 className="text-center text-2xl font-bold mb-4 text-three">
                 {" "}
-                <h3 className="text-center text-2xl font-bold mb-4 text-three">
-                  Sales Bar Chart
-                </h3>{" "}
-                <BarChart width={600} height={400} data={data2}>
-                  {" "}
-                  <Bar dataKey="sales" fill="#4CAF50" />{" "}
-                  <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />{" "}
-                  <XAxis dataKey="name" /> <YAxis /> <Tooltip />{" "}
-                </BarChart>{" "}
-              </div>{" "}
-              {/* Pie Chart */}{" "}
-              <div className="p-8 rounded-lg shadow-lg bg-white w-full lg:w-auto flex flex-col items-center">
+                Sales Bar Chart{" "}
+              </h3>{" "}
+              <BarChart width={600} height={400} data={data2}>
                 {" "}
-                <h3 className="text-center text-2xl font-bold mb-4 text-three">
-                  Country wise sales
-                </h3>{" "}
-                <PieChart width={400} height={400}>
-                  {" "}
-                  <Pie
-                    activeIndex={activeIndex}
-                    data={data}
-                    dataKey="count"
-                    outerRadius={200}
-                    fill="#4CAF50"
-                    onMouseEnter={(data, index) => onPieEnter(index)}
-                    style={{ cursor: "pointer", outline: "none" }} // Ensure no outline on focus
-                  >
-                    {" "}
-                    {data.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}{" "}
-                  </Pie>{" "}
-                  <Tooltip />{" "}
-                </PieChart>{" "}
-              </div>{" "}
+                <Bar dataKey="sales" fill="#4CAF50" />{" "}
+                <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />{" "}
+                <XAxis dataKey="name" /> <YAxis /> <Tooltip />{" "}
+              </BarChart>{" "}
             </div>{" "}
-          </div>
+            {/* Pie Chart */}{" "}
+            <div className="p-4 rounded-lg shadow-lg bg-white w-full lg:w-auto flex flex-col items-center">
+              {" "}
+              <h3 className="text-center text-2xl font-bold mb-4 text-three">
+                {" "}
+                Country-wise Sales{" "}
+              </h3>{" "}
+              <PieChart width={400} height={400}>
+                {" "}
+                <Pie
+                  activeIndex={activeIndex}
+                  data={data}
+                  dataKey="count"
+                  outerRadius={200}
+                  fill="#4CAF50"
+                  onMouseEnter={(data, index) => onPieEnter(index)}
+                  style={{ cursor: "pointer", outline: "none" }}
+                >
+                  {" "}
+                  {data.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}{" "}
+                </Pie>{" "}
+                <Tooltip />{" "}
+              </PieChart>{" "}
+            </div>{" "}
+          </div>{" "}
         </div>
 
         {/* pending orders  */}
@@ -397,7 +398,7 @@ function Dashboard() {
             </div>
           </div>
 
-          {/* Order */}
+          {/* Pending Order */}
           <div>
             {" "}
             {artisansmatrices?.orderRequests?.length === 0 ? (
@@ -410,7 +411,7 @@ function Dashboard() {
                 <div className="flex justify-between items-center p-4 border rounded-lg m-2 flex-col lg:flex-row bg-four bg-opacity-45">
                   {" "}
                   <img
-                    src={artisansmatrices?.orderRequests[0]?.images}
+                    src={artisansmatrices?.orderRequests[0]?.productImage[0]}
                     alt="Order"
                     className="h-20 w-20"
                   />{" "}
@@ -418,7 +419,7 @@ function Dashboard() {
                     {" "}
                     <h2 className="text-2xl uppercase">
                       {" "}
-                      <b>Title:</b> {artisansmatrices?.orderRequests[0]?.title}{" "}
+                      <b>Title:</b> {artisansmatrices?.orderRequests[0]?.productName}{" "}
                     </h2>{" "}
                   </div>{" "}
                   <div className="text-xl">
@@ -459,6 +460,7 @@ function Dashboard() {
             )}{" "}
           </div>
         </div>
+        
         {/* artisans products */}
         <div className="mx-[10rem] text-start">
           <div className="text-5xl font-extrabold text-three text-center p-8">
@@ -495,18 +497,16 @@ function Dashboard() {
                 </div>
               </div>
 
-              <div>
+              <div className="flex gap-1 lg:flex-col">
                 <button
                   className="btn btn-error"
                   onClick={() => deleteProduct(product._id)}
                 >
-                  Delete Product
+                  Delete
                 </button>
-              </div>
-              <div>
                 <Link to={`/artisans/updateproduct/${product._id}`}>
                   <button className="btn bg-three text-white">
-                    Update Product
+                    Update
                   </button>
                 </Link>
               </div>

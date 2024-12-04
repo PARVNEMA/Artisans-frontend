@@ -55,6 +55,7 @@ import LogSignIn from "./components/Logistics/LogSignIn/LogSignIn.jsx";
 import LogSignUp from "./components/Logistics/LogSignup/LogSignUp.jsx";
 import Recommendations from "./components/Recommendations/Recommendations.jsx";
 import Seasonal from "./components/Seasonal/Seasonal.jsx";
+import PostCoupon from "./components/coupons/PostCoupon.jsx";
 
 const router = createBrowserRouter([
   {

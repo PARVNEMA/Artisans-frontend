@@ -97,6 +97,21 @@ function UserProfile() {
 
 	return (
     <div>
+      <div className="text-cente relative">
+        {artisansloggedIn && (
+          <Link
+            to={"/artisans/updateprofile"}
+            className="font-bold absolute right-10 flex gap-3 text-xl"
+          >
+            Edit Profile <PenIcon />
+          </Link>
+        )}
+        <h1 className="text-5xl font-extrabold uppercase text-three mt-10 mb-3">
+          {" "}
+          Welcome!! {artisans?.fullName || user?.fullName}{" "}
+        </h1>{" "}
+        <p className="font-semibold text-three"> Here is your profile </p>{" "}
+      </div>
       <div className="flex justify-center gap-8 mt-8">
         {artisans && (
           <img className="h-[10rem] w-[10rem]" src={artisans?.avatar} alt="" />
@@ -150,9 +165,6 @@ function UserProfile() {
             <div>Loading...</div>
           )}
         </div>
-        <button className="font-bold flex gap-3 text-xl">
-          Edit Profile <PenIcon />
-        </button>
       </div>
       <div className="flex justify-center gap-10 my-10 mx-[10rem]">
         <Link to={"/myorders"}>

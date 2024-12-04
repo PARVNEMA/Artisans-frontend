@@ -367,7 +367,6 @@ function SignUp() {
 												name="DOB"
 												{...register("DOB")}
 											/>
-											<CalendarRangeIcon />
 										</div>
 									</div>
 									<div class="mt-6">

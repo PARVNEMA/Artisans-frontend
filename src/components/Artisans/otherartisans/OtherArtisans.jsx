@@ -77,7 +77,7 @@ function OtherArtisans() {
   }, []);
   return (
     <div>
-      <div className="text-black flex flex-col mx-[10rem] my-5 gap-[3rem]">
+      <div className="text-black flex flex-col mx-[8rem] my-5 gap-[3rem]">
         <h1 className="text-3xl font-bold text-center">About the Artist</h1>
         <div className="flex w-full justify-between">
           <div>
@@ -90,7 +90,6 @@ function OtherArtisans() {
             <p className="text-xl">
               <b>Experience:</b> {artisans?.experience}
             </p>
-            {/* <p>{artisans?.GSTIN}</p> */}
             <p className="text-xl">
               <b>About:</b> {artisans?.about}
             </p>
@@ -103,32 +102,40 @@ function OtherArtisans() {
           </div>
           <img src={artisans?.avatar} alt="" />
         </div>
-
-        <div>
-          <h1 className="text-3xl font-bold text-center">Artisan Metrics</h1>
-          <div className="flex flex-wrap gap-12">
-            <div className="flex flex-col items-center">
-              <DonutChart value={artisansmatrices?.customerSatisfaction} />
-              <p>Customer Satisfaction</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <DonutChart value={artisansmatrices?.disputeRate} />
-              <p>Dispute Rate</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <DonutChart value={artisansmatrices?.productSellingRate} />
-              <p>Sales Rate</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <DonutChart value={artisansmatrices?.refundRate} />
-              <p>Refund Rate</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <DonutChart value={artisansmatrices?.returnRate} />
-              <p>Return Rate</p>
-            </div>
-          </div>
-        </div>
+        <div className="mt-12">
+          {" "}
+          <h1 className="text-4xl lg:text-5xl font-bold text-center mb-8">
+            Artisan Metrics
+          </h1>{" "}
+          <div className="flex flex-wrap justify-center gap-12">
+            {" "}
+            <div className="flex flex-col items-center bg-gradient-to-r from-blue-500 to-blue-300 p-6 rounded-lg shadow-lg text-white">
+              {" "}
+              <DonutChart value={artisansmatrices?.customerSatisfaction} />{" "}
+              <p className="mt-4 font-bold">Customer Satisfaction</p>{" "}
+            </div>{" "}
+            <div className="flex flex-col items-center bg-gradient-to-r from-green-500 to-green-300 p-6 rounded-lg shadow-lg text-white">
+              {" "}
+              <DonutChart value={artisansmatrices?.disputeRate} />{" "}
+              <p className="mt-4 font-bold">Dispute Rate</p>{" "}
+            </div>{" "}
+            <div className="flex flex-col items-center bg-gradient-to-r from-purple-500 to-purple-300 p-6 rounded-lg shadow-lg text-white">
+              {" "}
+              <DonutChart value={artisansmatrices?.productSellingRate} />{" "}
+              <p className="mt-4 font-bold">Sales Rate</p>{" "}
+            </div>{" "}
+            <div className="flex flex-col items-center bg-gradient-to-r from-red-500 to-red-300 p-6 rounded-lg shadow-lg text-white">
+              {" "}
+              <DonutChart value={artisansmatrices?.refundRate} />{" "}
+              <p className="mt-4 font-bold">Refund Rate</p>{" "}
+            </div>{" "}
+            <div className="flex flex-col items-center bg-gradient-to-r from-yellow-500 to-yellow-300 p-6 rounded-lg shadow-lg text-white">
+              {" "}
+              <DonutChart value={artisansmatrices?.returnRate} />{" "}
+              <p className="mt-4 font-bold">Return Rate</p>{" "}
+            </div>{" "}
+          </div>{" "}
+        </div>{" "}
       </div>
       <div className="mx-[10rem] text-start">
         <div className="text-3xl font-bold text-center p-8">
