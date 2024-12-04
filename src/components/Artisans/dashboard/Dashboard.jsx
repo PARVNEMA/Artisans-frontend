@@ -269,7 +269,7 @@ function Dashboard() {
 						</Link>
 					</div>
 					<div className="bg-three hover:bg-opacity-75 bg-opacity-95 text-white rounded-full flex justify-center">
-						<Link to={`/artisans/${artisans?._id}`}>
+						<Link to={`/artisans/chat/${artisans?._id}`}>
 							<button className="p-5 font-bold ">
 								See Chats
 							</button>

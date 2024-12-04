@@ -146,7 +146,7 @@ const router = createBrowserRouter([
 						element: <UpdateArtisanProfile />,
 					},
 					{
-						path: "/artisans/:artisanid",
+						path: "/artisans/chat/:artisanid",
 						element: <ArtisansChat />,
 					},
 				],
