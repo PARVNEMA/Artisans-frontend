@@ -15,6 +15,8 @@ function UserProfile() {
 	const { loggedIn, setloggedIn } = useAuth();
 	const { artisansloggedIn, setartisansloggedIn } =
 		useAuthArtisans();
+	const [address, setaddress] = useState({});
+
 	const backendurl = import.meta.env.VITE_URL;
 
 	const getCurrentArtisans = useCallback(async () => {
@@ -62,16 +64,18 @@ function UserProfile() {
 			const res = await axios.get(`${backendurl}/address`, {
 				withCredentials: true,
 				headers: {
-					Authorization: `Bearer ${localStorage.getItem(
-						"accessToken"
-					)}`,
+					Authorization: `Bearer ${
+						localStorage.getItem("accessToken")
+							? localStorage.getItem("accessToken")
+							: localStorage.getItem("artisansaccessToken")
+					}`,
 				},
 			});
-			console.log("addres in", res.data);
-			setuser((prevUser) => ({
-				...prevUser,
-				address: res.data.data,
-			}));
+			console.log(
+				"addres in user/Artisan Profile",
+				res.data
+			);
+			setaddress(res.data.data);
 		} catch (error) {
 			console.log("Error in getting user address", error);
 		}
@@ -84,6 +88,7 @@ function UserProfile() {
 		if (localStorage.getItem("accessToken")) {
 			getCurrentUser().then(getCurrentUserAddress);
 		}
+		getCurrentUserAddress();
 	}, [
 		getCurrentUser,
 		getCurrentUserAddress,
@@ -140,7 +145,11 @@ function UserProfile() {
 								</tr>
 								<tr>
 									<td className="font-bold">Address</td>
-									<td> : {user?.address?.address}</td>
+									<td>
+										{" "}
+										: {address?.zipCode} {address?.city}{" "}
+										{address?.state} {address?.country}
+									</td>
 								</tr>
 								<tr>
 									<td className="font-bold">Email</td>
