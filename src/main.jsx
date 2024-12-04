@@ -48,6 +48,7 @@ import Bill from "./components/Bill/Bill.jsx";
 import YourOrders from "./components/userprofile/YourOrders.jsx";
 import PendingOrders from "./components/Artisans/dashboard/PendingOrders.jsx";
 import UpdateArtisanProfile from "./components/Artisans/updateartisansprofile/UpdateArtisanProfile.jsx";
+import ReturnProduct from "./components/userprofile/ReturnProduct.jsx";
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -176,6 +177,10 @@ const router = createBrowserRouter([
 			{
 				path: "/myorders",
 				element: <YourOrders />,
+			},
+			{
+				path: "/returnorder/:orderId/:orderItemId",
+				element: <ReturnProduct />,
 			},
 		],
 	},
