@@ -77,7 +77,8 @@ function Cards({ product }) {
 			toast.success("Added to cart");
 			navigate("/cart");
 		} catch (error) {
-			toast.error("Please login first");
+				toast.error("Please login first");
+			
 		}
 	};
 	return (
@@ -102,7 +103,7 @@ function Cards({ product }) {
 				</button>{" "}
 			</div>{" "}
 			<Link
-				to={`/productdetails/${product._id}`}
+				to={`/productdetails/${product?._id}`}
 				className="block"
 			>
 				{" "}
@@ -110,7 +111,7 @@ function Cards({ product }) {
 					{" "}
 					<img
 						src={product.images[0]}
-						alt={`Product - ${product.title}`}
+						alt={`Product - ${product?.title}`}
 						className="h-full w-full object-top object-cover bg-transparent rounded-t-lg"
 					/>{" "}
 				</div>{" "}
@@ -118,23 +119,23 @@ function Cards({ product }) {
 					{" "}
 					<h3 className="text-xl font-semibold text-gray-800 transition-colors duration-300 truncate">
 						{" "}
-						{product.title}{" "}
+						{product?.title}{" "}
 					</h3>{" "}
 					<Link
-						to={`/artisans/${product.createdBy._id}`}
+						to={`/artisans/${product?.createdBy?._id}`}
 						className="flex flex-row gap-4 items-center mt-2 "
 					>
 						{" "}
 						<img
-							src={product.createdBy.avatar}
-							alt={`${product.createdBy.fullName}'s avatar`}
+							src={product?.createdBy?.avatar}
+							alt={`${product?.createdBy?.fullName}'s avatar`}
 							height={30}
 							width={40}
 							className="rounded-full object-contain"
 						/>{" "}
 						<h3 className="text-md text-gray-500 font-semibold">
 							{" "}
-							{product.createdBy.fullName}{" "}
+							{product?.createdBy?.fullName}{" "}
 						</h3>{" "}
 					</Link>{" "}
 					<h4 className="text-lg text-gray-800 font-semibold mt-2">

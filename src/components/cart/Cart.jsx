@@ -137,7 +137,7 @@ function Cart() {
 			{cartlength > 0 ? (
 				<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
 					<div class=" max-w-4xl max-md:max-w-xl mx-auto p-4">
-						<h1 class="text-5xl text-center font-extrabold text-three">
+						<h1 class="text-4xl text-center font-extrabold text-three">
 							Your Cart
 						</h1>
 						<div class="grid md:grid-cols-3 gap-4 mt-8">

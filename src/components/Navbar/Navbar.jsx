@@ -223,7 +223,7 @@ function Navbar() {
 							<option value="/artisans/page">
 								Artisans
 							</option>{" "}
-							{artisans && (
+							{artisansloggedIn && (
 								<option value="/artisans/dashboard">
 									Dashboard
 								</option>
@@ -272,7 +272,7 @@ function Navbar() {
 							)}{" "}
 						</div>{" "}
 						<Link to="/artisans/page">Artisans</Link>{" "}
-						{artisans && (
+						{artisansloggedIn && (
 							<Link to="/artisans/dashboard">
 								Dashboard
 							</Link>

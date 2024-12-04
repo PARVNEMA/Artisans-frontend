@@ -17,11 +17,12 @@ function ProductListing() {
   // React Hook Form setup
   const {
     register,
-    control,
+    watch,
     handleSubmit,
     setValue,
     formState: { errors },
   } = useForm();
+  const isCustomization = watch("isCustomization");
 
   // Handle file selection and set preview for single image
 
@@ -115,6 +116,64 @@ function ProductListing() {
                 {...register("price")}
               />
             </div>
+            <div>
+              {" "}
+              <h1 className="text-three font-bold text-2xl mb-2 block">
+                {" "}
+                Are you offering customization?{" "}
+              </h1>{" "}
+              <div className="flex flex-col">
+                {" "}
+                <div className="">
+                  {" "}
+                  <input
+                    id="yes"
+                    type="radio"
+                    name="isCustomization"
+                    value="true"
+                    {...register("isCustomization")}
+                    onChange={() => setValue("isCustomization", "true")}
+                    className="text-three mr-2"
+                  />{" "}
+                  <label htmlFor="yes" className="text-three font-bold">
+                    {" "}
+                    Yes{" "}
+                  </label>{" "}
+                </div>{" "}
+                <div className="gap-5">
+                  {" "}
+                  <input
+                    id="no"
+                    type="radio"
+                    name="isCustomization"
+                    value="false"
+                    {...register("isCustomization")}
+                    onChange={() => setValue("isCustomization", "false")}
+                    className="text-three mr-2"
+                  />{" "}
+                  <label htmlFor="no" className="text-three font-bold">
+                    {" "}
+                    No{" "}
+                  </label>{" "}
+                </div>{" "}
+              </div>{" "}
+            </div>{" "}
+            {isCustomization === "true" && (
+              <div>
+                {" "}
+                <label className="text-three font-bold text-2xl mb-2 block">
+                  {" "}
+                  Customization Price{" "}
+                </label>{" "}
+                <input
+                  name="customizationPrice"
+                  type="number"
+                  className="bg-four bg-opacity-75 text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-blue-500 transition-all"
+                  placeholder="Enter price"
+                  {...register("customizationPrice")}
+                />{" "}
+              </div>
+            )}
             <div>
               <label className="text-three font-bold text-2xl mb-2 block">
                 Stock Quantity
