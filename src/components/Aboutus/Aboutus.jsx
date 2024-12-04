@@ -45,7 +45,7 @@ const Aboutus = () => {
         </div>
       </div>
       {/** introduce the problem */}
-      <div className=" flex justify-between p-10 px-40">
+      <div className=" flex justify-between my-10 px-40">
         <div className="flex insert y-0 right-0">
           <img
             className=" h-48 w-48"
@@ -55,7 +55,7 @@ const Aboutus = () => {
         </div>
         <div className="pl-40 pt-10">
           <h1 class="text-5xl font-bold pb-4 text-three"> What Drives us?</h1>
-          <p class="text-xl font-normal ">
+          <p class="text-xl font-normal">
             {" "}
             As local sellers/small handicrafts artisans is dificult to sell
             there product all around globe and in india due to imited resources
@@ -69,13 +69,13 @@ const Aboutus = () => {
         </div>
       </div>
       {/**Soultion to problem */}
-      <div className="flex justify-between p-20">
-        <div className="px-40 pt-10 ">
+      <div className="flex justify-between">
+        <div className="px-40 mt-6">
           <h1 class="text-5xl font-bold pb-4 text-three text-center">
             {" "}
             What do we contribute{" "}
           </h1>
-          <p>
+          <p className='text-xl'>
             {" "}
             Crafted India along with Indian post office provide Artisans with a
             platefrom to identify , reach and seller there product to the
