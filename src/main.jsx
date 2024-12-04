@@ -49,6 +49,7 @@ import YourOrders from "./components/userprofile/YourOrders.jsx";
 import PendingOrders from "./components/Artisans/dashboard/PendingOrders.jsx";
 import UpdateArtisanProfile from "./components/Artisans/updateartisansprofile/UpdateArtisanProfile.jsx";
 import ReturnProduct from "./components/userprofile/ReturnProduct.jsx";
+import ArtisansChat from "./components/Artisans/artisanschat/ArtisansChat.jsx";
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -143,6 +144,10 @@ const router = createBrowserRouter([
 					{
 						path: "/artisans/updateprofile",
 						element: <UpdateArtisanProfile />,
+					},
+					{
+						path: "/artisans/:artisanid",
+						element: <ArtisansChat />,
 					},
 				],
 			},
