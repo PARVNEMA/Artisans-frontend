@@ -7,7 +7,7 @@ function Footer() {
         <div>
           <a href="/#home" className="flex items-center justify-center">
             <img
-              src="/public/images/Elegant Peacock Indian Wedding Logo (3).png"
+              src="/public/images/final1.png"
               alt="logo"
               class="w-[12rem]"
             />

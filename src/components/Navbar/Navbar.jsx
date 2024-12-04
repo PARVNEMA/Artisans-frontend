@@ -202,8 +202,8 @@ function Navbar() {
           <Link to="/">
             {" "}
             <img
-              className="ml-3 h-[5rem] w-[6rem]"
-              src="/public/images/Elegant Peacock Indian Wedding Logo (3).png"
+              className="h-[4rem] w-[11rem]"
+              src="/public/images/final2.png"
               alt="Logo"
             />{" "}
           </Link>{" "}
