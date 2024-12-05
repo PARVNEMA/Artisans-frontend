@@ -7,6 +7,7 @@ import React, {
 import { toast } from "react-toastify";
 import { useAuthArtisans } from "../../../../useContext/ArtisansContext";
 import { io } from "socket.io-client";
+import { Link } from "react-router-dom";
 
 function ArtisansChat() {
 	const backendurl = import.meta.env.VITE_URL;
@@ -100,6 +101,15 @@ function ArtisansChat() {
 							/>
 						</div>
 						UserMessage:{item?.mostRecentMessage?.message}
+					</div>
+					<div>
+						<Link
+							to={`/chat/${item?.user?._id}/${artisans?._id}/${item?.mostRecentMessage?.productId}`}
+						>
+							<div className="bg-two flex items-center justify-center px-8 py-4 hover:bg-gray-900 text-white border border-gray-800 text-base rounded-lg">
+								Chat
+							</div>
+						</Link>
 					</div>
 				</div>
 			))}
