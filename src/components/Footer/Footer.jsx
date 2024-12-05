@@ -2,14 +2,14 @@ import React from "react";
 
 function Footer() {
 	return (
-    <footer class="font-[comic sans] tracking-wide px-4 py-8 bg-two">
+    <footer class="tracking-wide pr-4 py-8 bg-two">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
         <div>
-          <a href="/#home" className="flex items-center justify-center">
+          <a href="/#home" className="flex">
             <img
-              src="/public/images/final1.png"
+              src="/public/images/final1.jpg"
               alt="logo"
-              class="w-[12rem]"
+              class="w-[18rem] h-[5rem]"
             />
           </a>
 

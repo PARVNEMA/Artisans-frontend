@@ -16,7 +16,7 @@ const Aa = () => {
               }`}
             ></div>
             <button
-              className={`relative w-1/2 text-center py-2 transition-colors duration-500 ${
+              className={`relative w-1/2 font-bold text-lg text-center py-2 transition-colors duration-500 ${
                 isLogin ? "text-one" : "text-three"
               }`}
               onClick={() => setIsLogin(true)}
@@ -24,7 +24,7 @@ const Aa = () => {
               User
             </button>
             <button
-              className={`relative w-1/2 text-center py-2 transition-colors duration-500 ${
+              className={`relative w-1/2 text-center text-lg py-2 font-bold transition-colors duration-500 ${
                 !isLogin ? "text-one" : "text-three"
               }`}
               onClick={() => setIsLogin(false)}

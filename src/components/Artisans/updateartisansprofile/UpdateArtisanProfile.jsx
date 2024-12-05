@@ -194,7 +194,6 @@ function UpdateArtisanProfile() {
 												defaultValue={artisans?.DOB}
 												{...register("DOB")}
 											/>
-											<CalendarRangeIcon />
 										</div>
 									</div>
 									<div class="mt-6">

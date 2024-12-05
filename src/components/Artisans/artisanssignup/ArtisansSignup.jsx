@@ -336,15 +336,15 @@ function ArtisansSignup() {
                   </div>
                   <div class="mt-6">
                     <label class="text-gray-800 text-xs mb-2">DOB</label>
-                    <div class="relative flex items-center justify-between">
+                    <div className="relative flex items-center justify-between mb-4">
+                      {" "}
                       <input
                         type="date"
-                        className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
+                        className="w-full bg-transparent text-sm border-b border-gray-300 focus:border-three px-2 py-3 outline-none"
                         name="DOB"
                         required
                         {...register("DOB")}
-                      />
-                      <CalendarRangeIcon />
+                      />{" "}
                     </div>
                   </div>
                   <div class="mt-6">

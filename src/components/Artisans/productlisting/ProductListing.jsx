@@ -82,49 +82,60 @@ function ProductListing() {
     getAllCategories();
   }, []);
   return (
-    <div>
-      <div className="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)]  bg-white max-md:max-w-lg m-8 rounded-md md:grid-cols-2 items-center gap-8 h-auto max-w-4xl mx-auto py-6 px-[7rem]">
+    <div className="p-6">
+      {" "}
+      <div className="shadow-lg bg-white max-md:max-w-lg m-8 rounded-md md:grid-cols-2 items-center gap-8 h-auto max-w-4xl mx-auto py-6 px-8 md:px-16">
+        {" "}
         <div className="text-center mb-16">
+          {" "}
           <h1 className="text-three text-4xl font-extrabold mt-6">
-            List your product on our website
-          </h1>
-        </div>
-
+            {" "}
+            List your product on our website{" "}
+          </h1>{" "}
+        </div>{" "}
         <form onSubmit={handleSubmit(onSubmit)}>
+          {" "}
           <div className="grid sm:grid-cols-2 gap-8">
+            {" "}
             <div>
-              <label className="text-three font-bold text-2xl mb-2 block">
-                Title
-              </label>
+              {" "}
+              <label className="text-three font-bold text-xl mb-2 block">
+                {" "}
+                Title{" "}
+              </label>{" "}
               <input
                 name="title"
                 type="text"
-                className=" bg-opacity-75 bg-four  text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-blue-500 transition-all"
+                required
+                className="bg-opacity-75 bg-four text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-none transition-all"
                 placeholder="Enter the product title"
                 {...register("title")}
-              />
-            </div>
+              />{" "}
+            </div>{" "}
             <div>
-              <label className="text-three font-bold text-2xl mb-2 block">
-                Price
-              </label>
+              {" "}
+              <label className="text-three font-bold text-xl mb-2 block">
+                {" "}
+                Price{" "}
+              </label>{" "}
               <input
                 name="price"
                 type="number"
-                className="bg-four bg-opacity-75 text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-blue-500 transition-all"
+                required
+                className="bg-four bg-opacity-75 text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-none transition-all"
                 placeholder="Enter price"
                 {...register("price")}
-              />
-            </div>
+              />{" "}
+            </div>{" "}
             <div>
               {" "}
-              <h1 className="text-three font-bold text-2xl mb-2 block">
+              <h1 className="text-three font-bold text-xl mb-2 block">
                 {" "}
                 Are you offering customization?{" "}
               </h1>{" "}
               <div className="flex flex-col">
                 {" "}
-                <div className="">
+                <div>
                   {" "}
                   <input
                     id="yes"
@@ -140,7 +151,7 @@ function ProductListing() {
                     Yes{" "}
                   </label>{" "}
                 </div>{" "}
-                <div className="gap-5">
+                <div>
                   {" "}
                   <input
                     id="no"
@@ -161,83 +172,100 @@ function ProductListing() {
             {isCustomization === "true" && (
               <div>
                 {" "}
-                <label className="text-three font-bold text-2xl mb-2 block">
+                <label className="text-three font-bold text-xl mb-2 block">
                   {" "}
                   Customization Price{" "}
                 </label>{" "}
                 <input
                   name="customizationPrice"
                   type="number"
-                  className="bg-four bg-opacity-75 text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-blue-500 transition-all"
+                  className="bg-four bg-opacity-75 text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-none transition-all"
                   placeholder="Enter price"
                   {...register("customizationPrice")}
                 />{" "}
               </div>
-            )}
+            )}{" "}
             <div>
-              <label className="text-three font-bold text-2xl mb-2 block">
-                Stock Quantity
-              </label>
+              {" "}
+              <label className="text-three font-bold text-xl mb-2 block">
+                {" "}
+                Stock Quantity{" "}
+              </label>{" "}
               <input
                 name="stockQuantity"
                 type="number"
-                className="bg-four bg-opacity-75 text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-blue-500 transition-all"
+                required
+                className="bg-four bg-opacity-75 text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-none transition-all"
                 placeholder="Enter stock quantity"
                 {...register("stockQuantity")}
-              />
-            </div>
+              />{" "}
+            </div>{" "}
             <div>
-              <label className="text-three font-bold text-2xl mb-2 block">
-                Choose Category
-              </label>
+              {" "}
+              <label className="text-three font-bold text-xl mb-2 block">
+                {" "}
+                Choose Category{" "}
+              </label>{" "}
               <select
+                required
                 {...register("category")}
-                className="bg-four bg-opacity-75  text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-blue-500 transition-all"
+                className="bg-four bg-opacity-75 text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-none transition-all"
               >
+                {" "}
                 {category.map((cat) => (
                   <option value={cat.name} key={cat.name}>
-                    {cat.name}
+                    {" "}
+                    {cat.name}{" "}
                   </option>
-                ))}
-              </select>
-            </div>
+                ))}{" "}
+              </select>{" "}
+            </div>{" "}
             <div>
-              <label className="text-three font-bold text-2xl mb-2 block">
-                Description
-              </label>
+              {" "}
+              <label className="text-three font-bold text-xl mb-2 block">
+                {" "}
+                Description{" "}
+              </label>{" "}
               <textarea
                 name="description"
                 type="text"
-                className="bg-four bg-opacity-75 text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-blue-500 transition-all"
+                required
+                className="bg-four bg-opacity-75 text-three placeholder:text-three w-full text-sm px-4 py-3.5 rounded-md focus:bg-opacity-50 outline-none transition-all"
                 placeholder="Enter your product details"
                 {...register("description")}
-              />
-            </div>
+              />{" "}
+            </div>{" "}
             <div>
-              <label className="text-three font-bold text-2xl mb-2 block">
-                Upload Images
-              </label>
-              <div classNameName="image-upload-form bg-four">
+              {" "}
+              <label className="text-three font-bold text-xl mb-2 block">
+                {" "}
+                Upload Images{" "}
+              </label>{" "}
+              <div className="bg-four p-4 rounded-md">
+                {" "}
                 <input
                   type="file"
                   multiple
+                  required
                   {...register("images")}
                   onChange={onFileChange}
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="!mt-12 flex justify-center">
+                  className="text-three w-full"
+                />{" "}
+              </div>{" "}
+            </div>{" "}
+          </div>{" "}
+          <div className="mt-12 flex justify-center">
+            {" "}
             <button
               type="submit"
-              className="py-3.5 px-7 text-sm font-semibold tracking-wider rounded-md text-white bg-opacity-90 hover:bg-opacity-80 bg-three focus:outline-none"
+              className="py-3.5 px-7 text-sm font-semibold tracking-wider rounded-md text-white bg-opacity-90 hover:bg-opacity-80 bg-three focus:outline-none transition duration-300"
             >
-              Publish product
-            </button>
-          </div>
-        </form>
-      </div>
+              {" "}
+              Publish Product{" "}
+            </button>{" "}
+          </div>{" "}
+        </form>{" "}
+      </div>{" "}
     </div>
   );
 }

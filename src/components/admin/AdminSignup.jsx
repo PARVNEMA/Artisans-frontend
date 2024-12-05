@@ -44,7 +44,7 @@ function AdminSignup() {
 		<>
 			<div className="w-auto h-autooverflow-hidden ">
 				<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
-					<div class="font-[comic sans] ">
+					<div class="">
 						<div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] bg-white max-w-6xl max-md:max-w-lg m-4 rounded-md p-6 grid md:grid-cols-2 items-center gap-8 h-auto">
 							<div class="max-md:order-1 p-4 bg-white h-full">
 								<img
@@ -55,7 +55,7 @@ function AdminSignup() {
 							</div>
 
 							<div class="flex flex-col items-center p-6">
-								<h3 class="text-blue-500 p-5 md:text-3xl text-2xl font-extrabold max-md:text-center">
+								<h3 class="text-three p-5 md:text-3xl text-2xl font-extrabold max-md:text-center">
 									Create an account
 								</h3>
 								<form
@@ -71,7 +71,7 @@ function AdminSignup() {
 												name="fullName"
 												type="text"
 												required
-												class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
+												class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-three px-2 py-3 outline-none"
 												placeholder="Enter name"
 												{...register("fullName")}
 											/>
@@ -107,7 +107,7 @@ function AdminSignup() {
 												name="username"
 												type="text"
 												required
-												class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
+												class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-three px-2 py-3 outline-none"
 												placeholder="Enter username name"
 												{...register("username")}
 											/>
@@ -140,7 +140,7 @@ function AdminSignup() {
 												name="email"
 												type="text"
 												required
-												class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
+												class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-three px-2 py-3 outline-none"
 												placeholder="Enter email"
 												{...register("email")}
 											/>
@@ -191,7 +191,7 @@ function AdminSignup() {
 												name="password"
 												type="password"
 												required
-												class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
+												class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-three px-2 py-3 outline-none"
 												placeholder="Enter password"
 												{...register("password")}
 											/>
@@ -236,7 +236,7 @@ function AdminSignup() {
 										<div class="mt-3">
 											<button
 												type="submit"
-												class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] bg-blue-600 focus:outline-none hover:bg-blue-700 hover:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.5)]"
+												class="w-full py-2.5 px-5 text-sm font-semibold rounded-md text-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] bg-three focus:outline-none hover:bg-opacity-90 hover:shadow-[0_2px_10px_-3px_rgba(6,81,237,0.5)]"
 											>
 												Create an account
 											</button>

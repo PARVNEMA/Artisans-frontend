@@ -300,7 +300,7 @@ function Cart() {
                           ? "₹"
                           : currency === "USD"
                           ? "$"
-                          : "€ "}
+                          : "€"}
                         {totalprice}
                       </span>
                     </li>

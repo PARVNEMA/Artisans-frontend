@@ -202,13 +202,13 @@ function Navbar() {
           <Link to="/">
             {" "}
             <img
-              className="h-[4rem] w-[11rem]"
-              src="/public/images/final2.png"
+              className="h-[4rem] w-[14rem]"
+              src="/public/images/final2.jpg"
               alt="Logo"
             />{" "}
           </Link>{" "}
           <GTranslateLoader />{" "}
-          <div className="xl:hidden ml-5 sm:ml-10">
+          <div className="xl:hidden sm:ml-10">
             {" "}
             <select
               name="page"
