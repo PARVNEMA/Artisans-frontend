@@ -382,7 +382,6 @@ function Dashboard() {
             </div>{" "}
           </div>{" "}
         </div>
-
         {/* pending orders  */}
         <div>
           <div className="flex items-center w-full">
@@ -419,7 +418,8 @@ function Dashboard() {
                     {" "}
                     <h2 className="text-2xl uppercase">
                       {" "}
-                      <b>Title:</b> {artisansmatrices?.orderRequests[0]?.productName}{" "}
+                      <b>Title:</b>{" "}
+                      {artisansmatrices?.orderRequests[0]?.productName}{" "}
                     </h2>{" "}
                   </div>{" "}
                   <div className="text-xl">
@@ -460,81 +460,122 @@ function Dashboard() {
             )}{" "}
           </div>
         </div>
-        
         {/* artisans products */}
         <div className="mx-[10rem] text-start">
           <div className="text-5xl font-extrabold text-three text-center p-8">
             Your Products
           </div>
-          {artisansproducts.map((product) => (
-            <div className="flex justify-between items-center p-4 border rounded-lg m-2 flex-col lg:flex-row bg-four bg-opacity-45">
-              <img src={product.images[0]} alt="" className="h-20 w-20 " />
-              <div className="flex flex-col justify-between">
-                <h2 className="text-2xl uppercase">
-                  <b>Title:</b> {product.title}
-                </h2>
-                <p className="text-lg uppercase">
-                  <b>Category:</b> {product.category.name}
-                </p>
-              </div>
-              <p className="text-xl">
-                <b className="uppercase">Description:</b> {product.description}
-              </p>
-              <div className="text-xl">
-                <p>
-                  <b className="uppercase">Sales:</b> {product.sales}
-                </p>
-                <p>
-                  <b className="uppercase">Views:</b> {product.views}
-                </p>
-              </div>
-
-              <div className="text-start flex lg:block">
-                <p className="text-xl font-bold uppercase">Price: </p>
-                <div className="text-xl flex justify-center items-center">
-                  {currency === "INR" ? "₹" : currency === "USD" ? "$" : "€ "}
-                  {product.price}
-                </div>
-              </div>
-
-              <div className="flex gap-1 lg:flex-col">
-                <button
-                  className="btn btn-error"
-                  onClick={() => deleteProduct(product._id)}
-                >
-                  Delete
-                </button>
-                <Link to={`/artisans/updateproduct/${product._id}`}>
-                  <button className="btn bg-three text-white">
-                    Update
-                  </button>
-                </Link>
-              </div>
-              <div>
-                <p>
-                  <b className="uppercase">Stock:</b> {product.stockQuantity}
-                </p>
-                <Edit onClick={() => setstockid(product._id)} />
-                <input
-                  type="number"
-                  name="stock"
-                  id=""
-                  className={`${stockid === product._id ? "block" : "hidden"}`}
-                  placeholder="Enter Stock Quantity"
-                  value={stockquantity}
-                  onChange={(e) => setstockquantity(e.target.value)}
-                />
-                <button
-                  onClick={() => {
-                    updateStock(product._id, stockquantity);
-                    setstockid("");
-                  }}
-                >
-                  {stockid === product._id ? <ArrowRightCircle /> : ""}
-                </button>
-              </div>
-            </div>
-          ))}
+          {" "}
+          <div className="overflow-x-auto mb-12">
+            {" "}
+            <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+              {" "}
+              <thead className="bg-four text-white">
+                {" "}
+                <tr>
+                  {" "}
+                  <th className="py-3 px-6 font-semibold uppercase">
+                    SNO
+                  </th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Image</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Title</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">
+                    Category
+                  </th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">
+                    Description
+                  </th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Sales</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Views</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Price</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Action</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Stock</th>{" "}
+                </tr>{" "}
+              </thead>{" "}
+              <tbody>
+                {" "}
+                {artisansproducts.map((product, i) => (
+                  <tr
+                    key={product._id}
+                    className="bg-white border-b hover:bg-gray-100 transition-all"
+                  >
+                    {" "}
+                    <td className="py-3 px-6 border text-center">{i + 1}.</td>{" "}
+                    <td className="py-3 px-6 ">
+                      {" "}
+                      <img
+                        src={product.images[0]}
+                        alt={product.title}
+                        className="h-16 w-16 object-fill rounded-full"
+                      />{" "}
+                    </td>{" "}
+                    <td className="py-3 px-6 border">{product.title}</td>{" "}
+                    <td className="py-3 px-6 border">
+                      {product.category.name}
+                    </td>{" "}
+                    <td className="py-3 px-6 border">{product.description}</td>{" "}
+                    <td className="py-3 px-6 border">{product.sales}</td>{" "}
+                    <td className="py-3 px-6 border">{product.views}</td>{" "}
+                    <td className="py-3 px-6 ">
+                      {" "}
+                      {currency === "INR"
+                        ? "₹"
+                        : currency === "USD"
+                        ? "$"
+                        : "€ "}{" "}
+                      {product.price}{" "}
+                    </td>{" "}
+                    <td className="py-3 px-6 flex flex-col justify-center items-center gap-1">
+                      {" "}
+                      <button
+                        className="py-1 px-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all"
+                        onClick={() => deleteProduct(product._id)}
+                      >
+                        {" "}
+                        Delete{" "}
+                      </button>{" "}
+                      <Link to={`/artisans/updateproduct/${product._id}`}>
+                        {" "}
+                        <button className="py-1 px-3 bg-three text-white rounded-lg hover:bg-opacity-75 transition-all">
+                          {" "}
+                          Update{" "}
+                        </button>{" "}
+                      </Link>{" "}
+                    </td>{" "}
+                    <td className="py-3 px-6 border">
+                      {" "}
+                      <p className="uppercase">
+                        Stock: {product.stockQuantity}
+                      </p>{" "}
+                      <Edit onClick={() => setstockid(product._id)} />{" "}
+                      <input
+                        type="number"
+                        name="stock"
+                        className={`border rounded px-2 py-1 ${
+                          stockid === product._id ? "block" : "hidden"
+                        }`}
+                        placeholder="Enter Stock Quantity"
+                        value={stockquantity}
+                        onChange={(e) => setstockquantity(e.target.value)}
+                      />{" "}
+                      <button
+                        className={`ml-2 ${
+                          stockid === product._id ? "block" : "hidden"
+                        }`}
+                        onClick={() => {
+                          updateStock(product._id, stockquantity);
+                          setstockid("");
+                        }}
+                      >
+                        {" "}
+                        <ArrowRightCircle />{" "}
+                      </button>{" "}
+                    </td>{" "}
+                  </tr>
+                ))}{" "}
+              </tbody>{" "}
+            </table>{" "}
+          </div>
         </div>
       </div>
     );

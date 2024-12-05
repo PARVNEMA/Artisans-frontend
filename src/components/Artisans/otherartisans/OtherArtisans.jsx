@@ -1,15 +1,16 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import DonutChart from "../../DonutChart/DonutChart";
 import { IndianRupee } from "lucide-react";
+import { CurrencyContext } from "../../../../useContext/CurrencyContext";
 
 function OtherArtisans() {
   let { artisanid } = useParams();
   const backendurl = import.meta.env.VITE_URL;
   const [artisans, setArtisans] = useState({});
   const [artisansmatrices, setArtisansMatrices] = useState(null);
-
+  const {currency} = useContext(CurrencyContext);
   const [artisansproducts, setArtisansProducts] = useState([]);
   const getArtisansProduct = useCallback(async () => {
     try {
@@ -138,33 +139,69 @@ function OtherArtisans() {
         </div>{" "}
       </div>
       <div className="mx-[10rem] text-start">
-        <div className="text-3xl font-bold text-center p-8">
+        <div className="text-4xl text-three font-extrabold text-center p-8">
           Artist's Other Products
         </div>
-        {artisansproducts.map((product) => (
-          <Link to={`/productdetails/${product._id}`}>
-            <div className="grid grid-cols-4 justify-between items-center p-4 border rounded-lg m-2 flex-col lg:flex-row">
-              <img src={product.images[0]} alt="" className="object-fill" />
-              <div className="flex flex-col justify-between">
-                <h2 className="text-xl uppercase">
-                  <b>Title:</b> {product.title}
-                </h2>
-                <p className="text-md uppercase">
-                  <b>Category:</b> {product.category.name}
-                </p>
-              </div>
-              <p className="text-lg">
-                <b className="uppercase">Description:</b> {product.description}
-              </p>
-              <div className="text-start flex lg:block">
-                <p className="text-lg font-bold uppercase">Price:</p>
-                <div className="text-lg flex items-center">
-                  <IndianRupee /> {product.price}
-                </div>
-              </div>
-            </div>
-          </Link>
-        ))}
+        <div className="overflow-x-auto mb-12">
+          {" "}
+          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+            {" "}
+            <thead className="bg-four text-white">
+              {" "}
+              <tr>
+                {" "}
+                <th className="py-3 px-6 font-semibold uppercase">SNO</th>{" "}
+                <th className="py-3 px-6 font-semibold uppercase">Image</th>{" "}
+                <th className="py-3 px-6 font-semibold uppercase">Title</th>{" "}
+                <th className="py-3 px-6 font-semibold uppercase">Category</th>{" "}
+                <th className="py-3 px-6 font-semibold uppercase">
+                  Description
+                </th>{" "}
+                <th className="py-3 px-6 font-semibold uppercase">Price</th>{" "}
+              </tr>{" "}
+            </thead>{" "}
+            <tbody>
+              {" "}
+              {artisansproducts.map((product, i) => (
+                <tr
+                  key={product._id}
+                  className="bg-white border-b hover:bg-gray-100 transition-all"
+                >
+                  {" "}
+                  <td className="py-3 px-6 border text-center">
+                    {i + 1}.
+                  </td>{" "}
+                  <td className="py-3 px-6 border flex justify-center">
+                    {" "}
+                    <img
+                      src={product.images[0]}
+                      alt={product.title}
+                      className="h-16 w-16 object-fill rounded-full"
+                    />{" "}
+                  </td>{" "}
+                  <td className="py-3 px-6 text-center border">
+                    {product.title}
+                  </td>{" "}
+                  <td className="py-3 px-6 text-center border">
+                    {product.category.name}
+                  </td>{" "}
+                  <td className="py-3 px-6 text-center border">
+                    {product.description}
+                  </td>{" "}
+                  <td className="py-3 px-6 text-center">
+                    {" "}
+                    {currency === "INR"
+                      ? "₹"
+                      : currency === "USD"
+                      ? "$"
+                      : "€"}{" "}
+                    {product.price}{" "}
+                  </td>{" "}
+                </tr>
+              ))}{" "}
+            </tbody>{" "}
+          </table>{" "}
+        </div>
       </div>
     </div>
   );
