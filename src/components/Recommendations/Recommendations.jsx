@@ -37,7 +37,7 @@ function Recommendations() {
 
 	const getAllFeaturedProducts = async () => {
 		const res = await axios.get(
-			`${backendurl}/products/featured?currency=${currency}`,
+			`${backendurl}/products/recommendations?currency=${currency}`,
 			{
 				withCredentials: true, // Ensure cookies are included in the request
 				headers: {
@@ -47,8 +47,11 @@ function Recommendations() {
 				},
 			}
 		);
-		console.log("res in product list", res.data);
-		setProducts(res.data.data);
+		console.log(
+			"res in recommended pawan list =",
+			res.data
+		);
+		setProducts(res.data.data.recommendations);
 	};
 	const getAllRecommendedProducts = async () => {
 		const res = await axios.get(
@@ -78,13 +81,13 @@ function Recommendations() {
 		getAllRecommendedProducts();
 	}, [currency, wishlist]);
 
-	const recommendedProducts = products.filter((product) =>
-		wishlist.some(
-			(item) =>
-				product.category === item.productId.category &&
-				product._id !== item.productId._id
-		)
-	);
+	// const recommendedProducts = products.filter((product) =>
+	// 	wishlist.some(
+	// 		(item) =>
+	// 			product.category === item.productId.category &&
+	// 			product._id !== item.productId._id
+	// 	)
+	// );
 
 	return (
 		<div className="container mx-auto p-4">
@@ -94,7 +97,7 @@ function Recommendations() {
 						Recommendations
 					</h1>
 					<div className="grid grid-cols-1 gap-6 mx-[10rem] lg:grid-cols-2">
-						{recommendedProducts.map((product) => (
+						{products?.map((product) => (
 							<Cards product={product} key={product._id} />
 						))}
 					</div>

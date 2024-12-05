@@ -54,21 +54,6 @@ const Home = () => {
 				}}
 			>
 				{/* Iframe as the background */}
-				<iframe
-					loading="lazy"
-					style={{
-						position: "absolute",
-						top: 0,
-						left: 0,
-						width: "100%",
-						height: "80%",
-						border: "none",
-						zIndex: 0, // Background layer
-					}}
-					src="https://www.canva.com/design/DAGXX-hGHdY/M8xIQ5o12i4c8aA9t1gzmQ/view?embed"
-					// allowFullScreen
-					// allow="fullscreen"
-				></iframe>
 
 				{/* Seasonal component in the foreground */}
 				<div
@@ -81,10 +66,9 @@ const Home = () => {
 						height: "100%", // Match parent height
 						color: "white", // Ensure content is visible against the iframe background
 					}}
-				>
-					<Seasonal />
-				</div>
+				></div>
 			</div>
+			<Seasonal />
 
 			{/* Feature section */}
 			<div className="mb-12 mt-8 mx-24">
