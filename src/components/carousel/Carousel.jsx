@@ -60,18 +60,23 @@ const Carousel = () => {
             index === currentIndex ? "opacity-100" : "opacity-0"
           }`}
         >
-          <img
-            src={image}
-            className="w-full h-full object-cover"
-            alt={`Slide ${index + 1}`}
-          />
-          <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mx-10 lg:mx-20 text-one text-center mb-4">
-              <Link to={array[index].Link}>{array[index].Title}</Link>
-            </h2>
-            <button className="text-white font-serif text-xl md:text-2xl px-4 py-2 rounded bg-three bg-opacity-80 hover:bg-opacity-100 transition duration-300">
-              {array[index].text}
-            </button>
+          <div
+            className="h-full w-full"
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundSize: "cover",
+              backgroundAttachment: "fixed",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mx-10 lg:mx-20 text-one text-center mb-4">
+                <Link to={array[index].Link}>{array[index].Title}</Link>
+              </h2>
+              <button className="text-white font-serif text-xl md:text-2xl px-4 py-2 rounded bg-three bg-opacity-80 hover:bg-opacity-100 transition duration-300">
+                {array[index].text}
+              </button>
+            </div>
           </div>
         </div>
       ))}
