@@ -4,6 +4,7 @@ import Carousel from "../carousel/Carousel";
 import Category from "../category/Category";
 import { useAuth } from "../../../useContext/loginContext";
 import FeaturedProducts from "../featuredProducts/FeaturedProducts";
+import Seasonal from "../seasonal/Seasonal";
 
 const Home = () => {
   const backendurl = import.meta.env.VITE_URL;
@@ -38,6 +39,10 @@ const Home = () => {
       <div id="categories" className="mx-24 my-8">
         <Category />
       </div>
+
+	  <div>
+		<Seasonal />
+	  </div>
 
       {/* Feature section */}
       <div className="mb-12 mt-8 mx-24">

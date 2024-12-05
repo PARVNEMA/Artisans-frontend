@@ -32,7 +32,7 @@ function FeaturedProducts() {
   const productsToShow = showAll ? products : products.slice(0, 8); // Show 8 products (2 rows with 4 columns each)
 
   return (
-    <div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5 ">
+    <div className="max-w-full gap-[46px] mx-auto flex w-full flex-col md:px-5 ">
       <div className="py-4 mx-auto lg:max-w-7xl sm:max-w-full">
         <div className="flex justify-between text-center">
           <div className="w-[85%] pl-[8rem]">
