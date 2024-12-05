@@ -19,6 +19,8 @@ function DetailedProduct() {
   const [quantity, setQuantity] = useState(1);
   const [userId, setuserId] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  
   const handleIncrement = () => {
     if (quantity < 5) {
       setQuantity(quantity + 1);
@@ -118,9 +120,11 @@ function DetailedProduct() {
         }
       );
       console.log("add to  wishlisted items=", res.data);
+      toast.success("Added to wishlist");
     } catch (error) {
       console.log("Error", error);
-      toast.error("Please login first");
+      if (error.response.status === 400) toast.error("Already added");
+      else if (error.response.status === 401) toast.error("Please login first");
     }
   }, []);
 
@@ -323,7 +327,7 @@ function DetailedProduct() {
                     {/* Add to cart */}
                     <button
                       type="button"
-                      class="bg-two flex items-center justify-center px-8 py-4 hover:bg-gray-900 text-white border border-gray-800 text-base rounded-lg"
+                      class="bg-three flex items-center justify-center px-8 py-4 hover:bg-opacity-90 text-white border border-gray-800 text-base rounded-lg"
                       onClick={addToCart}
                     >
                       <svg
@@ -339,13 +343,16 @@ function DetailedProduct() {
                       Add to cart
                     </button>
 
+
+                    {/* coupon input field */}
+                  </div>
                     {/* Customize Button */}
-                    <div>
+                    <div className={`${product.customization.isCustomizationAvailable ? "" : "hidden"}`}>
                       <Link
                         to={`/chat/${product?.createdBy?._id}/${userId}/${product?._id}`}
                       >
-                        <div className="bg-two flex items-center justify-center px-8 py-4 hover:bg-gray-900 text-white border border-gray-800 text-base rounded-lg">
-                          Customize
+                        <div className="bg-three w-[20rem] mt-8 flex items-center justify-center px-8 py-4 hover:bg-opacity-90 text-white border border-gray-800 text-base rounded-lg">
+                          Customize Product
                         </div>
                       </Link>
                     </div>
@@ -369,9 +376,6 @@ function DetailedProduct() {
                         alt=""
                       />
                     </div>
-
-                    {/* coupon input field */}
-                  </div>
                 </div>
               </div>
             </div>
@@ -392,7 +396,7 @@ function DetailedProduct() {
                               <p class="text-sm text-gray-800 font-bold">
                                 {item.rating}({item.count})
                               </p>
-                              <div className="border ml-3 h-2  w-[100rem]">
+                              <div className="border ml-3 h-2 w-full">
                                 <div
                                   className="bg-blue-600 h-2"
                                   style={{
