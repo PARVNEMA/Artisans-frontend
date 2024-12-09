@@ -157,10 +157,6 @@ function Cart() {
                           <h3 class="text-base font-bold text-gray-800">
                             {item.title}
                           </h3>
-                          <p class="text-sm font-semibold text-gray-500 mt-2 flex items-center gap-2">
-                            Color:{" "}
-                            <span class="inline-block w-5 h-5 rounded-md bg-[#ac7f48]"></span>
-                          </p>
                         </div>
 
                         <div class="mt-auto flex items-center gap-3">
