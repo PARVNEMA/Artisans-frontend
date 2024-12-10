@@ -5,7 +5,7 @@ import Category from "../category/Category";
 import { useAuth } from "../../../useContext/loginContext";
 import FeaturedProducts from "../featuredProducts/FeaturedProducts";
 import Seasonal from "../seasonal/Seasonal";
-
+import Recommendations from "../Recommendations/Recommendations";
 const Home = () => {
 	const backendurl = import.meta.env.VITE_URL;
 
@@ -69,6 +69,8 @@ const Home = () => {
 				></div>
 			</div>
 			<Seasonal />
+
+			<Recommendations />
 
 			{/* Feature section */}
 			<div className="mb-12 mt-8 mx-24">

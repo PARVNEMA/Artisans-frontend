@@ -129,12 +129,12 @@ function Recommendations() {
 	);
 
 	return (
-		<div className="container mx-auto p-4">
+		<div className="container  p-4">
 			<h1 className="text-4xl text-center my-8 font-extrabold text-three">
 				Recommendations
 			</h1>
 			{products.length > 5 ? (
-				<div className="grid grid-cols-1 gap-6 mx-[10rem] lg:grid-cols-2">
+				<div className="grid grid-cols-1 gap-6 mx-[10rem] lg:grid-cols-4">
 					{products?.map((product) => (
 						<Cards product={product} key={product._id} />
 					))}
@@ -144,7 +144,7 @@ function Recommendations() {
 					{wishlist.length > 0 ? (
 						<div className="wishlist-container">
 							<div className="flex flex-col items-center mt-12">
-								<div className="grid grid-cols-1 gap-6 mx-[10rem] lg:grid-cols-2">
+								<div className="grid grid-cols-1 gap-6 mx-[10rem] lg:grid-cols-4">
 									{recommendedProducts.map((product) => (
 										<Cards
 											product={product}
@@ -156,7 +156,7 @@ function Recommendations() {
 						</div>
 					) : (
 						<div className="flex flex-col items-center mt-12">
-							<div className="grid grid-cols-1 gap-6 mx-[10rem] lg:grid-cols-2">
+							<div className="grid grid-cols-1 gap-6 mx-[10rem] lg:grid-cols-4">
 								{recproducts.map((product) => (
 									<Cards
 										product={product}

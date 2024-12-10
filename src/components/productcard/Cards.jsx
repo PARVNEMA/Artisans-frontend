@@ -1,4 +1,4 @@
-import { Heart, IndianRupee } from "lucide-react";
+import { Heart, IndianRupee, Verified } from "lucide-react";
 import React, {
 	useCallback,
 	useContext,
@@ -19,8 +19,11 @@ function Cards({ product }) {
 	const [wishlist, setWishlist] = useState([]);
 	const [isWishlisted, setIsWishlisted] = useState(false);
 	const { loggedIn, setloggedIn } = useAuth();
-	const { artisansloggedIn, setartisansloggedIn } =
-		useAuthArtisans();
+	const {
+		artisansloggedIn,
+		setartisansloggedIn,
+		artisans,
+	} = useAuthArtisans();
 
 	const getWishlistItems = useCallback(async () => {
 		try {
@@ -36,6 +39,7 @@ function Cards({ product }) {
 				}
 			);
 			setWishlist(res.data.items);
+			console.log("artisans in cards=", artisans);
 		} catch (error) {
 			console.log("Error", error);
 		}
@@ -185,6 +189,11 @@ function Cards({ product }) {
 						/>
 						<h3 className="text-md text-gray-500 font-semibold">
 							{product?.createdBy?.fullName}
+						</h3>
+						<h3 className="text-md text-gray-500 font-semibold">
+							{product?.createdBy?.isVerified && (
+								<Verified size={20} className="" />
+							)}
 						</h3>
 					</Link>
 					<h4 className="text-lg text-gray-800 font-semibold mt-2">
