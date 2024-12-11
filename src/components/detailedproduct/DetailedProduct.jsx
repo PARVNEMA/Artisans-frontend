@@ -15,6 +15,8 @@ import React, {
 import { useParams } from "react-router-dom";
 import { CurrencyContext } from "../../../useContext/CurrencyContext";
 import { toast } from "react-toastify";
+import { useAuthArtisans } from "../../../useContext/ArtisansContext";
+import { useAuth } from "../../../useContext/loginContext";
 
 function DetailedProduct() {
 	let { id } = useParams();
@@ -28,7 +30,10 @@ function DetailedProduct() {
 	const [quantity, setQuantity] = useState(1);
 	const [userId, setuserId] = useState("");
 	const [currentIndex, setCurrentIndex] = useState(0);
-
+	const [isWishlisted, setIsWishlisted] = useState(false);
+	const [wishlist, setWishlist] = useState([]);
+	const { loggedIn, setloggedIn, user, setUser } =
+		useAuth();
 	const handleIncrement = () => {
 		if (quantity < 5) {
 			setQuantity(quantity + 1);
@@ -39,6 +44,86 @@ function DetailedProduct() {
 			setQuantity(quantity - 1);
 		}
 	};
+
+	useEffect(() => {
+		setIsWishlisted(
+			wishlist.some(
+				(item) => item.productId?._id === product?._id
+			)
+		);
+	}, [wishlist, product._id]);
+
+	const getWishlistItems = useCallback(async () => {
+		try {
+			const res = await axios.get(
+				`${backendurl}/wishlist?currency=${currency}`,
+				{
+					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"accessToken"
+						)}`,
+					},
+				}
+			);
+			setWishlist(res.data.items);
+			// console.log("artisans in cards=", artisans);
+		} catch (error) {
+			console.log("Error", error);
+		}
+	}, [backendurl, currency]);
+	const handleWishlistToggle = async () => {
+		try {
+			if (isWishlisted) {
+				// Remove from wishlist
+				await axios.delete(
+					`${backendurl}/wishlist/${product._id}`,
+					{
+						withCredentials: true,
+						headers: {
+							Authorization: `Bearer ${localStorage.getItem(
+								"accessToken"
+							)}`,
+						},
+					}
+				);
+				setWishlist((prev) =>
+					prev.filter(
+						(item) => item.productId?._id !== product._id
+					)
+				);
+			} else {
+				// Add to wishlist
+				await axios.post(
+					`${backendurl}/wishlist`,
+					{ productId: product._id },
+					{
+						withCredentials: true,
+						headers: {
+							Authorization: `Bearer ${localStorage.getItem(
+								"accessToken"
+							)}`,
+						},
+					}
+				);
+				setWishlist((prev) => [
+					...prev,
+					{ productId: product },
+				]);
+			}
+			setIsWishlisted(!isWishlisted); // Toggle the state
+		} catch (error) {
+			console.log("Error toggling wishlist:", error);
+		}
+	};
+
+	useEffect(() => {
+		setIsWishlisted(
+			wishlist.some(
+				(item) => item.productId?._id === product?._id
+			)
+		);
+	}, [wishlist, product._id]);
 
 	const getproductsdetails = async () => {
 		const res = await axios.get(
@@ -182,7 +267,8 @@ function DetailedProduct() {
 		getAllReviews();
 		getOverallRating();
 		getCurrentUser();
-	}, [currency]);
+		getWishlistItems();
+	}, [currency, getWishlistItems]);
 
 	if (
 		!product ||
@@ -273,13 +359,20 @@ function DetailedProduct() {
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
-											class="w-5 h-5 cursor-pointer fill-current inline"
+											width="24px"
+											className={`cursor-pointer ${
+												isWishlisted
+													? "fill-red-600"
+													: "fill-white"
+											}`}
 											viewBox="0 0 64 64"
+											onClick={handleWishlistToggle} // Add click handler
 										>
-											<path
-												d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
-												data-original="#000000"
-											></path>
+											{isWishlisted && loggedIn ? (
+												<path d="M32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z" />
+											) : (
+												<path d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z" />
+											)}
 										</svg>
 									</button>
 

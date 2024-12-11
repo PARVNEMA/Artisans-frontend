@@ -57,6 +57,7 @@ import Recommendations from "./components/Recommendations/Recommendations.jsx";
 import Seasonal from "./components/Seasonal/Seasonal.jsx";
 import PostCoupon from "./components/coupons/PostCoupon.jsx";
 import OrderItem from "./components/orderitemlist/OrderItem.jsx";
+import GstValidation from "./components/GstValidation/GstValidation.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -218,6 +219,10 @@ const router = createBrowserRouter([
 			{
 				path: "/returnorder/:orderId/:orderItemId",
 				element: <ReturnProduct />,
+			},
+			{
+				path: "/gstvalidation",
+				element: <GstValidation />,
 			},
 		],
 	},

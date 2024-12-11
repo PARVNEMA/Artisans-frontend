@@ -280,6 +280,21 @@ function Dashboard() {
 							{" "}
 							See Chats{" "}
 						</Link>{" "}
+						{artisans?.GSTIN ? (
+							<>
+								<p> </p>
+							</>
+						) : (
+							<>
+								<Link
+									to={`/gstvalidation`}
+									className="bg-three hover:bg-opacity-75 text-white rounded-full p-5 font-bold transition duration-300"
+								>
+									{" "}
+									Add GSTIN{" "}
+								</Link>
+							</>
+						)}
 					</div>{" "}
 				</div>{" "}
 				{/* Artisans Matrices */}{" "}

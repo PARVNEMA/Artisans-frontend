@@ -126,62 +126,58 @@ function LogHome() {
 				{/* Order */}
 				<div className="flex flex-col">
 					{orders.map((product) => (
-						<div className="overflow-x-auto">
-							{" "}
-							<table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-								{" "}
-								<thead className="bg-four text-white">
-									{" "}
+						<div
+							key={product.orderId}
+							className="overflow-x-auto mb-6"
+						>
+							<table className="min-w-full bg-white shadow-md rounded-lg">
+								<thead className="bg-three text-white">
 									<tr>
-										{" "}
-										<th className="py-3 px-6 font-semibold uppercase">
+										<th className="py-3 px-6 text-left font-semibold uppercase">
 											SNO
-										</th>{" "}
-										<th className="py-3 px-6 font-semibold uppercase">
+										</th>
+										<th className="py-3 px-6 text-left font-semibold uppercase">
 											Order ID
-										</th>{" "}
-										<th className="py-3 px-6 font-semibold uppercase">
+										</th>
+										<th className="py-3 px-6 text-left font-semibold uppercase">
 											Pickup Address
-										</th>{" "}
-										<th className="py-3 px-6 font-semibold uppercase">
+										</th>
+										<th className="py-3 px-6 text-left font-semibold uppercase">
 											Delivery Address
-										</th>{" "}
-										<th className="py-3 px-6 font-semibold uppercase">
+										</th>
+										<th className="py-3 px-6 text-left font-semibold uppercase">
 											Order Item ID
-										</th>{" "}
-										<th className="py-3 px-6 font-semibold uppercase">
-											Payment Status
-										</th>{" "}
-									</tr>{" "}
-								</thead>{" "}
+										</th>
+									</tr>
+								</thead>
 								<tbody>
-									{" "}
 									{product?.items?.map((item, index) => (
-										<Link
-											to={`/logistics/${product.orderId}`}
+										<tr
 											key={item?._id}
+											className="border-b hover:bg-gray-100 transition-all cursor-pointer"
+											onClick={() =>
+												(window.location.href = `/logistics/${product.orderId}`)
+											}
 										>
-											<tr className="bg-white border-b hover:bg-gray-100 transition-all">
-												<td className="py-3 px-6 border">
-													{index + 1}
-												</td>
-												<td className="py-3 px-6 border">
-													{product?.orderId}
-												</td>
-												<td className="py-3 px-6 border">
-													{item?.pickupAddress || "N/A"}
-												</td>
-												<td className="py-3 px-6 border">
-													{item?.deliveryAddress || "N/A"}
-												</td>
-												<td className="py-3 px-6 border">
-													{item?.orderItemId || "N/A"}
-												</td>
-											</tr>
-										</Link>
-									))}{" "}
-								</tbody>{" "}
-							</table>{" "}
+											<td className="py-3 px-6 border">
+												{index + 1}
+											</td>
+											<td className="py-3 px-6 border">
+												{product?.orderId}
+											</td>
+											<td className="py-3 px-6 border">
+												{item?.pickupAddress || "N/A"}
+											</td>
+											<td className="py-3 px-6 border">
+												{item?.deliveryAddress || "N/A"}
+											</td>
+											<td className="py-3 px-6 border">
+												{item?.orderItemId || "N/A"}
+											</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
 						</div>
 					))}
 				</div>

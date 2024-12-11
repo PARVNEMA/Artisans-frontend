@@ -39,7 +39,7 @@ function Cards({ product }) {
 				}
 			);
 			setWishlist(res.data.items);
-			console.log("artisans in cards=", artisans);
+			// console.log("artisans in cards=", artisans);
 		} catch (error) {
 			console.log("Error", error);
 		}
