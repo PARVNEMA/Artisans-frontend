@@ -189,13 +189,14 @@ function UserProfile() {
 											: artisans?.DOB?.slice(0, 10)}
 									</td>
 								</tr>
-								<tr>
-									<td className="font-bold">GSTIN</td>
-									<td>
-										:{" "}
-										{loggedIn ? user?.DOB : artisans?.GSTIN}
-									</td>
-								</tr>
+								{loggedIn ? (
+									<></>
+								) : (
+									<tr>
+										<td className="font-bold">GSTIN</td>
+										<td></td>
+									</tr>
+								)}
 							</table>
 						</>
 					) : (

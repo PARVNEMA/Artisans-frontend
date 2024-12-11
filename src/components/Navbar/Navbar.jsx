@@ -230,6 +230,7 @@ function Navbar() {
 							<option value="/products">Products</option>{" "}
 							<option value="/aboutus">About Us</option>{" "}
 							<option value="/contactus">Contact Us</option>{" "}
+							<option value="/contactus"></option>{" "}
 						</select>{" "}
 					</div>{" "}
 					<div className="hidden xl:flex items-center text-three font-semibold text-xl space-x-8 ml-10">

@@ -33,52 +33,6 @@ function LogHome() {
 		}
 	}, []);
 
-	const onSubmit = async (data) => {
-		const formData = new FormData();
-
-		// Append form fields to FormData, ensuring both key and value are specified
-		Object.keys(data).forEach((key) => {
-			if (key !== "images") {
-				console.log("each key", key, data[key]);
-				formData.append(key, data[key]);
-			}
-		});
-
-		// Append selected images to FormData
-		for (let i = 0; i < selectedFiles.length; i++) {
-			formData.append("images", selectedFiles[i]);
-		}
-
-		// Debugging: Log FormData entries to verify
-		for (let pair of formData.entries()) {
-			console.log(pair[0] + ": " + pair[1]);
-		}
-
-		try {
-			const res = await axios.post(
-				`${backendurl}/products/create`,
-				formData,
-				{
-					withCredentials: true, // Ensure cookies are included in the request
-					headers: {
-						"Content-Type": "multipart/form-data",
-						Authorization: `Bearer ${localStorage.getItem(
-							"artisanaccessToken"
-						)}`,
-					},
-				}
-			);
-
-			console.log(
-				"res from uploading product from artisanss",
-				res.data
-			);
-			navigate("/artisans/dashboard");
-			toast.succes("Product uploaded successfully");
-		} catch (error) {
-			console.error("error in register form", error);
-		}
-	};
 	const adminlogout = useCallback(async () => {
 		try {
 			const res = await axios.post(

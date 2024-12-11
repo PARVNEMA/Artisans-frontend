@@ -10,7 +10,7 @@ function GTranslateLoader() {
 		gtranslateSettingsScript.innerHTML = `
       window.gtranslateSettings = {
         default_language: "en",
-        detect_browser_language: true,
+
         wrapper_selector: ".gtranslate_wrapper"
       };
     `;
