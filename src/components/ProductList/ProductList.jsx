@@ -101,53 +101,45 @@ function ProductList() {
 
 	return (
     <div className="flex">
-      {" "}
-      {/* Sidebar for filters */}{" "}
-      <div className="w-1/4 xl:w-1/6 p-4">
-        {" "}
-        <h3 className="text-2xl font-bold mb-4">Filter by</h3>{" "}
-        {/* Category Filter */}{" "}
+      {/* Sidebar for filters */}
+      <div className="w-1/4 xl:w-1/6 p-4 sticky top-0 h-screen overflow-auto bg-four bg-opacity-50">
+        <h3 className="text-2xl font-bold mb-4">Filter by</h3>
+        {/* Category Filter */}
         <div className="mb-4">
-          {" "}
-          <label className="block mb-2">Category</label>{" "}
+          <label className="block mb-2">Category</label>
           <select
             className="w-full p-2 border rounded"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
-            {" "}
-            <option value="">All Categories</option>{" "}
+            <option value="">All Categories</option>
             {categories.map((category) => (
               <option key={category._id} value={category._id}>
-                {" "}
-                {category.name}{" "}
+                {category.name}
               </option>
-            ))}{" "}
-          </select>{" "}
-        </div>{" "}
-        {/* State Filter */}{" "}
+            ))}
+          </select>
+        </div>
+        {/* State Filter */}
         <div className="mb-4">
-          {" "}
-          <label className="block mb-2">Origin State</label>{" "}
+          <label className="block mb-2">Origin State</label>
           <select
             className="w-full p-2 border rounded"
             value={selectedState}
             onChange={(e) => setSelectedState(e.target.value)}
           >
-            {" "}
-            <option value="">All States</option>{" "}
+            <option value="">All States</option>
             {states.map((state) => (
               <option key={state} value={state}>
-                {" "}
-                {state}{" "}
+                {state}
               </option>
-            ))}{" "}
-          </select>{" "}
-        </div>{" "}
-        {/* Price Range Filter */}{" "}
+            ))}
+          </select>
+        </div>
+        {/* Price Range Filter */}
         <div className="mb-4">
-          {" "}
-          <label className="block mb-2">Price Range</label> <p>Min:</p>
+          <label className="block mb-2">Price Range</label>
+          <p>Min:</p>
           <input
             type="range"
             min="0"
@@ -157,7 +149,7 @@ function ProductList() {
               setPriceRange([Number(e.target.value), priceRange[1]])
             }
             className="w-full mb-2"
-          />{" "}
+          />
           <p>Max:</p>
           <input
             type="range"
@@ -168,36 +160,34 @@ function ProductList() {
               setPriceRange([priceRange[0], Number(e.target.value)])
             }
             className="w-full mb-2"
-          />{" "}
+          />
           <div className="flex justify-between">
-            {" "}
             <span>
-              {currency == "INR" ? "₹" : currency == "USD" ? "$" : "€"}
+              {currency === "INR" ? "₹" : currency === "USD" ? "$" : "€"}
               {priceRange[0]}
-            </span>{" "}
+            </span>
             <span>
-              {currency == "INR" ? "₹" : currency == "USD" ? "$" : "€"}
+              {currency === "INR" ? "₹" : currency === "USD" ? "$" : "€"}
               {priceRange[1]}
-            </span>{" "}
-          </div>{" "}
-        </div>{" "}
-        {/* Review Rating Filter */}{" "}
+            </span>
+          </div>
+        </div>
+        {/* Review Rating Filter */}
         <div className="mb-4">
-          {" "}
-          <label className="block mb-2">Review Rating</label>{" "}
+          <label className="block mb-2">Review Rating</label>
           <select
             className="w-full p-2 border rounded"
             value={reviewRating}
             onChange={(e) => setReviewRating(Number(e.target.value))}
           >
-            {" "}
-            <option value="0">All Ratings</option>{" "}
-            <option value="1">1 Star</option> <option value="2">2 Stars</option>{" "}
-            <option value="3">3 Stars</option>{" "}
-            <option value="4">4 Stars</option>{" "}
-            <option value="5">5 Stars</option>{" "}
-          </select>{" "}
-        </div>{" "}
+            <option value="0">All Ratings</option>
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+          </select>
+        </div>
       </div>
       {/* Product list */}
       <div className="max-w-[1204px] mt-6 gap-[46px] mx-auto flex w-full flex-col md:px-5">
