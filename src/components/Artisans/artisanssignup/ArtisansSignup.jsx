@@ -375,19 +375,6 @@ function ArtisansSignup() {
                     </div>
                   </div>
                   <div class="mt-6">
-                    <label class="text-gray-800 text-xs mb-2">GSTIN</label>
-                    <div class="relative flex items-center justify-between">
-                      <input
-                        className=" w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none"
-                        name="GSTIN"
-                        required
-                        placeholder="Enter your GSTIN"
-                        {...register("GSTIN")}
-                      />
-                      <CalendarRangeIcon />
-                    </div>
-                  </div>
-                  <div class="mt-6">
                     <label class="text-gray-800 text-xs mb-2">Avatar</label>
                     <div class="relative flex items-center justify-between">
                       <input
