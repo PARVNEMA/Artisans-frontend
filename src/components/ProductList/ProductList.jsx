@@ -108,7 +108,7 @@ function ProductList() {
         <div className="mb-4">
           <label className="block mb-2">Category</label>
           <select
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded-xl"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
@@ -124,7 +124,7 @@ function ProductList() {
         <div className="mb-4">
           <label className="block mb-2">Origin State</label>
           <select
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded-xl"
             value={selectedState}
             onChange={(e) => setSelectedState(e.target.value)}
           >
@@ -176,7 +176,7 @@ function ProductList() {
         <div className="mb-4">
           <label className="block mb-2">Review Rating</label>
           <select
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded-xl"
             value={reviewRating}
             onChange={(e) => setReviewRating(Number(e.target.value))}
           >

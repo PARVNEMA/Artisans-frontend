@@ -233,6 +233,12 @@ function Cart() {
                     </div>
                   </div>
                 ))}
+                <div>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Voluptates reprehenderit fugiat, porro nam quas doloribus
+                  eveniet, natus et id illum cupiditate pariatur praesentium
+                  numquam recusandae exercitationem sapiente magni in harum!
+                </div>
               </div>
 
               <div>

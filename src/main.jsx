@@ -58,6 +58,7 @@ import Seasonal from "./components/Seasonal/Seasonal.jsx";
 import PostCoupon from "./components/coupons/PostCoupon.jsx";
 import OrderItem from "./components/orderitemlist/OrderItem.jsx";
 import GstValidation from "./components/GstValidation/GstValidation.jsx";
+import Location from "./components/Location/Location.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
 			{
 				path: "/products",
 				element: <ProductList />,
+			},
+			{
+				path: "/location",
+				element: <Location />,
 			},
 			{
 				path: "/customize",

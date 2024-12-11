@@ -7,7 +7,7 @@ const Aa = () => {
 
   return (
     <div className="flex items-center justify-center p-3">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
+      <div className="bg-white p-8 rounded-lg shadow-two shadow-2xl">
         <div className="flex justify-center items-center">
           <div className="relative w-[70%] bg-three rounded-s-full bg-opacity-30 rounded-e-full">
             <div

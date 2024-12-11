@@ -25,7 +25,7 @@ export const Searchform = ({ onSearch }) => {
         {...register("search", {
           onChange: (e) => handleChange(e),
         })}
-        className="p-3 m-2 ml-auto rounded-lg bg-white text-three outline-none hidden bg-transparent sm:block sm:w-16 md:w-40"
+        className="p-3 m-2 ml-auto rounded-2xl bg-white text-three outline-none hidden bg-transparent sm:block sm:w-16 md:w-40"
       />
     </form>
   );
