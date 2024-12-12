@@ -284,21 +284,6 @@ function Dashboard() {
 				<div className="flex flex-col lg:flex-row items-center w-full p-6 bg-one">
 					{" "}
 					<div className="lg:w-3/4 w-full lg:pl-[8rem] text-center lg:text-left">
-						{nearbyPostOffices.length > 0 ? (
-							nearbyPostOffices.map((postOffice) => (
-								<div
-									key={postOffice.Name}
-									className="post-office-card"
-								>
-									<h3>{postOffice.Name}</h3>
-									<p>Address: {postOffice.Address}</p>
-									<p>District: {postOffice.District}</p>
-									<p>State: {postOffice.State}</p>
-								</div>
-							))
-						) : (
-							<p>No post offices found nearby.</p>
-						)}{" "}
 						<h1 className="text-5xl font-extrabold uppercase text-three mt-10 mb-3">
 							{" "}
 							Welcome!! {artisans?.fullName}{" "}

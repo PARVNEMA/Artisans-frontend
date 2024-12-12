@@ -19,6 +19,7 @@ function App() {
 			</nav>
 			<main className="bg-one text-black relative">
 				<Outlet />
+				<CHatbot />
 				<ToastContainer
 					position="bottom-right"
 					autoClose={5000}
@@ -30,9 +31,8 @@ function App() {
 					draggable
 					pauseOnHover
 					theme="light"
-					transition="Slide"
+					
 				/>
-				<CHatbot />
 			</main>
 
 			<footer>

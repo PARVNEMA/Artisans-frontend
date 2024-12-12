@@ -157,6 +157,7 @@ function Cart() {
                           <h3 class="text-base font-bold text-gray-800">
                             {item.title}
                           </h3>
+                          <p className="mt-3"><b>Ratings:{" "}</b>{item.avgRating}</p>
                         </div>
 
                         <div class="mt-auto flex items-center gap-3">
