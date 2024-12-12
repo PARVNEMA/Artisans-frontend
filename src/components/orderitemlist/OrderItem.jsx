@@ -109,6 +109,7 @@ function OrderItem() {
 						key={item.orderItemId}
 						className="mb-6 bg-white shadow-md border border-gray-200 p-6 rounded-lg"
 					>
+						<h2>Status: {item.status}</h2>
 						<h2 className="text-xl font-bold text-gray-700 mb-2">
 							Delivery Address
 						</h2>
