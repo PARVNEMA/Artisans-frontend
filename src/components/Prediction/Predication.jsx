@@ -9,11 +9,13 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
+  Legend,
+  ResponsiveContainer,
 } from "recharts";
 
 const RevenuePrediction = () => {
   const [predictions, setPredictions] = useState([]);
-  const [fileData, setFileData] = useState(null);
+  const [existingData, setExistingData] = useState([]);
   const { currency } = useContext(CurrencyContext);
 
   // Parse CSV content into an array of objects
@@ -41,7 +43,7 @@ const RevenuePrediction = () => {
     console.log("CSV Content:", csvContent); // Log the raw CSV content
     const parsedData = parseCSV(csvContent);
     console.log("Parsed Data:", parsedData); // Log the parsed data
-    setFileData(parsedData);
+    setExistingData(parsedData);
   };
 
   const trainAndPredict = async (data, year) => {
@@ -169,52 +171,73 @@ const RevenuePrediction = () => {
   }, []);
 
   useEffect(() => {
-    if (fileData) {
+    if (existingData) {
       const fetchPredictions = async () => {
-        const result = await trainAndPredict(fileData, 2025); // Predict revenue for each month of 2025
+        const result = await trainAndPredict(existingData, 2025); // Predict revenue for each month of 2025
         setPredictions(result);
       };
       fetchPredictions();
     }
-  }, [fileData]);
+  }, [existingData]);
 
-  const data2 = predictions?.map((prod) => ({
-    name: `Month ${prod.month}`, // Adjust the naming convention as needed 
-    revenue: prod.revenue,
+  const existingDataFormatted = existingData.map((item) => ({
+    name: `Month ${item.Month}-${item.Year}`,
+    actualRevenue: item.Revenue,
   }));
 
+  const predictedDataFormatted = predictions.map((item) => ({
+    name: `Month ${item.month}-2025`,
+    predictedRevenue: item.revenue,
+  }));
+
+  const combinedData = existingDataFormatted.map((existing, index) => ({
+    ...existing,
+    ...(predictedDataFormatted[index] || {}),
+  }));
+
+  console.log("Combined Data:", combinedData); // Log combined data for debugging
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      {predictions.length > 0 ? (
-        <div>
-          <h2 className="text-2xl font-semibold">
-            Predicted Revenue for Each Month in 2025:
-          </h2>
-          {/* <ul className="mt-4">
-            {predictions.map((pred) => (
-              <li key={pred.month} className="mb-2">
-                Month {pred.month}: {currency === "INR" ? "₹" : currency === "USD" ? "$" : "€"}
-                {typeof pred.revenue === "number"
-                  ? pred.revenue.toFixed(2)
-                  : "N/A"}
-              </li>
-            ))}
-          </ul> */}
-        </div>
-      ) : (
-        <p>Loading predictions...</p>
-      )}
-      <LineChart
-        width={600}
-        height={400}
-        data={data2}
-      >
-        <Line type="monotone" dataKey="revenue" stroke="#8884d8" />
-        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-      </LineChart>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+      <div className="w-full max-w-4xl">
+        <h1 className="text-3xl font-bold mb-6 text-center">
+          Revenue Prediction for 2025
+        </h1>
+        {predictions.length > 0 ? (
+          <div>
+            <h2 className="text-2xl font-semibold text-center mb-4">
+              Actual vs Predicted Revenue
+            </h2>
+            <ResponsiveContainer width="100%" height={400}>
+              <LineChart data={combinedData}>
+                <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                {/* Line for actual revenue */}
+                <Line
+                  type="monotone"
+                  dataKey="actualRevenue"
+                  stroke="#8884d8"
+                  strokeWidth={2}
+                  dot={false}
+                />
+                {/* Line for predicted revenue */}
+                <Line
+                  type="monotone"
+                  dataKey="predictedRevenue"
+                  stroke="#82ca9d"
+                  strokeWidth={2}
+                  dot={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        ) : (
+          <p className="text-center">Loading predictions...</p>
+        )}
+      </div>
     </div>
   );
 };
