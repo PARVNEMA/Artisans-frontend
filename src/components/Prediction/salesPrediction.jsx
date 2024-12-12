@@ -9,6 +9,7 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
+  Label
 } from "recharts";
 
 const SalesPrediction = () => {
@@ -199,11 +200,15 @@ const SalesPrediction = () => {
         height={400}
         data={data2}
       >
-        <Line type="monotone" dataKey="sales" stroke="#8884d8" />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis dataKey="name">
+          <Label value="Month" offset={-5} position="insideBottom" />
+        </XAxis>
+        <YAxis>
+          <Label value="Sales Growth Rate" angle={-90} position="insideLeft" />
+        </YAxis>
         <Tooltip />
+        <Line type="monotone" dataKey="sales" stroke="#8884d8" />
       </LineChart>
     </div>
   );

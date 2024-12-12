@@ -142,9 +142,9 @@ function Recommendations() {
       ) : (
         <div>
           {wishlist.length > 0 ? (
-            <div className="wishlist-container">
-              <div className="flex flex-col items-center mt-12">
-                <div className="grid mx-[10rem] lg:grigrid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 scroll-smooth focus:scroll-smooth">
+            <div className="max-w-full gap-[46px] mx-auto flex w-full flex-col md:px-5 ">
+              <div className="py-4 mx-auto lg:max-w-7xl sm:max-w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 scroll-smooth focus:scroll-smooth ">
                   {recommendedProducts.map((product) => (
                     <Cards product={product} key={product._id} />
                   ))}

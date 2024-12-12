@@ -63,6 +63,7 @@ import Prediction from "./components/Prediction/Predication.jsx";
 import RevenuePrediction from "./components/Prediction/Predication.jsx";
 import ModelLoader from "./utils/ModelLoader.jsx";
 import Test3d from "./utils/Test3D.jsx";
+import AllArtisans from "./components/Logistics/AllArtisans/AllArtisans.jsx";
 
 const router = createBrowserRouter([
   {
@@ -150,6 +151,10 @@ const router = createBrowserRouter([
       {
         path: "/logsignin",
         element: <LogSignIn />,
+      },
+      {
+        path: "/allartisans",
+        element: <AllArtisans />,
       },
       {
         path: "/logsignup",

@@ -507,7 +507,9 @@ function DetailedProduct() {
 												Customize Product
 											</div>
 										</Link>
-										<Link to={"/test"}>3D Model</Link>
+										<Link to={"/test"} className="flex items-center mt-5 bg-three rounded-xl m-1 w-fit p-3 px-6 text-white">
+										<img src="/public/images/360view.png" className="h-8 w-8" alt="" />
+										<p>View 3D Model</p></Link>
 									</div>
 
 
