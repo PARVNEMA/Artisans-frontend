@@ -33,6 +33,7 @@ import {
 	IndianRupeeIcon,
 } from "lucide-react";
 import { CurrencyContext } from "../../../../useContext/CurrencyContext.jsx";
+import RevenuePrediction from "../../Prediction/Predication.jsx";
 
 function Dashboard() {
 	{
@@ -181,12 +182,17 @@ function Dashboard() {
 		//For pie chart
 		const [activeIndex, setActiveIndex] = useState(-1);
 
-		const data = artisansmatrices?.countryStats
-			? artisansmatrices.countryStats.map((item) => ({
-					name: item.country,
-					count: item.count,
-			  }))
-			: [];
+		// const data = artisansmatrices?.countryStats
+		// 	? artisansmatrices.countryStats.map((item) => ({
+		// 			name: item.country,
+		// 			count: item.count,
+		// 	  }))
+		// 	: [];
+
+		const data = [{
+			name: "India",count: 1},
+			{name: "Nepal",count: 1},
+			{name: "Bhutan",count: 1},]
 
 		const COLORS = [
 			"#0088FE",
@@ -482,6 +488,15 @@ function Dashboard() {
 						</div>{" "}
 					</div>{" "}
 				</div>
+				{/* Revenue */}{" "}
+				<div className="p-6">
+					{" "}
+					<h1 className="text-5xl font-extrabold uppercase text-three text-center mb-8">
+						{" "}
+						Revenue Analytics{" "}
+					</h1>{" "}
+					<RevenuePrediction />
+				</div>
 				{/* pending orders  */}
 				<div>
 					<div className="flex items-center w-full">
@@ -582,162 +597,197 @@ function Dashboard() {
 					</div>
 				</div>
 				{/* artisans products */}
-				<div className="mx-[10rem] text-start">
-					<div className="text-5xl font-extrabold text-three text-center p-8">
-						Your Products
-					</div>{" "}
-					<div className="overflow-x-auto mb-12">
-						{" "}
-						<table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-							{" "}
-							<thead className="bg-four text-white">
-								{" "}
-								<tr>
-									{" "}
-									<th className="py-3 px-6 font-semibold uppercase">
-										SNO
-									</th>{" "}
-									<th className="py-3 px-6 font-semibold uppercase">
-										Image
-									</th>{" "}
-									<th className="py-3 px-6 font-semibold uppercase">
-										Title
-									</th>{" "}
-									<th className="py-3 px-6 font-semibold uppercase">
-										Category
-									</th>{" "}
-									<th className="py-3 px-6 font-semibold uppercase">
-										Description
-									</th>{" "}
-									<th className="py-3 px-6 font-semibold uppercase">
-										Sales
-									</th>{" "}
-									<th className="py-3 px-6 font-semibold uppercase">
-										Views
-									</th>{" "}
-									<th className="py-3 px-6 font-semibold uppercase">
-										Price
-									</th>{" "}
-									<th className="py-3 px-6 font-semibold uppercase">
-										Action
-									</th>{" "}
-									<th className="py-3 px-6 font-semibold uppercase">
-										Stock
-									</th>{" "}
-								</tr>{" "}
-							</thead>{" "}
-							<tbody>
-								{" "}
-								{artisansproducts.map((product, i) => (
-									<tr
-										key={product._id}
-										className="bg-white border-b hover:bg-gray-100 transition-all"
-									>
-										{" "}
-										<td className="py-3 px-6 border text-center">
-											{i + 1}.
-										</td>{" "}
-										<td className="py-3 px-6 ">
-											{" "}
-											<img
-												src={product.images[0]}
-												alt={product.title}
-												className="h-16 w-16 object-fill rounded-full"
-											/>{" "}
-										</td>{" "}
-										<td className="py-3 px-6 border">
-											{product.title}
-										</td>{" "}
-										<td className="py-3 px-6 border">
-											{product.category.name}
-										</td>{" "}
-										<td className="py-3 px-6 border">
-											{product.description}
-										</td>{" "}
-										<td className="py-3 px-6 border">
-											{product.sales}
-										</td>{" "}
-										<td className="py-3 px-6 border">
-											{product.views}
-										</td>{" "}
-										<td className="py-3 px-6 ">
-											{" "}
-											{currency === "INR"
-												? "₹"
-												: currency === "USD"
-												? "$"
-												: "€ "}{" "}
-											{product.price}{" "}
-										</td>{" "}
-										<td className="py-3 px-6 flex flex-col justify-center items-center gap-1">
-											{" "}
-											<button
-												className="py-1 px-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all"
-												onClick={() =>
-													deleteProduct(product._id)
-												}
-											>
-												{" "}
-												Delete{" "}
-											</button>{" "}
-											<Link
-												to={`/artisans/updateproduct/${product._id}`}
-											>
-												{" "}
-												<button className="py-1 px-3 bg-three text-white rounded-lg hover:bg-opacity-75 transition-all">
-													{" "}
-													Update{" "}
-												</button>{" "}
-											</Link>{" "}
-										</td>{" "}
-										<td className="py-3 px-6 border">
-											{" "}
-											<p className="uppercase">
-												Stock: {product.stockQuantity}
-											</p>{" "}
-											<Edit
-												onClick={() =>
-													setstockid(product._id)
-												}
-											/>{" "}
-											<input
-												type="number"
-												name="stock"
-												className={`border rounded px-2 py-1 ${
-													stockid === product._id
-														? "block"
-														: "hidden"
-												}`}
-												placeholder="Enter Stock Quantity"
-												value={stockquantity}
-												onChange={(e) =>
-													setstockquantity(e.target.value)
-												}
-											/>{" "}
-											<button
-												className={`ml-2 ${
-													stockid === product._id
-														? "block"
-														: "hidden"
-												}`}
-												onClick={() => {
-													updateStock(
-														product._id,
-														stockquantity
-													);
-													setstockid("");
-												}}
-											>
-												{" "}
-												<ArrowRightCircle />{" "}
-											</button>{" "}
-										</td>{" "}
-									</tr>
-								))}{" "}
-							</tbody>{" "}
-						</table>{" "}
-					</div>
-				</div>
+				<div className="mx-[5rem] text-start">
+          <div className="overflow-x-auto mb-12">
+            <div className="flex justify-evenly mt-8">
+              {/* Table for Top 3 Products with Maximum Sales */}
+              <div className="w-full max-w-xs md:max-w-md lg:max-w-lg">
+                <h2 className="text-2xl font-bold mb-4 text-center">
+                  Top 3 Products with Maximum Sales
+                </h2>
+                <table className="min-w-full bg-white shadow-xl">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="py-2 px-4 border">S.No</th>
+                      <th className="py-2 px-4 border">Title</th>
+                      <th className="py-2 px-4 border">Sales</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {artisansproducts
+                      .sort((a, b) => b.sales - a.sales)
+                      .slice(0, 3)
+                      .map((product, i) => (
+                        <tr key={product._id}>
+                          <td className="py-2 px-4 border text-center">
+                            {i + 1}
+                          </td>
+                          <td className="py-2 px-4 border truncate">{product.title}</td>
+                          <td className="py-2 px-4 border text-center">
+                            {product.sales}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Table for Top 3 Products with Minimum Sales */}
+              <div className="w-full max-w-xs md:max-w-md lg:max-w-lg">
+                <h2 className="text-2xl font-bold mb-4 text-center">
+                  Top 3 Products with Minimum Sales
+                </h2>
+                <table className="min-w-full bg-white shadow-xl">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="py-2 px-4 border">S.No</th>
+                      <th className="py-2 px-4 border">Title</th>
+                      <th className="py-2 px-4 border">Sales</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {artisansproducts
+                      .sort((a, b) => a.sales - b.sales)
+                      .slice(0, 3)
+                      .map((product, i) => (
+                        <tr key={product._id}>
+                          <td className="py-2 px-4 border text-center">
+                            {i + 1}
+                          </td>
+                          <td className="py-2 px-4 border truncate">{product.title}</td>
+                          <td className="py-2 px-4 border text-center">
+                            {product.sales}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className="text-5xl font-extrabold text-three text-center p-8">
+              Your Products
+            </div>{" "}
+            <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+              {" "}
+              <thead className="bg-four text-white">
+                {" "}
+                <tr>
+                  {" "}
+                  <th className="py-3 px-6 font-semibold uppercase">
+                    SNO
+                  </th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Image</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Title</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">
+                    Category
+                  </th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">
+                    Description
+                  </th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Views</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Sales</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Prices</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Income</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Action</th>{" "}
+                  <th className="py-3 px-6 font-semibold uppercase">Stock</th>{" "}
+                </tr>{" "}
+              </thead>{" "}
+              <tbody>
+                {" "}
+                {artisansproducts.map((product, i) => (
+                  <tr
+                    key={product._id}
+                    className="bg-white border-b hover:bg-gray-100 transition-all"
+                  >
+                    {" "}
+                    <td className="py-3 px-6 border text-center">
+                      {i + 1}.
+                    </td>{" "}
+                    <td className="py-3 px-6 ">
+                      {" "}
+                      <img
+                        src={product.images[0]}
+                        alt={product.title}
+                        className="h-16 w-16 object-fill rounded-full"
+                      />{" "}
+                    </td>{" "}
+                    <td className="py-3 px-6 border">{product.title}</td>{" "}
+                    <td className="py-3 px-6 border">
+                      {product.category.name}
+                    </td>{" "}
+                    <td className="py-3 px-6 border">{product.description}</td>{" "}
+                    <td className="py-3 px-6 border">{product.views}</td>{" "}
+                    <td className="py-3 px-6 border">{product.sales}</td>{" "}
+                    <td className="py-3 px-6 ">
+                      {" "}
+                      {currency === "INR"
+                        ? "₹"
+                        : currency === "USD"
+                        ? "$"
+                        : "€ "}{" "}
+                      {product.price}{" "}
+                    </td>{" "}
+                    <td className="py-3 px-6 border">
+                      {" "}
+                      {currency === "INR"
+                        ? "₹"
+                        : currency === "USD"
+                        ? "$"
+                        : "€ "}{" "}
+                      {product.price * product.sales}{" "}
+                    </td>{" "}
+                    <td className="py-3 px-6 flex flex-col justify-center items-center gap-1">
+                      {" "}
+                      <button
+                        className="py-1 px-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all"
+                        onClick={() => deleteProduct(product._id)}
+                      >
+                        {" "}
+                        Delete{" "}
+                      </button>{" "}
+                      <Link to={`/artisans/updateproduct/${product._id}`}>
+                        {" "}
+                        <button className="py-1 px-3 bg-three text-white rounded-lg hover:bg-opacity-75 transition-all">
+                          {" "}
+                          Update{" "}
+                        </button>{" "}
+                      </Link>{" "}
+                    </td>{" "}
+                    <td className="py-3 px-6 border">
+                      {" "}
+                      <p className="uppercase">
+                        Stock: {product.stockQuantity}
+                      </p>{" "}
+                      <Edit onClick={() => setstockid(product._id)} />{" "}
+                      <input
+                        type="number"
+                        name="stock"
+                        className={`border rounded px-2 py-1 ${
+                          stockid === product._id ? "block" : "hidden"
+                        }`}
+                        placeholder="Enter Stock Quantity"
+                        value={stockquantity}
+                        onChange={(e) => setstockquantity(e.target.value)}
+                      />{" "}
+                      <button
+                        className={`ml-2 ${
+                          stockid === product._id ? "block" : "hidden"
+                        }`}
+                        onClick={() => {
+                          updateStock(product._id, stockquantity);
+                          setstockid("");
+                        }}
+                      >
+                        {" "}
+                        <ArrowRightCircle />{" "}
+                      </button>{" "}
+                    </td>{" "}
+                  </tr>
+                ))}{" "}
+              </tbody>{" "}
+            </table>{" "}
+          </div>
+        </div>
 			</div>
 		);
 	}

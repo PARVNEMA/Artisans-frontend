@@ -11,7 +11,7 @@ import {
   YAxis,
 } from "recharts";
 
-const RevenuePrediction = () => {
+const SalesPrediction = () => {
   const [predictions, setPredictions] = useState([]);
   const [fileData, setFileData] = useState(null);
   const { currency } = useContext(CurrencyContext);
@@ -36,7 +36,7 @@ const RevenuePrediction = () => {
 
   // Load the CSV file from the public folder
   const loadCSVFromPublicFolder = async () => {
-    const response = await fetch('/data.csv');
+    const response = await fetch('/data2.csv');
     const csvContent = await response.text();
     console.log("CSV Content:", csvContent); // Log the raw CSV content
     const parsedData = parseCSV(csvContent);
@@ -44,16 +44,16 @@ const RevenuePrediction = () => {
     setFileData(parsedData);
   };
 
-  const trainAndPredict = async (data, year) => {
+  const trainAndPredict = async (data) => {
     // Load and preprocess data
     const loadData = (data) => {
       const points = [];
       const labels = [];
 
       data.forEach((row) => {
-        if (row.Month !== undefined && row.Year !== undefined && row.Revenue !== undefined) {
-          points.push([row.Month, row.Year]);
-          labels.push(row.Revenue);
+        if (row.Month !== undefined && row.Sales !== undefined) {
+          points.push([row.Month]);
+          labels.push(row.Sales);
         }
       });
 
@@ -67,10 +67,10 @@ const RevenuePrediction = () => {
 
       // Normalize data (scaling values between 0 and 1)
       const xs = tf.tensor2d(points).div(tf.scalar(12)); // Month range is 1-12, normalize it
-      const ys = tf.tensor1d(labels).div(tf.scalar(10000)); // Assuming the revenue range, normalize it
+      const ys = tf.tensor1d(labels); // Sales values are already in the required range
 
       console.log("xs (normalized):", xs.arraySync());
-      console.log("ys (normalized):", ys.arraySync());
+      console.log("ys:", ys.arraySync());
 
       return { xs, ys };
     };
@@ -83,7 +83,7 @@ const RevenuePrediction = () => {
         tf.layers.dense({
           units: 8,
           activation: "relu",
-          inputShape: [2],
+          inputShape: [1],
           kernelInitializer: tf.initializers.randomNormal({ seed: 42 }),
         })
       );
@@ -110,27 +110,20 @@ const RevenuePrediction = () => {
       return model;
     };
 
-    // Predict the revenue for each month
-    const predictRevenueForYear = (model, year) => {
+    // Predict the sales for each month
+    const predictSalesForYear = (model) => {
       const predictions = [];
       for (let month = 1; month <= 12; month++) {
         // Normalize input for prediction
-        const normalizedInput = tf.tensor2d([[month / 12, year / 10000]]);
+        const normalizedInput = tf.tensor2d([[month / 12]]);
         console.log("Normalized Input:", normalizedInput.arraySync());
 
         const prediction = model.predict(normalizedInput);
         const predictionArray = prediction.arraySync();
-        console.log(`Prediction for ${month}/${year} (raw):`, predictionArray);
-
-        // Convert the normalized prediction back to original scale
-        const predictionValue = prediction.mul(tf.scalar(10000)).arraySync()[0];
-        console.log(
-          `Prediction Value for ${month}/${year} (original scale):`,
-          predictionValue
-        );
+        console.log(`Prediction for Month ${month} (raw):`, predictionArray);
 
         // Store the prediction
-        predictions.push({ month, year, revenue: Number(predictionValue) }); // Ensure revenue is a number
+        predictions.push({ month, sales: Number(predictionArray[0]) }); // Ensure sales is a number
 
         // Dispose tensors
         normalizedInput.dispose();
@@ -159,9 +152,9 @@ const RevenuePrediction = () => {
       ),
     });
 
-    const yearPredictions = predictRevenueForYear(model, year);
-    console.log("Yearly Predictions:", yearPredictions);
-    return yearPredictions;
+    const predictions = predictSalesForYear(model);
+    console.log("Monthly Predictions:", predictions);
+    return predictions;
   };
 
   useEffect(() => {
@@ -171,7 +164,7 @@ const RevenuePrediction = () => {
   useEffect(() => {
     if (fileData) {
       const fetchPredictions = async () => {
-        const result = await trainAndPredict(fileData, 2025); // Predict revenue for each month of 2025
+        const result = await trainAndPredict(fileData); // Predict sales for each month
         setPredictions(result);
       };
       fetchPredictions();
@@ -179,8 +172,8 @@ const RevenuePrediction = () => {
   }, [fileData]);
 
   const data2 = predictions?.map((prod) => ({
-    name: `Month ${prod.month}`, // Adjust the naming convention as needed 
-    revenue: prod.revenue,
+    name: `Month ${prod.month}`, // Adjust the naming convention as needed
+    sales: prod.sales,
   }));
 
   return (
@@ -188,15 +181,12 @@ const RevenuePrediction = () => {
       {predictions.length > 0 ? (
         <div>
           <h2 className="text-2xl font-semibold">
-            Predicted Revenue for Each Month in 2025:
+            Predicted Sales for Each Month:
           </h2>
           {/* <ul className="mt-4">
             {predictions.map((pred) => (
               <li key={pred.month} className="mb-2">
-                Month {pred.month}: {currency === "INR" ? "₹" : currency === "USD" ? "$" : "€"}
-                {typeof pred.revenue === "number"
-                  ? pred.revenue.toFixed(2)
-                  : "N/A"}
+                Month {pred.month}: {typeof pred.sales === "number" ? pred.sales.toFixed(2) : "N/A"}
               </li>
             ))}
           </ul> */}
@@ -209,7 +199,7 @@ const RevenuePrediction = () => {
         height={400}
         data={data2}
       >
-        <Line type="monotone" dataKey="revenue" stroke="#8884d8" />
+        <Line type="monotone" dataKey="sales" stroke="#8884d8" />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <XAxis dataKey="name" />
         <YAxis />
@@ -219,4 +209,4 @@ const RevenuePrediction = () => {
   );
 };
 
-export default RevenuePrediction;
+export default SalesPrediction;

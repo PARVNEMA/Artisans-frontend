@@ -125,14 +125,14 @@ const Model = ({ color, patterns }) => {
 };
 
 const ModelLoader = () => {
-  const [color, setColor] = useState("#333");
+  const [color, setColor] = useState("slate");
   const [overlayImage, setOverlayImage] = useState(null);
   const [patterns, setPatterns] = useState([]);
   const [text, setText] = useState("");
   const [fontFamily, setFontFamily] = useState("Arial");
   const [textColor, setTextColor] = useState("black");
   const [backgroundColor, setBackgroundColor] = useState("#fff");
-  const [gridVisible, setGridVisible] = useState(false);
+  const [gridVisible, setGridVisible] = useState(true);
   const [patternTint, setPatternTint] = useState("#ffffff");
   const [animationEnabled, setAnimationEnabled] = useState(false);
 

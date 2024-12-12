@@ -6,6 +6,7 @@ import React, {
 } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import SalesPrediction from "../../Prediction/salesPrediction";
 
 function LogHome() {
 	const backendurl = import.meta.env.VITE_URL;
@@ -78,6 +79,7 @@ function LogHome() {
 
 			{/* Order Table */}
 			<div className="flex flex-col">
+				<SalesPrediction />
 				<table className="min-w-full bg-white shadow-md rounded-lg">
 					<thead className="bg-three text-white">
 						<tr>
@@ -100,11 +102,11 @@ function LogHome() {
 							<tr
 								key={product.orderId}
 								className="border-b hover:bg-gray-100 transition-all cursor-pointer"
-								onClick={() =>
-									navigate(
-										`/logistics/${product.orderId?._id}`
-									)
-								}
+								// onClick={() =>
+								// 	navigate(
+								// 		`/logistics/${product.orderId?._id}`
+								// 	)
+								// }
 							>
 								<td className="py-3 px-6 border">
 									{index + 1}
