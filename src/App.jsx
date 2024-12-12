@@ -8,13 +8,14 @@ import {
 	toast,
 } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Chatbot from "./components/Chatbot";
 function App() {
 	return (
 		<div className="flex flex-col ">
 			<nav className="bg-one text-white">
 				<Navbar />
 			</nav>
-			<main className="bg-one text-black">
+			<main className="bg-one text-black relative">
 				<Outlet />
 				<ToastContainer
 					position="bottom-right"
@@ -27,9 +28,11 @@ function App() {
 					draggable
 					pauseOnHover
 					theme="light"
-					transition:Slide
+					transition="Slide"
 				/>
+				<Chatbot />
 			</main>
+
 			<footer>
 				<Footer />
 			</footer>
