@@ -23,6 +23,7 @@
     "lucide-react": "^0.456.0",
     "re-resizable": "^6.10.3",
     "react": "^18.3.1",
+    "react-chatbot-kit": "^2.2.2",
     "react-color": "^2.19.3",
     "react-cookie": "^7.2.2",
     "react-dom": "^18.3.1",

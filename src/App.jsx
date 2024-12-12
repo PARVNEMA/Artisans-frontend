@@ -8,7 +8,9 @@ import {
 	toast,
 } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Chatbot from "./components/Chatbot";
+import CHatbot from "./components/chatbot/Chatbot";
+// import Chatbot from "./components/chatbot/CHatbot";
+
 function App() {
 	return (
 		<div className="flex flex-col ">
@@ -30,7 +32,7 @@ function App() {
 					theme="light"
 					transition="Slide"
 				/>
-				<Chatbot />
+				<CHatbot />
 			</main>
 
 			<footer>
