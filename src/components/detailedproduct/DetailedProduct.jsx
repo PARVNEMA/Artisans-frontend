@@ -507,9 +507,13 @@ function DetailedProduct() {
 												Customize Product
 											</div>
 										</Link>
-										<Link to={"/test"}>3D Model</Link>
+										<Link to={"/test"}>
+											<button className="btn ">
+												{" "}
+												3D model
+											</button>
+										</Link>
 									</div>
-
 
 									{/* created by */}
 									<div className="flex justify-start mt-8 gap-10 items-center">
