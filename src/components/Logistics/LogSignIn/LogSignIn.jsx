@@ -45,14 +45,6 @@ function LogSignIn() {
 		<div className="max-w-[1204px] gap-[46px] mx-auto flex w-full flex-col md:px-5">
 			<div class="font-[comic sans] flex items-center justify-center p-4 ">
 				<div class="shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)] max-w-6xl bg-white max-md:max-w-lg rounded-md p-6">
-					<a href="javascript:void(0)">
-						<img
-							src="public/images/Elegant Peacock Indian Wedding Logo (3).png"
-							alt="logo"
-							class="w-40 md:mb-4 mb-12"
-						/>
-					</a>
-
 					<div class="grid md:grid-cols-2 items-center gap-8">
 						<div class="max-md:order-1 lg:min-w-[450px]">
 							<img

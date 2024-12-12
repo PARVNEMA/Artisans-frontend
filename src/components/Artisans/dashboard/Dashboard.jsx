@@ -40,11 +40,13 @@ function Dashboard() {
 		const backendurl = import.meta.env.VITE_URL;
 		const [artisansmatrices, setArtisansMatrices] =
 			useState(null);
-		const [artisans, setArtisans] = useState(null);
+		const { artisans, setArtisans } = useAuthArtisans();
 		const [artisansproducts, setArtisansProducts] =
 			useState([]);
 		const [stockid, setstockid] = useState(null);
 		const [stockquantity, setstockquantity] = useState(0);
+		const [nearbyPostOffices, setNearbyPostOffices] =
+			useState([]);
 
 		const getArtisansProduct = useCallback(async () => {
 			try {
@@ -65,6 +67,30 @@ function Dashboard() {
 				console.error("error in dashboard ", error);
 			}
 		}, []);
+
+		const fetchNearbyPostOffices = useCallback(async () => {
+			const zipcode = artisans?.address?.zipCode;
+			console.log("zipcode", zipcode);
+			if (!zipcode) {
+				console.log(
+					"No zipcode found, skipping fetchNearbyPostOffices..."
+				);
+				return;
+			}
+			try {
+				const res = await axios.get(
+					`${backendurl}/postoffices/nearby/${zipcode}`
+				);
+
+				setNearbyPostOffices(res.data.data);
+			} catch (error) {
+				console.log(
+					"Error fetching nearby post offices",
+					error
+				);
+			}
+		}, [artisans?.address?.zipCode]);
+
 		const getArtisansSellerMetrices =
 			useCallback(async () => {
 				try {
@@ -130,22 +156,27 @@ function Dashboard() {
 				console.log("Error", error);
 			}
 		}, []);
+
 		useEffect(() => {
 			getCurrentArtisans();
 		}, [getCurrentArtisans]);
+
+		useEffect(() => {
+			if (artisans?.address?.zipCode) {
+				console.log(
+					"Address available, fetching nearby post offices..."
+				);
+				fetchNearbyPostOffices();
+			}
+		}, [artisans, fetchNearbyPostOffices]);
+
 		useEffect(() => {
 			if (localStorage.getItem("artisansaccessToken")) {
-				console.log(
-					"User is logged in, fetching products..."
-				);
+				console.log("User is logged in, fetching data...");
 				getArtisansProduct();
 				getArtisansSellerMetrices();
 			}
-		}, [
-			artisans,
-			getArtisansProduct,
-			getArtisansSellerMetrices,
-		]);
+		}, [getArtisansProduct, getArtisansSellerMetrices]);
 
 		//For pie chart
 		const [activeIndex, setActiveIndex] = useState(-1);
@@ -247,7 +278,21 @@ function Dashboard() {
 				<div className="flex flex-col lg:flex-row items-center w-full p-6 bg-one">
 					{" "}
 					<div className="lg:w-3/4 w-full lg:pl-[8rem] text-center lg:text-left">
-						{" "}
+						{nearbyPostOffices.length > 0 ? (
+							nearbyPostOffices.map((postOffice) => (
+								<div
+									key={postOffice.Name}
+									className="post-office-card"
+								>
+									<h3>{postOffice.Name}</h3>
+									<p>Address: {postOffice.Address}</p>
+									<p>District: {postOffice.District}</p>
+									<p>State: {postOffice.State}</p>
+								</div>
+							))
+						) : (
+							<p>No post offices found nearby.</p>
+						)}{" "}
 						<h1 className="text-5xl font-extrabold uppercase text-three mt-10 mb-3">
 							{" "}
 							Welcome!! {artisans?.fullName}{" "}

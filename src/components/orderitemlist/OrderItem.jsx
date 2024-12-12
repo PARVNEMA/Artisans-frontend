@@ -28,12 +28,12 @@ function OrderItem() {
 		setSelectedFiles2(e.target.files);
 
 	const onSubmit = async (data, orderItemId) => {
-		if (!selectedFiles1.length || !selectedFiles2.length) {
-			toast.error(
-				"Please select both pickup and delivery images."
-			);
-			return;
-		}
+		// if (!selectedFiles1.length || !selectedFiles2.length) {
+		// 	toast.error(
+		// 		"Please select both pickup and delivery images."
+		// 	);
+		// 	return;
+		// }
 
 		const formData = new FormData();
 		Object.keys(data).forEach((key) => {
@@ -41,10 +41,10 @@ function OrderItem() {
 		});
 
 		for (let i = 0; i < selectedFiles1.length; i++) {
-			formData.append("pickupImages", selectedFiles1[i]);
+			formData.append("images", selectedFiles1[i]);
 		}
 		for (let i = 0; i < selectedFiles2.length; i++) {
-			formData.append("deliveryImages", selectedFiles2[i]);
+			formData.append("images", selectedFiles2[i]);
 		}
 
 		try {
@@ -60,12 +60,10 @@ function OrderItem() {
 			});
 
 			toast.success("Product uploaded successfully");
-			navigate("/artisans/dashboard");
+			navigate("/loghome");
 		} catch (error) {
 			console.error("Error in form submission", error);
-			toast.error(
-				"Failed to upload images. Please try again."
-			);
+			toast.error(error.message);
 		}
 	};
 
@@ -100,7 +98,7 @@ function OrderItem() {
 	return (
 		<div className="p-6 bg-gray-100 min-h-screen">
 			<h1 className="text-3xl font-bold text-center mb-8">
-				Order Item {orderId}
+				Order Id {orderId}
 			</h1>
 			{Array.isArray(ordersitems) &&
 			ordersitems.length > 0 ? (
@@ -109,6 +107,8 @@ function OrderItem() {
 						key={item.orderItemId}
 						className="mb-6 bg-white shadow-md border border-gray-200 p-6 rounded-lg"
 					>
+						<h2> status:{item?.status}</h2>
+						<h2> status:{item?.orderItemId}</h2>
 						<h2 className="text-xl font-bold text-gray-700 mb-2">
 							Delivery Address
 						</h2>
