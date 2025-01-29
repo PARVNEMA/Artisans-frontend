@@ -51,7 +51,7 @@ import PendingOrders from "./components/Artisans/dashboard/PendingOrders.jsx";
 import UpdateArtisanProfile from "./components/Artisans/updateartisansprofile/UpdateArtisanProfile.jsx";
 import ReturnProduct from "./components/userprofile/ReturnProduct.jsx";
 import ArtisansChat from "./components/Artisans/artisanschat/ArtisansChat.jsx";
-import LogHome from "./components/Logistics/logHome/logHome.jsx";
+
 import LogSignIn from "./components/Logistics/LogSignIn/LogSignIn.jsx";
 import LogSignUp from "./components/Logistics/LogSignup/LogSignUp.jsx";
 import Recommendations from "./components/Recommendations/Recommendations.jsx";
@@ -67,6 +67,7 @@ import ModelLoader from "./utils/ModelLoader.jsx";
 import Test3d from "./utils/Test3D.jsx";
 import AllArtisans from "./components/Logistics/AllArtisans/AllArtisans.jsx";
 import Seasonal from "./components/seasonal/Seasonal.jsx";
+import LogHome from "./components/Logistics/LogHome/LogHome.jsx";
 
 const router = createBrowserRouter([
 	{
