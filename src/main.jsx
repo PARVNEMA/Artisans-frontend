@@ -22,7 +22,7 @@ import ArtisansLogin from "./components/Artisans/artisanslogin/ArtisansLogin.jsx
 import ArtisansSignup from "./components/Artisans/artisanssignup/ArtisansSignup.jsx";
 import ArtisansPage from "./components/Artisans/artisanspage/ArtisansPage.jsx";
 import Dashboard from "./components/Artisans/dashboard/Dashboard.jsx";
-import ProductListing from "./components/Artisans/productlisting/productListing.jsx";
+import ProductListing from "./components/Artisans/productlisting/ProductListing.jsx";
 
 import UserProfile from "./components/userprofile/UserProfile.jsx";
 import { AuthProvider } from "../useContext/loginContext.jsx";
