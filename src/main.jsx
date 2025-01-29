@@ -22,7 +22,7 @@ import ArtisansLogin from "./components/Artisans/artisanslogin/ArtisansLogin.jsx
 import ArtisansSignup from "./components/Artisans/artisanssignup/ArtisansSignup.jsx";
 import ArtisansPage from "./components/Artisans/artisanspage/ArtisansPage.jsx";
 import Dashboard from "./components/Artisans/dashboard/Dashboard.jsx";
-import ProductListing from "./components/Artisans/productlisting/productListing";
+import ProductListing from "./components/Artisans/productlisting/productListing.jsx";
 
 import UserProfile from "./components/userprofile/UserProfile.jsx";
 import { AuthProvider } from "../useContext/loginContext.jsx";
@@ -55,7 +55,8 @@ import LogHome from "./components/Logistics/logHome/logHome.jsx";
 import LogSignIn from "./components/Logistics/LogSignIn/LogSignIn.jsx";
 import LogSignUp from "./components/Logistics/LogSignup/LogSignUp.jsx";
 import Recommendations from "./components/Recommendations/Recommendations.jsx";
-import Seasonal from "./components/Seasonal/Seasonal.jsx";
+
+// import Seasonal from "./components/Seasonal/Seasonal.jsx";
 import PostCoupon from "./components/coupons/PostCoupon.jsx";
 import OrderItem from "./components/orderitemlist/OrderItem.jsx";
 import GstValidation from "./components/GstValidation/GstValidation.jsx";
@@ -65,6 +66,7 @@ import RevenuePrediction from "./components/Prediction/Predication.jsx";
 import ModelLoader from "./utils/ModelLoader.jsx";
 import Test3d from "./utils/Test3D.jsx";
 import AllArtisans from "./components/Logistics/AllArtisans/AllArtisans.jsx";
+import Seasonal from "./components/seasonal/Seasonal.jsx";
 
 const router = createBrowserRouter([
 	{
