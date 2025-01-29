@@ -53,7 +53,7 @@ import ReturnProduct from "./components/userprofile/ReturnProduct.jsx";
 import ArtisansChat from "./components/Artisans/artisanschat/ArtisansChat.jsx";
 
 import LogSignIn from "./components/Logistics/LogSignIn/LogSignIn.jsx";
-import LogSignUp from "./components/Logistics/LogSignup/LogSignUp.jsx";
+import LogSignUp from "./components/Logistics/LogSignUp/LogSignUp.jsx";
 import Recommendations from "./components/Recommendations/Recommendations.jsx";
 
 // import Seasonal from "./components/Seasonal/Seasonal.jsx";
