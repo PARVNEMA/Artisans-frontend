@@ -66,7 +66,7 @@ import RevenuePrediction from "./components/Prediction/Predication.jsx";
 import ModelLoader from "./utils/ModelLoader.jsx";
 import Test3d from "./utils/Test3D.jsx";
 import AllArtisans from "./components/Logistics/AllArtisans/AllArtisans.jsx";
-import Seasonal from "./components/seasonal/Seasonal.jsx";
+import Seasonal from "./components/Seasonal/Seasonal.jsx";
 import LogHome from "./components/Logistics/LogHome/LogHome.jsx";
 
 const router = createBrowserRouter([
