@@ -5,10 +5,6 @@ import path from "path";
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [react()],
-	server: {
-		host: true,
-		port: 5173, // Change this
-	},
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"),
