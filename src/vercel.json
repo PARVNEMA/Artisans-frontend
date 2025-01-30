@@ -1,0 +1,5 @@
+{
+	"env": {
+		"VITE_URL": "https://craftedindia-backend.onrender.com/api/v1"
+	}
+}
