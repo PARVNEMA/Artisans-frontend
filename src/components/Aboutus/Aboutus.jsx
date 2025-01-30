@@ -43,7 +43,7 @@ const Aboutus = () => {
 				<div className="flex justify-center items-center px-10">
 					<img
 						className="h-[250px] w-[650px] object-contain shadow-md"
-						src="/images/logo2.png"
+						src="/public/images/logo2.png"
 						alt="Artist"
 					/>
 				</div>

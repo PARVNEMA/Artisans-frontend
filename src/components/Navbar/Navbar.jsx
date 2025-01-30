@@ -203,7 +203,7 @@ function Navbar() {
 						{" "}
 						<img
 							className="h-[4rem] w-[14rem]"
-							src="/images/logo2.png"
+							src="/public/images/logo2.png"
 							alt="Logo"
 						/>{" "}
 					</Link>{" "}
