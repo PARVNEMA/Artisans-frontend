@@ -5,12 +5,14 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import DOMPurify from "dompurify";
 function ProductListing() {
 	// State to manage images
 	const [selectedFiles, setSelectedFiles] = useState([]);
 	const [category, setcategory] = useState([]);
 	const [loading, setloading] = useState(false);
+	const [verifiedimage, setverifiedimage] = useState(false);
+	const [prohibited, setprohibited] = useState(false);
 
 	const navigate = useNavigate();
 	const onFileChange = (e) => {
@@ -18,14 +20,12 @@ function ProductListing() {
 	}; // Single preview for each image
 	const backendurl = import.meta.env.VITE_URL;
 	// React Hook Form setup
-	const {
-		register,
-		watch,
-		handleSubmit,
-		setValue,
-		formState: { errors },
-	} = useForm();
+	const { register, watch, handleSubmit, setValue } =
+		useForm();
 	const isCustomization = watch("isCustomization");
+	const [errors, setErrors] = useState({ message: "" });
+
+	// In the catch block:
 
 	// Handle file selection and set preview for single image
 
@@ -79,6 +79,11 @@ function ProductListing() {
 			toast.succes("Product uploaded successfully");
 		} catch (error) {
 			console.error("error in register form", error);
+			setErrors({
+				message:
+					error.response?.data || "Something went wrong",
+			});
+			setloading(false);
 		}
 	};
 
@@ -99,7 +104,14 @@ function ProductListing() {
 	}, []);
 	return (
 		<div className="p-6">
-			{" "}
+			{errors.message && (
+				<div
+					className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+					dangerouslySetInnerHTML={{
+						__html: DOMPurify.sanitize(errors.message),
+					}}
+				/>
+			)}
 			<div className="shadow-lg bg-white max-md:max-w-lg m-8 rounded-md md:grid-cols-2 items-center gap-8 h-auto max-w-4xl mx-auto py-6 px-8 md:px-16">
 				{" "}
 				<div className="text-center mb-16">

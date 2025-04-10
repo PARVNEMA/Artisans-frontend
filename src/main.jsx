@@ -22,7 +22,8 @@ import ArtisansLogin from "./components/Artisans/artisanslogin/ArtisansLogin.jsx
 import ArtisansSignup from "./components/Artisans/artisanssignup/ArtisansSignup.jsx";
 import ArtisansPage from "./components/Artisans/artisanspage/ArtisansPage.jsx";
 import Dashboard from "./components/Artisans/dashboard/Dashboard.jsx";
-import ProductListing from "./components/Artisans/productlisting/productListing.jsx";
+import ProductListing from "./components/Artisans/productlisting/ProductListing.jsx";
+
 import UserProfile from "./components/userprofile/UserProfile.jsx";
 import { AuthProvider } from "../useContext/loginContext.jsx";
 import { CookiesProvider } from "react-cookie";
@@ -50,11 +51,12 @@ import PendingOrders from "./components/Artisans/dashboard/PendingOrders.jsx";
 import UpdateArtisanProfile from "./components/Artisans/updateartisansprofile/UpdateArtisanProfile.jsx";
 import ReturnProduct from "./components/userprofile/ReturnProduct.jsx";
 import ArtisansChat from "./components/Artisans/artisanschat/ArtisansChat.jsx";
-import LogHome from "./components/Logistics/logHome/logHome.jsx";
+
 import LogSignIn from "./components/Logistics/LogSignIn/LogSignIn.jsx";
-import LogSignUp from "./components/Logistics/LogSignup/LogSignUp.jsx";
+import LogSignUp from "./components/Logistics/LogSignUp/LogSignUp.jsx";
 import Recommendations from "./components/Recommendations/Recommendations.jsx";
-import Seasonal from "./components/Seasonal/Seasonal.jsx";
+
+// import Seasonal from "./components/Seasonal/Seasonal.jsx";
 import PostCoupon from "./components/coupons/PostCoupon.jsx";
 import OrderItem from "./components/orderitemlist/OrderItem.jsx";
 import GstValidation from "./components/GstValidation/GstValidation.jsx";
@@ -64,194 +66,196 @@ import RevenuePrediction from "./components/Prediction/Predication.jsx";
 import ModelLoader from "./utils/ModelLoader.jsx";
 import Test3d from "./utils/Test3D.jsx";
 import AllArtisans from "./components/Logistics/AllArtisans/AllArtisans.jsx";
+import Seasonal from "./components/Seasonal/Seasonal.jsx";
+import LogHome from "./components/Logistics/LogHome/LogHome.jsx";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      { path: "/", element: <Home /> },
-      { path: "/*", element: <ErrorPage /> },
-      {
-        path: "/products",
-        element: <ProductList />,
-      },
-      {
-        path: "/location",
-        element: <Location />,
-      },
-      {
-        path: "/customize",
-        element: <ChatPage />,
-      },
-      {
-        path: "/address",
-        element: <AddressForm />,
-      },
-      {
-        path: "/test",
-        element: <ModelLoader />,
-      },
-      {
-        path: "/pred",
-        element: <RevenuePrediction />,
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-      {
-        path: "/show3D",
-        element: <Test3d />,
-      },
-      {
-        path: "/bill",
-        element: <Bill />,
-      },
-      {
-        path: "/wishlist",
-        element: <Wishlist />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/signup",
-        element: <SignUp />,
-      },
-      {
-        path: "/contactus",
-        element: <ContactUs />,
-      },
-      {
-        path: "/userprofile",
-        element: <UserProfile />,
-      },
-      {
-        path: "/aboutus",
-        element: <Aboutus />,
-      },
-      {
-        path: "/recommendation",
-        element: <Recommendations />,
-      },
-      {
-        path: "/seasonal",
-        element: <Seasonal />,
-      },
-      {
-        path: "/aa",
-        element: <Aa />,
-      },
-      {
-        path: "/aaa",
-        element: <Aaa />,
-      },
-      {
-        path: "/logsignin",
-        element: <LogSignIn />,
-      },
-      {
-        path: "/allartisans",
-        element: <AllArtisans />,
-      },
-      {
-        path: "/logsignup",
-        element: <LogSignUp />,
-      },
-      {
-        path: "/loghome",
-        element: <LogHome />,
-      },
-      {
-        path: "/logistics/:orderId",
-        element: <OrderItem />,
-      },
-      {
-        path: "/artisans",
-        element: <Artisans />,
-        children: [
-          {
-            path: "/artisans/page",
-            element: <ArtisansPage />,
-          },
-          {
-            path: "/artisans/login",
-            element: <ArtisansLogin />,
-          },
-          {
-            path: "/artisans/signup",
-            element: <ArtisansSignup />,
-          },
-          {
-            path: "/artisans/dashboard",
-            element: <Dashboard />,
-          },
-          {
-            path: "/artisans/productlisting",
-            element: <ProductListing />,
-          },
-          {
-            path: "/artisans/updateproduct/:productId",
-            element: <UpdateProduct />,
-          },
-          {
-            path: "/artisans/pendingorders",
-            element: <PendingOrders />,
-          },
-          {
-            path: "/artisans/updateprofile",
-            element: <UpdateArtisanProfile />,
-          },
-          {
-            path: "/artisans/chat/:artisanid",
-            element: <ArtisansChat />,
-          },
-        ],
-      },
-      {
-        path: "/productdetails/:id",
-        element: <DetailedProduct />,
-      },
-      {
-        path: "/category/:categoryid",
-        element: <CategoryProducts />,
-      },
-      {
-        path: "/artisans/:artisanid",
-        element: <OtherArtisans />,
-      },
-      {
-        path: "/adminsignup",
-        element: <AdminSignup />,
-      },
-      {
-        path: "/adminlogin",
-        element: <AdminLogin />,
-      },
-      {
-        path: "/admin",
-        element: <AdminHome />,
-      },
-      {
-        path: "/chat/:artisanId/:userId/:productId",
-        element: <ChatPage />,
-      },
-      {
-        path: "/myorders",
-        element: <YourOrders />,
-      },
-      {
-        path: "/returnorder/:orderId/:orderItemId",
-        element: <ReturnProduct />,
-      },
-      {
-        path: "/gstvalidation",
-        element: <GstValidation />,
-      },
-    ],
-  },
+	{
+		path: "/",
+		element: <App />,
+		children: [
+			{ path: "/", element: <Home /> },
+			{ path: "/*", element: <ErrorPage /> },
+			{
+				path: "/products",
+				element: <ProductList />,
+			},
+			{
+				path: "/location",
+				element: <Location />,
+			},
+			{
+				path: "/customize",
+				element: <ChatPage />,
+			},
+			{
+				path: "/address",
+				element: <AddressForm />,
+			},
+			{
+				path: "/test",
+				element: <ModelLoader />,
+			},
+			{
+				path: "/pred",
+				element: <RevenuePrediction />,
+			},
+			{
+				path: "/cart",
+				element: <Cart />,
+			},
+			{
+				path: "/show3D",
+				element: <Test3d />,
+			},
+			{
+				path: "/bill",
+				element: <Bill />,
+			},
+			{
+				path: "/wishlist",
+				element: <Wishlist />,
+			},
+			{
+				path: "/login",
+				element: <Login />,
+			},
+			{
+				path: "/signup",
+				element: <SignUp />,
+			},
+			{
+				path: "/contactus",
+				element: <ContactUs />,
+			},
+			{
+				path: "/userprofile",
+				element: <UserProfile />,
+			},
+			{
+				path: "/aboutus",
+				element: <Aboutus />,
+			},
+			{
+				path: "/recommendation",
+				element: <Recommendations />,
+			},
+			{
+				path: "/seasonal",
+				element: <Seasonal />,
+			},
+			{
+				path: "/aa",
+				element: <Aa />,
+			},
+			{
+				path: "/aaa",
+				element: <Aaa />,
+			},
+			{
+				path: "/logsignin",
+				element: <LogSignIn />,
+			},
+			{
+				path: "/allartisans",
+				element: <AllArtisans />,
+			},
+			{
+				path: "/logsignup",
+				element: <LogSignUp />,
+			},
+			{
+				path: "/loghome",
+				element: <LogHome />,
+			},
+			{
+				path: "/logistics/:orderId",
+				element: <OrderItem />,
+			},
+			{
+				path: "/artisans",
+				element: <Artisans />,
+				children: [
+					{
+						path: "/artisans/page",
+						element: <ArtisansPage />,
+					},
+					{
+						path: "/artisans/login",
+						element: <ArtisansLogin />,
+					},
+					{
+						path: "/artisans/signup",
+						element: <ArtisansSignup />,
+					},
+					{
+						path: "/artisans/dashboard",
+						element: <Dashboard />,
+					},
+					{
+						path: "/artisans/productlisting",
+						element: <ProductListing />,
+					},
+					{
+						path: "/artisans/updateproduct/:productId",
+						element: <UpdateProduct />,
+					},
+					{
+						path: "/artisans/pendingorders",
+						element: <PendingOrders />,
+					},
+					{
+						path: "/artisans/updateprofile",
+						element: <UpdateArtisanProfile />,
+					},
+					{
+						path: "/artisans/chat/:artisanid",
+						element: <ArtisansChat />,
+					},
+				],
+			},
+			{
+				path: "/productdetails/:id",
+				element: <DetailedProduct />,
+			},
+			{
+				path: "/category/:categoryid",
+				element: <CategoryProducts />,
+			},
+			{
+				path: "/artisans/:artisanid",
+				element: <OtherArtisans />,
+			},
+			{
+				path: "/adminsignup",
+				element: <AdminSignup />,
+			},
+			{
+				path: "/adminlogin",
+				element: <AdminLogin />,
+			},
+			{
+				path: "/admin",
+				element: <AdminHome />,
+			},
+			{
+				path: "/chat/:artisanId/:userId/:productId",
+				element: <ChatPage />,
+			},
+			{
+				path: "/myorders",
+				element: <YourOrders />,
+			},
+			{
+				path: "/returnorder/:orderId/:orderItemId",
+				element: <ReturnProduct />,
+			},
+			{
+				path: "/gstvalidation",
+				element: <GstValidation />,
+			},
+		],
+	},
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

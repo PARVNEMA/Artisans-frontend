@@ -8,7 +8,7 @@ import {
 	toast,
 } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CHatbot from "./components/chatbot/Chatbot";
+import CHatbot from "./components/chatbot/CHatbot.jsx";
 // import Chatbot from "./components/chatbot/CHatbot";
 
 function App() {
@@ -31,7 +31,6 @@ function App() {
 					draggable
 					pauseOnHover
 					theme="light"
-					
 				/>
 			</main>
 

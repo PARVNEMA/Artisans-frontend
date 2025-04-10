@@ -507,11 +507,13 @@ function DetailedProduct() {
 												Customize Product
 											</div>
 										</Link>
-										<Link to={"/test"} className="flex items-center mt-5 bg-three rounded-xl m-1 w-fit p-3 px-6 text-white">
-										<img src="/public/images/360view.png" className="h-8 w-8" alt="" />
-										<p>View 3D Model</p></Link>
+										<Link to={"/test"}>
+											<button className="btn ">
+												{" "}
+												3D model
+											</button>
+										</Link>
 									</div>
-
 
 									{/* created by */}
 									<div className="flex justify-start mt-8 gap-10 items-center">

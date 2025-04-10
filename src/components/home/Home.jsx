@@ -4,7 +4,7 @@ import Carousel from "../carousel/Carousel";
 import Category from "../category/Category";
 import { useAuth } from "../../../useContext/loginContext";
 import FeaturedProducts from "../featuredProducts/FeaturedProducts";
-import Seasonal from "../seasonal/Seasonal";
+import Seasonal from "../Seasonal/Seasonal.jsx";
 import Recommendations from "../Recommendations/Recommendations";
 import ProductIframe from "../ArModel/ProductIFrame";
 

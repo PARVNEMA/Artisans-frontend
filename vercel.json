@@ -1,0 +1,19 @@
+{
+	"headers": [
+		{
+			"source": "/api/(.*)",
+			"headers": [
+				{
+					"key": "Access-Control-Allow-Origin",
+					"value": "https://crafted-india-weld.vercel.app"
+				}
+			]
+		}
+	],
+	"rewrites": [
+		{
+			"source": "/(.*)",
+			"destination": "/index.html"
+		}
+	]
+}
